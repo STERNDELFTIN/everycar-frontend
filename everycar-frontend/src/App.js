@@ -6,15 +6,11 @@ import Main from './routes/Main';
 
 function App() {
 
+  {/* Link 태그 스타일 컴포넌트 */}
   const LinkStyle = styled(Link)`color: black; text-decoration: none; `;
 
   return (
     <div className="App">
-      
-      {/* 페이지 URL */}
-      <Routes>
-        <Route path='/' element={<Main />}></Route>
-      </Routes>
 
       {/* 상단 메뉴 링크 */}
       <nav className='menu'>
@@ -35,6 +31,13 @@ function App() {
           </div>
         </div>
       </nav>
+
+      {/* 페이지 URL */}
+      <Routes>
+        <Route path='/' element={<Main />}></Route>
+      </Routes>
+
+      {/* footer */}
 
 
     </div>
