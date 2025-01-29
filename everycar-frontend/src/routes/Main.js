@@ -1,7 +1,7 @@
 import '../css/Main.css';
 import styled from 'styled-components';
 
-const TitleStyle = styled.h3`font-size: 36px; `;
+const TitleStyle = styled.h3`font-size: 36px; text-align: left; `;
 
 function Main() {
     return (

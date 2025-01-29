@@ -7,11 +7,15 @@ img { display: block; }
 i { display: block; }
 
 .App {
-  width: auto; height: auto;
+  width: 100vw; height: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 .menu {
-  height: 85px; width: 100vw;
+  height: 85px; width: 100%;
   background: #FFFFFF;
   justify-items: center;
   box-shadow: 0px 4px 3.9px rgba(0, 0, 0, 0.03);
