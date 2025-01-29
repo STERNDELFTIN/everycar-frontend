@@ -1,0 +1,50 @@
+* { margin: 0; padding: 0 }
+div { box-sizing : border-box; }
+body { margin : 0; }
+html { line-height : 1.15; /* 기본 행간 높이 */ }
+a, li { text-decoration: none; /* 링크 및줄 제거 */ }
+img { display: block; }
+i { display: block; }
+
+.App {
+  width: auto; height: auto;
+}
+
+.menu {
+  height: 85px; width: 100vw;
+  background: #FFFFFF;
+  justify-items: center;
+  box-shadow: 0px 4px 3.9px rgba(0, 0, 0, 0.03);
+}
+.menu-container, .left-menu, .center-menu, .right-menu, .register { 
+  height: 100%; 
+  display: flex;
+  text-align: center;
+  vertical-align:middle;
+  align-items: center;
+  gap: 20px;
+}
+.menu-container {
+  width: 65%;
+}
+.left-menu {
+  width: 25%;
+  justify-content: left;
+}
+.center-menu {
+  color: #2F2F2F;
+  width: 50%;
+  justify-content: space-between;
+}
+.right-menu {
+  color: #000000;
+  width: 25%;
+  justify-content: right;
+  font-size: 12px;
+}
+.register {
+  width: 91px; height: 33px;
+  justify-content: center;
+  border-radius: 50px;
+  background: linear-gradient(to left, #AFFF4F, #DFFF58);
+}
