@@ -1,10 +1,12 @@
 import '../css/Main.css';
+import useState from 'react-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift, faCalendarCheck, faCommentDots, faFileSignature } from '@fortawesome/free-solid-svg-icons';
 
 const TitleStyle = styled.h3`font-size: 36px; text-align: left; margin-bottom: 17px; `;
 const PlanBoxStyle = styled.div`width: 309px; height: 230px; border-radius: 15px; padding: 23px 27px; text-align: left; background-color: #FFFFFF; color: #2F2F2F; `;
+const [car, setCar] = useState(['']);
 
 function Main() {
     return (
@@ -18,6 +20,7 @@ function Main() {
     );
 }
 
+{/* Content */}
 function Content() {
     return(
         <div className='content-container'>
@@ -64,6 +67,8 @@ function Content() {
         </div>
     );
 }
+
+{/* Service Shortcut */}
 function Shortcut() {
     return(
         <div className='service-shortcut'>
@@ -98,6 +103,7 @@ function ShortcutBox({ ico, title }) {
     );
 }
 
+{/* Everycar Rent Plan */}
 function Plan({ title }) {
     return(
         <div className='plan'>
@@ -106,25 +112,25 @@ function Plan({ title }) {
                 <PlanBox 
                     title='빠른예약'
                     content='내 옆에서 구하는 <br />가장 가깝고 빠른 렌트 서비스'
-                    ico='/plan/reservation.png'
+                    ico='/main/plan/reservation.png'
                     icoSize='90px'
                 />           
                 <PlanBox 
                     title='부름서비스'
                     content='원하는 날짜, 원하는 장소에서 <br />택배처럼 받는 맞춤 렌트'
-                    ico='/plan/call_service.png'
+                    ico='/main/plan/call_service.png'
                     icoSize='75px'
                 />           
                 <PlanBox 
                     title='단기렌트'
                     content='내 차처럼 즐기는 한 달 구독 렌트카'
-                    ico='/plan/short_rent.png'
+                    ico='/main/plan/short_rent.png'
                     icoSize='75px'
                 />           
                 <PlanBox 
                     title='장기렌트'
                     content='내 차처럼 즐기는 한 달 구독 렌트카'
-                    ico='/plan/long_rent.png'
+                    ico='/main/plan/long_rent.png'
                     icoSize='100px'
                 />   
             </div>        
@@ -142,6 +148,7 @@ function PlanBox({title, content, ico, icoSize}){
     );
 }
 
+{/* 국내 인기 차량 */}
 function Car({ title }) {
     return(
         <div className='domestic-popular-car'>
@@ -150,6 +157,7 @@ function Car({ title }) {
     );
 }
 
+{/* Event */}
 function Event({ title }) {
     return(
         <div className='event'>
