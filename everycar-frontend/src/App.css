@@ -1,5 +1,5 @@
 * { margin: 0; padding: 0; }
-div { box-sizing : border-box; }
+div { box-sizing : border-box; font-family: 'Noto Sans KR', sans-serif; }
 body { margin : 0; }
 html { line-height : 1.15; /* 기본 행간 높이 */ }
 a, li { text-decoration: none; /* 링크 및줄 제거 */ }
