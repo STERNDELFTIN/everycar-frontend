@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift, faCalendarCheck, faCommentDots, faFileSignature } from '@fortawesome/free-solid-svg-icons';
 
-const TitleStyle = styled.h3`font-size: 36px; text-align: left; `;
+const TitleStyle = styled.h3`font-size: 36px; text-align: left; margin-bottom: 17px; `;
+const PlanBoxStyle = styled.div`width: 309px; height: 230px; border-radius: 15px; padding: 23px 27px; text-align: left; background-color: #FFFFFF; color: #2F2F2F; `;
 
 function Main() {
     return (
@@ -68,33 +69,79 @@ function Shortcut() {
         <div className='service-shortcut'>
             <h4 className='service-shortcut-title'>서비스<br />바로가기</h4>
             <div className='shortcut-container'>
-                <div className='shortcut-box'>
-                    <FontAwesomeIcon icon={faCalendarCheck} style={{ fontSize: "30px" }} />
-                    <p>예약확인</p>
-                </div>
-                <div className='shortcut-box'>
-                    <FontAwesomeIcon icon={faGift} style={{ fontSize: "30px" }} />
-                    <p>이벤트</p>
-                </div>
-                <div className='shortcut-box'>
-                    <FontAwesomeIcon icon={faCommentDots} style={{ fontSize: "30px" }} />
-                    <p>상담하기</p>
-                </div>
-                <div className='shortcut-box'>
-                    <FontAwesomeIcon icon={faFileSignature} style={{ fontSize: "30px" }} />
-                    <p>견적확인</p>
-                </div>
+                <ShortcutBox
+                    ico={ faCalendarCheck }
+                    title='예약확인'
+                />
+                <ShortcutBox
+                    ico={ faGift }
+                    title='이벤트'
+                />
+                <ShortcutBox
+                    ico={ faCommentDots }
+                    title='상담하기'
+                />
+                <ShortcutBox
+                    ico={ faFileSignature }
+                    title='견적확인'
+                />
             </div>
         </div>
     );
 }
+function ShortcutBox({ ico, title }) {
+    return (
+        <div className='shortcut-box'>
+            <FontAwesomeIcon icon={ ico } style={{ fontSize: "30px" }} />
+            <p>{ title }</p>
+        </div>
+    );
+}
+
 function Plan({ title }) {
     return(
         <div className='plan'>
             <TitleStyle>{ title }</TitleStyle>
+            <div className='plan-container'>
+                <PlanBox 
+                    title='빠른예약'
+                    content='내 옆에서 구하는 <br />가장 가깝고 빠른 렌트 서비스'
+                    ico='/plan/reservation.png'
+                    icoSize='90px'
+                />           
+                <PlanBox 
+                    title='부름서비스'
+                    content='원하는 날짜, 원하는 장소에서 <br />택배처럼 받는 맞춤 렌트'
+                    ico='/plan/call_service.png'
+                    icoSize='75px'
+                />           
+                <PlanBox 
+                    title='단기렌트'
+                    content='내 차처럼 즐기는 한 달 구독 렌트카'
+                    ico='/plan/short_rent.png'
+                    icoSize='75px'
+                />           
+                <PlanBox 
+                    title='장기렌트'
+                    content='내 차처럼 즐기는 한 달 구독 렌트카'
+                    ico='/plan/long_rent.png'
+                    icoSize='100px'
+                />   
+            </div>        
         </div>
     );
 }
+function PlanBox({title, content, ico, icoSize}){
+    return (
+        <PlanBoxStyle>
+            <h3 className='plan-title' style={{ fontSize: '24px', marginBottom: '14px' }}>{ title }</h3>
+            {/* 문자열 내의 HTML 태그인 <br> 태그를 그대로 해석하여 줄바꿈 적용 */}
+            <p className='plan-content' dangerouslySetInnerHTML={{ __html: content }} style={{ fontSize:'14px', marginBottom: '5px', height: '50px' }}></p>
+            <div className='plan-img' style={{ display: 'flex', height:'50%', justifyContent:'right', alignItems:'flex-end' }}><img src={ ico } style={{ width: icoSize, height: icoSize }} ></img></div>
+        </PlanBoxStyle>
+    );
+}
+
 function Car({ title }) {
     return(
         <div className='domestic-popular-car'>
@@ -102,6 +149,7 @@ function Car({ title }) {
         </div>
     );
 }
+
 function Event({ title }) {
     return(
         <div className='event'>

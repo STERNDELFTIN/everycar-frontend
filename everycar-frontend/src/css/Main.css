@@ -61,12 +61,13 @@
     cursor: pointer;
 }
 
+/* 공통 부분 */
+.service-shortcut, .plan, .event { margin-bottom: 49px; width: 100%; }
+
 /* Service Shortcut */
 .service-shortcut {
     display: flex;
-    width: 100%;
     color : #2F2F2F;
-    margin-bottom: 49px;
     text-align: left;
     align-items: center;
     justify-content: center;
@@ -89,4 +90,11 @@
     text-align: center;
     gap: 6px;
     cursor: pointer;
+}
+
+/* Rent Plan */
+.plan-container {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
 }
