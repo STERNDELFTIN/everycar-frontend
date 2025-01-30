@@ -1,12 +1,11 @@
 import '../css/Main.css';
-import useState from 'react-dom';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift, faCalendarCheck, faCommentDots, faFileSignature } from '@fortawesome/free-solid-svg-icons';
 
 const TitleStyle = styled.h3`font-size: 36px; text-align: left; margin-bottom: 17px; `;
 const PlanBoxStyle = styled.div`width: 309px; height: 230px; border-radius: 15px; padding: 23px 27px; text-align: left; background-color: #FFFFFF; color: #2F2F2F; `;
-const [car, setCar] = useState(['']);
 
 function Main() {
     return (
