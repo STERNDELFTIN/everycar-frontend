@@ -66,23 +66,23 @@ function Content() {
 function Shortcut() {
     return(
         <div className='service-shortcut'>
-            <h4>서비스 바로가기</h4>
+            <h4 className='service-shortcut-title'>서비스<br />바로가기</h4>
             <div className='shortcut-container'>
                 <div className='shortcut-box'>
-                    <FontAwesomeIcon icon={faCalendarCheck} />
+                    <FontAwesomeIcon icon={faCalendarCheck} style={{ fontSize: "30px" }} />
                     <p>예약확인</p>
                 </div>
                 <div className='shortcut-box'>
-                    <FontAwesomeIcon icon={faGift} />
+                    <FontAwesomeIcon icon={faGift} style={{ fontSize: "30px" }} />
                     <p>이벤트</p>
                 </div>
                 <div className='shortcut-box'>
-                    <FontAwesomeIcon icon={faCommentDots} />
+                    <FontAwesomeIcon icon={faCommentDots} style={{ fontSize: "30px" }} />
                     <p>상담하기</p>
                 </div>
                 <div className='shortcut-box'>
-                    <FontAwesomeIcon icon={faFileSignature} />
-                    <p>온라인 견적확인</p>
+                    <FontAwesomeIcon icon={faFileSignature} style={{ fontSize: "30px" }} />
+                    <p>견적확인</p>
                 </div>
             </div>
         </div>
