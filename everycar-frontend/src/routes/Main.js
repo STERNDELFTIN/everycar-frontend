@@ -64,7 +64,21 @@ function Content() {
 function Shortcut() {
     return(
         <div className='service-shortcut'>
-
+            <h4>서비스 바로가기</h4>
+            <div className='shortcut-container'>
+                <div className='shortcut-box'>
+                    <p>예약확인</p>
+                </div>
+                <div className='shortcut-box'>
+                    <p>이벤트</p>
+                </div>
+                <div className='shortcut-box'>
+                    <p>상담하기</p>
+                </div>
+                <div className='shortcut-box'>
+                    <p>온라인 견적확인</p>
+                </div>
+            </div>
         </div>
     );
 }
