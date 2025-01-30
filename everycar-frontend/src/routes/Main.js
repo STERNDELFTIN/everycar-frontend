@@ -1,5 +1,7 @@
 import '../css/Main.css';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGift, faCalendarCheck, faCommentDots, faFileSignature } from '@fortawesome/free-solid-svg-icons';
 
 const TitleStyle = styled.h3`font-size: 36px; text-align: left; `;
 
@@ -67,15 +69,19 @@ function Shortcut() {
             <h4>서비스 바로가기</h4>
             <div className='shortcut-container'>
                 <div className='shortcut-box'>
+                    <FontAwesomeIcon icon={faCalendarCheck} />
                     <p>예약확인</p>
                 </div>
                 <div className='shortcut-box'>
+                    <FontAwesomeIcon icon={faGift} />
                     <p>이벤트</p>
                 </div>
                 <div className='shortcut-box'>
+                    <FontAwesomeIcon icon={faCommentDots} />
                     <p>상담하기</p>
                 </div>
                 <div className='shortcut-box'>
+                    <FontAwesomeIcon icon={faFileSignature} />
                     <p>온라인 견적확인</p>
                 </div>
             </div>
