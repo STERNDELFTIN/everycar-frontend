@@ -62,7 +62,7 @@
 }
 
 /* 공통 부분 */
-.service-shortcut, .plan, .event { margin-bottom: 49px; width: 100%; }
+.service-shortcut, .plan, .domestic-popular-car, .event { margin-bottom: 49px; width: 100%; }
 
 /* Service Shortcut */
 .service-shortcut {
@@ -97,4 +97,13 @@
     display: flex;
     gap: 14px;
     justify-content: space-between;
+    /* flex-wrap: wrap; */
+}
+
+/* 국내 인기 차량 */
+.car-container {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }

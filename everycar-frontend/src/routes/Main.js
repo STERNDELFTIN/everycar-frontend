@@ -1,11 +1,9 @@
 import '../css/Main.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift, faCalendarCheck, faCommentDots, faFileSignature } from '@fortawesome/free-solid-svg-icons';
-
-const TitleStyle = styled.h3`font-size: 36px; text-align: left; margin-bottom: 17px; `;
-const PlanBoxStyle = styled.div`width: 309px; height: 230px; border-radius: 15px; padding: 23px 27px; text-align: left; background-color: #FFFFFF; color: #2F2F2F; `;
 
 function Main() {
     return (
@@ -103,6 +101,9 @@ function ShortcutBox({ ico, title }) {
 }
 
 {/* Everycar Rent Plan */}
+const TitleStyle = styled.h3`font-size: 36px; text-align: left; margin-bottom: 17px; `;
+const PlanBoxStyle = styled.div`width: 309px; height: 230px; border-radius: 15px; padding: 23px 27px; text-align: left; background-color: #FFFFFF; color: #2F2F2F; `;
+
 function Plan({ title }) {
     return(
         <div className='plan'>
@@ -148,11 +149,72 @@ function PlanBox({title, content, ico, icoSize}){
 }
 
 {/* 국내 인기 차량 */}
+const CarBoxStyle = styled.div`background-color: #FFFFFF; width: 235px; height: 304px; border-radius: 20px; text-align: left; padding: 20px 30px; `;
+
 function Car({ title }) {
+    const [cars, setCars] = useState([]);
+
+    useEffect(()=>{
+        // 비동기로 JSON 데이터 가져오기
+        axios.get('/main/car/cars.json')
+        .then(result => {
+            console.log(result.data);
+            setCars(result.data.popular_cars);
+        })
+        .catch(error => {
+            console.error('데이터 가져올 수 없음 : ', error);
+        });
+    }, []);
+
     return(
         <div className='domestic-popular-car'>
             <TitleStyle>{ title }</TitleStyle>
+            <div className='car-container'>
+                {
+                    cars.map((car, i)=>{
+                        return <CarBox key={i} car={car} />
+                    })
+                }
+            </div>
         </div>
+    );
+}
+function CarBox({ car }) {
+    const [carDescription] = useState([
+        { title: '등급', content: car.grade },
+        { title: '연료', content: car.fuel },
+        { title: '승차인원', content: car.capacity }
+    ]); 
+
+    return (
+        <CarBoxStyle>
+            <div className='car-image' style={{ display:'flex', justifyContent:'center', marginBottom:'17px' }}><img src={car.img} alt={car.name} style={{ width:"200px", height:"auto" }} /></div>
+            
+            <div className='car-description'>
+                <h4 style={{ fontSize:"18px", color:"#000000", marginBottom:'10px' }}>{car.name}</h4>
+
+                <div style={{ fontSize:"14px", display:'flex', color: '#2F2F2F', gap:'40px' }}>
+                    <div className='car-title-container'>
+                        {
+                            carDescription.map((item, i) => {
+                                return (
+                                    <p key={i} style={{ opacity:'50%' }}>{item.title}</p>
+                                )
+                            })
+                        }    
+                    </div>
+                    <div className='car-content-container'>
+                        {
+                            carDescription.map((item, i) => {
+                                return (
+                                    <p key={i}>{item.content}</p>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
+        </CarBoxStyle>
     );
 }
 
