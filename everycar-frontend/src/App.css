@@ -53,3 +53,32 @@ i { display: block; }
   border-radius: 50px;
   background: linear-gradient(to left, #AFFF4F, #DFFF58);
 }
+
+/* footer */
+.footer {
+  display: flex;
+  background-color: #252736;
+  color: #FFFFFF;
+  width: 100%; height: auto;
+  padding: 15px 30px;
+  justify-content: center;
+  text-align: left;
+}
+.footer a {
+  color: white;
+}
+
+.footer-link-container {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+.footer-content h4 {
+  margin-bottom: 30px;
+}
+
+.customer-service, .company-info, .sns-link-container { display: flex; flex-direction: column; gap: 2px; }
