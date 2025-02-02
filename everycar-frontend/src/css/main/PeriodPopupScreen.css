@@ -1,0 +1,30 @@
+.popup-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: auto; height: auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    top: 110%;
+    left: 45%;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
+    padding: 30px 25px;
+    gap: 5px;
+}
+
+.rent-time {
+  display: flex;
+  gap: 10px;
+}
+.rent-start-time, .rent-end-time { flex:1; }
+
+.selected-time select{
+  padding: 10px 5px;
+  width: 100%;
+  border: none;
+  background-color: #F3F3F3;
+  color: #000000;
+  font-size: 17px;
+}

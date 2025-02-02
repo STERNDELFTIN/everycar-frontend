@@ -1,0 +1,69 @@
+.react-calendar {
+    border: none;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 350px;
+}
+
+.react-calendar__tile {
+    height: 40px;
+    font-size: 16px;
+}
+
+/* 현재 날짜 */
+.react-calendar__tile--now {
+    background-color: #dedede !important;
+}
+
+/* 요일 스타일 */
+.react-calendar__month-view__weekdays {
+    font-size: 13px;
+    font-weight: bold;
+    color: #3C3C434D;
+  }
+  .react-calendar__month-view__weekdays abbr {
+    text-decoration: none;
+  }
+
+  /* SUN, SAT 요일 색상 */
+.react-calendar__month-view__weekdays__weekday:nth-child(1), /* 일요일 */
+.react-calendar__month-view__weekdays__weekday:nth-child(7) { /* 토요일 */
+  color: #3C3C434D;
+  font-weight: bold;
+}
+
+/* 년월 클릭 비활성화 */
+.react-calendar__navigation__label {
+  pointer-events: none;  /* 클릭 비활성화 */
+  cursor: default;
+}
+
+
+/* 날짜 활성화 상태 및 포커스 상태일 때 파란색 배경 제거 */
+.react-calendar__tile--active,
+.react-calendar__tile--active:focus,
+.react-calendar__tile--active:hover {
+    background-color: #C4FF53 !important;
+    color: #000000 !important;
+    font-size: 18px !important;
+    border-radius: 50% !important;
+}
+
+/* 캘린더 렌트시작날짜 및 렌트트종료날짜 스타일 */
+.react-calendar__tile.start-date {
+  background-color: #C4FF53 !important;
+  color: #000000 !important;
+  font-size: 18px !important;
+  border-radius: 50% !important;
+}
+.react-calendar__tile.start-date {
+  background-color: #C4FF53 !important;
+  color: #000000 !important;
+  font-size: 18px !important;
+  border-radius: 50% !important;
+}
+.react-calendar__tile.in-range-date {
+  background-color: #C4FF53 !important;
+  color: #000;
+}
