@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
+import '../../css/main/Car.css';
+
 {/* 국내 인기 차량 */}
 const CarBoxStyle = styled.div`background-color: #FFFFFF; width: 235px; height: 304px; border-radius: 20px; text-align: left; padding: 20px 30px; `;
 

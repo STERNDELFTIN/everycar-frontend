@@ -1,0 +1,7 @@
+/* 국내 인기 차량 */
+.car-container {
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

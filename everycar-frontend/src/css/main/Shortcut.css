@@ -1,0 +1,28 @@
+
+/* Service Shortcut */
+.service-shortcut {
+    display: flex;
+    color : #2F2F2F;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+}
+.service-shortcut-title {
+    width: 18%;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.shortcut-container {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+.shortcut-box {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    text-align: center;
+    gap: 6px;
+    cursor: pointer;
+}

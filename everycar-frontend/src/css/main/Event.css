@@ -1,0 +1,28 @@
+/* Event */
+.event-container {
+    display: flex;
+    /* justify-content: space-between; */
+    /* gap: 10px; */
+    justify-content: center;
+    position: relative;
+}
+
+.event img {
+    transform: none; /* 이미지 좌우반전 해제 */
+}
+
+.event button {
+    position: absolute;
+    border: none;
+    background: none;
+}
+.event .left-btn {
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+}
+.event .right-btn {
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+}

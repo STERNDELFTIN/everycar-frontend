@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import '../../css/main/Event.css';
+
 {/* Event */}
 // const EventBoxStyle = styled.div`background-color: #D9D9D9; width: 600px; height: 184px; `;
 const EventBoxStyle = styled.div`background-color: #D9D9D9; width: 94%; height: 380px; `;

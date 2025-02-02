@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import '../../css/main/Plan.css';
+
 {/* Everycar Rent Plan */}
 const PlanBoxStyle = styled.div`width: 309px; height: 230px; border-radius: 15px; padding: 23px 27px; text-align: left; background-color: #FFFFFF; color: #2F2F2F; `;
 

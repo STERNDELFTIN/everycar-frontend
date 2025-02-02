@@ -1,0 +1,29 @@
+/* 렌트위치 팝업창 */
+.pos-popup-container {
+    display: flex;
+    width: 350px; height: 300px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    top: 110%;
+    left: 5%;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
+    padding: 10px;
+}
+.region-container {
+    width: 100px;
+    background-color: #F3F3F3;
+    padding: 10px;
+    overflow-y: scroll;
+    padding: 10px;
+    flex: 1;
+}
+.city-container {
+    width: 100px;
+    background-color: #F3F3F3;
+    padding: 10px;
+    overflow-y: scroll;
+    padding: 10px;
+    flex: 1;
+}

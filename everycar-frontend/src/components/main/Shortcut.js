@@ -1,3 +1,7 @@
+import React from 'react';
+
+import '../../css/main/Shortcut.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift, faCalendarCheck, faCommentDots, faFileSignature } from '@fortawesome/free-solid-svg-icons';
 
