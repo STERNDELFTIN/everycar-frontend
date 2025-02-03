@@ -57,10 +57,10 @@ function Content() {
                 <div className='rent-pos'>
                     <h5 className='title'>렌트 장소</h5>
                     <div className='content' onClick={ () => setPosPopup(!posPopup) }>
-                        <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18.875 8.75C18.875 14.875 11 20.125 11 20.125C11 20.125 3.125 14.875 3.125 8.75C3.125 6.66142 3.95468 4.65838 5.43153 3.18153C6.90838 1.70468 8.91142 0.875 11 0.875C13.0886 0.875 15.0916 1.70468 16.5685 3.18153C18.0453 4.65838 18.875 6.66142 18.875 8.75Z" stroke="#B3B3B3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M11 popup-container11.375C12.4497 11.375 13.625 10.1997 13.625 8.75C13.625 7.30025 12.4497 6.125 11 6.125C9.55025 6.125 8.375 7.30025 8.375 8.75C8.375 10.1997 9.55025 11.375 11 11.375Z" stroke="#B3B3B3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                    <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.875 8.75C16.875 14.875 9 20.125 9 20.125C9 20.125 1.125 14.875 1.125 8.75C1.125 6.66142 1.95468 4.65838 3.43153 3.18153C4.90838 1.70468 6.91142 0.875 9 0.875C11.0886 0.875 13.0916 1.70468 14.5685 3.18153C16.0453 4.65838 16.875 6.66142 16.875 8.75Z" stroke="#B3B3B3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 11.375C10.4497 11.375 11.625 10.1997 11.625 8.75C11.625 7.30025 10.4497 6.125 9 6.125C7.55025 6.125 6.375 7.30025 6.375 8.75C6.375 10.1997 7.55025 11.375 9 11.375Z" stroke="#B3B3B3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                         { selectedCity ? <p>{selectedRegion} {selectedCity}</p> : <p>서울시 강남구</p> }
                     </div>
                 </div>

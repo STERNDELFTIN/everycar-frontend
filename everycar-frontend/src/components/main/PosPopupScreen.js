@@ -17,10 +17,11 @@ function PosPopupScreen({ state, handler }) {
     };
 
     return (
-        <div className='pos-popup-container' style={{ backgroundColor: "#f0f0f0", position: "absolute" }}>
+        <div className='pos-popup-container' style={{ backgroundColor: "#ffffff", position: "absolute" }}>
             {/* 좌측 지역 목록 */}
             <div className='region-container'>
-                <h3>지역 선택</h3>
+                <h3>지역선택</h3>
+                <div style={{ width:'75%', marginTop:'8px', borderBottom:'1px solid grey' }}></div>
                 {
                     region.map((region, i) => (
                         <div
@@ -29,7 +30,7 @@ function PosPopupScreen({ state, handler }) {
                             style={
                                 selectedRegion === region.region 
                                 ? { backgroundColor: '#DEFF54', padding: '10px', cursor: 'pointer' } 
-                                : { backgroundColor: '#F3F3F3', padding: '10px', cursor: 'pointer' }
+                                : { backgroundColor: '#ffffff', padding: '10px', cursor: 'pointer' }
                             }
                         >
                             <p>{region.region}</p>
@@ -40,7 +41,8 @@ function PosPopupScreen({ state, handler }) {
 
             {/* 우측 도시 목록 */}
             <div className='city-container'>
-                <h3>도시 선택</h3>
+                <h3>도시선택</h3>
+                <div style={{ width:'75%', marginTop:'8px', borderBottom:'1px solid grey' }}></div>
                 {city.length > 0 ? (
                     city.map((city, i) => (
                         <div
@@ -49,14 +51,14 @@ function PosPopupScreen({ state, handler }) {
                             style={
                                 selectedCity === (city.city || city)
                                 ? { backgroundColor: '#DEFF54', padding: '10px', cursor: 'pointer' }
-                                : { backgroundColor: '#F3F3F3', padding: '10px', cursor: 'pointer' }
+                                : { backgroundColor: '#ffffff', padding: '10px', cursor: 'pointer' }
                             }
                         >
                             {typeof city === 'object' ? city.city : city}
                         </div>
                     ))
                 ) : (
-                    <p>지역을 선택하세요.</p>
+                    <p style={{ marginTop: '10px' }}>지역을 선택하세요.</p>
                 )}
             </div>
         </div>
