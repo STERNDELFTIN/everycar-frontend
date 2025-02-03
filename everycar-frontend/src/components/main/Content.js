@@ -8,6 +8,7 @@ import '../../css/main/Content.css';
 import PosPopupScreen from './PosPopupScreen.js';
 import RegionPopupScreen from './PeriodPopupScreen.js';
 import usePopupOutsideClick from '../usePopupOutsideClick.js';
+import Event from './Event.js';
 
 {/* Content */}
 function Content() {
@@ -50,7 +51,7 @@ function Content() {
     return(
         <div className='content-container'>
             <div className='content-box'>
-
+                <Event />
             </div>
 
             <div className='rent-container'>
