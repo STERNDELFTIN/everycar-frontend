@@ -29,6 +29,18 @@
 }
 
 /* 스크롤바 */
-::-webkit-scrollbar-thumb {
+.pos-popup-container ::-webkit-scrollbar { /* 스크롤바 전체 영역 */
+    width: 8px;
+}
 
+.pos-popup-container ::-webkit-scrollbar-track { /* 스크롤바 트랙 (배경) */
+    background: #eaeaea;
+    border-radius: 10px;
+}
+
+.pos-popup-container ::-webkit-scrollbar-thumb { /* 스크롤바 막대기 (thumb) */
+    background-color: #787878;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+    height: 100px;
 }
