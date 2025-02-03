@@ -48,7 +48,7 @@ function App() {
             <FooterLinkStyle to='/customer'>고객센터</FooterLinkStyle>
           </div>
 
-          <div style={{ borderBottom:'1px solid #FFFFFF', width:'100%', margin:'20px 0' }}></div>
+          <div className='line' style={{ borderBottom:'1px solid #FFFFFF', width:'100%', margin:'20px 0' }}></div>
 
           <div className='footer-content' style={{ fontSize:'12px' }}>
             <div className='customer-service'>
