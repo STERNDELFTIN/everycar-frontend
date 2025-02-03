@@ -1,13 +1,14 @@
-* { margin: 0; padding: 0; }
-div { box-sizing : border-box; font-family: 'Noto Sans KR', sans-serif; }
+* { margin: 0; padding: 0; box-sizing : border-box;  }
+div { font-family: 'Noto Sans KR', sans-serif; }
 body { margin : 0; }
 html { line-height : 1.15; /* 기본 행간 높이 */ }
 a, li { text-decoration: none; /* 링크 및줄 제거 */ }
-img { display: block; }
+img { display: block; max-width: 100%; }
 i { display: block; }
 
 .App {
-  width: 100vw; height: auto;
+  width: 100%; height: auto;
+  max-width: 1920px; min-width: 380px;
   background-color: #F8F9F7;
   display: flex;
   flex-direction: column;
@@ -84,13 +85,14 @@ i { display: block; }
 .customer-service, .company-info, .sns-link-container { display: flex; flex-direction: column; gap: 2px; }
 
 /* 미디어 쿼리 */
-@media (max-width: 1200px) {
+@media (max-width: 1213px) {
   /* menu */
   .menu-container, .left-menu, .center-menu, .right-menu, .register { 
     gap: 2px;
   }
   .left-menu {
     width: 20%;
+    margin-right: 10px;
   }
   .left-menu img {
     width: 90px !important; height: auto !important;
@@ -113,6 +115,9 @@ i { display: block; }
 }
 @media (max-width: 768px) { /* 태블릿 */
   /* menu */
+  .menu {
+    height: 68px;
+  }
   .menu-container {
     position: relative;
   }
@@ -197,19 +202,19 @@ i { display: block; }
   
   /* footer */
   .footer-link-container a {
-    font-size: 8px !important;
+    font-size: 5px !important;
   }
   .line {
     margin: 10px 0 !important;
   }
   .customer-service h4, .company-info h4, .sns-title {
-    font-size: 5px;
+    font-size: 4px;
   }
   .company-info {
     gap: 1px !important;
   }
   .footer-content {
-    font-size: 4px !important;
+    font-size: 3px !important;
   }
   .footer-content h4 {
     margin-bottom: 10px;
