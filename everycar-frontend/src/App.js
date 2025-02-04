@@ -40,7 +40,7 @@ function App() {
 
       {/* footer */}
       <footer className='footer'>
-        <div style={{ width:'65%' }}>
+        <div>
           <div className='footer-link-container'>
             <FooterLinkStyle to='/about'>회사소개</FooterLinkStyle>
             <FooterLinkStyle to='/terms'>이용약관</FooterLinkStyle>

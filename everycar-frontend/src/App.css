@@ -61,9 +61,12 @@ i { display: block; }
   background-color: #252736;
   color: #FFFFFF;
   width: 100%; height: auto;
-  padding: 15px 30px;
+  padding: 15px 0;
   justify-content: center;
   text-align: left;
+}
+.footer > div {
+  width: 72%;
 }
 .footer a {
   color: white;
@@ -212,7 +215,7 @@ i { display: block; }
   
   /* footer */
   .footer > div {
-    width: 87% !important;
+    width: 87%;
   }
   .footer-link-container a {
     font-size: 5px !important;
