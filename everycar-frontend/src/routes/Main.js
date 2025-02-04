@@ -6,7 +6,7 @@ import Shortcut from '../components/main/Shortcut.js';
 import Plan from '../components/main/Plan.js';
 import Car from '../components/main/Car.js';
 
-const TitleStyle = styled.h3`font-size: 36px; text-align: left; margin-bottom: 17px; `;
+const TitleStyle = styled.h3`font-size: 2.3vw; text-align: left; margin-bottom: 1.8vw; `;
 
 function Main() {
     return (

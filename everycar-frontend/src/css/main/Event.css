@@ -17,14 +17,31 @@
     position: absolute;
     border: none;
     background: none;
+    width: 7%;
+    height: auto;
 }
 .event .left-btn {
     top: 50%;
-    left: 0%;
+    left: -3%;
     transform: translateY(-50%);
+    aspect-ratio: 1 / 1;
 }
 .event .right-btn {
     top: 50%;
-    right: 0%;
+    right: -3%;
     transform: translateY(-50%);
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+    /* Content */
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+      /* Content */
+  
+}
+@media (max-width: 480px) { /* 모바일 */
+      /* Content */
+    
 }
