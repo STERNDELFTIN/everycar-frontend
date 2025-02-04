@@ -1,7 +1,47 @@
 /* 국내 인기 차량 */
 .car-container {
     display: flex;
-    gap: 14px;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 13px;
+    
+}
+.car-box {
+    box-shadow: 0px 4px 4.2px rgba(0, 0, 0, 0.06);
+}
+.car-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+    .car-box {
+        flex: 1 0 calc(33.33% - 20px);
+    }
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .car-box {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+    .car-container {
+        flex: none;
+        overflow-x: auto; /* 가로 스크롤 */
+        scroll-snap-type: x mandatory; /* 스크롤 스냅 */
+    }
+    .car-box {
+        flex: 1 0 100%;
+        min-width: 100% !important; 
+        height: 110px !important;
+        gap: 15px;
+        display: flex;
+        justify-content: center;    
+        align-items: center;    
+    }
+    .car-description > div {
+        gap: 9px !important;
+    }
 }

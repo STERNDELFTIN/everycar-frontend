@@ -1,7 +1,43 @@
 /* Rent Plan */
 .plan-container {
     display: flex;
-    gap: 14px;
+    gap: 1.3vw;
     justify-content: space-between;
-    /* flex-wrap: wrap; */
+}
+.plan-box {
+    box-shadow: 0px 4px 4.2px rgba(0, 0, 0, 0.06);
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .plan-container {
+        display: flex;
+        gap: 1.3vw;
+        flex-wrap: wrap;
+    }
+    .plan-box {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+    .plan-container {
+        flex-direction: column;
+        gap: 10px !important;
+    }
+    .plan-box {
+        padding: 10px 16px !important;
+        width: 100% !important;
+        position:relative;
+    }
+    .plan-title {
+        font-size: 12px !important;
+    }
+    .plan-content {
+        position: absolute;
+        font-size: 10px !important;
+        width: 70%;
+    }
 }

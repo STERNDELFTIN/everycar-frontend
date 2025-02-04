@@ -1,9 +1,9 @@
 .Main {
-    width: 75%; height: auto;
-  }
+    width: 72%; height: auto;
+}
 
 /* 공통 부분 */
-.service-shortcut, .plan, .domestic-popular-car, .event { margin-bottom: 49px; width: 100%; }
+.service-shortcut, .plan, .domestic-popular-car, .event { margin-bottom: 5vw; width: 100%; }
 
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
@@ -13,5 +13,7 @@
  
 }
 @media (max-width: 480px) { /* 모바일 */
- 
+  .Main {
+    width: 87%;
+  }
 }

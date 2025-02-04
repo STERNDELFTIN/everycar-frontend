@@ -17,7 +17,7 @@ function PosPopupScreen({ state, handler }) {
     };
 
     return (
-        <div className='pos-popup-container' style={{ backgroundColor: "#ffffff", position: "absolute" }}>
+        <div className='pos-popup-container' style={{ backgroundColor: "#ffffff" }}>
             {/* 좌측 지역 목록 */}
             <div className='region-container'>
                 <h3>지역선택</h3>

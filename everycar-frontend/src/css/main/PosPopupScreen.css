@@ -1,15 +1,16 @@
 /* 렌트위치 팝업창 */
 .pos-popup-container {
     display: flex;
+    position: fixed;
     width: 350px; height: 300px;
     background-color: #FFFFFF;
     border-radius: 20px;
     top: 110%;
     left: 5%;
-    overflow: hidden;
     text-align: left;
     box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
     padding: 20px 15px;
+    z-index: 9999;
 }
 .region-container {
     width: 100px;
@@ -43,4 +44,15 @@
     border-radius: 10px;
     border: 2px solid #f1f1f1;
     height: 100px;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+
+}
+@media (max-width: 480px) { /* 모바일 */
+
 }

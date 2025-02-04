@@ -1,13 +1,13 @@
 .popup-container {
-    position: absolute;
+    position: fixed;
     display: flex;
+    z-index: 9999;
     flex-direction: column;
     width: auto; height: auto;
     background-color: #ffffff;
     border-radius: 20px;
     top: 110%;
     left: 45%;
-    overflow: hidden;
     text-align: left;
     box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
     padding: 30px 25px;
@@ -27,4 +27,15 @@
   background-color: #F3F3F3;
   color: #000000;
   font-size: 17px;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+
+}
+@media (max-width: 480px) { /* 모바일 */
+
 }
