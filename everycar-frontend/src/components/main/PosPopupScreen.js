@@ -4,7 +4,7 @@ import '../../css/main/PosPopupScreen.css';
 
 function PosPopupScreen({ state, handler }) {
     const { region, city, selectedRegion, selectedCity } = state;
-    const { setRegion, setCity, setSelectedCity, setSelectedRegion, setPosPopup, setRegionPopup } = handler;
+    const { setRegion, setCity, setSelectedCity, setSelectedRegion, setPosPopup } = handler;
 
     const handleRegionClick = (region) => {
         setSelectedCity(null);

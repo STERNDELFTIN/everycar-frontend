@@ -46,7 +46,7 @@ function Popup({state, handler}) {
                             <div  ref={posPopupRef}>
                                 <PosPopupScreen
                                     state={{ region, city, selectedRegion, selectedCity }} 
-                                    handler={{ setRegion, setCity, setSelectedCity, setSelectedRegion, setPosPopup, setPeriodPopup }}
+                                    handler={{ setRegion, setCity, setSelectedCity, setSelectedRegion, setPosPopup }}
                                 />
                             </div>
                         </div>
@@ -60,7 +60,7 @@ function Popup({state, handler}) {
                             <div ref={periodPopupRef}>
                                 <RegionPopupScreen
                                     state = {{ startDate, endDate, startTime, endTime }}
-                                    handler={{ setStartDate, setEndDate, setStartTime, setEndTime }} 
+                                    handler={{ setStartDate, setEndDate, setStartTime, setEndTime, setPeriodPopup }} 
                                 />
                             </div>
                         </div>

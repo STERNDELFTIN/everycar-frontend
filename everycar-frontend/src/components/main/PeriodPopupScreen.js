@@ -9,7 +9,7 @@ const SubHeadingStyle = styled.h5`margin-bottom: 5px; font-size: clamp(10px, 0.8
 function PeriodPopupScreen({ state, handler }){
 
     const { startDate, endDate, startTime, endTime } = state;
-    const { setStartDate, setEndDate, setStartTime, setEndTime } = handler;
+    const { setStartDate, setEndDate, setStartTime, setEndTime, setPeriodPopup } = handler;
     // 날짜 선택 시 업데이트
     const onDateChange = (selectedDate) => {
         if (!startDate) { // 시작일 선택되어있지 않은 경우
@@ -34,7 +34,7 @@ function PeriodPopupScreen({ state, handler }){
         <>
             <div className='period-popup-container'>
 
-                <h4 style={{ fontSize:'clamp(12px, 1vw, 20px)' }}>일정선택</h4>
+                <h4 style={{ fontSize:'clamp(14px, 1.4vw, 28px)' }}>일정선택</h4>
                 <div style={{ width:'auto', marginTop:'8px', borderBottom:'1px solid grey' }}></div>
 
                 <div className='calendar-container'>
@@ -50,6 +50,7 @@ function PeriodPopupScreen({ state, handler }){
                     </div>
                 </div>
 
+                <button className='ok-btn' onClick={() => { setPeriodPopup(false) }}>확인</button>
             </div>
         </>
     );
