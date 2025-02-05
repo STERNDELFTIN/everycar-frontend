@@ -5,7 +5,7 @@ import '../../css/productList/Category.css';
 
 function Category() {
   return (
-    <div class="container">
+    <div class="">
 
         {/* 카테고리 분류 박스 */}
         <div class="left">
@@ -40,7 +40,7 @@ function Category() {
             <div class="side-box2-content">
 
               <div class="side-box2-small-content">
-                <label for="searchBox" class="side-box side-title">자동차 모델 검색</label>
+                <label for="searchBox" class="side-box side-title-small">자동차 모델 검색</label>
                 <div class="side-box2-small-content-smallBox">
                   <input type="search" id="searchBox" class="search-box" placeholder="자동차 모델명 입력하기"/>
                   <button type="button" class="search-btn">검색</button>
@@ -48,16 +48,16 @@ function Category() {
               </div>
 
               <div class="side-box2-small-content">
-                <label for="priceRange" class="side-box side-title">금액</label>
+                <label for="priceRange" class="side-box side-title-small">금액</label>
                 <div class="side-box2-small-content-smallBox">
-                  <input type="range" id="priceRange" class="range-bar" min="0" max="5"/> 
+                  <input type="range" id="priceRange" class="range-bar" min="0" max="10"/> 
                 </div>
               </div>
 
-              <div class="side-box2-small-content">
-                <div class="side-box side-title">등급</div>
+              <div class="side-box2-small-content content-last">
+                <div class="side-box side-title-small">등급</div>
                   
-                <div class="side-box2-small-content-smallBox">
+                <div class="side-box2-small-content-smallBox size-check-box">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="size-1" id="size1"/>
                     <label class="form-check-label" for="size1">경차</label>
@@ -82,7 +82,7 @@ function Category() {
                     <input class="form-check-input" type="checkbox" value="size-6" id="size6"/>
                     <label class="form-check-label" for="size6">SUV / RV</label>
                   </div>
-                  <div class="form-check">
+                  <div class="form-check checkbox-last">
                     <input class="form-check-input" type="checkbox" value="size-7" id="size7"/>
                     <label class="form-check-label" for="size7">기타</label>
                   </div>

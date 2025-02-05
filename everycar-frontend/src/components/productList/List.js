@@ -5,22 +5,20 @@ import '../../css/productList/List.css';
 
 function List() {
   return (
-    <div class="container">
+    <div class="">
 
         {/* 차량 리스트 */}
         <div class="right">
-          <div class="right-header">
-            <h1>총 100대</h1>
-          </div>
+          <div class="right-header">총 100대</div>
 
           <div class="card-grid">
 
-            <div class="card selected">
+            <div class="card">
               <div class="card-title">
-                EV6
+                <span class="card-name">EV6</span>
                 <span class="card-release">2021년식</span>
               </div>
-              <img src="이미지 링크" alt="차 기종명" class="carImage"/>
+              <img src="이미지 링크" alt="차 기종명" class="car-image"/>
               <div class="card-icons">
                 <div class="card-icons-sm">
                   <span class="material-symbols-outlined">star</span>
@@ -40,8 +38,8 @@ function List() {
                 </div>
               </div>
               <div class="card-price">
-                <span class="card-price-sm">월</span>
-                1,500,000원
+                <span class="card-price-sm1">월</span>
+                <span class="card-price-sm2">500,000원</span>
               </div>
             </div>
 

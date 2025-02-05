@@ -1,12 +1,135 @@
 /* 구글 아이콘 사용 */
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
 
+/* 카테고리 박스 전체 */
 .left{
     width: 350px;
     margin-right: 55px;
 }
 
-.list-box{
-    width: 285px;
+/* 렌트 일정 박스 */
+.side-box1{
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+.side-box-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.side-box.side-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.reset-btn{
+    background-color: #fff;
+    border: 1px solid #aaa;
+    color: #aaa;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.reset-btn:hover{
+    background-color: #AFFF4F;
+    color: #333;
+    border: 1px solid #AFFF4F;
+}
+.side-box1-content{
+    
+}
+.side-box1-small-content{
+    display: flex;
+    margin-bottom: 20px;
+}
+.side-box1-small-content:last-child{
+    margin-bottom: 0;
+}
+.small-title{
+    font-size: 15px;
+    font-weight: bold;
     margin-right: 10px;
+}
+.small-con{
+    font-size: 15px;
+}
+
+/* 차량 검색 박스 */
+.side-box2{
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.side-box2-content{
+
+}
+.side-box2-small-content{
+    margin-bottom: 20px;
+}
+.side-box.side-title-small{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+}
+.side-box2-small-content-smallBox{
+    display: flex;
+}
+.search-box{
+    width: 80%;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 5px;
+}
+.search-btn{
+    width: 20%;
+    background-color: #AFFF4F;
+    border: 1px solid #AFFF4F;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.search-btn:hover{
+    background-color: #333;
+    color: #AFFF4F;
+    border: 1px solid #333; 
+}
+.range-bar{
+    width: 100%;
+    accent-color: #AFFF4F;
+    cursor: pointer;
+}
+.side-box2-small-content.content-last{
+    margin-bottom: 0;
+}
+.side-box2-small-content-smallBox.size-check-box{
+    flex-direction: column;
+}
+.form-check{
+    display: flex;
+    margin-bottom: 10px;
+}
+.form-check.checkbox-last{
+    margin-bottom: 0;
+}   
+.form-check-input{
+    width: 20px;
+    margin-right: 10px;
+    accent-color: #AFFF4F;
+    cursor: pointer;
+}
+.form-check-label{
+    font-size: 16px;
 }
