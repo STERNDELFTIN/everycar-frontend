@@ -29,6 +29,8 @@ i { display: block; }
   vertical-align:middle;
   align-items: center;
   gap: 20px;
+  justify-content: space-between;
+  font-size: clamp(10px, 1vw, 20px);
 }
 .menu-container {
   width: 72%;
@@ -76,6 +78,9 @@ i { display: block; }
   display: flex;
   gap: 10px;
 }
+.footer-link-container a {
+  font-size: clamp(10px, 1vw, 30px) !important;
+}
 
 .footer-content {
   display: flex;
@@ -84,6 +89,7 @@ i { display: block; }
 .footer-content h4 {
   margin-bottom: 30px;
 }
+
 
 .customer-service, .company-info, .sns-link-container { display: flex; flex-direction: column; gap: 2px; }
 
@@ -105,13 +111,19 @@ i { display: block; }
   }
   .center-menu {
     width: 55%;
-    font-size: 13px;
+    font-size: clamp(11px, 1vw, 20px);
   }
   .right-menu {
-    font-size: 10px;
+    font-size: clamp(9px, 0.8vw, 21px);
   }
   .register {
     width: 63px; height: 25px;
+  }
+  .customer-service h4, .company-info h4, .sns-title {
+    font-size: clamp(10px, 1vw, 15px);
+  }
+  .footer-content {
+    font-size: clamp(8px, 0.9vw, 14px) !important;
   }
   
   /* footer */
@@ -141,12 +153,10 @@ i { display: block; }
   }
   .center-menu {
     width: 75%;
-    font-size: 12px;
   }
   .right-menu {
     position: absolute;
     height: 30px;
-    font-size: 7px;
     right: 0%;
     top: 2%;
   }
@@ -200,12 +210,10 @@ i { display: block; }
   }
   .center-menu {
     width: 70%;
-    font-size: 12px;
   }
   .right-menu {
     position: absolute;
     height: 35px;
-    font-size: 9.3px;
     right: 6.8%;
     top: -3%;
   }
@@ -217,21 +225,14 @@ i { display: block; }
   .footer > div {
     width: 87%;
   }
-  .footer-link-container a {
-    font-size: 5px !important;
-  }
+
   .line {
     margin: 10px 0 !important;
-  }
-  .customer-service h4, .company-info h4, .sns-title {
-    font-size: 2px;
   }
   .company-info {
     gap: 1px !important;
   }
-  .footer-content {
-    font-size: 2px !important;
-  }
+
   .footer-content h4 {
     margin-bottom: 5px;
   }
