@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Main from './routes/Main';
+import ProductList from './routes/ProductList';
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
 
       {/* 페이지 URL */}
       <Routes>
-        <Route path='/' element={<Main />}></Route>
+        <Route path='/' element={<ProductList />}></Route>
       </Routes>
 
       {/* footer */}

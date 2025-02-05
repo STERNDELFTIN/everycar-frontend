@@ -1,8 +1,4 @@
-/* 구글 아이콘 사용 */
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
-
-/* ProductListPage css */
-.container{
+.ProductList{
     margin : 0 auto;
     display: flex;             /* Flexbox 활성화 */
     justify-content: center;   /* 수평 가운데 정렬 */
@@ -11,17 +7,11 @@
     /* width: 1280px; */
 }
 
-.left{
+/* .Category{
     width: 350px;
     margin-right: 55px;
 }
 
-.right{
+.ProductList{
     width: 875px;
-}
-
-.list-box{
-    width: 285px;
-    margin-right: 10px;
-}
-
+} */

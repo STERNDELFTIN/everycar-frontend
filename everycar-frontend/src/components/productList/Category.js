@@ -1,15 +1,17 @@
-// ProductListPage.js
+// Category.js
 import React from 'react';
-import '../styles/ProductListPage.css';
 
-function ProductListPage() {
+import '../../css/productList/Category.css';
+
+function Category() {
   return (
     <div class="container">
 
+        {/* 카테고리 분류 박스 */}
         <div class="left">
 
+          {/* 날짜 선택 박스 */}
           <div class="side-box1">
-
             <div class="side-box-title">
               <div class="side-box side-title">렌트 일정</div>
               <div><button type="button" class="reset-btn">다시 선택</button></div>
@@ -28,6 +30,7 @@ function ProductListPage() {
           </div>
 
 
+          {/* 차량 검색 박스 */}
           <div class="side-box2">
 
             <div class="side-box-title">
@@ -90,79 +93,8 @@ function ProductListPage() {
           </div>
         </div>
 
-        <div class="right">
-          <div class="right-header">
-            <h1>총 100대</h1>
-          </div>
-
-          <div class="card-grid">
-
-            <div class="card selected">
-              <div class="card-title">
-                EV6
-                <span class="card-release">2021년식</span>
-              </div>
-              <img src="이미지 링크" alt="차 기종명" class="carImage"/>
-              <div class="card-icons">
-                <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">star</span>
-                  <span class="icon-name">중형</span>
-                </div>
-                <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">group</span>
-                  <span class="icon-name">5인승</span>
-                </div>
-                <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
-                  <span class="icon-name">전기</span>
-                </div>
-                <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">settings</span>
-                  <span class="icon-name">오토</span>
-                </div>
-              </div>
-              <div class="card-price">
-                <span class="card-price-sm">월</span>
-                1,500,000원
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-title">
-                EV6
-                <span class="card-release">2021년식</span>
-              </div>
-              <img src="이미지 링크" alt="차 기종명" class="carImage"/>
-              <div class="card-icons">
-                <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">star</span>
-                  <span class="icon-name">중형</span>
-                </div>
-                <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">group</span>
-                  <span class="icon-name">5인승</span>
-                </div>
-                <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
-                  <span class="icon-name">전기</span>
-                </div>
-                <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">settings</span>
-                  <span class="icon-name">오토</span>
-                </div>
-              </div>
-              <div class="card-price">
-                <span class="card-price-sm">월</span>
-                1,500,000원
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
     </div>
   );
 }
 
-export default ProductListPage;
+export default Category;

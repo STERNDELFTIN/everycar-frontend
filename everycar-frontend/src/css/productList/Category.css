@@ -1,0 +1,12 @@
+/* 구글 아이콘 사용 */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+
+.left{
+    width: 350px;
+    margin-right: 55px;
+}
+
+.list-box{
+    width: 285px;
+    margin-right: 10px;
+}
