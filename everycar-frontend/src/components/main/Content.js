@@ -1,52 +1,14 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 import '../../css/main/Content.css';
-import PosPopupScreen from './PosPopupScreen.js';
-import RegionPopupScreen from './PeriodPopupScreen.js';
-import usePopupOutsideClick from '../usePopupOutsideClick.js';
 import Event from './Event.js';
 
 {/* Content */}
-function Content() {
-
-    // 렌트 장소 및 기간
-    const [posPopup, setPosPopup] = useState(false);
-    const [periodPopup, setPeriodPopup] = useState(false);
-    const posPopupRef = useRef(null); // 장소 팝업 참조
-    const periodPopupRef = useRef(null); // 기간 팝업 참조
-
-    // 렌트 날짜 및 시간
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-
-    const [startTime, setStartTime] = useState(null);
-    const [endTime, setEndTime] = useState(null);
-
-    // 지역
-    const [region, setRegion] = useState([]);
-    const [city, setCity] = useState([]);
-
-    const [selectedRegion, setSelectedRegion] = useState(null);
-    const [selectedCity, setSelectedCity] = useState(null);
-
-    // 렌트위치 데이터 불러오기
-    useEffect(() => {
-        axios.get('/main/rent_position.json')
-        .then(result => {
-            setRegion(result.data);
-        })
-        .catch(error => {
-            console.error("데이터 불러오기 실패: ", error);
-        });
-    }, []);
-
-    // 팝업창 외부로 나갔을 경우, 팝업창 닫기
-    usePopupOutsideClick(posPopupRef, () => { setPosPopup(false)});
-    usePopupOutsideClick(periodPopupRef, () => { setPeriodPopup(false)});
+function Content({ state, handler }) {
+    const {selectedRegion, selectedCity, startDate, endDate, startTime, endTime, posPopup, periodPopup} = state;
+    const {setPosPopup, setPeriodPopup} = handler;
 
     return(
         <div className='content-container'>
@@ -65,18 +27,6 @@ function Content() {
                         { selectedCity ? <p>{selectedRegion} {selectedCity}</p> : <p>서울시 강남구</p> }
                     </div>
                 </div>
-
-                {
-                    posPopup && 
-                    (
-                        <div  ref={posPopupRef}>
-                            <PosPopupScreen
-                                state={{ region, city, selectedRegion, selectedCity }} 
-                                handler={{ setRegion, setCity, setSelectedCity, setSelectedRegion }}
-                            />
-                        </div>
-                    ) 
-                }
 
                 <div style={ { borderRight: "1px solid #EAEAEA", width: "5%", height: "60%" } }></div>
 
@@ -99,18 +49,6 @@ function Content() {
                         </div>
                     </div>
                 </div>
-
-                {
-                    periodPopup && 
-                    (
-                        <div ref={periodPopupRef}>
-                            <RegionPopupScreen
-                                state = {{ startDate, endDate, startTime, endTime }}
-                                handler={{ setStartDate, setEndDate, setStartTime, setEndTime }} 
-                            />
-                        </div>
-                    )
-                }
 
                 <div className='rent-btn'>
                     <button>

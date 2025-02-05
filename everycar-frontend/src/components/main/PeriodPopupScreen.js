@@ -32,7 +32,7 @@ function PeriodPopupScreen({ state, handler }){
     
     return (
         <>
-            <div className='popup-container'>
+            <div className='period-popup-container'>
 
                 <h4 style={{ fontSize:'clamp(12px, 1vw, 20px)' }}>일정선택</h4>
                 <div style={{ width:'auto', marginTop:'8px', borderBottom:'1px solid grey' }}></div>

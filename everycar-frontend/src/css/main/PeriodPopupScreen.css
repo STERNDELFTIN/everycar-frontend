@@ -1,4 +1,4 @@
-.popup-container {
+.period-popup-container {
     position: fixed;
     display: flex;
     z-index: 9999;
@@ -6,8 +6,6 @@
     width: auto; height: auto;
     background-color: #ffffff;
     border-radius: 20px;
-    top: 110%;
-    left: 45%;
     text-align: left;
     box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
     padding: 30px 25px;
@@ -42,8 +40,6 @@
     width: 100%; height: auto;
     background-color: #ffffff;
     border-radius: 20px;
-    top: 110%;
-    left: 0%;
     text-align: left;
     box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
     padding: 30px 25px;
