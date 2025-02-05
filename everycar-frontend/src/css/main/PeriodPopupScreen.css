@@ -7,7 +7,8 @@
     background-color: #ffffff;
     border-radius: 20px;
     text-align: left;
-    box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
     padding: 30px 25px;
     gap: 5px;
 }

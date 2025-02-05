@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import '../../css/main/Popup.css';
 import PosPopupScreen from './PosPopupScreen.js';
 import RegionPopupScreen from './PeriodPopupScreen.js';
 import usePopupOutsideClick from '../usePopupOutsideClick.js';
+
 
 {/* Popup */}
 function Popup({state, handler}) {
@@ -36,15 +38,17 @@ function Popup({state, handler}) {
     usePopupOutsideClick(periodPopupRef, () => { setPeriodPopup(false)});
 
     return(
-        <>
+        <div>
                 {
                     posPopup && 
                     (
-                        <div  ref={posPopupRef}>
-                            <PosPopupScreen
-                                state={{ region, city, selectedRegion, selectedCity }} 
-                                handler={{ setRegion, setCity, setSelectedCity, setSelectedRegion }}
-                            />
+                        <div className='popup-bg'>
+                            <div  ref={posPopupRef}>
+                                <PosPopupScreen
+                                    state={{ region, city, selectedRegion, selectedCity }} 
+                                    handler={{ setRegion, setCity, setSelectedCity, setSelectedRegion, setPosPopup, setPeriodPopup }}
+                                />
+                            </div>
                         </div>
                     ) 
                 }
@@ -52,15 +56,17 @@ function Popup({state, handler}) {
                 {
                     periodPopup && 
                     (
-                        <div ref={periodPopupRef}>
-                            <RegionPopupScreen
-                                state = {{ startDate, endDate, startTime, endTime }}
-                                handler={{ setStartDate, setEndDate, setStartTime, setEndTime }} 
-                            />
+                        <div className='popup-bg'>
+                            <div ref={periodPopupRef}>
+                                <RegionPopupScreen
+                                    state = {{ startDate, endDate, startTime, endTime }}
+                                    handler={{ setStartDate, setEndDate, setStartTime, setEndTime }} 
+                                />
+                            </div>
                         </div>
                     )
                 }
-        </>
+        </div>
     );
 }
 
