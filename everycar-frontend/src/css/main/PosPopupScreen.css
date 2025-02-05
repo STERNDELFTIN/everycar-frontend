@@ -2,7 +2,7 @@
 .pos-popup-container {
     display: flex;
     position: fixed;
-    width: 350px; height: 300px;
+    width: 30%; height: clamp(100px, 35vh, 300px);
     background-color: #FFFFFF;
     border-radius: 20px;
     top: 110%;
@@ -13,7 +13,7 @@
     z-index: 9999;
 }
 .region-container {
-    width: 100px;
+    width: clamp(23px, 13vw, 100px);
     background-color: #ffffff;
     padding: 10px;
     overflow-y: scroll;
@@ -21,7 +21,7 @@
     flex: 1;
 }
 .city-container {
-    width: 100px;
+    width: clamp(23px, 13vw, 100px);
     background-color: #ffffff;
     padding: 10px;
     overflow-y: scroll;
@@ -51,7 +51,53 @@
 
 }
 @media (max-width: 768px) { /* 태블릿 */
+    /* 렌트위치 팝업창 */
+    .pos-popup-container {
+        display: flex;
+        position: fixed;
+        width: 100%; height: clamp(100px, 35vh, 300px);
+        background-color: #FFFFFF;
+        border-radius: 20px;
+        top: 110%;
+        left: 0%;
+        text-align: left;
+        box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
+        padding: 20px 15px;
+        z-index: 9999;
+    }
+    .region-container {
+        width: clamp(23px, 13vw, 100px);
+        background-color: #ffffff;
+        padding: 10px;
+        overflow-y: scroll;
+        padding: 10px;
+        flex: 1;
+    }
+    .city-container {
+        width: clamp(23px, 13vw, 100px);
+        background-color: #ffffff;
+        padding: 10px;
+        overflow-y: scroll;
+        padding: 10px;
+        flex: 1;
+    }
 
+    /* 스크롤바 */
+    .pos-popup-container ::-webkit-scrollbar { /* 스크롤바 전체 영역 */
+        width: 8px;
+    }
+
+    .pos-popup-container ::-webkit-scrollbar-track { /* 스크롤바 트랙 (배경) */
+        background: #eaeaea;
+        border-radius: 10px;
+    }
+
+    .pos-popup-container ::-webkit-scrollbar-thumb { /* 스크롤바 막대기 (thumb) */
+        background-color: #787878;
+        border-radius: 10px;
+        border: 2px solid #f1f1f1;
+        height: 100px;
+    }
 }
 @media (max-width: 480px) { /* 모바일 */
 

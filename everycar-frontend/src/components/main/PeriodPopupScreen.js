@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import '../../css/main/PeriodPopupScreen.css';
 import CustomCalendar from './CustomCalendar.js';
 
-const SubHeadingStyle = styled.h5`margin-bottom: 5px; font-size: 14px;`;
+const SubHeadingStyle = styled.h5`margin-bottom: 5px; font-size: clamp(10px, 0.8vw, 14px);`;
 
 function PeriodPopupScreen({ state, handler }){
 
@@ -34,7 +34,7 @@ function PeriodPopupScreen({ state, handler }){
         <>
             <div className='popup-container'>
 
-                <h4 style={{ fontSize:'20px' }}>일정선택</h4>
+                <h4 style={{ fontSize:'clamp(12px, 1vw, 20px)' }}>일정선택</h4>
                 <div style={{ width:'auto', marginTop:'8px', borderBottom:'1px solid grey' }}></div>
 
                 <div className='calendar-container'>
