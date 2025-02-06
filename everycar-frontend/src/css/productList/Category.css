@@ -11,20 +11,18 @@
 .side-box1{
     width: 100%;
     background-color: #fff;
-    padding: 30px;
+    padding: 24px 31px 27px;
     border-radius: 10px;
 }
 .side-box-title{
-    font-size: 20px;
-    font-weight: bold;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .side-box.side-title{
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
 }
 .reset-btn{
     background-color: #fff;
@@ -32,7 +30,8 @@
     color: #aaa;
     border-radius: 5px;
     padding: 5px 10px;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.1s;
 }
@@ -41,44 +40,40 @@
     color: #333;
     border: 1px solid #AFFF4F;
 }
-.side-box1-content{
-    
-}
 .side-box1-small-content{
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 .side-box1-small-content:last-child{
     margin-bottom: 0;
 }
 .small-title{
-    font-size: 15px;
-    font-weight: bold;
+    font-weight: 600;
     margin-right: 10px;
 }
 .small-con{
-    font-size: 15px;
+    font-weight: 400;
 }
 
 /* 차량 검색 박스 */
 .side-box2{
     width: 100%;
     background-color: #fff;
-    padding: 30px;
+    padding: 24px 31px 27px;
     border-radius: 10px;
-    margin-top: 20px;
-}
-.side-box2-content{
-
+    margin-top: 10px;
 }
 .side-box2-small-content{
     margin-bottom: 20px;
 }
 .side-box.side-title-small{
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 10px;
     display: flex;
+    justify-content: space-between;
+    align-items: end;
 }
 .side-box2-small-content-smallBox{
     display: flex;
@@ -106,6 +101,10 @@
     color: #AFFF4F;
     border: 1px solid #333; 
 }
+.price-range{
+    font-size: 8px;
+    font-weight: 400;
+}
 .range-bar{
     width: 100%;
     accent-color: #AFFF4F;
@@ -126,10 +125,11 @@
 }   
 .form-check-input{
     width: 20px;
-    margin-right: 10px;
+    margin-right: 7px;
     accent-color: #AFFF4F;
     cursor: pointer;
 }
 .form-check-label{
     font-size: 16px;
+    cursor: pointer;
 }

@@ -48,7 +48,10 @@ function Category() {
               </div>
 
               <div class="side-box2-small-content">
-                <label for="priceRange" class="side-box side-title-small">금액</label>
+                <label for="priceRange" class="side-box side-title-small">
+                  금액
+                  <span class="price-range">0원 ~ 1,000,000원</span>
+                </label>
                 <div class="side-box2-small-content-smallBox">
                   <input type="range" id="priceRange" class="range-bar" min="0" max="10"/> 
                 </div>
