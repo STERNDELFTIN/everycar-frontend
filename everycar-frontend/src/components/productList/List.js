@@ -34,7 +34,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -66,7 +66,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -96,7 +96,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -126,7 +126,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -156,7 +156,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -186,7 +186,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -216,7 +216,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -246,7 +246,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -276,7 +276,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -306,7 +306,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -336,7 +336,7 @@ function List() {
                   <span class="icon-name">5인승</span>
                 </div>
                 <div class="card-icons-sm">
-                  <span class="material-symbols-outlined">ev_station</span>
+                  <span class="material-symbols-outlined">local_gas_station</span>
                   <span class="icon-name">전기</span>
                 </div>
                 <div class="card-icons-sm">
@@ -350,7 +350,7 @@ function List() {
               </div>
             </div>
 
-            {/* 카드 반복 끝. +8개 반복. 총 9개 */}
+            {/* 카드 반복 끝. +10개 반복. 총 11개 */}
 
           </div>
 

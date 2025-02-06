@@ -68,7 +68,7 @@
     flex-direction: column;
 }
 .material-symbols-outlined{
-    background-color: #ddd;
+    background-color: #F3F3F3;
     padding: 5px;
     border-radius: 100%;
 }
@@ -88,11 +88,11 @@
     margin: 0 15px;
 }
 .card-price-sm1{
-    font-size: 14px;
+    font-size: 18px;
     color: #2F2F2FCC;
     opacity: 80%;
     margin-right: 3px;
 }
 .card-price-sm2{
-    font-size: 18px;
+    font-size: 24px;
 }
