@@ -1,18 +1,7 @@
 .ProductList{
     margin : 0 auto;
-    display: flex;             /* Flexbox 활성화 */
-    justify-content: center;   /* 수평 가운데 정렬 */
-    /*align-items: center;*/       /* 수직 가운데 정렬 */
-    height: 100vh;
-    /* width: 1280px; */
+    display: flex;
+    justify-content: center;
     margin-top: 30px;
+    margin-bottom: 100px;
 }
-
-/* .Category{
-    width: 350px;
-    margin-right: 55px;
-}
-
-.ProductList{
-    width: 875px;
-} */

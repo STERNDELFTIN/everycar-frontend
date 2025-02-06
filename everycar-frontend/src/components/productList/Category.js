@@ -1,11 +1,10 @@
 // Category.js
 import React from 'react';
-
 import '../../css/productList/Category.css';
 
 function Category() {
   return (
-    <div class="">
+    <div className="Category">
 
         {/* 카테고리 분류 박스 */}
         <div class="left">
@@ -29,7 +28,6 @@ function Category() {
             </div>
           </div>
 
-
           {/* 차량 검색 박스 */}
           <div class="side-box2">
 
@@ -39,6 +37,7 @@ function Category() {
               
             <div class="side-box2-content">
 
+              {/* 직접 입력 검색 */}
               <div class="side-box2-small-content">
                 <label for="searchBox" class="side-box side-title-small">자동차 모델 검색</label>
                 <div class="side-box2-small-content-smallBox">
@@ -47,6 +46,7 @@ function Category() {
                 </div>
               </div>
 
+              {/* 금액대 선택 */}
               <div class="side-box2-small-content">
                 <label for="priceRange" class="side-box side-title-small">
                   금액
@@ -57,6 +57,7 @@ function Category() {
                 </div>
               </div>
 
+              {/* 차량 등급(종류) 선택 */}
               <div class="side-box2-small-content content-last">
                 <div class="side-box side-title-small">등급</div>
                   
