@@ -2,6 +2,8 @@
 import React from 'react';
 
 import '../../css/productList/List.css';
+import sample from '../../assets/images/car-model/product-image-01.png';  // 샘플 이미지 import
+// 차량 이미지 사이즈 360*180
 
 function List() {
   return (
@@ -18,7 +20,7 @@ function List() {
                 <span class="card-name">EV6</span>
                 <span class="card-release">2021년식</span>
               </div>
-              <img src="이미지 링크" alt="차 기종명" class="car-image"/>
+              <img src={sample} alt="차 기종명" class="car-image"/>
               <div class="card-icons">
                 <div class="card-icons-sm">
                   <span class="material-symbols-outlined">star</span>
@@ -48,7 +50,7 @@ function List() {
                 EV6
                 <span class="card-release">2021년식</span>
               </div>
-              <img src="이미지 링크" alt="차 기종명" class="carImage"/>
+              <img src={sample} alt="차 기종명" class="car-image"/>
               <div class="card-icons">
                 <div class="card-icons-sm">
                   <span class="material-symbols-outlined">star</span>
