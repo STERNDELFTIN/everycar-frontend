@@ -34,7 +34,7 @@ function Shortcut() {
 function ShortcutBox({ ico, title }) {
     return (
         <div className='shortcut-box'>
-            <FontAwesomeIcon icon={ ico } style={{ fontSize: "30px" }} />
+            <FontAwesomeIcon icon={ ico } style={{ fontSize: "clamp(17px, 2vw, 40px)" }} />
             <p>{ title }</p>
         </div>
     );

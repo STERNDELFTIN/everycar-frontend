@@ -7,7 +7,7 @@
 }
 
 .react-calendar__tile {
-    height: 40px;
+    height: clamp(35px, 2vh, 40px);
     font-size: 16px;
 }
 

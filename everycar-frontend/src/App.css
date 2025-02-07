@@ -1,13 +1,14 @@
-* { margin: 0; padding: 0; }
-div { box-sizing : border-box; font-family: 'Noto Sans KR', sans-serif; }
+* { margin: 0; padding: 0; box-sizing : border-box;  }
+div { font-family: 'Noto Sans KR', sans-serif; }
 body { margin : 0; }
 html { line-height : 1.15; /* 기본 행간 높이 */ }
 a, li { text-decoration: none; /* 링크 및줄 제거 */ }
-img { display: block; }
+img { display: block; max-width: 100%; }
 i { display: block; }
 
 .App {
-  width: 100vw; height: auto;
+  width: 100%; height: auto;
+  max-width: 1920px; min-width: 380px;
   background-color: #F8F9F7;
   display: flex;
   flex-direction: column;
@@ -28,9 +29,11 @@ i { display: block; }
   vertical-align:middle;
   align-items: center;
   gap: 20px;
+  justify-content: space-between;
+  font-size: clamp(10px, 1vw, 20px);
 }
 .menu-container {
-  width: 65%;
+  width: 72%;
 }
 .left-menu {
   width: 25%;
@@ -60,9 +63,12 @@ i { display: block; }
   background-color: #252736;
   color: #FFFFFF;
   width: 100%; height: auto;
-  padding: 15px 30px;
+  padding: 15px 0;
   justify-content: center;
   text-align: left;
+}
+.footer > div {
+  width: 72%;
 }
 .footer a {
   color: white;
@@ -71,6 +77,9 @@ i { display: block; }
 .footer-link-container {
   display: flex;
   gap: 10px;
+}
+.footer-link-container a {
+  font-size: clamp(10px, 1vw, 30px) !important;
 }
 
 .footer-content {
@@ -81,4 +90,160 @@ i { display: block; }
   margin-bottom: 30px;
 }
 
+
 .customer-service, .company-info, .sns-link-container { display: flex; flex-direction: column; gap: 2px; }
+
+/* 미디어 쿼리 */
+@media (max-width: 1213px) {
+  /* menu */
+  .menu {
+    height: 65px; width: 100%;
+  }
+  .menu-container, .left-menu, .center-menu, .right-menu, .register { 
+    gap: 2px;
+  }
+  .left-menu {
+    width: 20%;
+    margin-right: 10px;
+  }
+  .left-menu img {
+    width: 90px !important; height: auto !important;
+  }
+  .center-menu {
+    width: 55%;
+    font-size: clamp(11px, 1vw, 20px);
+  }
+  .right-menu {
+    font-size: clamp(9px, 0.8vw, 21px);
+  }
+  .register {
+    width: 63px; height: 25px;
+  }
+  .customer-service h4, .company-info h4, .sns-title {
+    font-size: clamp(10px, 1vw, 15px);
+  }
+  .footer-content {
+    font-size: clamp(8px, 0.9vw, 14px) !important;
+  }
+  
+  /* footer */
+  .footer-link-container a {
+    font-size: 16px !important;
+  }
+}
+@media (max-width: 768px) { /* 태블릿 */
+  /* menu */
+  .menu {
+    height: 70px;
+  }
+  .menu-container {
+    position: relative;
+  }
+  .menu-container, .left-menu, .center-menu, .right-menu, .register { 
+    gap: 2px;
+  }
+  .left-menu, .center-menu {
+    margin-top: 15px;
+  }
+  .left-menu {
+    width: 20%;
+  }
+  .left-menu img {
+    width: 70px !important; height: auto !important;
+  }
+  .center-menu {
+    width: 75%;
+  }
+  .right-menu {
+    position: absolute;
+    height: 30px;
+    right: 0%;
+    top: 2%;
+  }
+  .register {
+    width: 40px; height: 16px;
+  }
+  
+  /* footer */
+  .footer-link-container a {
+    font-size: 8px !important;
+  }
+  .line {
+    margin: 10px 0 !important;
+  }
+  .customer-service h4, .company-info h4, .sns-title {
+    font-size: 6px;
+  }
+  .company-info {
+    gap: 1px !important;
+  }
+  .footer-content {
+    font-size: 5px !important;
+  }
+  .footer-content h4 {
+    margin-bottom: 10px;
+  }
+  .sns-icon svg {
+    width: 14px;
+  }
+}
+@media (max-width: 480px) { /* 모바일 */
+  /* menu */
+  .menu {
+    height: 68px;
+  }
+  .menu-container {
+    position: relative;
+    width: 87%;
+  }
+  .menu-container, .left-menu, .center-menu, .right-menu, .register { 
+    gap: 1px;
+  }
+  .left-menu, .center-menu {
+    margin-top: 12px;
+  }
+  .left-menu {
+    width: 20%;
+  }
+  .left-menu img {
+    width: 70px !important; height: auto !important;
+  }
+  .center-menu {
+    width: 70%;
+  }
+  .right-menu {
+    position: absolute;
+    height: 35px;
+    right: 6.8%;
+    top: -3%;
+  }
+  .register {
+    width: 40px; height: 10px;
+  }
+  
+  /* footer */
+  .footer > div {
+    width: 87%;
+  }
+
+  .line {
+    margin: 10px 0 !important;
+  }
+  .company-info {
+    gap: 1px !important;
+  }
+
+  .footer-content h4 {
+    margin-bottom: 5px;
+  }
+  .sns-icon {
+    display: flex;
+    gap: 7px !important;
+  }
+  .sns-icon > div {
+    width: auto; height: auto;
+  }
+  .sns-icon svg {
+    width: 12px;
+  }
+}

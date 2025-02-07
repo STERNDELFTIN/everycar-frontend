@@ -1,15 +1,14 @@
-.popup-container {
-    position: absolute;
+.period-popup-container {
+    position: fixed;
     display: flex;
+    z-index: 9999;
     flex-direction: column;
     width: auto; height: auto;
     background-color: #ffffff;
     border-radius: 20px;
-    top: 110%;
-    left: 45%;
-    overflow: hidden;
     text-align: left;
-    box-shadow: 0px 6px 4.2px rgba(0, 0, 0, 0.06);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
     padding: 30px 25px;
     gap: 5px;
 }
@@ -26,5 +25,26 @@
   border: none;
   background-color: #F3F3F3;
   color: #000000;
-  font-size: 17px;
+  font-size: clamp(8px, 0.8vw ,17px);
+}
+
+.ok-btn {
+  width: 100%;
+  margin-left: 0;
+  margin-top: 10px;
+  font-size: clamp(13px, 1.6vw , 30px);
+  padding: 5px 10px;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+  
+}
+@media (max-width: 480px) { /* 모바일 */
+  .period-popup-container {
+    width: 90%;
+  }
 }

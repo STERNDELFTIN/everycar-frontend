@@ -5,9 +5,9 @@ import '../../css/main/Event.css';
 
 {/* Event */}
 // const EventBoxStyle = styled.div`background-color: #D9D9D9; width: 600px; height: 184px; `;
-const EventBoxStyle = styled.div`background-color: #D9D9D9; width: 94%; height: 380px; `;
+const EventBoxStyle = styled.div`background-color: #D9D9D9; width: 100%; height: 100%; border-radius: 20px;`;
 
-function Event({ title, TitleStyle }) {
+function Event() {
 
     const [startIndex, setStartIndex] = useState(0);
 
@@ -27,10 +27,9 @@ function Event({ title, TitleStyle }) {
 
     return(
         <div className='event'>
-            <TitleStyle>{ title }</TitleStyle>
             <div className="event-container">
                 <button className="left-btn" onClick={handleLeftClick}>
-                    <img src="main/event/left_btn.png" alt="left" style={{ width: '70px' }} />
+                    <img src="main/event/left_btn.png" alt="left" />
                 </button>
 
                 {/* startIndex부터 두 개의 EventBox만 렌더링 */}
@@ -40,7 +39,7 @@ function Event({ title, TitleStyle }) {
                 { eventBoxes.slice(startIndex, startIndex + 1) }
 
                 <button className="right-btn" onClick={handleRightClick}>
-                    <img src="main/event/right_btn.png" alt="right" style={{ width: '70px' }} />
+                    <img src="main/event/right_btn.png" alt="right" />
                 </button>
             </div>
         </div>
