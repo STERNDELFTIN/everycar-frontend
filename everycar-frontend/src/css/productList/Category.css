@@ -6,6 +6,9 @@
     width: 350px;
     margin-right: 55px;
 }
+button{
+    all: unset;
+}
 
 /* 렌트 일정 박스 */
 .side-box1{
