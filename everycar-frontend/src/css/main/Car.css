@@ -4,10 +4,10 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 13px;
-    
 }
 .car-box {
     box-shadow: 0px 4px 4.2px rgba(0, 0, 0, 0.06);
+    width: 18%; height: auto;
 }
 .car-description {
     display: flex;
@@ -17,31 +17,82 @@
 
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
+    .car-container {
+        gap: 20px;
+    }
     .car-box {
-        flex: 1 0 calc(33.33% - 20px);
+        /* flex: 1 1 calc(50% - 20px); */
+        flex-basis: 48% !important;
+        gap: 15px;
+        display: flex;
+        justify-content: center;    
+        align-items: center;   
+        padding: 30px 10px !important;
+    }
+    .car-image {
+        width: 50% !important;
+        margin: 0 auto !important;
+    }
+    .car-image > img {
+        width: 80% !important;
+    }
+    .car-description {
+        width: 49%;
+        align-items: baseline !important;
+    }
+    .car-description > h4 {
+        font-size: clamp(16px, 1.6vw, 20px) !important;
+    }
+    .car-description > div {
+        font-size: clamp(10px, 1.4vw, 18px) !important;
+        gap: 20px !important;
+    }
+
+    .car-div {
+        border-right: 1px solid rgb(228, 228, 228);
+        width: 1%; height: 90%;
+        margin-right: 10px;
     }
 }
 @media (max-width: 768px) { /* 태블릿 */
     .car-box {
-        flex: 1 1 calc(50% - 20px);
-    }
-}
-@media (max-width: 480px) { /* 모바일 */
-    .car-container {
-        flex: none;
-        overflow-x: auto; /* 가로 스크롤 */
-        scroll-snap-type: x mandatory; /* 스크롤 스냅 */
-    }
-    .car-box {
         flex: 1 0 100%;
         min-width: 100% !important; 
-        height: 110px !important;
+        height: auto !important;
         gap: 15px;
         display: flex;
         justify-content: center;    
-        align-items: center;    
+        align-items: center;   
+        padding: 10px 20px !important; 
+    }
+    .car-image {
+        width: 50% !important;
+        margin: 0 auto !important;
+    }
+    .car-description {
+        width: 49%;
+        align-items: baseline !important;
+    }
+    .car-description > h4 {
+        font-size: clamp(13px, 1.5vw, 30px) !important;
     }
     .car-description > div {
-        gap: 9px !important;
+        font-size: clamp(8px, 1.3vw, 20px) !important;
+        gap: 20px !important;
+    }
+
+    .car-div {
+        border-right: 1px solid rgb(228, 228, 228);
+        width: 1%; height: 90%;
+        margin-right: 10px;
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+    .car-description > h4 {
+        font-size: clamp(10px, 1vw, 15px) !important;
+    }
+    .car-description > div {
+        font-size: clamp(8px, 1vw, 13px) !important;
+        gap: 20px !important;
     }
 }
