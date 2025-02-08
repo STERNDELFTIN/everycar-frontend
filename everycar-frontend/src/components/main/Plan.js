@@ -14,25 +14,25 @@ function Plan({ title, TitleStyle }) {
                 <PlanBox 
                     title='빠른예약'
                     content='내 옆에서 구하는 가장 가깝고 빠른 렌트 서비스'
-                    ico='/main/plan/reservation.png'
+                    ico='/images/main/plan/reservation.png'
                     icoSize='5vw'
                 />           
                 <PlanBox 
                     title='부름서비스'
                     content='원하는 날짜, 원하는 장소에서 택배처럼 받는 맞춤 렌트'
-                    ico='/main/plan/call_service.png'
+                    ico='/images/main/plan/call_service.png'
                     icoSize='4vw'
                 />           
                 <PlanBox 
                     title='단기렌트'
                     content='내 차처럼 즐기는 단기구독 렌트카'
-                    ico='/main/plan/short_rent.png'
+                    ico='/images/main/plan/short_rent.png'
                     icoSize='4vw'
                 />           
                 <PlanBox 
                     title='장기렌트'
                     content='내 차처럼 즐기는 장기구독 렌트카'
-                    ico='/main/plan/long_rent.png'
+                    ico='/images/main/plan/long_rent.png'
                     icoSize='5vw'
                 />   
             </div>        

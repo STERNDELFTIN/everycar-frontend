@@ -29,7 +29,7 @@ function Event() {
         <div className='event'>
             <div className="event-container">
                 <button className="left-btn" onClick={handleLeftClick}>
-                    <img src="main/event/left_btn.png" alt="left" />
+                    <img src="images/main/event/left_btn.png" alt="left" />
                 </button>
 
                 {/* startIndex부터 두 개의 EventBox만 렌더링 */}
@@ -39,7 +39,7 @@ function Event() {
                 { eventBoxes.slice(startIndex, startIndex + 1) }
 
                 <button className="right-btn" onClick={handleRightClick}>
-                    <img src="main/event/right_btn.png" alt="right" />
+                    <img src="images/main/event/right_btn.png" alt="right" />
                 </button>
             </div>
         </div>
