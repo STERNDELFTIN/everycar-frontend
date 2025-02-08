@@ -3,7 +3,8 @@ import React from 'react';
 import '../../css/productList/List.css';
 
 // 차량 이미지 사이즈 360*180
-import sample from '../../assets/images/car-model/product-image-01.png';  // 샘플 이미지 import
+const sample = '/images/car-model/product-image-01.png';  // 샘플 이미지
+// import sample from '/images/car-model/product-image-01.png';  // 샘플 이미지 import
 
 function List() {
   return (
