@@ -36,7 +36,8 @@ function App() {
 
       {/* 페이지 URL */}
       <Routes>
-        <Route path='/' element={<ProductList />}></Route>
+        <Route path='/' element={<Main />}></Route>
+        <Route path='/productList' element={<ProductList />}></Route>
       </Routes>
 
       {/* footer */}
