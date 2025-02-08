@@ -8,7 +8,7 @@ i { display: block; }
 
 .App {
   width: 100%; height: auto;
-  max-width: 1920px; min-width: 380px;
+  max-width: 1920px; min-width: 344px;
   background-color: #F8F9F7;
   display: flex;
   flex-direction: column;
