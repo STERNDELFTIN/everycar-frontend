@@ -14,6 +14,7 @@ i { display: block; }
   flex-direction: column;
   text-align: center;
   align-items: center;
+  margin: 0 auto; /* 수평 가운데 정렬 */
 }
 
 .menu {
