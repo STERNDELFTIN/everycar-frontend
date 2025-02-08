@@ -13,7 +13,7 @@ function Car({ title, TitleStyle }) {
 
     useEffect(()=>{
         // 비동기로 JSON 데이터 가져오기
-        axios.get('/main/car/cars.json')
+        axios.get('json/cars.json')
         .then(result => {
             console.log(result.data);
             setCars(result.data.popular_cars);

@@ -24,7 +24,7 @@ function Popup({state, handler}) {
 
     // 렌트위치 데이터 불러오기
     useEffect(() => {
-        axios.get('/main/rent_position.json')
+        axios.get('/json/rent_position.json')
         .then(result => {
             setRegion(result.data);
         })

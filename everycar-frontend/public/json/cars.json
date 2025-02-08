@@ -2,7 +2,7 @@
     "popular_cars" : [
         {
             "id" : "0",
-            "img" : "main/car/car1.png",
+            "img" : "images/main/car/car1.png",
             "name" : "Kia Picanto",
             "grade" : "경차",
             "fuel": "가솔린",
@@ -10,7 +10,7 @@
         },
         {
             "id" : "1",
-            "img" : "main/car/car2.png",
+            "img" : "images/main/car/car2.png",
             "name" : "Kia EV6 Plus",
             "grade" : "SUV",
             "fuel" : "전기",
@@ -18,7 +18,7 @@
         },
         {
             "id" : "2",
-            "img" : "main/car/car3.png",
+            "img" : "images/main/car/car3.png",
             "name" : "Kia Ray",
             "grade" : "경차",
             "fuel" : "가솔린",
@@ -26,7 +26,7 @@
         },
         {
             "id" : "3",
-            "img" : "main/car/car1.png",
+            "img" : "images/main/car/car1.png",
             "name" : "Kia Picanto",
             "grade" : "경차",
             "fuel": "가솔린",
@@ -34,7 +34,7 @@
         },
         {
             "id" : "4",
-            "img" : "main/car/car2.png",
+            "img" : "images/main/car/car2.png",
             "name" : "Kia EV6 Plus",
             "grade" : "SUV",
             "fuel" : "전기",
