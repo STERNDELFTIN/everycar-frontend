@@ -41,7 +41,7 @@ function Content({ state, handler }) {
                                 { startDate ? <b>{ format(startDate, 'MM.dd(EE)', { locale: ko }) } </b> : <b>01.01(수) </b> }
                                 { startTime ? <span>{startTime}</span> : '10:00' }
                             </p>
-                            <p style={{ margin: "0 3.5vw" }}>~</p>
+                            <p className='period-wave'>~</p>
                             <p className='end-period'>
                                 { endDate ? <b>{ format(endDate,'MM.dd(EE)', { locale: ko }) }</b> : <b>01.03(금) </b> }
                                 { endTime ? <span>{endTime}</span> : '10:00' }

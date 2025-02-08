@@ -51,6 +51,9 @@
 .rent-period svg {
     width: 1.3vw;
 }
+.period-wave {
+    margin: 0 3.5vw;
+}
 
 .rent-btn {
     display: flex;
@@ -77,15 +80,16 @@
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
     /* Content */
-
+    .period-wave {
+        margin: 0 3vw;
+    }
 }
 @media (max-width: 768px) { /* 태블릿 */
       /* Content */
-      .content-box {
-        aspect-ratio: 16 / 9;
-    }
 }
 @media (max-width: 480px) { /* 모바일 */
       /* Content */
-    
+      .period-wave {
+        margin: 0 0.6vw;
+    }
 }
