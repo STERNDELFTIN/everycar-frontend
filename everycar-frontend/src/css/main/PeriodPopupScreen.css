@@ -26,14 +26,20 @@
   background-color: #F3F3F3;
   color: #000000;
   font-size: clamp(8px, 0.8vw ,17px);
+  cursor: pointer;
 }
 
 .ok-btn {
-  width: 100%;
+  width: auto;
   margin-left: 0;
   margin-top: 10px;
   font-size: clamp(13px, 1.6vw , 30px);
-  padding: 5px 10px;
+  padding: 9px 10px;
+  background-color: #DEFF54;
+  text-align: center;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* 미디어 쿼리 */

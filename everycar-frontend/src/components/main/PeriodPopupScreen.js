@@ -50,7 +50,7 @@ function PeriodPopupScreen({ state, handler }){
                     </div>
                 </div>
 
-                <button className='ok-btn' onClick={() => { setPeriodPopup(false) }}>확인</button>
+                <button className='ok-btn' onClick={() => { setPeriodPopup(false) }}>선택완료</button>
             </div>
         </>
     );
