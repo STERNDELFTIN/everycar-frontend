@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
 import '../../css/main/Car.css';
 
 {/* 국내 인기 차량 */}
-const CarBoxStyle = styled.div`background-color: #FFFFFF; border-radius: 20px; text-align: left; padding: 30px 25px; cursor: pointer; `;
+const CarLinkStyle = styled(Link).attrs((props) => ({ to:props.to, /* Link 속성 유지 */ }))`background-color: #FFFFFF; border-radius: 20px; text-align: left; padding: 30px 25px; cursor: pointer; `;
 
 function Car({ title, TitleStyle }) {
     const [cars, setCars] = useState([]);
@@ -24,19 +25,21 @@ function Car({ title, TitleStyle }) {
     }, []);
 
     return(
-        <div className='domestic-popular-car'>
+        <nav className='domestic-popular-car'>
             <TitleStyle>{ title }</TitleStyle>
             <div className='car-container'>
                 {
                     cars.map((car, i)=>{
                         return <CarBox key={i} car={car} />
+                        // return <CarBox to='' key={i} car={car} />
                     })
                 }
             </div>
-        </div>
+        </nav>
     );
 }
-function CarBox({ car }) {
+
+function CarBox({ to, car }) {
     const [carDescription] = useState([
         { title: '등급', content: car.grade },
         { title: '연료', content: car.fuel },
@@ -44,7 +47,7 @@ function CarBox({ car }) {
     ]); 
 
     return (
-        <CarBoxStyle className='car-box'>
+        <CarLinkStyle className='car-box' to={to}>
             <div className='car-image' style={{ display:'flex', justifyContent:'center', margin:'0 auto', marginBottom:'25px' }}><img src={car.img} alt={car.name} style={{ width:"clamp(90px, 8vw, 150px)", height:"auto" }} /></div>
             
             <div className='car-div'></div>
@@ -73,7 +76,7 @@ function CarBox({ car }) {
                     </div>
                 </div>
             </div>
-        </CarBoxStyle>
+        </CarLinkStyle>
     );
 }
 

@@ -9,6 +9,9 @@
     box-shadow: 0px 4px 4.2px rgba(0, 0, 0, 0.06);
     width: 18%; height: auto;
 }
+.car-box:hover {
+    background-color: #F9FEF5;
+}
 .car-description {
     display: flex;
     flex-direction: column;
