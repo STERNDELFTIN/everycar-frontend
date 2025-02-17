@@ -33,7 +33,7 @@ function CustomCalendar({ onDateChange, startDate, endDate }){
                                 return 'start-date';
                             }
                             // 종료일
-                            if (endDate && date.toDateString() == endDate.toString()) {
+                            if (endDate && date.toDateString() === endDate.toDateString()) {
                                 return 'end-date';
                             }
                             // 시작일과 종료일 사이
