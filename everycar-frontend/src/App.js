@@ -18,11 +18,14 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />}></Route>
         
-        {/* <Route path='/speedReservation' element={<Main />}></Route>
-        <Route path='/callService' element={<Main />}></Route>
-        <Route path='/shortRent' element={<Main />}></Route>
-        <Route path='/longRent' element={<Main />}></Route>
-        <Route path='/event' element={<Main />}></Route> */}
+        {/* <Route path='/speedReservation' element={<SpeedReservation />}></Route>
+        <Route path='/callService' element={<CallService />}></Route>
+        <Route path='/shortRent' element={<ShortRent />}></Route>
+        <Route path='/longRent' element={<LongRent />}></Route>
+        <Route path='/event' element={<Event />}></Route> */}
+
+        {/* <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route> */}
       
         <Route path='/productList' element={<ProductList />}></Route>
       </Routes>
