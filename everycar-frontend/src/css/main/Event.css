@@ -19,6 +19,7 @@
     background: none;
     width: 5.3%;
     height: auto;
+    cursor: pointer;
 }
 .event .left-btn {
     top: 50%;
