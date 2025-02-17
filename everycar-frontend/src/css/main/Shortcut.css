@@ -25,6 +25,7 @@
     text-align: center;
     gap: clamp(10px, 0.8vw, 39px);
     cursor: pointer;
+    color : #2F2F2F;
 }
 
 /* 미디어 쿼리 */

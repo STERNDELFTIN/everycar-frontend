@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../css/main/Shortcut.css';
 
@@ -10,33 +11,37 @@ function Shortcut() {
     return(
         <div className='service-shortcut'>
             <h4 className='service-shortcut-title'>서비스<br />바로가기</h4>
-            <div className='shortcut-container'>
+            <nav className='shortcut-container'>
                 <ShortcutBox
+                    to='/' /* URL 연동 */
                     ico={ faCalendarCheck }
                     title='예약확인'
                 />
                 <ShortcutBox
+                    to='/'
                     ico={ faGift }
                     title='이벤트'
                 />
                 <ShortcutBox
+                    to='/'
                     ico={ faCommentDots }
                     title='상담하기'
                 />
                 <ShortcutBox
+                    to='/'
                     ico={ faFileSignature }
                     title='견적확인'
                 />
-            </div>
+            </nav>
         </div>
     );
 }
-function ShortcutBox({ ico, title }) {
+function ShortcutBox({ to, ico, title }) {
     return (
-        <div className='shortcut-box'>
+        <Link className='shortcut-box' to={to}>
             <FontAwesomeIcon icon={ ico } style={{ fontSize: "clamp(17px, 2vw, 40px)" }} />
             <p>{ title }</p>
-        </div>
+        </Link>
     );
 }
 
