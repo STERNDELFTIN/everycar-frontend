@@ -7,6 +7,9 @@
 .plan-box {
     box-shadow: 0px 4px 4.2px rgba(0, 0, 0, 0.06);
 }
+.plan-box:hover {
+    background-color: #F9FEF5;
+}
 
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
