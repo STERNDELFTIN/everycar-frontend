@@ -1,10 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import '../../css/main/PeriodPopupScreen.css';
 import CustomCalendar from './CustomCalendar.js';
-
-const SubHeadingStyle = styled.h5`margin-bottom: 5px; font-size: clamp(10px, 0.8vw, 14px);`;
+import SelectableTimeList from '../SelectableTimeList.js';
 
 function PeriodPopupScreen({ state, handler }){
 
@@ -43,10 +41,10 @@ function PeriodPopupScreen({ state, handler }){
 
                 <div className='rent-time'>
                     <div className='rent-start-time'>
-                        <SelectedTime title='대여시간' setTime={setStartTime} />
+                        <SelectableTimeList title='대여시간' setTime={setStartTime} />
                     </div>
                     <div className='rent-end-time'>
-                        <SelectedTime title='반납시간' setTime={setEndTime} />
+                        <SelectableTimeList title='반납시간' setTime={setEndTime} />
                     </div>
                 </div>
 
@@ -54,45 +52,6 @@ function PeriodPopupScreen({ state, handler }){
             </div>
         </>
     );
-}
-
-function SelectedTime({ title, setTime }) {
-    const timeList = TimeList();
-
-    return (
-        <div className='selected-time'>
-            <SubHeadingStyle>{ title }</SubHeadingStyle>
-            <select onChange={(e) => setTime(e.target.value)}>
-            <option></option>
-                {
-                    timeList.map((time, i) => (
-                        <option key={i} value={time}>
-                            {time}
-                        </option>
-                    ))
-                }
-            </select>
-        </div>
-    );
-
-}
-
- // 시간 리스트
- function TimeList() {
-    const interval = 30; // 30분 단위
-    const times = [];
-    const currentTime = new Date();
-    currentTime.setHours(0, 0, 0, 0); // 00:00
-
-    while (currentTime.getDate() === new Date().getDate() ) {
-        const hours = currentTime.getHours().toString().padStart(2, '0');
-        const minutes = currentTime.getMinutes().toString().padStart(2, '0');
-
-        times.push(`${hours}:${minutes}`);
-        currentTime.setMinutes(currentTime.getMinutes() + interval) ; // 30분 단위로 증가
-    }
-
-    return times;
 }
 
 export default PeriodPopupScreen;
