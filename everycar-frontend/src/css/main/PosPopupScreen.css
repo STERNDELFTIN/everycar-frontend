@@ -37,13 +37,17 @@
     flex: 1;
 }
 
-button {
+.pos-popup-container button {
     border: none;
     width: 15%;
     border-radius: 7px;
     margin-left: 3%;
-    background-color: #d2d2d2;
+    padding: 2px 7px;
     font-size: clamp(10px, 1.5vw, 25px);
+    background-color: #DEFF54;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
 }
 
 /* 스크롤바 */

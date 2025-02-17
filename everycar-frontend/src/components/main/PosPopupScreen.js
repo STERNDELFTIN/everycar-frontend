@@ -62,7 +62,7 @@ function PosPopupScreen({ state, handler }) {
                 )}
             </div>
 
-            <button onClick={() => { setPosPopup(false) }}>확인</button>
+            <button onClick={() => { setPosPopup(false) }}>선택완료</button>
         </div>
     );
 }
