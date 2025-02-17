@@ -17,6 +17,13 @@ function App() {
       {/* 페이지 URL */}
       <Routes>
         <Route path='/' element={<Main />}></Route>
+        
+        {/* <Route path='/speedReservation' element={<Main />}></Route>
+        <Route path='/callService' element={<Main />}></Route>
+        <Route path='/shortRent' element={<Main />}></Route>
+        <Route path='/longRent' element={<Main />}></Route>
+        <Route path='/event' element={<Main />}></Route> */}
+      
         <Route path='/productList' element={<ProductList />}></Route>
       </Routes>
 
