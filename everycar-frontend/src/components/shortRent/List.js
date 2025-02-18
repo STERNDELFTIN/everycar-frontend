@@ -1,6 +1,6 @@
 // List.js
 import React from 'react';
-import '../../css/productList/List.css';
+import '../../css/shortRent/List.css';
 
 // 차량 이미지 사이즈 360*180
 const sample = '/images/car-model/product-image-01.png';  // 샘플 이미지

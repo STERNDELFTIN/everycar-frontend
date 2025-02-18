@@ -1,6 +1,6 @@
 // Category.js
 import React, { useState } from 'react';
-import '../../css/productList/Category.css';
+import '../../css/shortRent/Category.css';
 
 function Category() {
 
