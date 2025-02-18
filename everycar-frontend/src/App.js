@@ -39,13 +39,16 @@ function App() {
           <Route path='inquiry' element={<Inquiry />}></Route>
         </Route>
 
-        <Route path='/auth'>
-          <Route path='login' element={<Login />}></Route>
-          <Route path='register' element={<Register />}></Route>
-        </Route>
-
       </Routes>
 
+      {/* 인증 관련 페이지 */}
+      <Routes>
+        <Route path='/auth'>
+            <Route path='login' element={<Login />}></Route>
+            <Route path='register' element={<Register />}></Route>
+          </Route>
+      </Routes>
+      
       {/* footer */}
       <Footer />
 
