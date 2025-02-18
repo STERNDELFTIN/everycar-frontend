@@ -20,10 +20,10 @@ function Header() {
             </div>
             <div className='center-menu'>
               <MenuLinkStyle to='/speedReservation'>빠른예약</MenuLinkStyle>
-              <MenuLinkStyle to='/callService'>부름서비스</MenuLinkStyle>
               <MenuLinkStyle to='/shortRent'>단기렌트</MenuLinkStyle>
-              <MenuLinkStyle to='/longRent'>장기렌트</MenuLinkStyle>
+              <MenuLinkStyle to='/announcement'>공지사항</MenuLinkStyle>
               <MenuLinkStyle to='/event'>이벤트</MenuLinkStyle>
+              <MenuLinkStyle to='/inquiry'>문의하기</MenuLinkStyle>
             </div>
           </div>
           

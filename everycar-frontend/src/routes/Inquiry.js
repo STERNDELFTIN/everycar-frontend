@@ -1,5 +1,5 @@
 
-function Login() {
+function Inquiry() {
 
     return (
       <>
@@ -8,4 +8,4 @@ function Login() {
     );
   };
   
-  export default Login;
+  export default Inquiry;
