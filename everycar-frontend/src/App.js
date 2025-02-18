@@ -7,6 +7,8 @@ import Main from './routes/Main';
 
 import SpeedReservation from './routes/SpeedReservation';
 import ShortRent from './routes/ShortRent';
+import CarDetail from './routes/CarDetail';
+
 import Announcement from './routes/Announcement';
 import Event from './routes/Event';
 import Inquiry from './routes/Inquiry';
@@ -30,6 +32,7 @@ function App() {
         <Route path='/reservation'>
           <Route path='speedReservation' element={<SpeedReservation />}></Route>
           <Route path='shortRent' element={<ShortRent />}></Route>
+          <Route path='carDetail/:id' element={<CarDetail />}></Route>
         </Route>
 
         {/* 고객 지원 관련 페이지 */}
@@ -39,14 +42,12 @@ function App() {
           <Route path='inquiry' element={<Inquiry />}></Route>
         </Route>
 
-      </Routes>
-
-      {/* 인증 관련 페이지 */}
-      <Routes>
+        {/* 인증 관련 페이지 */}
         <Route path='/auth'>
             <Route path='login' element={<Login />}></Route>
             <Route path='register' element={<Register />}></Route>
           </Route>
+
       </Routes>
       
       {/* footer */}
