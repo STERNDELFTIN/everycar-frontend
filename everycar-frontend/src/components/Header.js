@@ -19,17 +19,17 @@ function Header() {
               <MenuLinkStyle to='/'><img src='/logo.png' style={{ width: '138px', height: '50px' }} /></MenuLinkStyle>
             </div>
             <div className='center-menu'>
-              <MenuLinkStyle to='/speedReservation'>빠른예약</MenuLinkStyle>
-              <MenuLinkStyle to='/shortRent'>단기렌트</MenuLinkStyle>
-              <MenuLinkStyle to='/announcement'>공지사항</MenuLinkStyle>
-              <MenuLinkStyle to='/event'>이벤트</MenuLinkStyle>
-              <MenuLinkStyle to='/inquiry'>문의하기</MenuLinkStyle>
+              <MenuLinkStyle to='/reservation/speedReservation'>빠른예약</MenuLinkStyle>
+              <MenuLinkStyle to='/reservation/shortRent'>단기렌트</MenuLinkStyle>
+              <MenuLinkStyle to='/support/announcement'>공지사항</MenuLinkStyle>
+              <MenuLinkStyle to='/support/event'>이벤트</MenuLinkStyle>
+              <MenuLinkStyle to='/support/inquiry'>문의하기</MenuLinkStyle>
             </div>
           </div>
           
           <div className='right-menu'>
-            <MenuLinkStyle to='/login' className='login'>로그인</MenuLinkStyle>
-            <MenuLinkStyle to='/register' className='register'>회원가입</MenuLinkStyle>
+            <MenuLinkStyle to='/auth/login' className='login'>로그인</MenuLinkStyle>
+            <MenuLinkStyle to='/auth/register' className='register'>회원가입</MenuLinkStyle>
           </div>
         </div>
       </nav>

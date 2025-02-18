@@ -26,15 +26,24 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />}></Route>
         
-        <Route path='/speedReservation' element={<SpeedReservation />}></Route>
-        <Route path='/shortRent' element={<ShortRent />}></Route>
-        <Route path='/announcement' element={<Announcement />}></Route>
-        <Route path='/event' element={<Event />}></Route>
-        <Route path='/inquiry' element={<Inquiry />}></Route>
+        {/* 예약 관련 페이지 */}
+        <Route path='/reservation'>
+          <Route path='speedReservation' element={<SpeedReservation />}></Route>
+          <Route path='shortRent' element={<ShortRent />}></Route>
+        </Route>
 
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/register' element={<Register />}></Route>
-    
+        {/* 고객 지원 관련 페이지 */}
+        <Route path='/support'>
+          <Route path='announcement' element={<Announcement />}></Route>
+          <Route path='event' element={<Event />}></Route>
+          <Route path='inquiry' element={<Inquiry />}></Route>
+        </Route>
+
+        <Route path='/auth'>
+          <Route path='login' element={<Login />}></Route>
+          <Route path='register' element={<Register />}></Route>
+        </Route>
+
       </Routes>
 
       {/* footer */}
