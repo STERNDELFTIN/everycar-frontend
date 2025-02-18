@@ -8,7 +8,7 @@ import Plan from '../components/main/Plan.js';
 import Car from '../components/main/Car.js';
 import Popup from '../components/main/Popup.js';
 
-const TitleStyle = styled.h3`font-size: clamp(15px, 2.3vw, 50px); text-align: left; margin-bottom: 2vw; `;
+const TitleStyle = styled.h3`font-size: clamp(15px, 2.3vw, 50px); text-align: left; margin-bottom: 2.5vh; `;
 
 function Main() {
     // 렌트 장소 및 기간
