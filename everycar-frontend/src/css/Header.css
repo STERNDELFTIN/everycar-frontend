@@ -8,26 +8,29 @@
     justify-items: center;
     box-shadow: 0px 4px 3.9px rgba(0, 0, 0, 0.03);
   }
-  .menu-container, .left-menu, .center-menu, .right-menu, .register, .login { 
+  .menu-container, .left-menu, .center-menu, .right-menu, .register, .login, .left-center-group { 
     height: 100%; 
     display: flex;
     text-align: center;
     vertical-align:middle;
     align-items: center;
-    gap: 20px;
-    justify-content: space-between;
-    font-size: clamp(10px, 1vw, 20px);
+    font-size: clamp(10px, 1.3vw, 20px);
   }
   .menu-container {
     width: 72%;
+    padding: 0 5px;
+  }
+  .left-center-group {
+    width: 75%;
+    justify-content: space-between;
   }
   .left-menu {
-    width: 25%;
+    width: 27%;
     justify-content: left;
   }
   .center-menu {
     color: #2F2F2F;
-    width: 50%;
+    width: 73%;
     justify-content: space-between;
   }
   .right-menu {
@@ -37,8 +40,8 @@
     gap: 5px;
   }
   .login, .register {
-    padding-top: clamp(5px, 1vh, 10px);
-    padding-bottom: clamp(5px, 1vh, 10px);
+    padding-top: clamp(5px, 0.9vh, 10px);
+    padding-bottom: clamp(5px, 0.9vh, 10px);
     padding-left: clamp(7px, 1.1vw, 12px);
     padding-right: clamp(7px, 1.1vw, 12px);
     width: auto; height: auto;
@@ -54,53 +57,39 @@
     .menu {
       height: 65px; width: 100%;
     }
-    .menu-container, .left-menu, .center-menu, .right-menu, .register { 
-      gap: 2px;
-    }
-    .left-menu {
-      width: 20%;
-      margin-right: 10px;
-    }
     .left-menu img {
       width: 90px !important; height: auto !important;
     }
-    .center-menu {
-      width: 55%;
-      
-    }
-    .right-menu {
-      
-    }
-
   }
   @media (max-width: 768px) { /* 태블릿 */
     /* menu */
     .menu {
-      height: 70px;
+      height: auto;
     }
     .menu-container {
-      position: relative;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    .menu-container, .left-menu, .center-menu, .right-menu, .register { 
-      gap: 2px;
-    }
-    .left-menu, .center-menu {
-      margin-top: 15px;
+    .left-center-group {
+      display: flex;
+      width: 100%; height: 43px;
     }
     .left-menu {
       width: 20%;
+      order: 1;
     }
     .left-menu img {
       width: 70px !important; height: auto !important;
     }
     .center-menu {
       width: 75%;
+      order: 2;
     }
     .right-menu {
-      position: absolute;
-      height: 30px;
-      right: 0%;
-      top: 2%;
+      width: 100%;
+      padding-top: 6px;
+      order: -1; /* 맨앞으로 이동 */
     }
     .register, .login {
       font-size: clamp(10px, 0.5vw, 10px);
@@ -109,32 +98,17 @@
   @media (max-width: 480px) { /* 모바일 */
     /* menu */
     .menu {
-      height: 68px;
+      height: auto;
     }
     .menu-container {
       position: relative;
       width: 87%;
     }
-    .menu-container, .left-menu, .center-menu, .right-menu, .register { 
-      gap: 1px;
-    }
-    .left-menu, .center-menu {
-      margin-top: 12px;
-    }
-    .left-menu {
-      width: 20%;
+    .left-center-group {
+      height: 38px;
     }
     .left-menu img {
       width: 70px !important; height: auto !important;
-    }
-    .center-menu {
-      width: 70%;
-    }
-    .right-menu {
-      position: absolute;
-      height: 35px;
-      right: 0%;
-      top: -3%;
     }
     .register, .login {
       font-size: clamp(7px, 0.5vw, 10px);
