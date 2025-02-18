@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import '../../css/main/Popup.css';
 import PosPopupScreen from './PosPopupScreen.js';
 import RegionPopupScreen from './PeriodPopupScreen.js';
-import usePopupOutsideClick from '../usePopupOutsideClick.js';
+import usePopupOutsideClick from '../hooks/usePopupOutsideClick.js';
 
 
 {/* Popup */}
