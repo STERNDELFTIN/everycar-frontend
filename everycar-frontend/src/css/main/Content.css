@@ -63,7 +63,7 @@
     align-items: center;
 }
 .rent-btn button {
-    width: 100%; height: auto;
+    width: 82%; height: auto;
     background: linear-gradient(to left, #AFFF4F, #E6FF59);
     border-radius: 100px;
     border: none;
@@ -72,7 +72,7 @@
     cursor: pointer;
 }
 .rent-btn svg {
-    width: 70%; height: auto;
+    width: 65%; height: auto;
     aspect-ratio: 1 / 1;
     margin-left: 0.3vw;
 }
