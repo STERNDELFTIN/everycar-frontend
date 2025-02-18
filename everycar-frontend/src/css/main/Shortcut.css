@@ -21,9 +21,9 @@
 .shortcut-box {
     display: flex;
     flex-direction: column;
-    font-size: clamp(11px, 1.6vw, 38px);
+    font-size: clamp(10px, 1.6vw, 38px);
     text-align: center;
-    gap: clamp(10px, 0.8vw, 39px);
+    gap: clamp(8px, 0.8vw, 39px);
     cursor: pointer;
     color : #2F2F2F;
 }
