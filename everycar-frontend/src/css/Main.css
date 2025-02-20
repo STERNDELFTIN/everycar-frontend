@@ -1,7 +1,3 @@
-.Main {
-    width: 72%; height: auto;
-}
-
 /* 공통 부분 */
 .service-shortcut, .plan, .domestic-popular-car, .event { margin-bottom: 6.5vw; width: 100%; }
 
@@ -13,7 +9,5 @@
  
 }
 @media (max-width: 480px) { /* 모바일 */
-  .Main {
-    width: 87%;
-  }
+
 }
