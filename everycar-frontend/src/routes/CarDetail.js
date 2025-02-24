@@ -21,7 +21,17 @@ function CarDetail() {
     const carId = isNaN(Number(id)) ? null : Number(id); // id가 숫자가 아니라면 null 처리
     // console.log("carDetail 렌더링됨: ", id, carId);
 
+    // 사용자 입력값으로 동적 설정
+    const [rentalDatetime, setRentalDatetime] = useState("2025-02-21T10:00:00");
+    const [returnDatetime, setReturnDatetime] = useState("2025-02-21T14:00:00");
+    // const { car, loading, error } = useCar(carId, rentalDatetime, returnDatetime);
     const { car, loading, error } = useCar(carId); // 차량 정보
+
+    // 사용자가 날짜 선택 시 변경
+    const handleRentalChange = (e) => setRentalDatetime(e.target.value);
+    const handleReturnChange = (e) => setReturnDatetime(e.target.value);
+
+
     // 데이터가 없을 경우 예외처리
     if (loading) return <p>로딩 중...</p>;
     if (error) return <p>{error}</p>;
@@ -37,13 +47,13 @@ function CarDetail() {
                 <div className={styles.left}>
                     <RentTime title='대여시간' />
                     <CarInfo title='제원정보' car={car} />
-                    <CarOption title='차량옵션' />
+                    <CarOption title='차량옵션' car={car} />
                     <RentCondition title='대여조건' />
                     <ContractInfo title='계약정보' />
                 </div>
 
                 <div className={styles.right}>
-                    <ReservationInfo title={car.name} car={car} />
+                    <ReservationInfo title={car.model.model_name} car={car} />
                 </div>
             </div>
         </div>
@@ -71,20 +81,20 @@ function RentTime({ title }) {
 // 제원정보
 function CarInfo({ title, car }) {
     let carInfo = [
-        { title: '제조사', content: '내용' },
-        { title: '등급', content: car.grade },
-        { title: '변속', content: '내용' },
-        { title: '연료', content: car.fuel },
-        { title: '인원', content: car.capacity },
-        { title: '연식', content: '내용' },
+        { title: '제조사', content: car.model.model_name },
+        { title: '등급', content: car.car_grade },
+        { title: '변속', content: car.model.model_transmission },
+        { title: '연료', content: car.car_fuel },
+        { title: '인원', content: `${car.model.model_seate_num}명` },
+        { title: '연식', content: car.car_year },
     ];
 
     return (
         <div className={`${styles.carInfoContainer} ${styles.container}`}>
             <SubTitleH3>{title}</SubTitleH3>
             <div className={styles.carName}>
-                <h5>{car.name}</h5>
-                <div>Premium</div>
+                <h5>{car.model.model_name}</h5>
+                <div>{car.car_grade}</div>
             </div>
 
             <div className={styles.carInfo}>
@@ -101,8 +111,9 @@ function CarInfo({ title, car }) {
 }
 
 // 차량옵션
-function CarOption({ title }) {
-    let options = ['네비게이션', '하이패스', '블랙박스', '후방카메라', '열시트'];
+function CarOption({ title, car }) {
+    // let options = ['네비게이션', '하이패스', '블랙박스', '후방카메라', '열시트'];
+    const options = car.car_options ? car.car_options.split(",") : []; // car_options를 배열로 변환
 
     return (
         <div className={`${styles.carOptionContainer} ${styles.container}`}>
@@ -124,6 +135,7 @@ function CarOption({ title }) {
 // 운전자 대여조건
 function RentCondition({ title }) {
     let conditions = ['만26세 이상 성인', '면허 취득일로부터 1년', '2종 보통면허 이상 필요', '실물 면허증 소지자'];
+
     return (
         <div className={`${styles.rentConditionContainer} ${styles.container}`}>
             <SubTitleH3>{title}</SubTitleH3>
@@ -161,7 +173,7 @@ function ReservationInfo({ title, car }) {
     return (
         <div className={`${styles.reservationInfoContainer} ${styles.container}`}>
             <div className={styles.carImage}>
-                <img src={car.img || "/images/car-model/product-image-01.png"} alt={car.name} style={{ height: vwFont(100, 200), width: 'auto' }} />
+                <img src={car.img || "/images/car-model/product-image-01.png"} alt={car.model.model_name} style={{ height: vwFont(100, 200), width: 'auto' }} />
             </div>
 
             <div className={styles.carContent}>
@@ -172,7 +184,7 @@ function ReservationInfo({ title, car }) {
                         <p style={{ fontSize: vwFont(10, 18), fontWeight: '600', marginBottom: vwFont(10, 15)  }}>결제정보</p>
                         <div className={styles.priceInfo}>
                             <p style={{ marginLeft: '10px' }}>총대여료</p>
-                            <p style={{ fontSize: vwFont(12, 24), fontWeight: '600' }}>500,000원</p>
+                            <p style={{ fontSize: vwFont(12, 24), fontWeight: '600' }}>{car.calculatedPrice}원</p>
                         </div>
                     </div>
                     <div className={styles.buttonsContainer}>

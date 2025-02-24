@@ -1,45 +1,45 @@
 import { useState, useEffect } from "react";
 
 const useCar = (carId) => {
-  // console.log("useCar 실행됨 carId: ", carId);
-
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // console.log("useEffect 실행됨 carId: ", carId);
-
-    if (carId === null || isNaN(carId)) {
-      setLoading(false); // carId가 없을 때 로딩 상태를 false로 변경
-      // console.log("carId 유효하지 않음");
-      return;
-    }
-
     const fetchCarInfo = async () => {
+      if (!carId || carId <= 0) {
+        setLoading(false);
+        return;
+      }
 
       try {
-        const res = await fetch(`/json/cars.json?nocache=${new Date().getTime()}`); // 전체 JSON 가져오기
-        if (!res.ok) {
-          throw new Error("Failed to fetch car info.");
-        }
-        const data = await res.json();
-        // console.log("JSON 데이터: ", data);
-        
-        const carData = data.popular_cars.find(car => Number(car.id) === Number(carId)); // carId를 숫자로 변환하여 비교
-        // console.log("해당하는 차량 데이터: ", carData);
+        const queryParams = new URLSearchParams({
+          rental_datetime: "2025-02-21T10:00:00", // 대여시간
+          return_datetime: "2025-02-21T14:00:00", // 반납시간
+        }).toString();
 
-        setCar(carData || null); // 차량이 없으면 null로 설정
+        const res = await fetch(`http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error(`Failed to fetch car info. Status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        setCar(data || null);
       } catch (error) {
         setError(error.message);
-        // console.log("JSON 로드 실패");
       } finally {
-        setLoading(false); // 반드시 로딩 상태 변경
+        setLoading(false);
       }
     };
 
     fetchCarInfo();
-  }, [carId]);
+  }, [carId]); // carId가 변경될 때만 실행
 
   return { car, loading, error };
 };
