@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPosPopup, setPeriodPopup } from '../redux/rentSlice.js';
+import { setPosPopup, setPeriodPopup } from '../../redux/rentSlice.js';
 
-import '../css/Content.css';
-import Event from './main/Event.js';
+import '../../css/main/Content.css';
+import Event from './Event.js';
 
 function Content() {
     const navigate = useNavigate();

@@ -1,10 +1,9 @@
 import '../css/Main.css';
 import styled from 'styled-components';
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPosPopup, setPeriodPopup, setSelectedRegion, setSelectedCity, setStartTime, setStartDate, setEndTime, setEndDate } from '../redux/rentSlice.js';
 
-import Content from '../components/Content.js';
+import Content from '../components/main/Content.js';
 import Shortcut from '../components/main/Shortcut.js';
 import Plan from '../components/main/Plan.js';
 import Car from '../components/main/Car.js';

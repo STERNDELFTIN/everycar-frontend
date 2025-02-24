@@ -1,0 +1,95 @@
+/* Content */
+.contentContainer {
+    position: relative;
+    width: 100%; height: 100%;
+    margin-bottom: 12%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentBox {
+    width: 100vw;
+    background-color: #D9D9D9;
+    aspect-ratio: 10 / 2;
+}
+
+.title { font-size: clamp(10px, 1.2vw, 35px); color: #8F9191; }
+.content { display: flex; font-size: clamp(8px, 1.05vw, 33px); color: #2F2F2F; gap: 0.5vw; align-items: center; }
+.rentPos, .rentPeriod { display: flex; flex-direction: column; align-items:start; justify-content: center; gap: 0.7vw; }
+.rentPos p, .period { cursor: pointer; }
+
+.rentContainer {
+    display: flex;
+    position: absolute;
+    width: 88%; height: 33%;
+    background-color: #FFFFFF;  
+    border-radius: 60px;
+    box-shadow: 0px 4px 4.2px rgba(0, 0, 0, 0.06);
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    gap: 1vw;
+}
+
+.rentPos {
+    width: 25%; height: 90%;
+    margin-left: 6vw;
+}
+.rentPos svg {
+    width: 1.1vw;
+}
+
+.rentPeriod {
+    width: 60%; height: 90%;
+    margin-left: 3vw;
+}
+.rentPeriod .period {
+    display: flex;
+}
+.rentPeriod svg {
+    width: 1.3vw;
+}
+.periodWave {
+    margin: 0 3.5vw;
+}
+
+.rentBtn {
+    display: flex;
+    width: 10%; height: 80%;
+    aspect-ratio: 1 / 1;
+    margin-right: 1%;
+    align-items: center;
+}
+.rentBtn button {
+    width: 82%; height: auto;
+    background: linear-gradient(to left, #AFFF4F, #E6FF59);
+    border-radius: 100px;
+    border: none;
+    aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
+    padding-left: 7%;
+    cursor: pointer;
+}
+.rentBtn svg {
+    width: 65%; height: auto;
+    aspect-ratio: 1 / 1;
+    margin-left: 0.3vw;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+    /* Content */
+    .periodWave {
+        margin: 0 3vw;
+    }
+}
+@media (max-width: 768px) { /* 태블릿 */
+      /* Content */
+}
+@media (max-width: 480px) { /* 모바일 */
+      /* Content */
+      .periodWave {
+        margin: 0 0.6vw;
+    }
+}
