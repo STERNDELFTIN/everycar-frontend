@@ -1,8 +1,8 @@
 import React from 'react';
 
-import '../../css/main/PeriodPopupScreen.css';
+import '../css/PeriodPopupScreen.css';
 import CustomCalendar from './CustomCalendar.js';
-import SelectableTimeList from '../SelectableTimeList.js';
+import SelectableTimeList from './SelectableTimeList.js';
 
 function PeriodPopupScreen({ state, handler }){
 

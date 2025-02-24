@@ -4,8 +4,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import '../../css/main/Popup.css';
-import PosPopupScreen from './PosPopupScreen.js';
-import RegionPopupScreen from './PeriodPopupScreen.js';
+import PosPopupScreen from '../PosPopupScreen.js';
+import RegionPopupScreen from '../PeriodPopupScreen.js';
 import usePopupOutsideClick from '../hooks/usePopupOutsideClick.js';
 
 

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import '../../css/main/Plan.css';
-import Main from '../../routes/Main';
 
 {/* Everycar Rent Plan */}
 const PlanLinkStyle = styled(Link).attrs(props=>({ to:props.to, /* Link속성 유지 */ }))`width: 309px; height: auto; border-radius: 15px; padding: 25px 30px; text-align: left; background-color: #FFFFFF; color: #2F2F2F; cursor: pointer; `;

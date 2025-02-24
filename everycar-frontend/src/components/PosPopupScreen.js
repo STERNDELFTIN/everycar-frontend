@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../css/main/PosPopupScreen.css';
+import '../css/PosPopupScreen.css';
 
 function PosPopupScreen({ state, handler }) {
     const { region, city, selectedRegion, selectedCity } = state;
