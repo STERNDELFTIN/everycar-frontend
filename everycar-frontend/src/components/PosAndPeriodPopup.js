@@ -1,14 +1,13 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPosPopup, setPeriodPopup, setRegion, setCity } from '../redux/rentSlice.js';
 
-import '../css/main/Popup.css';
+import '../css/PosAndPeriodPopup.css';
 import PosPopupScreen from './PosPopupScreen.js';
 import RegionPopupScreen from './PeriodPopupScreen.js';
 import usePopupOutsideClick from './hooks/usePopupOutsideClick.js';
-
 
 {/* Popup */}
 function PosAndPeriodPopup() {
@@ -32,8 +31,8 @@ function PosAndPeriodPopup() {
     }, [dispatch]);
 
     // 팝업창 외부로 나갔을 경우, 팝업창 닫기
-    usePopupOutsideClick(posPopupRef, () => { setPosPopup(false)});
-    usePopupOutsideClick(periodPopupRef, () => { setPeriodPopup(false)});
+    usePopupOutsideClick(posPopupRef, () => { dispatch(setPosPopup(false))});
+    usePopupOutsideClick(periodPopupRef, () => { dispatch(setPeriodPopup(false))});
 
     return(
         <div>
