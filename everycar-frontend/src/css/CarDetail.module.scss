@@ -114,7 +114,7 @@ $content-margin: vw-font(10px, 33px);
 .carOptionBox {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: vw-font(20px, 50px);
 
     .carOption {
         display: flex;
