@@ -126,6 +126,20 @@ $content-margin: vw-font(10px, 33px);
     }
 }
 
+// 대여장소
+.rentLocationContainer {
+    display: flex;
+    flex-direction: column;
+    gap: vw-font(8px, 16px);
+}
+.rentPos, .rentDetailPos {
+    display: flex;
+    gap: vw-font(8px, 25px);
+}
+.greyTitle > p:nth-child(1) {
+    color: #8F9191;
+}
+
 // 운전자 대여조건
 .rentConditionContainer {
 
@@ -142,13 +156,22 @@ $content-margin: vw-font(10px, 33px);
     .contractInfoBox {
         @include grey-round-box();
         width: auto; height: auto;
+        padding: vw-font(10px, 28px) vw-font(13px, 25px);
     }
 }
 .contractTitle {
     margin-bottom: 11px;
+    font-size: vw-font(10.5px, 19.5px);
+    font-weight: 500;
 }
 .contractContent {
     color: #F21717;
+    margin-bottom: 11px;
+}
+.contractContentDetail {
+    color: #8F9191;
+    text-align: justify;
+    line-height: vw-font(14px, 19px);
 }
 
 // 우측 예약정보
@@ -178,8 +201,6 @@ $content-margin: vw-font(10px, 33px);
     justify-content: space-between;
     align-items: center;
 }
-
-
 
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import styles from '../css/CarDetail.module.scss';
 
 import useCar from "../components/hooks/useCar";
-import KakaoMap from "../components/KakaoMap";
 
 // 반응형 폰트 크기 계산 함수
 const vwFont = (min, max, baseWidth = 1920) => {
@@ -17,7 +16,7 @@ let SubTitleH3 = styled.h3`
     font-size: ${vwFont(11, 24)};
 `;
 
-function CarDetail() {
+function RentReservation() {
     const { id } = useParams(); // URL에 입력한 id
     const carId = isNaN(Number(id)) ? null : Number(id); // id가 숫자가 아니라면 null 처리
     // console.log("carDetail 렌더링됨: ", id, carId);
@@ -34,7 +33,7 @@ function CarDetail() {
 
     // 기본 차량 데이터 설정
     const defaultCarInfo = {
-        model: { model_name: "미등록", model_transmission: "자동", model_seate_num: "4" },
+        model: { model_name: "미등록 차량", model_transmission: "자동", model_seate_num: "4" },
         car_grade: "미정",
         car_fuel: "가솔린",
         car_year: "2023",
@@ -43,17 +42,13 @@ function CarDetail() {
         calculatedPrice: "0", // 기본 가격
     };
 
-    // 데이터가 없을 경우 기본값 설정
+    // 기본 차량 데이터 설정
     const carData = car && car.model ? car : defaultCarInfo;
 
     // 데이터가 없을 경우 예외처리
     if (loading) return <p>로딩 중...</p>;
     if (error) return <p>{error}</p>;
     // if (!car) return <p>해당 차량을 찾을 수 없습니다.</p>;
-
-    // 렌트 위치 좌표 (서울 강남역)
-    const latitude = 37.497942;
-    const longitude = 127.027621;
 
     return (
         <div className={styles.carDetail}>
@@ -64,9 +59,8 @@ function CarDetail() {
             <div className={styles.carDetailContainer}>
                 <div className={styles.left}>
                     <RentTime title='대여시간' />
-                    <CarInfo title='제원정보' car={carData} />
-                    <CarOption title='차량옵션' car={carData} />
-                    <RentLocation title='대여장소' car={carData} latitude={latitude} longitude={longitude} />
+                    <CarInfo title='제원정보' car={car} />
+                    <CarOption title='차량옵션' car={car} />
                     <RentCondition title='대여조건' />
                     <ContractInfo title='계약정보' />
                 </div>
@@ -151,26 +145,6 @@ function CarOption({ title, car }) {
     );
 }
 
-// 대여장소
-function RentLocation({ title, car, latitude, longitude }) {
-    return (
-        <div className={`${styles.rentLocationContainer} ${styles.container}`}>
-            <SubTitleH3>{title}</SubTitleH3>
-            <div id="map" className={styles.map} style={{ width:'100%', height:'auto', aspectRatio:'16/7' }}>
-                <KakaoMap latitude={latitude} longitude={longitude} />
-            </div>
-            <div className={`${styles.rentPos} ${styles.greyTitle}`}>
-                <p>대여장소</p>
-                <p>기계공고 사거리</p>
-            </div>
-            <div className={`${styles.rentDetailPos} ${styles.greyTitle}`}>
-                <p>상세주소</p>
-                <p>경기도 평택시 비전동 626-11</p>
-            </div>
-        </div>
-    );
-}
-
 // 운전자 대여조건
 function RentCondition({ title }) {
     let conditions = ['만26세 이상 성인', '면허 취득일로부터 1년', '2종 보통면허 이상 필요', '실물 면허증 소지자'];
@@ -202,7 +176,6 @@ function ContractInfo({ title }) {
             <div className={styles.contractInfoBox}>
                 <p className={styles.contractTitle}>보험</p>
                 <p className={styles.contractContent}>면허 취득일로부터 1년이 지난 만26세 이상의 성인부터 대여할 수 있습니다.</p>
-                <p className={styles.contractContentDetail}>이곳은 더미 텍스트입니다. 실제 콘텐츠가 들어갈 자리를 표시하기 위해 작성된 임시 문장입니다. 웹사이트 또는 애플리케이션 개발 과정에서 디자인을 확인하거나 레이아웃을 테스트할 때 활용됩니다. 이 문장은 의미 없는 일반적인 문구로, 사용자가 읽을 필요 없이 시각적인 균형을 맞추는 데 초점을 맞추고 있습니다. 필요한 경우 이 부분을 실제 콘텐츠를 교체하여 최종적인 형태를 완성할 수 있습니다.</p>
             </div>
         </div>
     );
@@ -237,4 +210,4 @@ function ReservationInfo({ title, car }) {
     );
 }
 
-export default CarDetail;
+export default RentReservation;

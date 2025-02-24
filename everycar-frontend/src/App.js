@@ -17,6 +17,7 @@ import Inquiry from './routes/Inquiry';
 
 import Login from './routes/Login';
 import Register from './routes/Register';
+import RentReservation from './routes/RentReservation';
 
 let PageStyle = styled.div`
   width: 72%;
@@ -44,8 +45,9 @@ function App() {
           <Route path='/reservation'>
             <Route path='speedReservation' element={<SpeedReservation />}></Route>
             <Route path='shortRent' element={<ShortRent />}></Route>
-            <Route path='shortRentList' element={<ShortRentList/>}></Route>
+            <Route path='shortRentList' element={<ShortRentList />}></Route>
             <Route path='carDetail/:id' element={<CarDetail />}></Route>
+            <Route path='rentReservation' element={<RentReservation /> }></Route>
           </Route>
 
           {/* 고객 지원 관련 페이지 */}
