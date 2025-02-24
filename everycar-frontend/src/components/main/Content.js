@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
@@ -7,8 +8,14 @@ import Event from './Event.js';
 
 {/* Content */}
 function Content({ state, handler }) {
+    const navigate = useNavigate();
+
     const {selectedRegion, selectedCity, startDate, endDate, startTime, endTime, posPopup, periodPopup} = state;
     const {setPosPopup, setPeriodPopup} = handler;
+    
+    const moveSpeedReservationHandler = () => {
+        navigate('/speedReservation', { state });
+    };
 
     return(
         <div className='content-container'>
@@ -51,7 +58,7 @@ function Content({ state, handler }) {
                 </div>
 
                 <div className='rent-btn'>
-                    <button>
+                    <button onClick={moveSpeedReservationHandler}>
                         <div className='arow'>
                             <svg width="24" height="41" viewBox="0 0 24 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.5 2L20.5 20.5L2.5 39" stroke="#252736" strokeWidth="4" strokeLinecap="round"/>
