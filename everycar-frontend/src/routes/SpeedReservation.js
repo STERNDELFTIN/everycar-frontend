@@ -17,7 +17,7 @@ function SpeedReservation() {
         <div>
             {/* Redux로 상태를 관리하므로 props 없이 사용 */}
             <Popup />
-            <Rent />
+            <Rent clickButtonPage="/speedReservation" />
         </div>
     );
 }

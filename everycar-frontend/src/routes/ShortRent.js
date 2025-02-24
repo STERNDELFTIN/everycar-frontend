@@ -1,15 +1,25 @@
-import '../css/ShortRent.css';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setReservationType } from '../redux/rentSlice.js';
 
-import Category from '../components/shortRent/Category';
-import List from '../components/shortRent/List';
+import Popup from '../components/PosAndPeriodPopup.js';
+import Rent from '../components/Rent.js';
 
 function ShortRent() {
+    const dispatch = useDispatch();
+
+    // 페이지 진입 시 `reservationType`을 "short-trem"로 설정
+    useEffect(() => {
+        dispatch(setReservationType("short-trem"));
+    }, [dispatch]);
+
     return (
-        <div className="ProductList">
-            <Category />
-            <List />
+        <div>
+            {/* Redux로 상태를 관리하므로 props 없이 사용 */}
+            <Popup />
+            <Rent page="/reservation/shortRentList" />
         </div>
     );
-};
+}
 
 export default ShortRent;

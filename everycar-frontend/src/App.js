@@ -8,6 +8,7 @@ import Main from './routes/Main';
 
 import SpeedReservation from './routes/SpeedReservation';
 import ShortRent from './routes/ShortRent';
+import ShortRentList from './routes/ShortRentList';
 import CarDetail from './routes/CarDetail';
 
 import Announcement from './routes/Announcement';
@@ -43,6 +44,7 @@ function App() {
           <Route path='/reservation'>
             <Route path='speedReservation' element={<SpeedReservation />}></Route>
             <Route path='shortRent' element={<ShortRent />}></Route>
+            <Route path='shortRentList' element={<ShortRentList/>}></Route>
             <Route path='carDetail/:id' element={<CarDetail />}></Route>
           </Route>
 

@@ -64,7 +64,7 @@
 }
 .rent-btn button {
     width: 82%; height: auto;
-    background: linear-gradient(to left, #AFFF4F, #E6FF59);
+    /* background: linear-gradient(to left, #AFFF4F, #E6FF59); */
     border-radius: 100px;
     border: none;
     aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
@@ -75,6 +75,14 @@
     width: 65%; height: auto;
     aspect-ratio: 1 / 1;
     margin-left: 0.3vw;
+}
+
+/* 버튼 활성화/비활성화 색상 */
+.disabled-btn {
+    background: #f3f3f3;
+}
+.active-btn {
+    background: linear-gradient(to left, #AFFF4F, #E6FF59);
 }
 
 /* 미디어 쿼리 */
