@@ -1,0 +1,42 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+// 초기 상태
+const initialState = {
+    posPopup: false,
+    periodPopup: false,
+    selectedRegion: null,
+    selectedCity: null,
+    startDate: null,
+    endDate: null,
+    startTime: null,
+    endTime: null,
+    reservationType: "speed", // 기본 예약 타입 설정
+    region: [],
+    city: [],
+};
+
+const rentSlice = createSlice({
+    name: 'rent',
+    initialState,
+    reducers: {
+        setPosPopup: (state, action) => { state.posPopup = action.payload; },
+        setPeriodPopup: (state, action) => { state.periodPopup = action.payload; },
+        setSelectedRegion: (state, action) => { state.selectedRegion = action.payload; },
+        setSelectedCity: (state, action) => { state.selectedCity = action.payload; },
+        setStartDate: (state, action) => { state.startDate = action.payload; },
+        setEndDate: (state, action) => { state.endDate = action.payload; },
+        setStartTime: (state, action) => { state.startTime = action.payload; },
+        setEndTime: (state, action) => { state.endTime = action.payload; },
+        setReservationType: (state, action) => { state.reservationType = action.payload; },
+        setRegion: (state, action) => { state.region = action.payload; },
+        setCity: (state, action) => { state.city = action.payload; },
+    },
+});
+
+export const {
+    setPosPopup, setPeriodPopup, setSelectedRegion, setSelectedCity,
+    setStartDate, setEndDate, setStartTime, setEndTime,
+    setReservationType, setRegion, setCity
+} = rentSlice.actions;
+
+export default rentSlice.reducer;

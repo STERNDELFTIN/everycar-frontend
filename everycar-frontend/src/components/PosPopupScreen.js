@@ -1,19 +1,21 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSelectedCity, setSelectedRegion, setCity, setRegion, setPosPopup } from '../redux/rentSlice';
 
 import '../css/PosPopupScreen.css';
 
 function PosPopupScreen({ state, handler }) {
-    const { region, city, selectedRegion, selectedCity } = state;
-    const { setRegion, setCity, setSelectedCity, setSelectedRegion, setPosPopup } = handler;
+    // Redux 상태 불러오기
+    const dispatch = useDispatch();
+    const { region, city, selectedRegion, selectedCity } = useSelector((state) => state.rent);
 
     const handleRegionClick = (region) => {
-        setSelectedCity(null);
-
-        setSelectedRegion(region.region);
-        setCity(region.cities);
+        dispatch(setSelectedRegion(region.region));
+        dispatch(setCity(region.cities));
+        dispatch(setSelectedCity(null));
     };
     const handleCityClick = (selectedCity) => {
-        setSelectedCity(selectedCity.city || selectedCity); // 객체면 도시 이름 사용
+        dispatch(setSelectedCity(selectedCity.city || selectedCity)); // 객체면 도시 이름 사용
     };
 
     return (
@@ -62,7 +64,7 @@ function PosPopupScreen({ state, handler }) {
                 )}
             </div>
 
-            <button onClick={() => { setPosPopup(false) }}>선택완료</button>
+            <button onClick={() => { dispatch(setPosPopup(false)) }}>선택완료</button>
         </div>
     );
 }

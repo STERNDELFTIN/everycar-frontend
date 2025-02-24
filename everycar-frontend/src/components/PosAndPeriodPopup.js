@@ -1,26 +1,24 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { setPosPopup, setPeriodPopup, setRegion, setCity } from '../redux/rentSlice.js';
 
-import '../../css/main/Popup.css';
-import PosPopupScreen from '../PosPopupScreen.js';
-import RegionPopupScreen from '../PeriodPopupScreen.js';
-import usePopupOutsideClick from '../hooks/usePopupOutsideClick.js';
+import '../css/main/Popup.css';
+import PosPopupScreen from './PosPopupScreen.js';
+import RegionPopupScreen from './PeriodPopupScreen.js';
+import usePopupOutsideClick from './hooks/usePopupOutsideClick.js';
 
 
 {/* Popup */}
-function Popup({state, handler}) {
-    const { selectedRegion, selectedCity, startDate, endDate, startTime, endTime, posPopup, periodPopup } = state;
-    const { setPosPopup, setPeriodPopup, setSelectedRegion, setSelectedCity, setStartDate, setStartTime, setEndDate, setEndTime } = handler;
+function PosAndPeriodPopup() {
+    // Redux 상태 불러오기
+    const dispatch = useDispatch();
+    const { posPopup, periodPopup, region, city, reservationType } = useSelector((state) => state.rent);
 
     // 렌트 장소 및 기간
     const posPopupRef = useRef(null); // 장소 팝업 참조
     const periodPopupRef = useRef(null); // 기간 팝업 참조
-
-    // 지역
-    const [region, setRegion] = useState([]);
-    const [city, setCity] = useState([]);
 
     // 렌트위치 데이터 불러오기
     useEffect(() => {
@@ -31,7 +29,7 @@ function Popup({state, handler}) {
         .catch(error => {
             console.error("데이터 불러오기 실패: ", error);
         });
-    }, []);
+    }, [dispatch]);
 
     // 팝업창 외부로 나갔을 경우, 팝업창 닫기
     usePopupOutsideClick(posPopupRef, () => { setPosPopup(false)});
@@ -44,10 +42,7 @@ function Popup({state, handler}) {
                     (
                         <div className='popup-bg'>
                             <div  ref={posPopupRef}>
-                                <PosPopupScreen
-                                    state={{ region, city, selectedRegion, selectedCity }} 
-                                    handler={{ setRegion, setCity, setSelectedCity, setSelectedRegion, setPosPopup }}
-                                />
+                                <PosPopupScreen />
                             </div>
                         </div>
                     ) 
@@ -59,8 +54,7 @@ function Popup({state, handler}) {
                         <div className='popup-bg'>
                             <div ref={periodPopupRef}>
                                 <RegionPopupScreen
-                                    state = {{ startDate, endDate, startTime, endTime }}
-                                    handler={{ setStartDate, setEndDate, setStartTime, setEndTime, setPeriodPopup }} 
+                                    reservationType = {reservationType}
                                 />
                             </div>
                         </div>
@@ -70,4 +64,4 @@ function Popup({state, handler}) {
     );
 }
 
-export default Popup;
+export default PosAndPeriodPopup;
