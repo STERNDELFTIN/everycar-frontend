@@ -4,6 +4,12 @@ import styled from "styled-components";
 import styles from '../css/CarDetail.module.scss';
 
 import useCar from "../components/hooks/useCar";
+import CarInfo from "../components/rent-detail/CarInfo";
+import CarOption from "../components/rent-detail/CarOption";
+import ContractInfo from "../components/rent-detail/ContractInfo";
+import RentCondition from "../components/rent-detail/RentCondition";
+import RentTime from "../components/rent-detail/RentTime";
+import ReservationInfo from "../components/rent-detail/ReservationInfo";
 
 // 반응형 폰트 크기 계산 함수
 const vwFont = (min, max, baseWidth = 1920) => {
@@ -58,152 +64,15 @@ function RentReservation() {
 
             <div className={styles.carDetailContainer}>
                 <div className={styles.left}>
-                    <RentTime title='대여시간' />
-                    <CarInfo title='제원정보' car={car} />
-                    <CarOption title='차량옵션' car={car} />
-                    <RentCondition title='대여조건' />
-                    <ContractInfo title='계약정보' />
+                    <RentTime title='대여시간' SubTitleH3={SubTitleH3} vwFont={vwFont} />
+                    <CarInfo title='제원정보' car={car} SubTitleH3={SubTitleH3} />
+                    <CarOption title='차량옵션' car={car} SubTitleH3={SubTitleH3} vwFont={vwFont}/>
+                    <RentCondition title='대여조건' SubTitleH3={SubTitleH3} />
+                    <ContractInfo title='계약정보' SubTitleH3={SubTitleH3} />
                 </div>
 
                 <div className={styles.right}>
-                    <ReservationInfo title={carData.model.model_name} car={carData} />
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// 대여시간
-function RentTime({ title }) {
-    return (
-        <div className={`${styles.rentTimeContainer} ${styles.container}`}>
-            <SubTitleH3>{title}</SubTitleH3>
-            <div className={styles.rentTime}>
-                <div className={styles.startRent}>
-                    <span className={styles.startDate}>2025. 01. 01</span><span className={styles.startTime}>10:00</span>
-                </div>
-                <img src="/images/icons/car-shape-icon.png" alt="Not Found" style={{ width: `${vwFont(10, 30)}`, height: `${vwFont(10, 30)}` }} />
-                <div className={styles.endRent}>
-                    <span className={styles.endDate}>2025. 01. 03</span><span className={styles.endTime}>12:00</span>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// 제원정보
-function CarInfo({ title, car }) {
-    let carInfo = [
-        { title: '제조사', content: car.model.model_name },
-        { title: '등급', content: car.car_grade },
-        { title: '변속', content: car.model.model_transmission },
-        { title: '연료', content: car.car_fuel },
-        { title: '인원', content: `${car.model.model_seate_num}명` },
-        { title: '연식', content: car.car_year },
-    ];
-
-    return (
-        <div className={`${styles.carInfoContainer} ${styles.container}`}>
-            <SubTitleH3>{title}</SubTitleH3>
-            <div className={styles.carName}>
-                <h5>{car.model.model_name}</h5>
-                <div>{car.car_grade}</div>
-            </div>
-
-            <div className={styles.carInfo}>
-                {
-                    carInfo.map((item, i) =>
-                        <div key={i} className={styles.carInfoItem}>
-                            <p className={styles.carInfoTitle} style={{ width: '40%' }}>{item.title}</p><p className={styles.carInfoContent} style={{ width: '50%' }}>{item.content}</p>
-                        </div>
-                    )
-                }
-            </div>
-        </div>
-    )
-}
-
-// 차량옵션
-function CarOption({ title, car }) {
-    // let options = ['네비게이션', '하이패스', '블랙박스', '후방카메라', '열시트'];
-    const options = car.car_options ? car.car_options.split(",") : []; // car_options를 배열로 변환
-
-    return (
-        <div className={`${styles.carOptionContainer} ${styles.container}`}>
-            <SubTitleH3>{title}</SubTitleH3>
-            <div className={styles.carOptionBox}>
-                {
-                    options.map((item, i) =>
-                        <div key={i} className={styles.carOption}>
-                            <img src="/images/icons/car-option-icon.png" alt="Not Found" style={{ width: vwFont(25, 60), height: vwFont(25, 60) }} />
-                            <p>{item}</p>
-                        </div>
-                    )
-                }
-            </div>
-        </div>
-    );
-}
-
-// 운전자 대여조건
-function RentCondition({ title }) {
-    let conditions = ['만26세 이상 성인', '면허 취득일로부터 1년', '2종 보통면허 이상 필요', '실물 면허증 소지자'];
-
-    return (
-        <div className={`${styles.rentConditionContainer} ${styles.container}`}>
-            <SubTitleH3>{title}</SubTitleH3>
-            <div>
-                {
-                    conditions.map((item, i) =>
-                        <div key={i} className={styles.rentCondition}>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.3337 4L6.00033 11.3333L2.66699 8" stroke="#5A5A5A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <p>{item}</p>
-                        </div>
-                    )
-                }
-            </div>
-        </div>
-    );
-}
-
-// 계약정보
-function ContractInfo({ title }) {
-    return (
-        <div className={`${styles.contractInfoContainer} ${styles.container}`}>
-            <SubTitleH3>{title}</SubTitleH3>
-            <div className={styles.contractInfoBox}>
-                <p className={styles.contractTitle}>보험</p>
-                <p className={styles.contractContent}>면허 취득일로부터 1년이 지난 만26세 이상의 성인부터 대여할 수 있습니다.</p>
-            </div>
-        </div>
-    );
-}
-
-// 우측 예약정보
-function ReservationInfo({ title, car }) {
-    return (
-        <div className={`${styles.reservationInfoContainer} ${styles.container}`}>
-            <div className={styles.carImage}>
-                <img src={car.img || "/images/car-model/product-image-01.png"} alt={car.model.model_name} style={{ height: vwFont(100, 200), width: 'auto' }} />
-            </div>
-
-            <div className={styles.carContent}>
-                <SubTitleH3 className={styles.subTitle}>{title}</SubTitleH3>
-                <div className={styles.line} style={{ border: '1px solid #D9D9D9', marginBottom: vwFont(10, 15) }}></div>
-                <div className={styles.carInfoBox}>
-                    <div className={styles.priceInfoBox} style={{ marginBottom: vwFont(10, 15) }}>
-                        <p style={{ fontSize: vwFont(10, 18), fontWeight: '600', marginBottom: vwFont(10, 15) }}>결제정보</p>
-                        <div className={styles.priceInfo}>
-                            <p style={{ marginLeft: '10px' }}>총대여료</p>
-                            <p style={{ fontSize: vwFont(12, 24), fontWeight: '600' }}>{car.calculatedPrice}원</p>
-                        </div>
-                    </div>
-                    <div className={styles.buttonsContainer}>
-                        <button className={styles.counselButton}>상담신청</button>
-                        <button className={styles.reservationButton}>예약하기</button>
-                    </div>
+                    <ReservationInfo title={carData.model.model_name} car={carData} SubTitleH3={SubTitleH3} />
                 </div>
             </div>
         </div>
