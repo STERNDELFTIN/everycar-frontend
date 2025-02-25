@@ -33,3 +33,43 @@
         margin-right: cv.vw-font(5px, 13px);
     }
 }
+
+// rentReservation 전용 스타일
+.hide {
+    display: none;
+}
+.rentReservationStyle {
+    .carInfoItem {
+        width: calc(50% - 10px);
+        padding: cv.vw-font(8px, 10px) cv.vw-font(6px, 12px);
+
+        .carInfoTitle {
+            margin-right: 5px;
+        }
+    }
+}
+
+// 미디어 쿼리
+@media (max-width: 1200px) {
+    .rentReservationStyle {
+        .carInfoItem {
+            .carInfoTitle {
+                margin-right: 3px;
+            }
+        }
+    }
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .rentReservationStyle {
+        .carInfoItem {
+            width: calc(33.33% - 10px);
+    
+            .carInfoTitle {
+                margin-right: 3px;
+            }
+        }
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}

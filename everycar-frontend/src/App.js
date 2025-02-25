@@ -10,6 +10,7 @@ import SpeedReservation from './routes/SpeedReservation';
 import ShortRent from './routes/ShortRent';
 import ShortRentList from './routes/ShortRentList';
 import CarDetail from './routes/CarDetail';
+import RentReservation from './routes/RentReservation';
 
 import Announcement from './routes/Announcement';
 import Event from './routes/Event';
@@ -17,7 +18,6 @@ import Inquiry from './routes/Inquiry';
 
 import Login from './routes/Login';
 import Register from './routes/Register';
-import RentReservation from './routes/RentReservation';
 
 let PageStyle = styled.div`
   width: 72%;
@@ -39,28 +39,28 @@ function App() {
       {/* 페이지 URL */}
       <PageStyle>
         <Routes>
-          <Route path='/' element={<Main />}></Route>
+          <Route path='/' element={<Main />} />
           
           {/* 예약 관련 페이지 */}
           <Route path='/reservation'>
-            <Route path='speedReservation' element={<SpeedReservation />}></Route>
-            <Route path='shortRent' element={<ShortRent />}></Route>
-            <Route path='shortRentList' element={<ShortRentList />}></Route>
-            <Route path='carDetail/:id' element={<CarDetail />}></Route>
-            <Route path='rentReservation' element={<RentReservation /> }></Route>
+            <Route path='speedReservation' element={<SpeedReservation />} />
+            <Route path='shortRent' element={<ShortRent />} />
+            <Route path='shortRentList' element={<ShortRentList />} />
+            <Route path='carDetail/:id' element={<CarDetail />} />
+            <Route path='rentReservation' element={<RentReservation /> } />
           </Route>
 
           {/* 고객 지원 관련 페이지 */}
           <Route path='/support'>
-            <Route path='announcement' element={<Announcement />}></Route>
-            <Route path='event' element={<Event />}></Route>
-            <Route path='inquiry' element={<Inquiry />}></Route>
+            <Route path='announcement' element={<Announcement />} />
+            <Route path='event' element={<Event />} />
+            <Route path='inquiry' element={<Inquiry />} />
           </Route>
 
           {/* 인증 관련 페이지 */}
           <Route path='/auth'>
-              <Route path='login' element={<Login />}></Route>
-              <Route path='register' element={<Register />}></Route>
+              <Route path='login' element={<Login />} />
+              <Route path='register' element={<Register />} />
             </Route>
 
         </Routes>

@@ -1,0 +1,106 @@
+@use '../common/commonVariables.scss' as cv;
+@use '../rentDetail/variables.scss' as v;
+
+.carDetail {
+    color: v.$primary-color;
+    font-size: v.$content-font-size;
+    margin-top: cv.vw-font(20px, 30px);
+    margin-bottom: cv.vw-font(20px, 30px);
+    text-align: left;
+
+    .mainTitle h2 {
+        font-size: cv.vw-font(12px, 32px);
+        margin-bottom: cv.vw-font(15px, 25px);
+        margin-left: cv.vw-font(5px, 10px);
+    }
+}
+
+// 컨테이너 간의 공통간격
+.left > * {
+    margin-bottom: cv.vw-font(20px, 55px);
+}
+
+.carDetailContainer {
+    display: flex;
+    gap: cv.vw-font(13px, 27px);
+    .left {
+        @include v.white-round-box;
+        width: 56%; height: auto;
+    }
+    .right {
+        @include v.white-round-box;
+        width: 44%;
+        height: min-content; // 콘텐츠의 양만큼 높이 자동으로 조절
+    }
+}
+
+// 결제 버튼 스타일
+.paymentButton {
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #AFFF4F;
+    padding: cv.vw-font(8px, 15px) 0;
+    margin-bottom: 0;
+}
+
+// 우측 차량 이름 및 등급 스타일
+.carTitle {
+    display: flex;
+    gap: 10px;
+    h3, .carGrade {
+        display: flex;
+        text-align: center;
+        vertical-align: middle;
+        align-items: center;
+        justify-content: center;
+    }
+    .carGrade {
+        border-radius: 50px;
+        background: linear-gradient(to right, #AFFF4F, #E6FA33, #FFF826);
+        padding: cv.vw-font(3px, 5px) cv.vw-font(7px, 10px);
+    }
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+  
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .carDetailContainer {
+        flex-direction: column;
+    }
+    .left {
+        width: 100% !important; height: auto;
+        order: 2;
+    }
+    .right {
+        width: 100% !important; height: auto;
+        order: 1;
+    }
+
+    .reservationInfoContainer {
+        display: flex;
+        margin: 0;
+        gap: 20px;
+        .carImage, .subTitle, .line, .priceInfoBox, .buttonsContainer { margin: 0; }
+
+        .carImage {
+            width: 40%;
+            align-items: center;
+        }
+        .carContent {
+            width: 60%;
+        }
+        .line { 
+            margin-top: 5px;
+        }
+        .buttonsContainer > button{
+            padding: 5px 0px;
+        }
+    }
+
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}
