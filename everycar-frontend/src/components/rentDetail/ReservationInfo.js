@@ -1,7 +1,8 @@
 import styles from '../../css/rentDetail/ReservationInfo.module.scss';
+import { vwFont } from '../../utils';
 
 // 우측 예약정보
-function ReservationInfo({ title, car, SubTitleH3, vwFont }) {
+function ReservationInfo({ title, car, SubTitleH3 }) {
     return (
         <div className={`${styles.reservationInfoContainer} ${styles.container}`}>
             <div className={styles.carImage}>

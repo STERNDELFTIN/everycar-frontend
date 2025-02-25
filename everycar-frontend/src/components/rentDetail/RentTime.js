@@ -1,7 +1,8 @@
 import styles from '../../css/rentDetail/RentTime.module.scss';
+import { vwFont } from '../../utils';
 
 // 대여시간
-function RentTime({ title, SubTitleH3, vwFont }) {
+function RentTime({ title, SubTitleH3 }) {
     return (
         <div className={`${styles.rentTimeContainer} ${styles.container}`}>
             <SubTitleH3>{title}</SubTitleH3>

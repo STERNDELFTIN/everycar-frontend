@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import styles from '../css/routes/CarDetail.module.scss';
+import { vwFont } from '../utils';
 
 import useCar from "../components/hooks/useCar";
 import CarInfo from "../components/rentDetail/CarInfo";
@@ -11,11 +12,6 @@ import ContractInfo from "../components/rentDetail/ContractInfo";
 import RentCondition from "../components/rentDetail/RentCondition";
 import RentTime from "../components/rentDetail/RentTime";
 import ReservationInfo from "../components/rentDetail/ReservationInfo";
-
-// 반응형 폰트 크기 계산 함수
-const vwFont = (min, max, baseWidth = 1920) => {
-    return `clamp(${min}px, calc(${max} / ${baseWidth} * 100vw), ${max}px)`;
-};
 
 // 부제목 스타일
 let SubTitleH3 = styled.h3`
@@ -69,16 +65,16 @@ function CarDetail() {
 
             <div className={styles.carDetailContainer}>
                 <div className={styles.left}>
-                    <RentTime title='대여시간' SubTitleH3={SubTitleH3} vwFont={vwFont} />
+                    <RentTime title='대여시간' SubTitleH3={SubTitleH3} />
                     <CarInfo title='제원정보' car={carData} SubTitleH3={SubTitleH3} />
-                    <CarOption title='차량옵션' car={carData} SubTitleH3={SubTitleH3} vwFont={vwFont} />
+                    <CarOption title='차량옵션' car={carData} SubTitleH3={SubTitleH3} />
                     <RentLocation title='대여장소' car={carData} latitude={latitude} longitude={longitude} SubTitleH3={SubTitleH3} />
                     <RentCondition title='대여조건' SubTitleH3={SubTitleH3} />
                     <ContractInfo title='계약정보' SubTitleH3={SubTitleH3} />
                 </div>
 
                 <div className={styles.right}>
-                    <ReservationInfo title={carData.model.model_name} car={carData} SubTitleH3={SubTitleH3} vwFont={vwFont} />
+                    <ReservationInfo title={carData.model.model_name} car={carData} SubTitleH3={SubTitleH3} />
                 </div>
             </div>
         </div>

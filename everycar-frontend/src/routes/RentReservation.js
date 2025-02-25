@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 import styles from '../css/routes/RentReservation.module.scss';
+import { vwFont } from "../utils";
 
 import useCar from "../components/hooks/useCar";
 import CarInfo from "../components/rentDetail/CarInfo";
@@ -11,11 +12,6 @@ import RentTime from "../components/rentDetail/RentTime";
 import ReturnLocation from "../components/rentDetail/ReturnLocation";
 import PaymentType from "../components/rentDetail/PaymentType";
 import TermsOfUse from "../components/rentDetail/TermsOfUse";
-
-// 반응형 폰트 크기 계산 함수
-const vwFont = (min, max, baseWidth = 1920) => {
-    return `clamp(${min}px, calc(${max} / ${baseWidth} * 100vw), ${max}px)`;
-};
 
 // 부제목 스타일
 let SubTitleH3 = styled.h3`
@@ -69,12 +65,12 @@ function RentReservation() {
 
             <div className={styles.carDetailContainer}>
                 <div className={styles.left}>
-                    <RentTime title='이용시간' SubTitleH3={SubTitleH3} vwFont={vwFont} />
+                    <RentTime title='이용시간' SubTitleH3={SubTitleH3} />
                     <RentLocation title='대여장소' car={carData} latitude={latitude} longitude={longitude} SubTitleH3={SubTitleH3} />
-                    {/* <ReturnLocation title='반납장소' SubTitleH3={SubTitleH3} />
+                    <ReturnLocation title='반납장소' SubTitleH3={SubTitleH3} />
                     <TermsOfUse title='이용약관' SubTitleH3={SubTitleH3} />
-                    <PaymentType title='결제' SubTitleH3={SubTitleH3} /> */}
-                    <button className={styles.paymentButton}>총 {carData.calculatedPrice}원 결제하기</button>
+                    <PaymentType title='결제' SubTitleH3={SubTitleH3} />
+                    <button style={{cursor: 'pointer'}}className={styles.paymentButton}>총 {carData.calculatedPrice}원 결제하기</button>
                 </div>
 
                 <div className={styles.right}>
@@ -89,7 +85,7 @@ function RentReservation() {
 
                     <CarInfo title='제원정보' car={carData} SubTitleH3={SubTitleH3} isHide={true} styleType='rentReservationStyle' />
                     <div style={{ marginBottom: vwFont(10, 20), }}></div>
-                    <CarOption title='차량옵션' car={carData} SubTitleH3={SubTitleH3} vwFont={vwFont} />
+                    <CarOption title='차량옵션' car={carData} SubTitleH3={SubTitleH3} />
                 </div>
             </div>
         </div>

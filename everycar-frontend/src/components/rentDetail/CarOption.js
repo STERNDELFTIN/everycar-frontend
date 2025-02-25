@@ -1,7 +1,8 @@
 import styles from '../../css/rentDetail/CarOption.module.scss';
+import { vwFont } from '../../utils';
 
 // 차량옵션
-function CarOption({ title, car, SubTitleH3, vwFont }) {
+function CarOption({ title, car, SubTitleH3 }) {
     // let options = ['네비게이션', '하이패스', '블랙박스', '후방카메라', '열시트'];
     const options = car.car_options ? car.car_options.split(",") : []; // car_options를 배열로 변환
 

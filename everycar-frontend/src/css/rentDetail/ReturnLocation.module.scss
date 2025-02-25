@@ -1,3 +1,51 @@
 @use '../common//commonVariables.scss' as cv;
 @use './variables.scss' as v;
 
+// 옵션
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.optionBox {
+    display: flex;
+    gap: 5px;
+
+    .optionRadioBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        vertical-align: middle;
+    }
+    p { color: v.$grey-color; }
+}
+
+// 반납장소 select
+.returnOptionContainer {
+    margin-left: cv.vw-font(15px, 20px);
+}
+
+.cityRegion {
+    display: flex;
+    gap: cv.vw-font(15px, 30px);
+    div {
+        display: flex;
+        flex-direction: column;
+        width: calc(50% - 10px);
+    }
+}
+select {
+    width: 100%;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    color: v.$grey-color;
+    padding: cv.vw-font(7px, 14px) cv.vw-font(8px, 17px);
+    font-size: cv.vw-font(10px, 16px);
+}
+
+.returnPosition {
+    display: flex;
+    flex-direction: column;
+    gap: cv.vw-font(9.5px, 10px);
+}
