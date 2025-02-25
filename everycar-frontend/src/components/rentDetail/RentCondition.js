@@ -1,4 +1,4 @@
-import styles from '../../css/CarDetail.module.scss';
+import styles from '../../css/routes/CarDetail.module.scss';
 
 // 운전자 대여조건
 function RentCondition({ title, SubTitleH3 }) {

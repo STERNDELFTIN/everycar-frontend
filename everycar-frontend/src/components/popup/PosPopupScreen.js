@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSelectedCity, setSelectedRegion, setCity, setRegion, setPosPopup } from '../redux/rentSlice';
+import { setSelectedCity, setSelectedRegion, setCity, setRegion, setPosPopup } from '../../redux/rentSlice';
 
-import '../css/PosPopupScreen.css';
+import '../../css/popup/PosPopupScreen.css';
 
 function PosPopupScreen({ state, handler }) {
     // Redux 상태 불러오기

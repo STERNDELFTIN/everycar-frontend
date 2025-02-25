@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setReservationType } from '../redux/rentSlice.js';
 
-import Popup from '../components/PosAndPeriodPopup';
-import Rent from '../components/Rent.js';
+import Popup from '../components/popup/PosAndPeriodPopup';
+import Rent from '../components/common/Rent.js';
 
 function SpeedReservation() {
     const dispatch = useDispatch();

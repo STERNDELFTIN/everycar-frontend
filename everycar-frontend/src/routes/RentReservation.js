@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
-import styles from '../css/CarDetail.module.scss';
+import styles from '../css/routes/CarDetail.module.scss';
 
 import useCar from "../components/hooks/useCar";
-import CarInfo from "../components/rent-detail/CarInfo";
-import CarOption from "../components/rent-detail/CarOption";
-import ContractInfo from "../components/rent-detail/ContractInfo";
-import RentCondition from "../components/rent-detail/RentCondition";
-import RentTime from "../components/rent-detail/RentTime";
-import ReservationInfo from "../components/rent-detail/ReservationInfo";
+import CarInfo from "../components/rentDetail/CarInfo";
+import CarOption from "../components/rentDetail/CarOption";
+import ContractInfo from "../components/rentDetail/ContractInfo";
+import RentCondition from "../components/rentDetail/RentCondition";
+import RentTime from "../components/rentDetail/RentTime";
+import ReservationInfo from "../components/rentDetail/ReservationInfo";
 
 // 반응형 폰트 크기 계산 함수
 const vwFont = (min, max, baseWidth = 1920) => {

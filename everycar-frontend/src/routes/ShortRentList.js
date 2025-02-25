@@ -1,4 +1,4 @@
-import '../css/ShortRentList.css';
+import '../css/routes/ShortRentList.css';
 
 import Category from '../components/shortRent/Category';
 import List from '../components/shortRent/List';

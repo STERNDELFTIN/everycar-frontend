@@ -2,7 +2,7 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // 리액트 캘린더 기본 스타일링
 
-import '../css/CustomCalendar.css';
+import '../../css/common/CustomCalendar.css';
 
 function CustomCalendar({ onDateChange, startDate, endDate }){
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPosPopup, setPeriodPopup, setRegion, setCity } from '../redux/rentSlice.js';
+import { setPosPopup, setPeriodPopup, setRegion, setCity } from '../../redux/rentSlice.js';
 
-import '../css/PosAndPeriodPopup.css';
+import '../../css/popup/PosAndPeriodPopup.css';
 import PosPopupScreen from './PosPopupScreen.js';
 import RegionPopupScreen from './PeriodPopupScreen.js';
-import usePopupOutsideClick from './hooks/usePopupOutsideClick.js';
+import usePopupOutsideClick from '../hooks/usePopupOutsideClick.js';
 
 {/* Popup */}
 function PosAndPeriodPopup() {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setStartDate, setEndDate, setPeriodPopup } from '../redux/rentSlice.js';
+import { setStartDate, setEndDate, setPeriodPopup } from '../../redux/rentSlice.js';
 import { addMonths, differenceInDays, isAfter, isBefore, isSameDay } from 'date-fns';
 
-import '../css/PeriodPopupScreen.css';
-import CustomCalendar from './CustomCalendar.js';
-import SelectableTimeList from './SelectableTimeList.js';
+import '../../css/popup/PeriodPopupScreen.css';
+import CustomCalendar from '../common/CustomCalendar.js';
+import SelectableTimeList from '../common/SelectableTimeList.js';
 
 function PeriodPopupScreen({ reservationType }){
 

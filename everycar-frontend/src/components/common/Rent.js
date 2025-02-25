@@ -2,10 +2,10 @@ import React from 'react';
 import { format, differenceInDays } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPosPopup, setPeriodPopup } from '../redux/rentSlice';
+import { setPosPopup, setPeriodPopup } from '../../redux/rentSlice';
 import { useNavigate } from 'react-router-dom';
 
-import styles from '../css/Rent.module.scss';
+import styles from '../../css/common/Rent.module.scss';
 
 function Rent({ page }) {
     const dispatch = useDispatch();

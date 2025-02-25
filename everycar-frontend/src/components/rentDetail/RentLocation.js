@@ -1,5 +1,5 @@
-import styles from '../../css/CarDetail.module.scss';
-import KakaoMap from "../KakaoMap";
+import styles from '../../css/routes/CarDetail.module.scss';
+import KakaoMap from "../common/KakaoMap";
 
 // 대여장소
 function RentLocation({ title, car, latitude, longitude, SubTitleH3 }) {

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import '../css/Header.css';
+import '../../css/common/Header.css';
 
 function Header() {
 

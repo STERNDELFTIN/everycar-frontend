@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import '../css/Footer.css';
+import '../../css/common/Footer.css';
 
 function Footer() {
   {/* Link 태그 스타일 컴포넌트 */}

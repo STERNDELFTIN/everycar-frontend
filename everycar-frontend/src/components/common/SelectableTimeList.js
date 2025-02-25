@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setStartTime, setEndTime } from '../redux/rentSlice.js'; // Redux actions import
+import { setStartTime, setEndTime } from '../../redux/rentSlice.js'; // Redux actions import
 import TimeList from './TimeList';
 
 function SelectableTimeList({ title, type }) {
