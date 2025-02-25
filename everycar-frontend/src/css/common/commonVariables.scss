@@ -1,0 +1,4 @@
+// 폰트 사이즈 크기 조정 - 반응형
+@function vw-font($min-size, $max-size, $base-width: 1920px) {
+    @return clamp($min-size, calc($max-size / $base-width * 100vw), $max-size);
+}

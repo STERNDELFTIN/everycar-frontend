@@ -1,0 +1,62 @@
+@use '../common//commonVariables.scss' as cv;
+@use './variables.scss' as v;
+
+// 예약정보
+.reservationInfoContainer {
+    .carImage {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+}
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    .counselButton {
+        @include v.checkBtn();
+        border: 1px solid #D9D9D9;
+    }
+    .reservationButton {
+        @include v.checkBtn();
+        background-color: #AFFF4F;
+    }
+}
+
+.priceInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+  
+}
+@media (max-width: 768px) { /* 태블릿 */
+
+    .reservationInfoContainer {
+        display: flex;
+        margin: 0;
+        gap: 20px;
+        .carImage, .subTitle, .line, .priceInfoBox, .buttonsContainer { margin: 0; }
+
+        .carImage {
+            width: 40%;
+            align-items: center;
+        }
+        .carContent {
+            width: 60%;
+        }
+        .line { 
+            margin-top: 5px;
+        }
+        .buttonsContainer > button{
+            padding: 5px 0px;
+        }
+    }
+
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}

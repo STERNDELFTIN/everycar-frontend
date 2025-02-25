@@ -1,4 +1,4 @@
-import styles from '../../css/routes/CarDetail.module.scss';
+import styles from '../../css/rentDetail/CarInfo.module.scss';
 
 // 제원정보
 function CarInfo({ title, car, SubTitleH3 }) {

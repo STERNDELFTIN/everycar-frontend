@@ -1,4 +1,4 @@
-import styles from '../../css/routes/CarDetail.module.scss';
+import styles from '../../css/rentDetail/ContractInfo.module.scss';
 
 // 계약정보
 function ContractInfo({ title, SubTitleH3 }) {

@@ -1,4 +1,4 @@
-import styles from '../../css/routes/CarDetail.module.scss';
+import styles from '../../css/rentDetail/CarOption.module.scss';
 
 // 차량옵션
 function CarOption({ title, car, SubTitleH3, vwFont }) {

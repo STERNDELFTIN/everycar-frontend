@@ -1,0 +1,13 @@
+@use '../common//commonVariables.scss' as cv;
+@use './variables.scss' as v;
+
+// 운전자 대여조건
+.rentConditionContainer {
+
+    .rentCondition {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: cv.vw-font(3px, 10px);
+    }
+}

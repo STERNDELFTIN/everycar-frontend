@@ -1,4 +1,4 @@
-import styles from '../../css/routes/CarDetail.module.scss';
+import styles from '../../css/rentDetail/RentLocation.module.scss';
 import KakaoMap from "../common/KakaoMap";
 
 // 대여장소

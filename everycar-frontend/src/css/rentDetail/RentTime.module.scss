@@ -1,0 +1,19 @@
+@use '../common//commonVariables.scss' as cv;
+@use './variables.scss' as v;
+
+// 대여시간
+.rentTimeContainer {
+    .rentTime {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include v.grey-round-box;
+        background-color: #F3F3F3;
+        gap: cv.vw-font(5px, 62px);
+    }
+}
+.startRent, .endRent {
+    display: flex;
+    gap: cv.vw-font(5px, 10px);
+    cursor: pointer;
+}

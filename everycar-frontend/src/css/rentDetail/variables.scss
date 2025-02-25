@@ -1,0 +1,25 @@
+@use '../common/commonVariables.scss' as cv;
+
+$primary-color: #000000;
+$content-font-size: cv.vw-font(9.5px, 18px);
+$shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+$content-margin: cv.vw-font(10px, 33px);
+
+@mixin white-round-box {
+    padding: cv.vw-font(15px, 52px);
+    border-radius: 10px;
+    box-shadow: $shadow;
+    background-color: #FFFFFF;
+}
+@mixin grey-round-box {
+    padding: cv.vw-font(6px, 15px) cv.vw-font(10px, 19px);
+    border-radius: 10px;
+    background-color: #F3F3F3;
+}
+@mixin checkBtn {
+    width: 100%; height: cv.vw-font(10px, 56px);
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}

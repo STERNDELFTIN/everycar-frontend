@@ -1,4 +1,4 @@
-import styles from '../../css/routes/CarDetail.module.scss';
+import styles from '../../css/rentDetail/ReservationInfo.module.scss';
 
 // 우측 예약정보
 function ReservationInfo({ title, car, SubTitleH3, vwFont }) {

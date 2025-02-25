@@ -1,0 +1,16 @@
+@use '../common//commonVariables.scss' as cv;
+@use './variables.scss' as v;
+
+// 대여장소
+.rentLocationContainer {
+    display: flex;
+    flex-direction: column;
+    gap: cv.vw-font(8px, 16px);
+}
+.rentPos, .rentDetailPos {
+    display: flex;
+    gap: cv.vw-font(8px, 25px);
+}
+.greyTitle > p:nth-child(1) {
+    color: #8F9191;
+}

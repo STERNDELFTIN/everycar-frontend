@@ -1,4 +1,4 @@
-import styles from '../../css/routes/CarDetail.module.scss';
+import styles from '../../css/rentDetail/RentTime.module.scss';
 
 // 대여시간
 function RentTime({ title, SubTitleH3, vwFont }) {

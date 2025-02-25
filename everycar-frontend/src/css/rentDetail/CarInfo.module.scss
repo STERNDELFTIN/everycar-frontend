@@ -1,0 +1,35 @@
+@use '../common//commonVariables.scss' as cv;
+@use './variables.scss' as v;
+
+// 제원정보
+.carName {
+    display: flex;
+    margin-bottom: cv.vw-font(5px, 12px);
+    margin-left: cv.vw-font(3px, 5px);
+    gap: cv.vw-font(5px, 10px);
+    h5 { font-size: cv.vw-font(11px, 22px) }
+    div { 
+        padding: cv.vw-font(1px, 2px) cv.vw-font(6px, 8px);
+        border-radius: 50px;
+        background: linear-gradient(to right, #AFFF4F, #E6FA33, #FFF826);
+    }
+}
+.carInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+}
+.carInfoItem {
+    display: flex;
+    width: calc(33.33% - 10px);
+    background-color: #F3F3F3;
+    align-items: center;
+    justify-content: center;
+    @include v.grey-round-box;
+
+    .carInfoTitle {
+        color: #8F9191;
+        margin-right: cv.vw-font(5px, 13px);
+    }
+}
