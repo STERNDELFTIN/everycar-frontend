@@ -7,10 +7,10 @@ import useCar from "../components/hooks/useCar";
 import CarInfo from "../components/rentDetail/CarInfo";
 import CarOption from "../components/rentDetail/CarOption";
 import RentLocation from "../components/rentDetail/RentLocation";
-import ContractInfo from "../components/rentDetail/ContractInfo";
-import RentCondition from "../components/rentDetail/RentCondition";
 import RentTime from "../components/rentDetail/RentTime";
-import ReservationInfo from "../components/rentDetail/ReservationInfo";
+import ReturnLocation from "../components/rentDetail/ReturnLocation";
+import PaymentType from "../components/rentDetail/PaymentType";
+import TermsOfUse from "../components/rentDetail/TermsOfUse";
 
 // 반응형 폰트 크기 계산 함수
 const vwFont = (min, max, baseWidth = 1920) => {
@@ -71,6 +71,9 @@ function RentReservation() {
                 <div className={styles.left}>
                     <RentTime title='이용시간' SubTitleH3={SubTitleH3} vwFont={vwFont} />
                     <RentLocation title='대여장소' car={carData} latitude={latitude} longitude={longitude} SubTitleH3={SubTitleH3} />
+                    {/* <ReturnLocation title='반납장소' SubTitleH3={SubTitleH3} />
+                    <TermsOfUse title='이용약관' SubTitleH3={SubTitleH3} />
+                    <PaymentType title='결제' SubTitleH3={SubTitleH3} /> */}
                     <button className={styles.paymentButton}>총 {carData.calculatedPrice}원 결제하기</button>
                 </div>
 
