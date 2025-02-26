@@ -1,3 +1,18 @@
 @use '../common//commonVariables.scss' as cv;
 @use './variables.scss' as v;
 
+.termsOfUseContainer {
+    display: flex;
+    flex-direction: column;
+    gap: cv.vw-font(8px, 12px);
+}
+.caution, .agree {
+    @include v.grey-round-box;
+    padding: cv.vw-font(15px, 25px) cv.vw-font(18px, 28px);
+    line-height: 1.6;
+    text-align: justify;
+    word-break: keep-all; // 한글 줄바꿈 유지
+    max-height: 200px;
+    overflow: auto;
+}
+p { color: v.$grey-color; }
