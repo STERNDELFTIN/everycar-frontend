@@ -152,7 +152,7 @@ const Payment = ({ payAmount, reservationNum, onPaymentSuccess, agree, car}) => 
 
             {/* 무통장 입금 UI */}
             {payMethod === "bank_transfer" && (
-                <div style={{marginTop: vwFont(9, 15), border: '1px solid rgba(143, 145, 145, 0.63)', borderRadius: '8px', padding: vwFont(5, 10) && vwFont(10, 15), display: 'flex', flexDirection: 'column', gap: '12px', }}>
+                <div style={{color: 'grey' , marginTop: vwFont(9, 15), border: '1px solid rgba(143, 145, 145, 0.63)', borderRadius: '8px', padding: vwFont(5, 10) && vwFont(10, 15), display: 'flex', flexDirection: 'column', gap: '12px', }}>
                     <p style={{display: 'flex', gap: '3px', }}><p style={{fontWeight: '600'}}>은 행 명: </p> 국민은행</p>
                     <p style={{display: 'flex', gap: '3px', }}><p style={{fontWeight: '600'}}>계좌번호: </p> 123-456-789012</p>
                     <label style={{display: 'flex', gap: '5px', alignItems: 'center',  }}>
