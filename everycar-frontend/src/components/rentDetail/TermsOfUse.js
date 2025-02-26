@@ -29,13 +29,6 @@ function TermsOfUse({ title, SubTitleH3 }) {
                 </p>
             </div>
 
-            <div>
-                <label style={{ display: 'flex' }}>
-                    <input type='radio' />
-                    <p>예약정보 확인 및 모든 약관 동의</p>
-                </label>
-            </div>
-
         </div>
     );
 }

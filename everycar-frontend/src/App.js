@@ -12,6 +12,9 @@ import ShortRentList from './routes/ShortRentList';
 import CarDetail from './routes/CarDetail';
 import RentReservation from './routes/RentReservation';
 
+import PaymentSuccess from './routes/PaymentSuccess';
+import PaymentFail from './routes/PaymentFail';
+
 import Announcement from './routes/Announcement';
 import Event from './routes/Event';
 import Inquiry from './routes/Inquiry';
@@ -40,14 +43,17 @@ function App() {
       <PageStyle>
         <Routes>
           <Route path='/' element={<Main />} />
-          
+
           {/* 예약 관련 페이지 */}
           <Route path='/reservation'>
             <Route path='speedReservation' element={<SpeedReservation />} />
             <Route path='shortRent' element={<ShortRent />} />
             <Route path='shortRentList' element={<ShortRentList />} />
             <Route path='carDetail/:id' element={<CarDetail />} />
-            <Route path='rentReservation' element={<RentReservation /> } />
+            <Route path='rentReservation' element={<RentReservation />} >
+              <Route path='paymentSucess' element={<PaymentSuccess />} />
+              <Route path='paymentFail' element={<PaymentFail />} />
+            </Route>
           </Route>
 
           {/* 고객 지원 관련 페이지 */}
@@ -59,13 +65,13 @@ function App() {
 
           {/* 인증 관련 페이지 */}
           <Route path='/auth'>
-              <Route path='login' element={<Login />} />
-              <Route path='register' element={<Register />} />
-            </Route>
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+          </Route>
 
         </Routes>
       </PageStyle>
-      
+
       {/* footer */}
       <Footer />
 

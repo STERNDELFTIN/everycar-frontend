@@ -27,6 +27,16 @@ function RentReservation() {
     const carId = isNaN(Number(id)) ? null : Number(id); // id가 숫자가 아니라면 null 처리
     // console.log("carDetail 렌더링됨: ", id, carId);
 
+    // 약관 동의
+    const [agree, setAgree] = useState(false);
+
+    const changeAgreeHandler = (e) => {
+        setAgree(e.target.checked); // 체크되면 true, 해제되면 false
+    };
+
+    // 결제 버튼 클릭
+    const [payClick, setPayClick] = useState(false);
+
     // 사용자 입력값으로 동적 설정
     const [rentalDatetime, setRentalDatetime] = useState("2025-02-21T10:00:00");
     const [returnDatetime, setReturnDatetime] = useState("2025-02-21T14:00:00");
@@ -61,14 +71,20 @@ function RentReservation() {
                     <RentLocation title='대여장소' car={carData} latitude={latitude} longitude={longitude} SubTitleH3={SubTitleH3} />
                     <ReturnLocation title='반납장소' SubTitleH3={SubTitleH3} />
                     <TermsOfUse title='이용약관' SubTitleH3={SubTitleH3} />
-                    <PaymentType title='결제' SubTitleH3={SubTitleH3} />
-                    <button style={{cursor: 'pointer'}}className={styles.paymentButton}>총 {carData.calculatedPrice}원 결제하기</button>
+                    <div>
+                        <label style={{ display: 'flex' }}>
+                            <input type='checkbox' checked={agree} onChange={changeAgreeHandler} />
+                            <p>예약정보 확인 및 모든 약관 동의</p>
+                        </label>
+                    </div>
+                    <PaymentType title='결제' SubTitleH3={SubTitleH3} agree={agree} payClick={payClick} />
+                    <button onClick={() => setPayClick(true)} style={{ cursor: 'pointer' }} className={styles.paymentButton}>총 {carData.calculatedPrice}원 결제하기</button>
                 </div>
 
                 <div className={styles.right}>
                     <SubTitleH3>대여차량</SubTitleH3>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}><img src={carData.img} style={{ width: vwFont(200, 400) }} /></div>
-                    <div className={styles.carTitle} style={{marginTop: vwFont(8, 18)}}>
+                    <div className={styles.carTitle} style={{ marginTop: vwFont(8, 18) }}>
                         <h3 style={{ fontSize: vwFont(13, 30), }}>{carData.model.model_name}</h3>
                         <div className={styles.carGrade}>{carData.car_grade}</div>
                     </div>
