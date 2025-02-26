@@ -6,21 +6,32 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Main from './routes/Main';
 
-import SpeedReservation from './routes/SpeedReservation';
-import ShortRent from './routes/ShortRent';
-import ShortRentList from './routes/ShortRentList';
-import CarDetail from './routes/CarDetail';
-import RentReservation from './routes/RentReservation';
+// 예약 관련 페이지
+import SpeedReservation from './routes/reservation/SpeedReservation';
+import ShortRent from './routes/reservation/ShortRent';
+import ShortRentList from './routes/reservation/ShortRentList';
+import CarDetail from './routes/reservation/CarDetail';
+import RentReservation from './routes/reservation/RentReservation';
+/* 예약 성공 및 실패 */
+import PaymentSuccess from './routes/reservation/PaymentSuccess';
+import PaymentFail from './routes/reservation/PaymentFail';
 
-import PaymentSuccess from './routes/PaymentSuccess';
-import PaymentFail from './routes/PaymentFail';
+// 고객 지원 관련 페이지
+import Announcement from './routes/support/Announcement';
+import Event from './routes/support/Event';
+import Inquiry from './routes/support/Inquiry';
 
-import Announcement from './routes/Announcement';
-import Event from './routes/Event';
-import Inquiry from './routes/Inquiry';
+// 인증 관련 페이지
+import Login from './routes/authorization/Login';
+import Register from './routes/authorization/Register';
 
-import Login from './routes/Login';
-import Register from './routes/Register';
+// 마이페이지
+import MyInfoManagement from './routes/myPage/MyInfoManagement';
+// import ProfileModify from './routes/myPage/ProfileModify';
+// import LicenseModify from './routes/myPage/LicenseModify';
+// import MyReservationHistory from './routes/myPage/MyReservationHistory';
+// import MyReservationHistoryDetail from './routes/myPage/MyReservationHistoryDetail';
+// import MyPayment from './routes/myPage/MyPayment';
 
 let PageStyle = styled.div`
   width: 72%;
@@ -68,6 +79,24 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
           </Route>
+
+          {/* 마이페이지 */}
+          <Route path='/myPage'>
+            {/* 내 정보 관리 */}
+            <Route path='info' element={<MyInfoManagement />}>
+              {/* <Route path='profileModify' element={<ProfileModify />} />
+              <Route path='licenseModify' element={<LicenseModify />} /> */}
+            </Route>
+
+            {/* 내 예약 내역 */}
+            {/* <Route path='history' element={<MyReservationHistory />}>
+              <Route path='detail' element={<MyReservationHistoryDetail />} />
+            </Route> */}
+          </Route>
+
+          {/* 결제 및 정산 */}
+          {/* <Route path='pay' element={<MyPayment />} >
+          </Route> */}
 
         </Routes>
       </PageStyle>

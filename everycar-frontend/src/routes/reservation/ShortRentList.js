@@ -1,7 +1,7 @@
-import '../css/routes/ShortRentList.css';
+import '../../css/routes/ShortRentList.css';
 
-import Category from '../components/shortRent/Category';
-import List from '../components/shortRent/List';
+import Category from '../../components/shortRent/Category';
+import List from '../../components/shortRent/List';
 
 function ShortRent() {
     return (

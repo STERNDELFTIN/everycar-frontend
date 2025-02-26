@@ -1,20 +1,20 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
-import styles from '../css/routes/CarDetail.module.scss';
-import { vwFont } from '../utils';
+import styles from '../../css/routes/CarDetail.module.scss';
+import { vwFont } from '../../utils';
 
-import useCar from "../components/hooks/useCar";
-import CarInfo from "../components/rentDetail/CarInfo";
-import CarOption from "../components/rentDetail/CarOption";
-import RentLocation from "../components/rentDetail/RentLocation";
-import ContractInfo from "../components/rentDetail/ContractInfo";
-import RentCondition from "../components/rentDetail/RentCondition";
-import RentTime from "../components/rentDetail/RentTime";
-import ReservationInfo from "../components/rentDetail/ReservationInfo";
+import useCar from "../../components/hooks/useCar";
+import CarInfo from "../../components/rentDetail/CarInfo";
+import CarOption from "../../components/rentDetail/CarOption";
+import RentLocation from "../../components/rentDetail/RentLocation";
+import ContractInfo from "../../components/rentDetail/ContractInfo";
+import RentCondition from "../../components/rentDetail/RentCondition";
+import RentTime from "../../components/rentDetail/RentTime";
+import ReservationInfo from "../../components/rentDetail/ReservationInfo";
 
 // 더미 데이터 가져오기
-import dummnyCar from "../dummyData/dummyCar";
+import dummnyCar from "../../dummyData/dummyCar";
 
 // 부제목 스타일
 let SubTitleH3 = styled.h3`

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getReservationData } from "../dummyData/dummyReservations";
+import { getReservationData } from "../../dummyData/dummyReservations";
 
 const PaymentSuccess = () => {
     const location = useLocation();
