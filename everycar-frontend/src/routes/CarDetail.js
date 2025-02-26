@@ -13,6 +13,9 @@ import RentCondition from "../components/rentDetail/RentCondition";
 import RentTime from "../components/rentDetail/RentTime";
 import ReservationInfo from "../components/rentDetail/ReservationInfo";
 
+// 더미 데이터 가져오기
+import dummnyCar from "../dummyData/dummyCar";
+
 // 부제목 스타일
 let SubTitleH3 = styled.h3`
     margin-bottom: ${vwFont(10, 19)};
@@ -34,19 +37,8 @@ function CarDetail() {
     const handleRentalChange = (e) => setRentalDatetime(e.target.value);
     const handleReturnChange = (e) => setReturnDatetime(e.target.value);
 
-    // 기본 차량 데이터 설정
-    const defaultCarInfo = {
-        model: { model_name: "미등록", model_transmission: "자동", model_seate_num: "4" },
-        car_grade: "미정",
-        car_fuel: "가솔린",
-        car_year: "2023",
-        car_options: "네비게이션, 블랙박스, 후방카메라",
-        img: "/images/car-model/product-image-01.png", // 기본 이미지
-        calculatedPrice: "0", // 기본 가격
-    };
-
     // 데이터가 없을 경우 기본값 설정
-    const carData = car && car.model ? car : defaultCarInfo;
+    const carData = car && car.model ? car : dummnyCar;
 
     // 데이터가 없을 경우 예외처리
     if (loading) return <p>로딩 중...</p>;
