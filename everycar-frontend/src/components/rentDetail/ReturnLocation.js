@@ -6,12 +6,12 @@ import { vwFont } from '../../utils';
 const ReturnPosTitle = styled.h4`font-size: ${vwFont(11, 20)}; margin-top: ${vwFont(10, 15)}; font-weight: 400; `;
 
 function ReturnLocation({ title, SubTitleH3 }) {
-    const [selectedReturnOption, setSelectedReturnOption] = useState("");
+    const returnOptions = ["대여한 곳에서 반납하기", "대여장소와 다른 곳에서 반납하기"];
+    
+    const [selectedReturnOption, setSelectedReturnOption] = useState(returnOptions[0]);
     const [selectedCityOption, setSelectedCityOption] = useState("");
     const [selectedRegionOption, setSelectedRegionOption] = useState("");
     const [selectedParkingOption, setSelectedParkingOption] = useState("");
-
-    const returnOptions = ["대여한 곳에서 반납하기", "대여장소와 다른 곳에서 반납하기"];
 
     return (
         <div className={styles.returnLocation}>
