@@ -7,7 +7,7 @@ const ReturnPosTitle = styled.h4`font-size: ${vwFont(11, 20)}; margin-top: ${vwF
 
 function ReturnLocation({ title, SubTitleH3 }) {
     const returnOptions = ["대여한 곳에서 반납하기", "대여장소와 다른 곳에서 반납하기"];
-    
+
     const [selectedReturnOption, setSelectedReturnOption] = useState(returnOptions[0]);
     const [selectedCityOption, setSelectedCityOption] = useState("");
     const [selectedRegionOption, setSelectedRegionOption] = useState("");
@@ -27,7 +27,7 @@ function ReturnLocation({ title, SubTitleH3 }) {
                                 checked={selectedReturnOption === option}
                                 onChange={(e) => setSelectedReturnOption(e.target.value)}
                             />
-                            <p style={selectedReturnOption === option ? { color: '#000000' } : { color: '#8F9191' }}>{returnOptions[i]}</p>
+                            <p style={selectedReturnOption === option ? { color: '#000000', display: 'flex', alignItems: 'center', } : { color: '#8F9191', display: 'flex', alignItems: 'center', }}>{returnOptions[i]}</p>
                         </label>
                     ))
                 }

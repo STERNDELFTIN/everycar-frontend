@@ -5,7 +5,7 @@
 .optionsContainer {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: cv.vw-font(10px, 12px);
 }
 .optionBox {
     display: flex;

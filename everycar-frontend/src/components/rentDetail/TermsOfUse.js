@@ -6,7 +6,7 @@ const TermTitle = styled.h4`font-weight: 600; font-size: ${vwFont(10, 18)}`;
 
 function TermsOfUse({ title, SubTitleH3 }) {
     return (
-        <div className={styles.termsOfUseContainer}>
+        <div className={styles.termsOfUseContainer} style={{marginBottom: vwFont(15, 18),}}>
             <SubTitleH3>{title}</SubTitleH3>
             <div className={styles.caution}>
                 <div>

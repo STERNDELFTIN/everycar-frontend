@@ -34,9 +34,6 @@ function RentReservation() {
         setAgree(e.target.checked); // 체크되면 true, 해제되면 false
     };
 
-    // 결제 버튼 클릭
-    const [payClick, setPayClick] = useState(false);
-
     // 사용자 입력값으로 동적 설정
     const [rentalDatetime, setRentalDatetime] = useState("2025-02-21T10:00:00");
     const [returnDatetime, setReturnDatetime] = useState("2025-02-21T14:00:00");
@@ -72,13 +69,12 @@ function RentReservation() {
                     <ReturnLocation title='반납장소' SubTitleH3={SubTitleH3} />
                     <TermsOfUse title='이용약관' SubTitleH3={SubTitleH3} />
                     <div>
-                        <label style={{ display: 'flex' }}>
+                        <label style={{ display: 'flex', gap: '10px', marginLeft: '9px', }}>
                             <input type='checkbox' checked={agree} onChange={changeAgreeHandler} />
-                            <p>예약정보 확인 및 모든 약관 동의</p>
+                            <p style={{display: 'flex', alignItems: 'center',}}>예약정보 확인 및 모든 약관 동의</p>
                         </label>
                     </div>
-                    <PaymentType title='결제' SubTitleH3={SubTitleH3} agree={agree} payClick={payClick} />
-                    <button onClick={() => setPayClick(true)} style={{ cursor: 'pointer' }} className={styles.paymentButton}>총 {carData.calculatedPrice}원 결제하기</button>
+                    <PaymentType title='결제' SubTitleH3={SubTitleH3} agree={agree} car={carData} />
                 </div>
 
                 <div className={styles.right}>
