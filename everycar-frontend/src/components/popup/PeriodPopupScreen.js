@@ -11,7 +11,7 @@ function PeriodPopupScreen({ reservationType }){
 
     // Redux 상태 가져오기
     const dispatch = useDispatch();
-    const { startDate, endDate, startTime, endTime } = useSelector((state) => state.rent);
+    const { startDate, endDate } = useSelector((state) => state.rent);
 
     // 현재 날짜 및 최대 선택 가능 날짜
     const today = new Date();
