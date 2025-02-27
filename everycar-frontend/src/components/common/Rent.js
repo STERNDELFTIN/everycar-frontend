@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from '../../css/common/Rent.module.scss';
 
-function Rent({ page }) {
+function Rent() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ function Rent({ page }) {
     // 버튼 비활성화 조건 설정
     const isButtonDisabled = !startDate || !endDate || differenceInDays(endDate, startDate) < 1 ||
         (reservationType === "short-term" && differenceInDays(endDate, startDate) < 14) ||
-        (reservationType === "speed" && differenceInDays(endDate, startDate) > 14);
+        (reservationType === "quick" && differenceInDays(endDate, startDate) > 14);
 
     // 버튼 클릭 시 페이지 이동
     const movePageHandler = () => {
@@ -25,8 +25,10 @@ function Rent({ page }) {
             alert("렌트 기간을 올바르게 선택해주세요."); // 조건이 맞지 않으면 알림 표시
             return;
         }
-        if (page) {
-            navigate(page);
+        if (reservationType === "quick") {
+            navigate('/reservation/quickReservation/list');
+        } else if (reservationType === "short") {
+            console.log();
         }
     };
 

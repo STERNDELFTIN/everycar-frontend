@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const LabelStyle = styled.label`display: flex; text-align: center; gap: 6px;`;
 
-const Payment = ({ payAmount, reservationNum, onPaymentSuccess, agree, car}) => {
+const Payment = ({ payAmount, reservationNum, onPaymentSuccess, agree, car, totalPrice}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch(); // Redux dispatch
     const [payMethod, setPayMethod] = useState("paypal"); // 선택된 결제 수단
@@ -179,7 +179,7 @@ const Payment = ({ payAmount, reservationNum, onPaymentSuccess, agree, car}) => 
                 }}
                 style={{ cursor: 'pointer', width: '100%', textAlign: 'center', borderRadius: '10px', backgroundColor: '#AFFF4F', marginTop: vwFont(20, 30), paddingTop:vwFont(8, 15), paddingBottom:vwFont(8, 15)}}
             >
-                총 {car.calculatedPrice}원 결제하기
+                총 {totalPrice}원 결제하기
             </button>
         </div>
     );

@@ -5,21 +5,20 @@ import { setReservationType } from '../../redux/rentSlice.js';
 import Popup from '../../components/popup/PosAndPeriodPopup.js';
 import Rent from '../../components/common/Rent.js';
 
-function SpeedReservation() {
+function QuickReservation() {
     const dispatch = useDispatch();
 
-    // 페이지 진입 시 `reservationType`을 "speed"로 설정
+    // 페이지 진입 시 reservationType을 "quick"로 설정
     useEffect(() => {
-        dispatch(setReservationType("speed"));
+        dispatch(setReservationType("quick"));
     }, [dispatch]);
 
     return (
         <div>
-            {/* Redux로 상태를 관리하므로 props 없이 사용 */}
             <Popup />
-            <Rent clickButtonPage="/speedReservation" />
+            <Rent />
         </div>
     );
 }
 
-export default SpeedReservation;
+export default QuickReservation;

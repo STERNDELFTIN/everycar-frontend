@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const useCar = (carId) => {
   const [car, setCar] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,8 +15,8 @@ const useCar = (carId) => {
 
       try {
         const queryParams = new URLSearchParams({
-          rental_datetime: "2025-02-21T10:00:00", // 대여시간
-          return_datetime: "2025-02-21T14:00:00", // 반납시간
+          rental_datetime: "2025-02-21T10:00:00",
+          return_datetime: "2025-02-21T14:00:00",
         }).toString();
 
         const res = await fetch(`http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`, {
@@ -30,8 +31,16 @@ const useCar = (carId) => {
         }
 
         const data = await res.json();
-        setCar(data || null);
+        console.log("🚀 API 응답 데이터:", data);
+
+        if (!data || !data.car) {
+          throw new Error("데이터가 없습니다.");
+        }
+
+        setCar(data.car || null);
+        setTotalPrice(data.totalPrice || 0); // totalPrice 저장
       } catch (error) {
+        console.error("API 요청 실패:", error);
         setError(error.message);
       } finally {
         setLoading(false);
@@ -39,9 +48,9 @@ const useCar = (carId) => {
     };
 
     fetchCarInfo();
-  }, [carId]); // carId가 변경될 때만 실행
+  }, [carId]);
 
-  return { car, loading, error };
+  return { car, totalPrice, loading, error };
 };
 
 export default useCar;

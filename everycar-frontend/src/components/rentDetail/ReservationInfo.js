@@ -12,7 +12,7 @@ import { loginUser, logoutUser } from '../../redux/userSlice';
 import dummyUsers from '../../dummyData/dummyUser';
 
 // 우측 예약정보
-function ReservationInfo({ title, car, SubTitleH3 }) {
+function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -21,8 +21,8 @@ function ReservationInfo({ title, car, SubTitleH3 }) {
 
     // 자격 충족 시 예약 페이지로 넘어가기
     const reservationHandler = () => {
-        if (isEligible) {
-            navigate("/reservation/rentReservation");
+        if (isEligible && car && car.car_id) {
+            navigate(`/reservation/rentReservation/${car.car_id}`);
         }
     }
 
@@ -56,7 +56,7 @@ function ReservationInfo({ title, car, SubTitleH3 }) {
                         <p style={{ fontSize: vwFont(10, 18), fontWeight: '600', marginBottom: vwFont(10, 15) }}>결제정보</p>
                         <div className={styles.priceInfo}>
                             <p style={{ marginLeft: '10px' }}>총대여료</p>
-                            <p style={{ fontSize: vwFont(12, 24), fontWeight: '600' }}>{car.calculatedPrice}원</p>
+                            <p style={{ fontSize: vwFont(12, 24), fontWeight: '600' }}>{totalPrice}원</p>
                         </div>
                     </div>
                     <div className={styles.buttonsContainer}>

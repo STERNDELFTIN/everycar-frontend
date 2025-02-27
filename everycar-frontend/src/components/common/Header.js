@@ -19,7 +19,7 @@ function Header() {
               <MenuLinkStyle to='/'><img src='/logo.png' style={{ width: '138px', height: '50px' }} /></MenuLinkStyle>
             </div>
             <div className='center-menu'>
-              <MenuLinkStyle to='/reservation/speedReservation'>빠른예약</MenuLinkStyle>
+              <MenuLinkStyle to='/reservation/quickReservation'>빠른예약</MenuLinkStyle>
               <MenuLinkStyle to='/reservation/shortRent'>단기렌트</MenuLinkStyle>
               <MenuLinkStyle to='/support/announcement'>공지사항</MenuLinkStyle>
               <MenuLinkStyle to='/support/event'>이벤트</MenuLinkStyle>

@@ -1,0 +1,139 @@
+/* 구글 아이콘 사용 */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+
+/* 카테고리 박스 전체 */
+.left{
+    width: 350px;
+    margin-right: 55px;
+}
+button{
+    all: unset;
+}
+
+/* 렌트 일정 박스 */
+.side-box1{
+    width: 100%;
+    background-color: #fff;
+    padding: 24px 31px 27px;
+    border-radius: 10px;
+}
+.side-box-title{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.side-box.side-title{
+    font-size: 18px;
+    font-weight: 600;
+}
+.reset-btn{
+    background-color: #fff;
+    border: 1px solid #aaa;
+    color: #aaa;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.reset-btn:hover{
+    background-color: #AFFF4F;
+    color: #333;
+    border: 1px solid #AFFF4F;
+}
+.side-box1-small-content{
+    display: flex;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.side-box1-small-content:last-child{
+    margin-bottom: 0;
+}
+.small-title{
+    font-weight: 600;
+    margin-right: 10px;
+}
+.small-con{
+    font-weight: 400;
+}
+
+/* 차량 검색 박스 */
+.side-box2{
+    width: 100%;
+    background-color: #fff;
+    padding: 24px 31px 27px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.side-box2-small-content{
+    margin-bottom: 20px;
+}
+.side-box.side-title-small{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.side-box2-small-content-smallBox{
+    display: flex;
+}
+.search-box{
+    width: 80%;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 5px;
+}
+.search-btn{
+    width: 20%;
+    background-color: #AFFF4F;
+    border: 1px solid #AFFF4F;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.search-btn:hover{
+    background-color: #333;
+    color: #AFFF4F;
+    border: 1px solid #333; 
+}
+.price-range{
+    font-size: 8px;
+    font-weight: 400;
+    color: #8F9191;
+}
+.range-bar{
+    width: 100%;
+    accent-color: #AFFF4F;
+    cursor: pointer;
+}
+.side-box2-small-content.content-last{
+    margin-bottom: 0;
+}
+.side-box2-small-content-smallBox.size-check-box{
+    flex-direction: column;
+}
+.form-check{
+    display: flex;
+    margin-bottom: 10px;
+}
+.form-check.checkbox-last{
+    margin-bottom: 0;
+}   
+.form-check-input{
+    width: 20px;
+    margin-right: 7px;
+    accent-color: #AFFF4F;
+    cursor: pointer;
+}
+.form-check-label{
+    font-size: 16px;
+    cursor: pointer;
+}

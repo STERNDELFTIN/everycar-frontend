@@ -1,6 +1,6 @@
 import Payment from '../common/Payment';
 
-function PaymentType({ title, SubTitleH3, agree, car }) {
+function PaymentType({ title, SubTitleH3, agree, car, totalPrice }) {
 
     const paymentSucessHandler = () => {
         console.log("결제 성공!");
@@ -15,6 +15,7 @@ function PaymentType({ title, SubTitleH3, agree, car }) {
                 onPaymentSuccess={paymentSucessHandler}
                 agree={agree}
                 car={car}
+                totalPrice={totalPrice}
             />
         </div>
     );

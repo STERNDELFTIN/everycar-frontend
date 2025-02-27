@@ -7,7 +7,9 @@ import Footer from './components/common/Footer';
 import Main from './routes/Main';
 
 // 예약 관련 페이지
-import SpeedReservation from './routes/reservation/SpeedReservation';
+import QuickReservation from './routes/quickRent/QuickReservation';
+import QuickReservationList from './routes/quickRent/QuickReservationList';
+
 import ShortRent from './routes/reservation/ShortRent';
 import ShortRentList from './routes/reservation/ShortRentList';
 import CarDetail from './routes/reservation/CarDetail';
@@ -57,11 +59,13 @@ function App() {
 
           {/* 예약 관련 페이지 */}
           <Route path='/reservation'>
-            <Route path='speedReservation' element={<SpeedReservation />} />
+            <Route path='quickReservation' element={<QuickReservation />} />
+            <Route path='quickReservation/list' element={<QuickReservationList />}></Route>
+
             <Route path='shortRent' element={<ShortRent />} />
             <Route path='shortRentList' element={<ShortRentList />} />
             <Route path='carDetail/:id' element={<CarDetail />} />
-            <Route path='rentReservation' element={<RentReservation />} >
+            <Route path='rentReservation/:id' element={<RentReservation />} >
               <Route path='paymentSucess' element={<PaymentSuccess />} />
               <Route path='paymentFail' element={<PaymentFail />} />
             </Route>
