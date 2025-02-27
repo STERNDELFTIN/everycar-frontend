@@ -4,15 +4,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     posPopup: false,
     periodPopup: false,
-    selectedRegion: null,
-    selectedCity: null,
     startDate: null,
     endDate: null,
     startTime: null,
     endTime: null,
     reservationType: "speed", // 기본 예약 타입 설정
-    region: [],
-    city: [],
+    region: null,
+    city: null,
 };
 
 const rentSlice = createSlice({
@@ -21,8 +19,6 @@ const rentSlice = createSlice({
     reducers: {
         setPosPopup: (state, action) => { state.posPopup = action.payload; },
         setPeriodPopup: (state, action) => { state.periodPopup = action.payload; },
-        setSelectedRegion: (state, action) => { state.selectedRegion = action.payload; },
-        setSelectedCity: (state, action) => { state.selectedCity = action.payload; },
         
         // 날자 저장 시 문자열 형식으로 변환
         setStartDate: (state, action) => { 
@@ -41,7 +37,7 @@ const rentSlice = createSlice({
 });
 
 export const {
-    setPosPopup, setPeriodPopup, setSelectedRegion, setSelectedCity,
+    setPosPopup, setPeriodPopup,
     setStartDate, setEndDate, setStartTime, setEndTime,
     setReservationType, setRegion, setCity
 } = rentSlice.actions;

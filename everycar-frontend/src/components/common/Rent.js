@@ -12,7 +12,7 @@ function Rent({ page }) {
     const navigate = useNavigate();
 
     // Redux에서 상태 가져오기
-    const { selectedRegion, selectedCity, startDate, endDate, startTime, endTime, posPopup, periodPopup, reservationType } = useSelector((state) => state.rent);
+    const { region, city, startDate, endDate, startTime, endTime, posPopup, periodPopup, reservationType } = useSelector((state) => state.rent);
 
     // 버튼 비활성화 조건 설정
     const isButtonDisabled = !startDate || !endDate || differenceInDays(endDate, startDate) < 1 ||
@@ -38,7 +38,7 @@ function Rent({ page }) {
                 <div className={styles.rentPos}>
                     <h5 className={styles.title}>렌트 장소</h5>
                     <div className={styles.content} onClick={() => dispatch(setPosPopup(!posPopup))}>
-                        {selectedCity ? <p>{selectedRegion} {selectedCity}</p> : <p>서울시 강남구</p>}
+                        {city ? <p>{region} {city}</p> : <p style={{color: '#A0a0a0'}}>서울시 강남구</p>}
                     </div>
                 </div>
 
@@ -49,13 +49,13 @@ function Rent({ page }) {
                     <div className={styles.content}>
                         <div className={styles.period} onClick={() => dispatch(setPeriodPopup(!periodPopup))}>
                             <p className={styles.startPeriod}>
-                                {startDate ? <b>{format(startDate, 'MM.dd(EE)', { locale: ko })} </b> : <b>01.01(수) </b>}
-                                {startTime ? <span>{startTime}</span> : '10:00'}
+                                {startDate ? <b>{format(startDate, 'MM.dd(EE)', { locale: ko })} </b> : <b style={{color: '#A0a0a0'}}>01.01(수) </b>}
+                                {startTime ? <span>{startTime}</span> : <span style={{color: '#A0a0a0'}}>10:00</span>}
                             </p>
                             <p className={styles.periodWave}>~</p>
                             <p className={styles.endPeriod}>
-                                {endDate ? <b>{format(endDate, 'MM.dd(EE)', { locale: ko })}</b> : <b>01.03(금) </b>}
-                                {endTime ? <span>{endTime}</span> : '10:00'}
+                                {endDate ? <b>{format(endDate, 'MM.dd(EE)', { locale: ko })}</b> : <b style={{color: '#A0a0a0'}}>01.03(금) </b>}
+                                {endTime ? <span>{endTime}</span> : <span style={{color: '#A0a0a0'}}>10:00</span>}
                             </p>
                         </div>
                     </div>

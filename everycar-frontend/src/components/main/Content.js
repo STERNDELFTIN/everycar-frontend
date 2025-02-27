@@ -13,7 +13,7 @@ function Content() {
     const dispatch = useDispatch();
 
     // Redux에서 상태 가져오기
-    const { selectedRegion, selectedCity, startDate, endDate, startTime, endTime, posPopup, periodPopup } = useSelector((state) => state.rent);
+    const { region, city, startDate, endDate, startTime, endTime, posPopup, periodPopup } = useSelector((state) => state.rent);
 
     // 버튼 비활성화 조건 설정 (빠른예약: 1 <= day <= 14)
     const isButtonDisabled = !startDate || !endDate || differenceInDays(endDate, startDate) < 1 || differenceInDays(endDate, startDate) > 14;
@@ -41,7 +41,7 @@ function Content() {
                             <path d="M16.875 8.75C16.875 14.875 9 20.125 9 20.125C9 20.125 1.125 14.875 1.125 8.75C1.125 6.66142 1.95468 4.65838 3.43153 3.18153C4.90838 1.70468 6.91142 0.875 9 0.875C11.0886 0.875 13.0916 1.70468 14.5685 3.18153C16.0453 4.65838 16.875 6.66142 16.875 8.75Z" stroke="#B3B3B3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M9 11.375C10.4497 11.375 11.625 10.1997 11.625 8.75C11.625 7.30025 10.4497 6.125 9 6.125C7.55025 6.125 6.375 7.30025 6.375 8.75C6.375 10.1997 7.55025 11.375 9 11.375Z" stroke="#B3B3B3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        {selectedCity ? <p>{selectedRegion} {selectedCity}</p> : <p>서울시 강남구</p>}
+                        {city ? <p>{region} {city}</p> : <p style={{color: '#A0a0a0'}}>서울시 강남구</p>}
                     </div>
                 </div>
 
@@ -55,13 +55,13 @@ function Content() {
                         </svg>
                         <div className='period' onClick={() => dispatch(setPeriodPopup(!periodPopup))}>
                             <p className='start-period'>
-                                {startDate ? <b>{format(startDate, 'MM.dd(EE)', { locale: ko })} </b> : <b>01.01(수) </b>}
-                                {startTime ? <span>{startTime}</span> : '10:00'}
+                                {startDate ? <b>{format(startDate, 'MM.dd(EE)', { locale: ko })} </b> : <b style={{color: '#A0a0a0'}}>01.01(수) </b>}
+                                {startTime ? <span>{startTime}</span> : <span style={{color: '#A0a0a0'}}>10:00</span>}
                             </p>
                             <p className='period-wave'>~</p>
                             <p className='end-period'>
-                                {endDate ? <b>{format(endDate, 'MM.dd(EE)', { locale: ko })}</b> : <b>01.03(금) </b>}
-                                {endTime ? <span>{endTime}</span> : '10:00'}
+                                {endDate ? <b>{format(endDate, 'MM.dd(EE)', { locale: ko })}</b> : <b style={{color: '#A0a0a0'}}>01.03(금) </b>}
+                                {endTime ? <span>{endTime}</span> : <span style={{color: '#A0a0a0'}}>10:00</span>}
                             </p>
                         </div>
                     </div>
