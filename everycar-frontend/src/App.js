@@ -66,9 +66,9 @@ function App() {
             <Route path='shortRentList' element={<ShortRentList />} />
             <Route path='carDetail/:id' element={<CarDetail />} />
             <Route path='rentReservation/:id' element={<RentReservation />} >
-              <Route path='paymentSucess' element={<PaymentSuccess />} />
-              <Route path='paymentFail' element={<PaymentFail />} />
             </Route>
+            <Route path='paymentSuccess' element={<PaymentSuccess />} />
+            <Route path='paymentFail' element={<PaymentFail />} />
           </Route>
 
           {/* 고객 지원 관련 페이지 */}

@@ -28,6 +28,7 @@ function RentReservation() {
 
     // 차량 정보 가져오기
     const { car, totalPrice, loading, error } = useCar(carId);
+    const carData = car || dummyCar;
 
     // 약관 동의 상태 관리
     const [agree, setAgree] = useState(false);
@@ -36,9 +37,6 @@ function RentReservation() {
     };
 
     console.log(car);
-
-    // 데이터가 없을 경우 기본값 설정
-    const carData = car || dummyCar;
 
     // 데이터가 없을 경우 예외처리
     if (loading) return <p>로딩 중...</p>;

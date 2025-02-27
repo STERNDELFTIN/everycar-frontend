@@ -10,8 +10,7 @@ function PaymentType({ title, SubTitleH3, agree, car, totalPrice }) {
         <div style={{marginBottom: 0}}>
             <SubTitleH3>{title}</SubTitleH3>
             <Payment
-                payAmount={1000}
-                reservationNum={`RES_${Date.now()}`}
+                payAmount={totalPrice}
                 onPaymentSuccess={paymentSucessHandler}
                 agree={agree}
                 car={car}
