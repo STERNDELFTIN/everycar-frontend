@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 import '../../css/common/Header.css';
 
-function Header() {
+{/* Link 태그 스타일 컴포넌트 */ }
+const MenuLinkStyle = styled(Link)`color: black; text-decoration: none; `;
 
-  {/* Link 태그 스타일 컴포넌트 */ }
-  const MenuLinkStyle = styled(Link)`color: black; text-decoration: none; `;
+function Header() {
 
   return (
     <div className="header">

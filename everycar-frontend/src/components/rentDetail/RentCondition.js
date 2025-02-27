@@ -12,7 +12,7 @@ function RentCondition({ title, SubTitleH3 }) {
                     conditions.map((item, i) =>
                         <div key={i} className={styles.rentCondition}>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.3337 4L6.00033 11.3333L2.66699 8" stroke="#5A5A5A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M13.3337 4L6.00033 11.3333L2.66699 8" stroke="#5A5A5A" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             <p>{item}</p>
                         </div>

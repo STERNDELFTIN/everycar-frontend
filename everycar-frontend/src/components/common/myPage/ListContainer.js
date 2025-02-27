@@ -32,8 +32,8 @@ function MyPage() {
 
                     <div className={`${styles.listBox}`}>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_474_908)">
-                                <path d="M0.833496 8.33325H19.1668M2.50016 3.33325H17.5002C18.4206 3.33325 19.1668 4.07944 19.1668 4.99992V14.9999C19.1668 15.9204 18.4206 16.6666 17.5002 16.6666H2.50016C1.57969 16.6666 0.833496 15.9204 0.833496 14.9999V4.99992C0.833496 4.07944 1.57969 3.33325 2.50016 3.33325Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <g clipPath="url(#clip0_474_908)">
+                                <path d="M0.833496 8.33325H19.1668M2.50016 3.33325H17.5002C18.4206 3.33325 19.1668 4.07944 19.1668 4.99992V14.9999C19.1668 15.9204 18.4206 16.6666 17.5002 16.6666H2.50016C1.57969 16.6666 0.833496 15.9204 0.833496 14.9999V4.99992C0.833496 4.07944 1.57969 3.33325 2.50016 3.33325Z" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </g>
                             <defs>
                                 <clipPath id="clip0_474_908">
