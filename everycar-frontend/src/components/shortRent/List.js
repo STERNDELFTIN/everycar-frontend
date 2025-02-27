@@ -11,12 +11,12 @@ function List() {
     <div className="List">
 
       {/* 차량 리스트 */}
-      <div class="right">
+      <div className="right">
 
         {/* 리스트에 뜨는 카드(차량) 수 */}
-        <div class="right-header">총 100대</div>
+        <div className="right-header">총 100대</div>
 
-        <div class="card-grid">
+        <div className="card-grid">
 
           {/* 카드 반복 -> 총 11개 */}
           {
@@ -48,33 +48,33 @@ function CarCard({ name, release, image, size, group, gas, settings, price }) {
   return (
     <>
       {/* 리스트 카드 기본 구조 */}
-      <div class="card">
-        <div class="card-title">
-          <span class="card-name">{name}</span>
-          <span class="card-release">{release}</span>
+      <div className="card">
+        <div className="card-title">
+          <span className="card-name">{name}</span>
+          <span className="card-release">{release}</span>
         </div>
-        <img src={image} alt="차 기종명" class="car-image" />
-        <div class="card-icons">
-          <div class="card-icons-sm">
-            <span class="material-symbols-outlined">star</span>
-            <span class="icon-name">{size}</span>
+        <img src={image} alt="차 기종명" className="car-image" />
+        <div className="card-icons">
+          <div className="card-icons-sm">
+            <span className="material-symbols-outlined">star</span>
+            <span className="icon-name">{size}</span>
           </div>
-          <div class="card-icons-sm">
-            <span class="material-symbols-outlined">group</span>
-            <span class="icon-name">{group}</span>
+          <div className="card-icons-sm">
+            <span className="material-symbols-outlined">group</span>
+            <span className="icon-name">{group}</span>
           </div>
-          <div class="card-icons-sm">
-            <span class="material-symbols-outlined">local_gas_station</span>
-            <span class="icon-name">{gas}</span>
+          <div className="card-icons-sm">
+            <span className="material-symbols-outlined">local_gas_station</span>
+            <span className="icon-name">{gas}</span>
           </div>
-          <div class="card-icons-sm">
-            <span class="material-symbols-outlined">settings</span>
-            <span class="icon-name">{settings}</span>
+          <div className="card-icons-sm">
+            <span className="material-symbols-outlined">settings</span>
+            <span className="icon-name">{settings}</span>
           </div>
         </div>
-        <div class="card-price">
-          <span class="card-price-sm1">월</span>
-          <span class="card-price-sm2">{price}</span>
+        <div className="card-price">
+          <span className="card-price-sm1">월</span>
+          <span className="card-price-sm2">{price}</span>
         </div>
       </div>
     </>
