@@ -23,8 +23,15 @@ const rentSlice = createSlice({
         setPeriodPopup: (state, action) => { state.periodPopup = action.payload; },
         setSelectedRegion: (state, action) => { state.selectedRegion = action.payload; },
         setSelectedCity: (state, action) => { state.selectedCity = action.payload; },
-        setStartDate: (state, action) => { state.startDate = action.payload; },
-        setEndDate: (state, action) => { state.endDate = action.payload; },
+        
+        // 날자 저장 시 문자열 형식으로 변환
+        setStartDate: (state, action) => { 
+            state.startDate = action.payload ? new Date(action.payload).toISOString().split("T")[0] : null; 
+        },
+        setEndDate: (state, action) => { 
+            state.endDate = action.payload ? new Date(action.payload).toISOString().split("T")[0] : null; 
+        },
+
         setStartTime: (state, action) => { state.startTime = action.payload; },
         setEndTime: (state, action) => { state.endTime = action.payload; },
         setReservationType: (state, action) => { state.reservationType = action.payload; },
