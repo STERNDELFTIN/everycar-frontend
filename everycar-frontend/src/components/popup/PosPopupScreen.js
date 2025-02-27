@@ -4,7 +4,7 @@ import { setSelectedCity, setSelectedRegion, setCity, setRegion, setPosPopup } f
 
 import '../../css/popup/PosPopupScreen.css';
 
-function PosPopupScreen({ state, handler }) {
+function PosPopupScreen() {
     // Redux 상태 불러오기
     const dispatch = useDispatch();
     const { region, city, selectedRegion, selectedCity } = useSelector((state) => state.rent);
