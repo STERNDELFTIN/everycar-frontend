@@ -8,7 +8,7 @@ const PaymentSuccess = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // 🔹 URL에서 userNum 가져오기
+        // URL에서 userNum 가져오기
         const params = new URLSearchParams(location.search);
         const userNum = params.get("userNum") || "2";
 

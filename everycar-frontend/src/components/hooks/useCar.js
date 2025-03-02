@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const useCar = (carId) => {
+  const { startDate, startTime, endDate, endTime, rentalDate, returnDate } = useSelector((state) => state.rent);
+
   const [car, setCar] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -15,8 +18,8 @@ const useCar = (carId) => {
 
       try {
         const queryParams = new URLSearchParams({
-          rental_datetime: "2025-02-21T10:00:00",
-          return_datetime: "2025-02-21T14:00:00",
+          rental_datetime: rentalDate,
+          return_datetime: returnDate,
         }).toString();
 
         const res = await fetch(`http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`, {
@@ -31,7 +34,7 @@ const useCar = (carId) => {
         }
 
         const data = await res.json();
-        console.log("🚀 API 응답 데이터:", data);
+        console.log("API 응답 데이터:", data);
 
         if (!data || !data.car) {
           throw new Error("데이터가 없습니다.");

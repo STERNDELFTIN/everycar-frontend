@@ -1,8 +1,12 @@
 // Category.js
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setStartDate, setStartTime, setEndDate, setEndTime } from '../../../redux/rentSlice';
 import '../../../css/common/carList/Category.css';
 
 function Category() {
+  const dispatch = useDispatch();
+  const { region, city, startDate, rentalDate, returnDate } = useSelector((state) => state.rent); // 빌린날짜, 반납날짜
 
   // 슬라이더 값 상태 관리
   const [value, setValue] = useState(500000); // 기본값은 500,000으로 설정
@@ -33,11 +37,11 @@ function Category() {
           <div className="side-box1-content">
             <div className="side-box1-small-content">
               <div className="small-title">지역</div>
-              <div className="small-con">서울/강남구</div>
+              <div className="small-con">{region}/{city}</div>
             </div>
             <div className="side-box1-small-content">
               <div className="small-title">기간</div>
-              <div className="small-con">01.01(수) 부터 1개월 ~ </div>
+              <div className="small-con">{startDate} 부터 1개월 ~ </div>
             </div>
           </div>
         </div>

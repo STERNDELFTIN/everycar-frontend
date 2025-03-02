@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { saveReservation } from "../../redux/reservationSlice";
 import { vwFont } from "../../utils";
 import styled from "styled-components";
@@ -14,6 +14,8 @@ const LabelStyle = styled.label`
 const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { startDate, startTime, endDate, endTime } = useSelector((state) => state.rent);
+
     const [payMethod, setPayMethod] = useState("paypal");
     const [depositorName, setDepositorName] = useState("");
 
@@ -23,10 +25,10 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
         }
     }, [payMethod, agree]);
 
-    /** ✅ PayPal 버튼 렌더링 */
+    /** PayPal 버튼 렌더링 */
     const renderPayPalButton = () => {
         if (!window.paypal) {
-            console.error("❌ PayPal SDK가 로드되지 않았습니다.");
+            console.error("PayPal SDK가 로드되지 않았습니다.");
             return;
         }
 
@@ -43,27 +45,27 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
             },
             onApprove: async (data, actions) => {
                 await actions.order.capture();
-                console.log("✅ PayPal 결제 성공!");
+                console.log("PayPal 결제 성공!");
                 handleReservation(`PAYPAL_${Date.now()}`);
                 onPaymentSuccess();
                 navigate("/reservation/paymentSuccess");
             },
             onError: (err) => {
-                console.error("❌ PayPal 결제 실패:", err);
+                console.error("PayPal 결제 실패:", err);
                 navigate("/reservation/paymentFail");
             }
         }).render("#paypal-button-container");
     };
 
-    /** 🚀 결제 실행 */
+    /** 결제 실행 */
     const handlePayment = () => {
         if (!agree) {
-            alert("⚠️ 이용약관에 동의해주세요.");
+            alert("이용약관에 동의해주세요.");
             return;
         }
 
         if (!payMethod) {
-            alert("⚠️ 결제 방식을 선택해주세요.");
+            alert("결제 방식을 선택해주세요.");
             return;
         }
 
@@ -76,17 +78,17 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
         }
     };
 
-    /** ✅ Toss Payments 결제 실행 */
+    /** Toss Payments 결제 실행 */
     const handleTossPayment = () => {
         if (!window.TossPayments) {
-            console.error("❌ Toss Payments SDK가 로드되지 않았습니다.");
+            console.error("Toss Payments SDK가 로드되지 않았습니다.");
             return;
         }
 
         const tossPayments = window.TossPayments("test_ck_PBal2vxj81jDapM9De5e35RQgOAN");
         const orderId = `RES_${Date.now()}`;
 
-        console.log("📌 Toss Payments 주문번호:", orderId);
+        console.log("Toss Payments 주문번호:", orderId);
 
         tossPayments.requestPayment("카드", {
             amount: totalPrice,
@@ -96,41 +98,41 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
             failUrl: "http://localhost:3000/reservation/paymentFail"
         })
         .then(() => {
-            console.log("✅ Toss Payments 결제 성공");
+            console.log("Toss Payments 결제 성공");
             handleReservation(orderId);
         })
-        .catch((error) => console.error("❌ Toss Payments 결제 실패:", error));
+        .catch((error) => console.error("Toss Payments 결제 실패:", error));
     };
 
-    /** ✅ 무통장 입금 처리 */
+    /** 무통장 입금 처리 */
     const handleBankTransfer = () => {
         if (!agree) {
-            alert("⚠️ 이용약관에 동의해주세요.");
+            alert("이용약관에 동의해주세요.");
             return;
         }
 
         if (!depositorName) {
-            alert("⚠️ 입금자명을 입력해주세요.");
+            alert("입금자명을 입력해주세요.");
             return;
         }
 
-        console.log("✅ 무통장 입금 요청 완료:", depositorName);
-        alert("✅ 무통장 입금 요청이 완료되었습니다.");
+        console.log("무통장 입금 요청 완료:", depositorName);
+        alert("무통장 입금 요청이 완료되었습니다.");
         handleReservation(`BANK_${Date.now()}`);
     };
 
-    /** 🚀 결제 성공 후 예약 요청 실행 */
+    /** 결제 성공 후 예약 요청 실행 */
     const handleReservation = async (orderId) => {
         if (!orderId) {
-            console.error("🚨 주문번호(orderId)가 없습니다.");
+            console.error("주문번호(orderId)가 없습니다.");
             return;
         }
 
         const reservationData = {
-            car_id: car?.car_id, // ✅ 순환 참조 방지
-            rental_datetime: "2025-02-17 10:00:00",
+            car_id: car?.car_id, // 순환 참조 방지
+            rental_datetime: `${startDate} ${startTime}:00`,
             return_location: 10,
-            return_datetime: "2025-02-18 10:00:00",
+            return_datetime: `${endDate} ${endTime}:00`,
             user_num: 2,
             order_id: orderId
         };
@@ -142,22 +144,22 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
                 body: JSON.stringify(reservationData)
             });
 
-            if (!response.ok) throw new Error("🚨 예약 실패!");
+            if (!response.ok) throw new Error("예약 실패!");
 
             const result = await response.json();
-            console.log("✅ 예약 성공:", result);
+            console.log("예약 성공:", result);
 
             handleReservationSuccess(result);
             navigate("/reservation/paymentSuccess");
         } catch (error) {
-            console.error("❌ 예약 오류:", error);
+            console.error("예약 오류:", error);
             alert("예약 중 오류가 발생했습니다.");
         }
     };
 
-    /** ✅ Redux 저장 시 순환 참조 제거 */
+    /** Redux 저장 시 순환 참조 제거 */
     const handleReservationSuccess = (reservationData) => {
-        const safeReservationData = JSON.parse(JSON.stringify(reservationData)); // ✅ 순환 참조 제거
+        const safeReservationData = JSON.parse(JSON.stringify(reservationData)); // 순환 참조 제거
         dispatch(saveReservation({ userNum: 2, reservationData: safeReservationData }));
     };
 
