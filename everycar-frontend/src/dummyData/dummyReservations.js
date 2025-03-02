@@ -13,17 +13,4 @@ const dummyReservations = {
     }
 };
 
-// 예약 내역 저장 (LocalStorage 활용)
-export const saveReservationData = (userNum, reservationData) => {
-    const reservations = JSON.parse(localStorage.getItem("reservations")) || dummyReservations;
-    reservations[userNum] = reservationData;
-    localStorage.setItem("reservations", JSON.stringify(reservations));
-};
-
-// 예약 내역 불러오기
-export const getReservationData = (userNum) => {
-    const reservations = JSON.parse(localStorage.getItem("reservations")) || dummyReservations;
-    return reservations[userNum] || null;
-};
-
 export default dummyReservations;
