@@ -1,17 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import '../../../css/common/carList/List.css';
 import useAvailableCars from '../../hooks/useAvaliableCars'; // 커스텀 훅 불러오기
 
 function List() {
   const navigate = useNavigate();
 
+  const { region, city, rentalDate, returnDate } = useSelector((state) => state.rent);
+
   // API에서 차량 목록 불러오기
   const { cars, loading, error } = useAvailableCars(
-    "서울특별시",
-    "중구",
-    "2024-02-17T10:00:00",
-    "2024-02-18T10:00:00"
+    "서울특별시", // region
+    "중구", // city
+    rentalDate,
+    returnDate
   );
 
   if (loading) return <p>차량 정보를 불러오는 중...</p>;

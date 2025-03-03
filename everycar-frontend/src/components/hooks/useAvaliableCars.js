@@ -21,7 +21,7 @@ const useAvailableCars = (province, district, rentalDatetime, returnDatetime) =>
           if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
   
           const data = await res.json();
-          console.log("🚗 API 응답 데이터:", data);
+          console.log("API 응답 데이터:", data);
           setCars(data.cars || []);
         } catch (error) {
           setError(error.message);

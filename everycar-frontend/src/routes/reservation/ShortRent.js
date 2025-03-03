@@ -8,9 +8,9 @@ import Rent from '../../components/common/Rent.js';
 function ShortRent() {
     const dispatch = useDispatch();
 
-    // 페이지 진입 시 `reservationType`을 "short-trem"로 설정
+    // 페이지 진입 시 `reservationType`을 "short"로 설정
     useEffect(() => {
-        dispatch(setReservationType("short-trem"));
+        dispatch(setReservationType("short"));
     }, [dispatch]);
 
     return (

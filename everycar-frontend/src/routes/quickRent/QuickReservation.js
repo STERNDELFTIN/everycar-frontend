@@ -16,7 +16,7 @@ function QuickReservation() {
     return (
         <div>
             <Popup />
-            <Rent />
+            <Rent page='/reservation/quickReservation/list'/>
         </div>
     );
 }
