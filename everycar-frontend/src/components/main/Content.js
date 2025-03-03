@@ -24,7 +24,7 @@ function Content() {
             return;
         }
         // 빠른예약 페이지로 이동
-        navigate('/speedReservation');
+        navigate('/reservation/quickReservation');
     }
 
     return (
@@ -56,12 +56,12 @@ function Content() {
                         <div className='period' onClick={() => dispatch(setPeriodPopup(!periodPopup))}>
                             <p className='start-period'>
                                 {startDate ? <b>{format(startDate, 'MM.dd(EE)', { locale: ko })} </b> : <b style={{color: '#A0a0a0'}}>01.01(수) </b>}
-                                {startTime ? <span>{startTime}</span> : <span style={{color: '#A0a0a0'}}>10:00</span>}
+                                {startTime ? <span> {startTime}</span> : <span style={{color: '#A0a0a0'}}>10:00</span>}
                             </p>
                             <p className='period-wave'>~</p>
                             <p className='end-period'>
                                 {endDate ? <b>{format(endDate, 'MM.dd(EE)', { locale: ko })}</b> : <b style={{color: '#A0a0a0'}}>01.03(금) </b>}
-                                {endTime ? <span>{endTime}</span> : <span style={{color: '#A0a0a0'}}>10:00</span>}
+                                {endTime ? <span> {endTime}</span> : <span style={{color: '#A0a0a0'}}>10:00</span>}
                             </p>
                         </div>
                     </div>
