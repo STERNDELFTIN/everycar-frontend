@@ -31,9 +31,9 @@ import Register from './routes/authorization/Register';
 import MyInfoManagement from './routes/myPage/MyInfoManagement';
 // import ProfileModify from './routes/myPage/ProfileModify';
 // import LicenseModify from './routes/myPage/LicenseModify';
-// import MyReservationHistory from './routes/myPage/MyReservationHistory';
+import MyReservationHistory from './routes/myPage/MyReservationHistory';
 // import MyReservationHistoryDetail from './routes/myPage/MyReservationHistoryDetail';
-// import MyPayment from './routes/myPage/MyPayment';
+import MyPayment from './routes/myPage/MyPayment';
 
 let PageStyle = styled.div`
   width: 72%;
@@ -93,14 +93,14 @@ function App() {
             </Route>
 
             {/* 내 예약 내역 */}
-            {/* <Route path='history' element={<MyReservationHistory />}>
-              <Route path='detail' element={<MyReservationHistoryDetail />} />
-            </Route> */}
-          </Route>
+            <Route path='history' element={<MyReservationHistory />}>
+              {/* <Route path='detail' element={<MyReservationHistoryDetail />} /> */}
+            </Route>
 
-          {/* 결제 및 정산 */}
-          {/* <Route path='pay' element={<MyPayment />} >
-          </Route> */}
+            {/* 결제 및 정산 */}
+            <Route path='pay' element={<MyPayment />} >
+            </Route>
+          </Route>
 
         </Routes>
       </PageStyle>
