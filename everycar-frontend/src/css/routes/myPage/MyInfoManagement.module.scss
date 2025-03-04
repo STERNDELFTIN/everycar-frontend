@@ -1,5 +1,103 @@
 @use '../../common/commonVariables.scss' as cv;
+@use '../myPage/commonStyle.scss' as v;
 
 .myInfoManagement {
+    margin-bottom: cv.vw-font(22px, 35px);
+
+    .bottomContent {
+        display: flex;
+        gap: cv.vw-font(10px, 19px);
+        text-align: left;
+    }
+}
+.title {
+    font-size: v.$title-font-size;
+    margin-bottom: cv.vw-font(13px, 22px);
+}
+.subTitle {
+    font-size: v.$sub-title-font-size;
+    margin-bottom: cv.vw-font(8px, 10px);
+}
+p, th, td {
+    font-size: cv.vw-font(12px, 18px);
+    font-weight: 400;
+}
+
+// 유저 프로필
+.profile {
+    @include v.white-box;
+}
+
+table {
+    border-collapse: collapse; // 테두리 겹침
+    width: 100%;
+
+    th, td {
+        border-top: 1px solid #D9D9D9;
+        border-bottom: 1px solid #D9D9D9;
+        padding: cv.vw-font(8px, 12px);
+    }
+    th {
+        background-color: #F5F5F5;
+        text-align: right;
+        width: 15%;
+    }
+    td {
+        text-align: left;
+    }
+}
+
+.profileChange {
+    margin-top: cv.vw-font(8px, 12px);
     display: flex;
+    justify-content: right;
+    
+    .profileChangeButton {
+        @include v.button-style;
+    }
+}
+
+// 면허 정보 등록
+.licenseInfoContainer {
+    @include v.white-box;
+}
+.licenseInfoContent {
+    display: flex;
+    gap: cv.vw-font(23px, 45px);
+}
+/*  면허증 */
+.license {
+    max-width: 378px;
+    min-width: 180px;
+    box-sizing: content-box;
+    padding: cv.vw-font(12px, 25px) cv.vw-font(22px, 28px);
+    background: linear-gradient(to right, #AFFF4F, #FFF187);
+    display: flex;
+    gap: cv.vw-font(15px, 18px);
+    border-radius: 20px;
+    flex-wrap: wrap;
+}
+.licenseDetailInfo {
+    display: flex;
+    flex-direction: column;
+    gap: cv.vw-font(3px, 4px);
+    width: auto;
+}
+/* 면허 정보 */
+.infoBox {
+    display: flex;
+    gap: cv.vw-font(8px, 13px);
+    .infoDetailTitle {
+        color: v.$grey-color;
+    }
+}
+/* 면허정보수정 버튼 */
+.infoChange {
+    height: 100%;
+    margin-left: auto;
+    margin-top: auto;
+    
+    .infoChangeButton {
+        @include v.button-style;
+    }
 }

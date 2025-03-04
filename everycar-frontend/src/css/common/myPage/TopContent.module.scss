@@ -1,0 +1,16 @@
+@use '../../common/commonVariables.scss' as cv;
+
+// 상단 콘텐츠
+.topContent {
+    display: flex;
+    justify-content: space-between;
+    height: cv.vw-font(30px, 50px);
+    align-items: flex-end;
+    margin: cv.vw-font(15px, 30px) 0;
+    h2 {
+        font-size: cv.vw-font(14px, 32px);
+    }
+    p {
+        font-size: cv.vw-font(8px, 14px);
+    }
+}
