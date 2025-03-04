@@ -10,8 +10,8 @@ function ListContainer() {
     const selectedListHandler = (i) => { // 리스트 선택했을 경우, 해당 페이지 이동 및 배경색 변경
         setSelectedList(i);
         if (i === 0) navigate('/myPage/info');
-        if (i === 1) navigate('/myPage/profileModify');
-        if (i === 2) navigate('/myPage/licenseModify');
+        if (i === 1) navigate('/myPage/history');
+        if (i === 2) navigate('/myPage/pay');
     };
 
     const menuList = [
