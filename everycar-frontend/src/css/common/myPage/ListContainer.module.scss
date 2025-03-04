@@ -34,3 +34,19 @@ li { list-style: none; }
 .selected {
     background-color: #C4FF53;
 }
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .listContainer {
+        width: 100%;
+    }
+    .myPageList {
+        flex-direction: row;
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}

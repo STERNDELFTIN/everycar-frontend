@@ -16,10 +16,10 @@
 }
 .subTitle {
     font-size: v.$sub-title-font-size;
-    margin-bottom: cv.vw-font(8px, 10px);
+    margin-bottom: cv.vw-font(7px, 10px);
 }
 p, th, td {
-    font-size: cv.vw-font(12px, 18px);
+    font-size: cv.vw-font(10px, 18px);
     font-weight: 400;
 }
 
@@ -99,5 +99,39 @@ table {
     
     .infoChangeButton {
         @include v.button-style;
+    }
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+    table {
+        th {
+            width: 20%;
+        }
+    }
+
+    .licenseInfoContent {
+        flex-direction: column;
+    }
+    .license {
+        max-width: 300px;
+    }
+    
+}
+@media (max-width: 768px) { /* 태블릿 */
+    table {
+        th {
+            width: 27%;
+        }
+    }
+    .bottomContent {
+        flex-direction: column;
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+    table {
+        th {
+            width: 30%;
+        }
     }
 }

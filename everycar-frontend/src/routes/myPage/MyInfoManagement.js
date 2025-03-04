@@ -28,30 +28,32 @@ function Profile() {
             <div className={styles.profileDetail}>
                 <h5 className={styles.subTitle}>프로필</h5>
                 <table>
-                    <tr>
-                        <th>이름</th>
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <th>아이디</th>
-                        <td>user1</td>
-                    </tr>
-                    <tr>
-                        <th>생년월일</th>
-                        <td>2000.01.01</td>
-                    </tr>
-                    <tr>
-                        <th>성별</th>
-                        <td>남</td>
-                    </tr>
-                    <tr>
-                        <th>이메일</th>
-                        <td>hong***@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <th>전화번호</th>
-                        <td>010-1234-5678</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>이름</th>
+                            <td>홍길동</td>
+                        </tr>
+                        <tr>
+                            <th>아이디</th>
+                            <td>user1</td>
+                        </tr>
+                        <tr>
+                            <th>생년월일</th>
+                            <td>2000.01.01</td>
+                        </tr>
+                        <tr>
+                            <th>성별</th>
+                            <td>남</td>
+                        </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td>hong***@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th>전화번호</th>
+                            <td>010-1234-5678</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
 
