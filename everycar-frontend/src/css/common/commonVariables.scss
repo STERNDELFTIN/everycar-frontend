@@ -9,3 +9,14 @@ $gradient-color: linear-gradient(to right, #AFFF4F, #FFF187);
 
 $title-font-size: vw-font(14px, 24px);
 $sub-title-font-size: vw-font(8px, 18px);
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+    
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}

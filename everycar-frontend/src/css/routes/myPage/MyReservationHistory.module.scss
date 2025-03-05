@@ -1,2 +1,38 @@
 @use '../../common/commonVariables.scss' as cv;
 @use '../myPage/commonStyle.scss' as v;
+
+.myReservationHistory {
+    text-align: left;
+}
+
+// 하단 콘텐츠
+.bottomContent {
+    display: flex;
+}
+
+// 이용약관
+.termsOfUse {
+    margin: cv.vw-font(10px, 20px) cv.vw-font(8px, 15px);
+    color: cv.$grey-color;
+
+    h6 {
+        font-size: cv.vw-font(10px, 18px);
+        margin-bottom: cv.vw-font(10px, 12px);
+    }
+    p {
+        text-align: justify;
+    }
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .bottomContent {
+        flex-direction: column;
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}

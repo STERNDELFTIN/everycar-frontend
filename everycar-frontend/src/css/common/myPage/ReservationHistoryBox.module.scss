@@ -1,0 +1,89 @@
+@use '../../common/commonVariables.scss' as cv;
+
+.reservationHistoryBox {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: cv.vw-font(12px, 20px) cv.vw-font(22px, 30px);
+    gap: cv.vw-font(15px, 20px);
+}
+
+// 렌트 상태
+.rentalState {
+    display: inline-block; // 글자 크기만큼만 차지
+    width: auto;
+    border-radius: 3px;
+    background-color: #EDEDED;
+    padding: cv.vw-font(2.8px, 3px) cv.vw-font(7px, 9px);
+    font-weight: 700;
+    font-size: cv.vw-font(7px, 14px);
+}
+
+// 렌트 정보
+.rentalInfo {
+     display: flex;
+     gap: cv.vw-font(10px, 15px);
+
+     img {
+        max-width: 200px;
+        min-width: 200px;
+        width: auto;
+        height: auto;
+     }
+}
+.carName {
+    font-size: cv.vw-font(12px, 20px);
+}
+.rentDate {
+    color: cv.$grey-color;
+}
+
+.rentPos {
+    display: flex;
+    gap: cv.vw-font(16px, 20px);
+}
+.rentPosBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+.rentPosTitle {
+    border-radius: 2px;
+    background-color: #F3F3F3;
+    color: cv.$grey-color;
+    padding: 2px 5px;
+}
+
+// 버튼
+.buttonContainer {
+    margin-top: cv.vw-font(6px, 10px);
+    display: flex;
+    gap: cv.vw-font(5px, 10px);
+
+    button {
+        flex: 1;
+        border: 1px solid #D9D9D9;
+        border-radius: 3px;
+        text-align: center;
+        padding: 7px 12px;
+        font-size: cv.vw-font(7px, 14px);
+        cursor: pointer;
+    }
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .rentalInfo {
+        flex-direction: column;
+   }
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}

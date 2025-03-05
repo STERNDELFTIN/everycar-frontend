@@ -5,6 +5,7 @@ li { list-style: none; }
 // 리스트
 .listContainer {
     width: 20%;
+    margin-right: 12px;
 }
 
 .myPageList {
@@ -42,6 +43,8 @@ li { list-style: none; }
 @media (max-width: 768px) { /* 태블릿 */
     .listContainer {
         width: 100%;
+        margin: 0 auto;
+        margin-bottom: 12px;
     }
     .myPageList {
         flex-direction: row;
