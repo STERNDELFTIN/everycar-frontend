@@ -1,4 +1,4 @@
-import styles from '../../css/routes/myPage/MyInfoManagement.module.scss';
+import styles from '../../css/routes/myPage/MyReservationHistory.module.scss';
 import { vwFont } from '../../utils';
 
 import TopContent from '../../components/common/myPage/TopContent';
