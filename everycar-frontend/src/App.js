@@ -28,12 +28,12 @@ import Login from './routes/authorization/Login';
 import Register from './routes/authorization/Register';
 
 // 마이페이지
-import MyInfoManagement from './routes/myPage/MyInfoManagement';
+import MyInfoManagement from './routes/myPage/info/MyInfoManagement';
 // import ProfileModify from './routes/myPage/ProfileModify';
 // import LicenseModify from './routes/myPage/LicenseModify';
-import MyReservationHistory from './routes/myPage/MyReservationHistory';
+import MyReservationHistory from './routes/myPage/reservation/MyReservationHistory';
 // import MyReservationHistoryDetail from './routes/myPage/MyReservationHistoryDetail';
-import MyPayment from './routes/myPage/MyPayment';
+import MyPayment from './routes/myPage/payment/MyPayment';
 
 let PageStyle = styled.div`
   width: 72%;

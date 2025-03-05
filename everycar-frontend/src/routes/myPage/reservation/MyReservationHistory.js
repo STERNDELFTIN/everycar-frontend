@@ -1,11 +1,11 @@
-import styles from '../../css/routes/myPage/MyReservationHistory.module.scss';
-import { vwFont } from '../../utils';
+import styles from '../../../css/routes/myPage/reservation/MyReservationHistory.module.scss';
+import { vwFont } from '../../../utils';
 
-import TopContent from '../../components/common/myPage/TopContent';
-import ListContainer from '../../components/common/myPage/ListContainer';
-import ReservationHistoryBox from '../../components/common/myPage/ReservationHistoryBox';
+import TopContent from '../../../components/common/myPage/TopContent';
+import ListContainer from '../../../components/common/myPage/ListContainer';
+import ReservationHistoryBox from '../../../components/common/myPage/ReservationHistoryBox';
 
-import dummyData from '../../dummyData/dummyData';
+import dummyData from '../../../dummyData/dummyData';
 
 function MyReservationHistory() {
     return (

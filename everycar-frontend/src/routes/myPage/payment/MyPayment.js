@@ -1,8 +1,8 @@
-import styles from '../../css/routes/myPage/MyPayment.module.scss';
-import { vwFont } from '../../utils';
+import styles from '../../../css/routes/myPage/payment/MyPayment.module.scss';
+import { vwFont } from '../../../utils';
 
-import TopContent from '../../components/common/myPage/TopContent';
-import ListContainer from '../../components/common/myPage/ListContainer';
+import TopContent from '../../../components/common/myPage/TopContent';
+import ListContainer from '../../../components/common/myPage/ListContainer';
 
 function MyPayment() {
     return (

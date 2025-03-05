@@ -1,5 +1,5 @@
-@use '../../common/commonVariables.scss' as cv;
-@use '../myPage/commonStyle.scss' as v;
+@use '../../../common/commonVariables.scss' as cv;
+@use '../../myPage/commonStyle.scss' as v;
 
 .myInfoManagement {
     margin-bottom: cv.vw-font(22px, 35px);
@@ -70,7 +70,7 @@ table {
     min-width: 180px;
     box-sizing: content-box;
     padding: cv.vw-font(12px, 25px) cv.vw-font(22px, 28px);
-    background: cv.$primary-color;
+    background: cv.$gradient-color;
     display: flex;
     gap: cv.vw-font(15px, 18px);
     border-radius: 20px;
