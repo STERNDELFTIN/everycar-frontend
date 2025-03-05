@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styles from '../../../css/routes/myPage/info/MyInfoManagement.module.scss';
 import { vwFont } from '../../../utils';
 
@@ -23,6 +24,12 @@ function MyInfoManagement() {
 
 // 유저 프로필
 function Profile() {
+    const navigate = useNavigate();
+
+    const movePageHandler = () => {
+        navigate('/myPage/info/profile');
+    }
+
     return (
         <div className={styles.profile}>
             <h4 className={styles.title}>홍길동님, 환영합니다!</h4>
@@ -59,7 +66,12 @@ function Profile() {
             </div>
 
             <div className={styles.profileChange}>
-                <button className={styles.profileChangeButton}>프로필수정</button>
+                <button
+                    className={styles.profileChangeButton}
+                    onClick={movePageHandler}
+                >
+                    프로필수정
+                </button>
             </div>
         </div>
     );
@@ -67,6 +79,12 @@ function Profile() {
 
 // 면허 정보
 function LicenseInfo() {
+    const navigate = useNavigate();
+
+    const movePageHandler = () => {
+        navigate('/myPage/info/license');
+    }
+
     return (
         <div className={styles.licenseInfoContainer}>
             <h4 className={styles.title}>면허 정보 등록</h4>
@@ -106,7 +124,12 @@ function LicenseInfo() {
                 </div>
 
                 <div className={styles.infoChange}>
-                    <button className={styles.infoChangeButton}>정보수정</button>
+                    <button
+                        className={styles.infoChangeButton}
+                        onClick={movePageHandler}
+                    >
+                        정보수정
+                    </button>
                 </div>
             </div>
         </div>

@@ -28,11 +28,14 @@ import Login from './routes/authorization/Login';
 import Register from './routes/authorization/Register';
 
 // 마이페이지
+/* 내 정보 관리 페이지 */
 import MyInfoManagement from './routes/myPage/info/MyInfoManagement';
-// import ProfileModify from './routes/myPage/ProfileModify';
-// import LicenseModify from './routes/myPage/LicenseModify';
+import ProfileModify from './routes/myPage/info/ProfileModify';
+import LicenseModify from './routes/myPage/info/LicenseModify';
+/* 내 예약 내역 페이지 */
 import MyReservationHistory from './routes/myPage/reservation/MyReservationHistory';
-// import MyReservationHistoryDetail from './routes/myPage/MyReservationHistoryDetail';
+// import MyReservationHistoryDetail from './routes/myPage/reservation/MyReservationHistoryDetail';
+/* 결제 및 정산 페이지 */
 import MyPayment from './routes/myPage/payment/MyPayment';
 
 let PageStyle = styled.div`
@@ -87,19 +90,16 @@ function App() {
           {/* 마이페이지 */}
           <Route path='/myPage'>
             {/* 내 정보 관리 */}
-            <Route path='info' element={<MyInfoManagement />}>
-              {/* <Route path='profileModify' element={<ProfileModify />} />
-              <Route path='licenseModify' element={<LicenseModify />} /> */}
-            </Route>
+            <Route path='info' element={<MyInfoManagement />} />
+            <Route path='info/profile' element={<ProfileModify />} />
+            <Route path='info/license' element={<LicenseModify />} />
 
             {/* 내 예약 내역 */}
-            <Route path='history' element={<MyReservationHistory />}>
-              {/* <Route path='detail' element={<MyReservationHistoryDetail />} /> */}
-            </Route>
+            <Route path='history' element={<MyReservationHistory />} />
+            {/* <Route path='history/detail' element={<MyReservationHistoryDetail />} /> */}
 
             {/* 결제 및 정산 */}
-            <Route path='pay' element={<MyPayment />} >
-            </Route>
+            <Route path='pay' element={<MyPayment />} />
           </Route>
 
         </Routes>
