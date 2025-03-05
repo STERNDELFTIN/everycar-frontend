@@ -14,7 +14,8 @@ function MyReservationHistory() {
 
             <div className={styles.bottomContent}>
                 <ListContainer />
-                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: vwFont(7, 10) }}>
+                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: vwFont(18, 30) }}>
+                    <h2>내예약내역</h2>
                     <QuickReservationHistory />
                     <ShortReservationHistory />
                     <TermsOfUse />

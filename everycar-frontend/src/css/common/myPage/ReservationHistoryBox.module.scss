@@ -58,6 +58,11 @@
     padding: 2px 5px;
 }
 
+/* '이용중'일 경우 배경 색상 변경 */
+.usingStatus {
+    background-color: cv.$primary-color;
+}
+
 // 버튼
 .buttonContainer {
     margin-top: cv.vw-font(6px, 10px);

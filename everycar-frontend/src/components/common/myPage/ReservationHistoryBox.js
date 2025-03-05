@@ -51,7 +51,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, startDate
     return (
         <div className={styles.reservationHistoryBox}>
             <div className={styles.rentalStateBox}>
-                <p className={styles.rentalState}>
+                <p className={`${styles.rentalState} ${reservationStatus==='이용중' ? styles.usingStatus : ""}`}>
                     {reservationStatus}
                 </p>
             </div>

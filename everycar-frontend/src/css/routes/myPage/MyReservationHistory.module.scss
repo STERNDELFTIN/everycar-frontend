@@ -4,6 +4,14 @@
 .myReservationHistory {
     text-align: left;
 }
+h2 {
+    font-size: cv.$title-font-size;
+}
+h3 {
+    font-size: cv.$sub-title-font-size;
+    margin-bottom: cv.vw-font(12px, 23px);
+    margin-left: 7px;
+}
 
 // 하단 콘텐츠
 .bottomContent {
