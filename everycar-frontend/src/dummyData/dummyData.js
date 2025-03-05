@@ -8,6 +8,7 @@ const dummyData = {
         user_phone: "010-1234-5678",
         user_birth: "1990-05-15",
         user_address: "서울특별시 강남구",
+        user_gender: 1, // 남자
       },
       {
         user_num: 2,
@@ -17,6 +18,7 @@ const dummyData = {
         user_phone: "010-9876-5432",
         user_birth: "1985-10-20",
         user_address: "부산광역시 해운대구",
+        user_gender: 2, // 여자
       },
     ],
   

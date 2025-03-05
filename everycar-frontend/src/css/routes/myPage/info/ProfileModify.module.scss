@@ -1,6 +1,22 @@
 @use '../../../common/commonVariables.scss' as cv;
 @use '../../myPage/commonStyle.scss' as v;
 
+.bottomContent {
+    display: flex;
+}
+p, th, td {
+    font-size: cv.vw-font(10px, 18px);
+    font-weight: 400;
+}
+
+// 프로필 수정 컨테이너
+.profileContainer {
+    @include v.white-box;
+}
+.profileTable {
+    
+}
+
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
     

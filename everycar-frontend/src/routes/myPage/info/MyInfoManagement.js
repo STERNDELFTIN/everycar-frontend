@@ -5,6 +5,8 @@ import { vwFont } from '../../../utils';
 import TopContent from '../../../components/common/myPage/TopContent';
 import ListContainer from '../../../components/common/myPage/ListContainer';
 
+import dummyData from '../../../dummyData/dummyData';
+
 function MyInfoManagement() {
     return (
         <div className={styles.myInfoManagement}>
@@ -26,6 +28,8 @@ function MyInfoManagement() {
 function Profile() {
     const navigate = useNavigate();
 
+    const user = dummyData.users[0]; // 더미 데이터에 존재하는 첫 번째 유저 임의로 선택
+
     const movePageHandler = () => {
         navigate('/myPage/info/profile');
     }
@@ -39,27 +43,31 @@ function Profile() {
                     <tbody>
                         <tr>
                             <th>이름</th>
-                            <td>홍길동</td>
+                            <td>{user.user_name}</td>
                         </tr>
                         <tr>
                             <th>아이디</th>
-                            <td>user1</td>
+                            <td>{user.user_id}</td>
                         </tr>
                         <tr>
                             <th>생년월일</th>
-                            <td>2000.01.01</td>
+                            <td>{user.user_birth}</td>
                         </tr>
                         <tr>
                             <th>성별</th>
-                            <td>남</td>
+                            <td>{ user.user_gender === 1 ? '남' : '여' }</td>
                         </tr>
                         <tr>
                             <th>이메일</th>
-                            <td>hong***@gmail.com</td>
+                            <td>{ user.user_email }</td>
                         </tr>
                         <tr>
                             <th>전화번호</th>
-                            <td>010-1234-5678</td>
+                            <td>{user.user_phone}</td>
+                        </tr>
+                        <tr>
+                            <th>주소</th>
+                            <td>{user.user_address}</td>
                         </tr>
                     </tbody>
                 </table>
