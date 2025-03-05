@@ -102,6 +102,20 @@ table {
     }
 }
 
+// 이용약관
+.termsOfUse {
+    margin: cv.vw-font(10px, 20px) cv.vw-font(8px, 15px);
+    color: v.$grey-color;
+
+    h6 {
+        font-size: cv.vw-font(10px, 18px);
+        margin-bottom: cv.vw-font(10px, 12px);
+    }
+    p {
+        text-align: justify;
+    }
+}
+
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
     table {
