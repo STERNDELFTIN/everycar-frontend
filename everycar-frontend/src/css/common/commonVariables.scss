@@ -2,3 +2,10 @@
 @function vw-font($min-size, $max-size, $base-width: 1920px) {
     @return clamp($min-size, calc($max-size / $base-width * 100vw), $max-size);
 }
+
+$primary-color: #C4FF53;
+$grey-color: #8F9191;
+$gradient-color: linear-gradient(to right, #AFFF4F, #FFF187);
+
+$title-font-size: vw-font(14px, 24px);
+$sub-title-font-size: vw-font(8px, 18px);

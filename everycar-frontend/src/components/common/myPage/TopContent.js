@@ -1,10 +1,10 @@
 import styles from '../../../css/common/myPage/TopContent.module.scss';
 
-function TopContent() {
+function TopContent({currentLocation}) {
     return (
         <div className={styles.topContent}>
             <h2>마이페이지</h2>
-            <p>{'내정보관리'}</p>
+            <p>마이페이지 &gt; {currentLocation}</p>
         </div>
     );
 }

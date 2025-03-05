@@ -11,11 +11,11 @@
     }
 }
 .title {
-    font-size: v.$title-font-size;
+    font-size: cv.$title-font-size;
     margin-bottom: cv.vw-font(13px, 22px);
 }
 .subTitle {
-    font-size: v.$sub-title-font-size;
+    font-size: cv.$sub-title-font-size;
     margin-bottom: cv.vw-font(7px, 10px);
 }
 p, th, td {
@@ -71,7 +71,7 @@ table {
     min-width: 180px;
     box-sizing: content-box;
     padding: cv.vw-font(12px, 25px) cv.vw-font(22px, 28px);
-    background: linear-gradient(to right, #AFFF4F, #FFF187);
+    background: cv.$primary-color;
     display: flex;
     gap: cv.vw-font(15px, 18px);
     border-radius: 20px;
@@ -88,7 +88,7 @@ table {
     display: flex;
     gap: cv.vw-font(8px, 13px);
     .infoDetailTitle {
-        color: v.$grey-color;
+        color: cv.$grey-color;
     }
 }
 /* 면허정보수정 버튼 */
@@ -105,7 +105,7 @@ table {
 // 이용약관
 .termsOfUse {
     margin: cv.vw-font(10px, 20px) cv.vw-font(8px, 15px);
-    color: v.$grey-color;
+    color: cv.$grey-color;
 
     h6 {
         font-size: cv.vw-font(10px, 18px);

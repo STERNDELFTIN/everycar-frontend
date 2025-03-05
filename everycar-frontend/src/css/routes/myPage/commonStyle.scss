@@ -1,11 +1,5 @@
 @use '../../common/commonVariables.scss' as cv;
 
-$primary-color: #C4FF53;
-$grey-color: #8F9191;
-$gradient-color: linear-gradient(to right, #AFFF4F, #FFF187);
-$title-font-size: cv.vw-font(14px, 24px);
-$sub-title-font-size: cv.vw-font(8px, 18px);
-
 @mixin white-box() {
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -14,11 +8,11 @@ $sub-title-font-size: cv.vw-font(8px, 18px);
     padding: cv.vw-font(15px, 33px) cv.vw-font(27px, 45px);
 }
 @mixin button-style() {
-    border: 1px solid $grey-color;
+    border: 1px solid cv.$grey-color;
     border-radius: 8px;
     background-color: #FFFFFF;
     padding: cv.vw-font(7px, 10px) cv.vw-font(18px, 20px);
-    font-size: $sub-title-font-size;
+    font-size: cv.$sub-title-font-size;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;

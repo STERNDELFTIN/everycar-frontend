@@ -7,7 +7,7 @@ import ListContainer from '../../components/common/myPage/ListContainer';
 function MyPayment() {
     return (
         <div className={styles.myPayment}>
-            <TopContent />
+            <TopContent currentLocation='결제및정산' />
 
             <div className={styles.bottomContent}>
                 <ListContainer />

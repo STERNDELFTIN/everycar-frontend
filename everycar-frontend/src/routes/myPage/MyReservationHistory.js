@@ -7,7 +7,7 @@ import ListContainer from '../../components/common/myPage/ListContainer';
 function MyReservationHistory() {
     return (
         <div className={styles.myReservationHistory}>
-            <TopContent />
+            <TopContent currentLocation='내예약내역' />
 
             <div className={styles.bottomContent}>
                 <ListContainer />

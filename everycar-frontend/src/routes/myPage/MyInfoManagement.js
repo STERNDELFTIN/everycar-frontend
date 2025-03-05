@@ -7,7 +7,7 @@ import ListContainer from '../../components/common/myPage/ListContainer';
 function MyInfoManagement() {
     return (
         <div className={styles.myInfoManagement}>
-            <TopContent />
+            <TopContent currentLocation='내정보관리' />
 
             <div className={styles.bottomContent}>
                 <ListContainer />
