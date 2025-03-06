@@ -63,13 +63,12 @@ function App() {
           {/* 예약 관련 페이지 */}
           <Route path='/reservation'>
             <Route path='quickReservation' element={<QuickReservation />} />
-            <Route path='quickReservation/list' element={<QuickReservationList />}></Route>
+            <Route path='quickReservation/list' element={<QuickReservationList />} />
 
             <Route path='shortRent' element={<ShortRent />} />
             <Route path='shortRentList' element={<ShortRentList />} />
             <Route path='carDetail/:id' element={<CarDetail />} />
-            <Route path='rentReservation/:id' element={<RentReservation />} >
-            </Route>
+            <Route path='rentReservation/:id' element={<RentReservation />} />
             <Route path='paymentSuccess' element={<PaymentSuccess />} />
             <Route path='paymentFail' element={<PaymentFail />} />
           </Route>
