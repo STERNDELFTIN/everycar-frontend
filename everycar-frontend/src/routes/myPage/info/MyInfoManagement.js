@@ -45,7 +45,7 @@ function MyInfoManagement() {
 // 유저 프로필
 function Profile() {
     const navigate = useNavigate();
-    
+
     // 유저 정보 가져오기
     const { loading, userInfo, birthDate, licenseIssuedDate, licenseInfo, reservations } = useUserInfo();
 
@@ -79,7 +79,7 @@ function Profile() {
                         </tr>
                         <tr>
                             <th>성별</th>
-                            <td>{ userInfo.userGender === 1 ? '남' : '여' }</td>
+                            <td>{ userInfo.userGender === 1 ? '여' : '남' }</td>
                         </tr>
                         <tr>
                             <th>이메일</th>

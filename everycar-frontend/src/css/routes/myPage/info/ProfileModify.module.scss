@@ -22,7 +22,9 @@ p, th, td {
     
 }
 @media (max-width: 768px) { /* 태블릿 */
-
+    .bottomContent {
+        flex-direction: column;
+    }
 }
 @media (max-width: 480px) { /* 모바일 */
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserInfo, setLicenseInfo } from '../../redux//userSlice';
+import { setUserInfo, setLicenseInfo } from '../../redux/userSlice';
 
 const useUserInfo = () => {
     const dispatch = useDispatch();
@@ -17,8 +17,7 @@ const useUserInfo = () => {
             return;
         }
 
-        if (!isLoggedIn) {
-            console.log('토큰을 이용해 유저 정보 가져오기...');
+        if (!userInfo) {
             fetch('http://localhost:8080/api/user/mypage', {
                 method: 'GET',
                 headers: {
@@ -30,10 +29,12 @@ const useUserInfo = () => {
             .then(data => {
                 dispatch(setUserInfo(data)); // Redux에 저장
             })
-            .catch(error => console.error('유저 정보 불러오기 오류:', error));
+            .catch(error => console.error('유저 정보 불러오기 오류:', error))
+            .finally(() => setLoading(false));
+        } else {
+            setLoading(false);
         }
 
-        // 면허 정보 가져오기
         fetch('http://localhost:8080/api/license/myLicense', {
             method: 'GET',
             headers: {
@@ -45,10 +46,9 @@ const useUserInfo = () => {
         .then(data => {
             dispatch(setLicenseInfo(data)); // Redux에 저장
         })
-        .catch(error => console.error('면허 정보 불러오기 오류:', error))
-        .finally(() => setLoading(false));
+        .catch(error => console.error('면허 정보 불러오기 오류:', error));
 
-    }, [isLoggedIn, dispatch]);
+    }, [userInfo, isLoggedIn, dispatch]);
 
     return { loading, userInfo, birthDate, licenseIssuedDate, licenseInfo, reservations };
 };

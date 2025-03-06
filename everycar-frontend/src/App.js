@@ -1,6 +1,9 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from './redux/userSlice';
 
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -48,6 +51,26 @@ let PageStyle = styled.div`
 `;
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // 앱 시작 시 자동 로그인
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://localhost:8080/api/user/mypage', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          dispatch(setUserInfo(data)); // Redux에 유저 정보 저장
+        })
+        .catch(error => console.error('유저 정보 불러오기 오류:', error));
+    }
+  }, [dispatch]);
 
   return (
     <div className="App">
