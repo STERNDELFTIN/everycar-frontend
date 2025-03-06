@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setUserInfo } from '../../../redux/userSlice';
 import styles from '../../../css/routes/myPage/info/ProfileModify.module.scss';
 import { vwFont } from '../../../utils';
-import useUserInfo from '../../../components/hooks/useUserInfo';
 
 import TopContent from '../../../components/common/myPage/TopContent';
 import ListContainer from '../../../components/common/myPage/ListContainer';
-
-// 더미 데이터
-// import dummyData from '../../../dummyData/dummyData';
+import useUserInfo from '../../../components/hooks/useUserInfo';
 
 function ProfileModify() {
     return (
@@ -28,12 +23,12 @@ function ProfileModify() {
 // 프로필 수정
 function ProfileModifyInfo() {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     // 유저 정보 가져오기
-    const { loading, userInfo, birthDate } = useUserInfo();
+    const { loading, userInfo, updateUserInfo } = useUserInfo();
 
     // 상태 추가: 변경 가능한 값들 (초기값 설정)
+    const [userName, setUserName] = useState(userInfo?.userName || '');
     const [userEmail, setUserEmail] = useState(userInfo?.userEmail || '');
     const [userPhone, setUserPhone] = useState(userInfo?.userPhone || '');
     const [userAddress, setUserAddress] = useState(userInfo?.userAddress || '');
@@ -41,6 +36,7 @@ function ProfileModifyInfo() {
 
     useEffect(() => {
         if (userInfo) {
+            setUserName(userInfo.userName || '');
             setUserEmail(userInfo.userEmail || '');
             setUserPhone(userInfo.userPhone || '');
             setUserAddress(userInfo.userAddress || '');
@@ -48,58 +44,49 @@ function ProfileModifyInfo() {
     }, [userInfo]);
 
     // 변경 사항 처리 함수
-    const handleEmailChange = (e) => setUserEmail(e.target.value);
-    const handlePhoneChange = (e) => setUserPhone(e.target.value);
-    const handleAddressChange = (e) => setUserAddress(e.target.value);
+    const handleNameChange = (e) => {
+        setUserName(e.target.value);
+        setIsNameChanged(true);
+    };
+    const handleEmailChange = (e) => {
+        setUserEmail(e.target.value);
+        setIsEmailChanged(true);
+    };
 
-    // 정보 저장 함수
-    const handleSave = async () => {
-        const token = localStorage.getItem('token');
+    const handlePhoneChange = (e) => {
+        setUserPhone(e.target.value);
+        setIsPhoneChanged(true);
+    };
 
-        try {
-            const response = await fetch('http://localhost:8080/api/user/mypage', {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userEmail,
-                    userPhone,
-                    userAddress,
-                }),
-            });
+    const handleAddressChange = (e) => {
+        setUserAddress(e.target.value);
+        setIsAddressChanged(true);
+    };
 
-            if (!response.ok) {
-                throw new Error('프로필 업데이트 실패');
-            }
-            // 변경된 정보 Redux 상태 업데이트
-            const updatedUserInfo = {
-                ...userInfo,
-                userEmail,
-                userPhone,
-                userAddress
-            };
-            dispatch(setUserInfo(updatedUserInfo));
+    // 내용 변경 여부
+    const [isNameChanged, setIsNameChanged] = useState(false);
+    const [isEmailChanged, setIsEmailChanged] = useState(false);
+    const [isPhoneChanged, setIsPhoneChanged] = useState(false);
+    const [isAddressChanged, setIsAddressChanged] = useState(false);
 
-            // 로그인 상태 변경 이벤트 트리거
-            window.dispatchEvent(new Event('loginStateChange'));
+    // 내용 변경 사항 처리 함수
+    
 
-            // 성공 메시지 표시
-            setMessage('프로필이 성공적으로 업데이트되었습니다.');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const updatedData = { userName, userEmail, userPhone, userAddress };
 
-            // 0.5초 후 자동으로 페이지 이동 (즉발적 UI 반영)
-            setTimeout(() => {
-                navigate('/myPage/info'); // 페이지 이동
-            }, 500);
-        } catch (error) {
-            console.error('프로필 업데이트 오류:', error);
-            setMessage('프로필 업데이트 중 오류가 발생했습니다.');
+        const result = await updateUserInfo(updatedData);
+        setMessage(result.message);
+
+        if (result.success) {
+            setTimeout(() => navigate('/myPage/info'), 500);
         }
     };
 
     return (
         <div className={styles.profileContainer}>
+            <h3>프로필수정</h3>
             {/* 로딩 중일 때 */}
             {loading && <p>Loading...</p>}
 
@@ -121,7 +108,7 @@ function ProfileModifyInfo() {
                             </tr>
                             <tr>
                                 <th>생년월일</th>
-                                <td>{birthDate || userInfo.userBirth}</td>
+                                <td>{userInfo.userBirth}</td>
                             </tr>
                             <tr>
                                 <th>성별</th>
@@ -129,27 +116,21 @@ function ProfileModifyInfo() {
                             </tr>
                             <tr>
                                 <th>이메일</th>
-                                <td>
-                                    <input type='email' value={userEmail} onChange={handleEmailChange} />
-                                </td>
+                                <td><input type='email' value={userEmail} onChange={handleEmailChange} className={isEmailChanged ? styles.changedInput : styles.normalInput} /></td>
                             </tr>
                             <tr>
                                 <th>전화번호</th>
-                                <td>
-                                    <input type='text' value={userPhone} onChange={handlePhoneChange} />
-                                </td>
+                                <td><input type='tel' value={userPhone} onChange={handlePhoneChange} className={isPhoneChanged ? styles.changedInput : styles.normalInput} /></td>
                             </tr>
                             <tr>
                                 <th>주소</th>
-                                <td>
-                                    <input type='text' value={userAddress} onChange={handleAddressChange} />
-                                </td>
+                                <td><input type='text' value={userAddress} onChange={handleAddressChange} className={isAddressChanged ? styles.changedInput : styles.normalInput} /></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <div className={styles.saveButtonContainer}>
-                        <button className={styles.saveButton} onClick={handleSave}>저장</button>
+                        <button className={styles.saveButton} onClick={handleSubmit}>저장</button>
                     </div>
                     {message && <p style={{ color: 'green' }}>{message}</p>}
                 </>

@@ -4,9 +4,13 @@
 .bottomContent {
     display: flex;
 }
-p, th, td {
+p, th, td, input {
     font-size: cv.vw-font(10px, 18px);
     font-weight: 400;
+}
+h3 {
+    font-size: cv.$title-font-size;
+    text-align: left;
 }
 
 // 프로필 수정 컨테이너
@@ -15,6 +19,15 @@ p, th, td {
 }
 .profileTable {
     
+}
+
+// 내용 변경 시 input 테두리 변경
+.normalInput {
+    @include v.input-style;
+}
+.changedInput {
+    @include v.input-style;
+    color: rgb(109, 173, 0);
 }
 
 /* 미디어 쿼리 */

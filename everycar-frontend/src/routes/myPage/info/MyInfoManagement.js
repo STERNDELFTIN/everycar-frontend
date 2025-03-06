@@ -2,29 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../../css/routes/myPage/info/MyInfoManagement.module.scss';
 import { vwFont } from '../../../utils';
-import useUserInfo from '../../../components/hooks/useUserInfo';
 
 import TopContent from '../../../components/common/myPage/TopContent';
 import ListContainer from '../../../components/common/myPage/ListContainer';
-
-// 더미 데이터 가져오기
-// import dummyData from '../../../dummyData/dummyData';
+import useUserInfo from '../../../components/hooks/useUserInfo';
+import useLicense from '../../../components/hooks/useLicense';
 
 function MyInfoManagement() {
-    const navigate = useNavigate();
-
-    // 유저 정보 가져오기
-    const { loading, userInfo, birthDate, licenseIssuedDate, licenseInfo, reservations } = useUserInfo();
-
-    if (loading) return <p>Loading...</p>
-    if (!userInfo) return <p>유저 정보 없음</p>
-
-    const handleEditClick = () => {
-        navigate('/myPage/info/profile');
-    };
-    const handleLicenseClick = () => {
-        navigate('/myPage/info/license');
-    };
 
     return (
         <div className={styles.myInfoManagement}>
@@ -47,12 +31,10 @@ function Profile() {
     const navigate = useNavigate();
 
     // 유저 정보 가져오기
-    const { loading, userInfo, birthDate, licenseIssuedDate, licenseInfo, reservations } = useUserInfo();
+    const { loading, userInfo } = useUserInfo();
 
     if (loading) return <p>Loading...</p>
     if (!userInfo) return <p>유저 정보 없음</p>
-
-    // const user = dummyData.users[0]; // 더미 데이터에 존재하는 첫 번째 유저 임의로 선택
 
     const movePageHandler = () => {
         navigate('/myPage/info/profile');
@@ -60,7 +42,7 @@ function Profile() {
 
     return (
         <div className={styles.profile}>
-            <h4 className={styles.title}>홍길동님, 환영합니다!</h4>
+            <h4 className={styles.title}>{userInfo.userName}님, 환영합니다!</h4>
             <div className={styles.profileDetail}>
                 <h5 className={styles.subTitle}>프로필</h5>
                 <table>
@@ -75,7 +57,7 @@ function Profile() {
                         </tr>
                         <tr>
                             <th>생년월일</th>
-                            <td>{birthDate || userInfo.userBirth}</td>
+                            <td>{userInfo.userBirth}</td>
                         </tr>
                         <tr>
                             <th>성별</th>
@@ -114,10 +96,12 @@ function LicenseInfo() {
     const navigate = useNavigate();
 
     // 유저 정보 가져오기
-    const { loading, userInfo, birthDate, licenseIssuedDate, licenseInfo, reservations } = useUserInfo();
+    const { loading, userInfo } = useUserInfo();
+    // 면허 정보 가져오기
+    const { licenseInfo } = useLicense();
 
     if (loading) return <p>Loading...</p>
-    if (!userInfo) return <p>유저 정보 없음</p>
+    if (!userInfo || !licenseInfo || !licenseInfo.licenseNum) return <p>유저 정보가 없거나 등록된 면허 정보가 없습니다.</p>
 
     const movePageHandler = () => {
         navigate('/myPage/info/license');
@@ -137,7 +121,7 @@ function LicenseInfo() {
                             <p>{licenseInfo.licenseNum}</p>
                             <p>{userInfo.userName}</p>
                             {/* <p>123456-1******</p> */}
-                            <p>적성검사 : {licenseInfo.licenseDate || licenseIssuedDate}</p>
+                            <p>적성검사 : {licenseInfo.licenseDate}</p>
                             <p>기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;간 : {licenseInfo.licenseEndDate}</p>
                         </div>
                     </div>
@@ -155,7 +139,7 @@ function LicenseInfo() {
                         </div>
                         <div className={styles.infoDetail}>
                             <p>{licenseInfo.licenseNum}</p>
-                            <p>{licenseInfo.licenseDate || licenseIssuedDate}</p>
+                            <p>{licenseInfo.licenseDatee}</p>
                             <p>{licenseInfo.licenseEndDate}</p>
                         </div>
                     </div>
