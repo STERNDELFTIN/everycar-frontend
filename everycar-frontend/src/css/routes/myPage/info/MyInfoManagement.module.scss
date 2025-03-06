@@ -83,12 +83,20 @@ table {
     width: auto;
 }
 /* 면허 정보 */
+.info {
+    margin-top: cv.vw-font(12px, 20px);
+}
 .infoBox {
     display: flex;
-    gap: cv.vw-font(8px, 13px);
+    gap: cv.vw-font(10px, 20px);
     .infoDetailTitle {
         color: cv.$grey-color;
     }
+}
+.infoDetailTitle, .infoDetail {
+    display: flex;
+    flex-direction: column;
+    gap: cv.vw-font(5px, 8px);
 }
 /* 면허정보수정 버튼 */
 .infoChange {
@@ -130,6 +138,10 @@ table {
         max-width: 300px;
     }
     
+    .info {
+        margin: 0 0;
+        margin-left: cv.vw-font(12px, 20px);
+    }
 }
 @media (max-width: 768px) { /* 태블릿 */
     table {
