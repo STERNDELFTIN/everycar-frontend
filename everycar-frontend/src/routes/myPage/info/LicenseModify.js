@@ -24,8 +24,15 @@ const LicenseModify = () => {
     const [newLicensePhoto, setNewLicensePhoto] = useState(licenseInfo.licensePhoto);
     const [message, setMessage] = useState('');
 
+    // 내용 변경 여부
+    const [isNumChanged, setIsNumChanged] = useState(false);
+    const [isDateChanged, setIsDateChanged] = useState(false);
+    const [isEndDateChanged, setIsEndDateChanged] = useState(false);
+    const [isPhotoChanged, setIsPhotoChanged] = useState(false);
+
     const handleFileChange = (e) => {
         setNewLicensePhoto(e.target.files[0]);
+        setIsPhotoChanged(true);
     };
 
     const handleSubmit = async (e) => {
@@ -77,8 +84,8 @@ const LicenseModify = () => {
 
             <div className={styles.bottomContent}>
                 <ListContainer />
-                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: vwFont(7, 10) }}>
-                    <h2>면허 정보 등록</h2>
+                <div className={styles.licenseModifyContainer}>
+                    <h4 className={styles.title}>면허 정보 등록</h4>
                     <form onSubmit={handleSubmit} encType="multipart/form-data">
                         <table>
                             <tbody>
@@ -88,21 +95,21 @@ const LicenseModify = () => {
                                 </tr>
                                 <tr>
                                     <th>면허고유번호</th>
-                                    <td><input type="text" value={newLicenseNum} onChange={(e) => setNewLicenseNum(e.target.value)} required /></td>
+                                    <td><input type="text" value={newLicenseNum} onChange={(e) => setNewLicenseNum(e.target.value)} className={isNumChanged ? styles.changedInput : styles.normalInput} required /></td>
                                 </tr>
                                 <tr>
                                     <th>발급일</th>
-                                    <td><input type="date" value={newLicenseDate} onChange={(e) => setNewLicenseDate(e.target.value)} required />
+                                    <td><input type="date" value={newLicenseDate} onChange={(e) => setNewLicenseDate(e.target.value)} className={isDateChanged ? styles.changedInput : styles.normalInput} required />
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>만료일</th>
-                                    <td><input type="date" value={newLicenseEndDate} onChange={(e) => setNewLicenseEndDate(e.target.value)} required /></td>
+                                    <td><input type="date" value={newLicenseEndDate} onChange={(e) => setNewLicenseEndDate(e.target.value)} className={isEndDateChanged ? styles.changedInput : styles.normalInput} required /></td>
                                 </tr>
                             </tbody>
                         </table>
 
-                        <div>
+                        <div className={styles.currentPhoto}>
                             <label>현재 등록된 면허증 사진:</label>
                             {newLicensePhoto ? (
                                 <div>
@@ -112,11 +119,15 @@ const LicenseModify = () => {
                                 <p>등록된 사진이 없습니다.</p>
                             )}
                         </div>
-                        <div>
+                        <div className={styles.changedPhoto}>
                             <label>새로운 면허증 사진 (변경 시 선택):</label>
                             <input type="file" accept="image/*" onChange={handleFileChange} />
                         </div>
-                        <button type="submit">수정 완료</button>
+
+                        <div className={styles.saveButtonContainer}>
+                            <button type="submit" className={styles.saveButton}>저장</button>
+                        </div>
+
                     </form>
 
                     {message && <p style={{ color: 'green' }}>{message}</p>}

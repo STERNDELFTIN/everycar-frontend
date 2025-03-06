@@ -1,6 +1,52 @@
 @use '../../../common/commonVariables.scss' as cv;
 @use '../../myPage/commonStyle.scss' as v;
 
+.bottomContent {
+    display: flex;
+}
+p, th, td, input {
+    font-size: cv.vw-font(10px, 18px);
+    font-weight: 400;
+}
+.title {
+    font-size: cv.$title-font-size;
+    margin-bottom: cv.vw-font(13px, 22px);
+}
+
+// 면허 사진
+.currentPhoto, .changedPhoto {
+    display: flex;
+    margin-top: 8px;
+}
+
+// 버튼
+.saveButtonContainer {
+    display: flex;
+    justify-content: right;
+
+    .saveButton {
+        @include v.button-style;
+    }
+}
+
+// 내용 변경 시 input 테두리 변경
+.normalInput {
+    @include v.input-style;
+}
+.changedInput {
+    @include v.input-style;
+    color: rgb(109, 173, 0);
+}
+
+// 프로필 수정 컨테이너
+.licenseModifyContainer {
+    @include v.white-box;
+
+    h4 {
+        font-size: cv.$title-font-size;
+        text-align: left;
+    }
+}
 
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {

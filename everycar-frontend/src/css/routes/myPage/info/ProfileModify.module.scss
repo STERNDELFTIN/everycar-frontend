@@ -8,17 +8,30 @@ p, th, td, input {
     font-size: cv.vw-font(10px, 18px);
     font-weight: 400;
 }
-h3 {
+.title {
     font-size: cv.$title-font-size;
-    text-align: left;
+    margin-bottom: cv.vw-font(13px, 22px);
 }
 
 // 프로필 수정 컨테이너
 .profileContainer {
     @include v.white-box;
+
+    h3 {
+        font-size: cv.$title-font-size;
+        text-align: left;
+    }
 }
-.profileTable {
-    
+
+// 버튼
+.saveButtonContainer {
+    display: flex;
+    justify-content: right;
+    margin-top: cv.vw-font(8px, 15px);
+
+    .saveButton {
+        @include v.button-style;
+    }
 }
 
 // 내용 변경 시 input 테두리 변경

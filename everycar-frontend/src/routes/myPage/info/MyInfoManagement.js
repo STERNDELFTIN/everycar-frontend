@@ -114,7 +114,7 @@ function LicenseInfo() {
 
                 <div className={styles.license}>
                     <div className={styles.licenseDetail} style={{ display: 'flex', gap: vwFont(23, 40) }}>
-                        <div><img style={{ width: '100px', height: '129px', borderRadius: '10px', aspectRatio: '3.5/4.5', }}></img></div>
+                        <div><img src={licenseInfo.licensePhoto} style={{ width: '100px', height: '129px', borderRadius: '10px', aspectRatio: '3.5/4.5', }}></img></div>
 
                         <div className={styles.licenseDetailInfo}>
                             <h5 className={styles.subTitle}>자동차운전면허증</h5>

@@ -69,9 +69,6 @@ function ProfileModifyInfo() {
     const [isPhoneChanged, setIsPhoneChanged] = useState(false);
     const [isAddressChanged, setIsAddressChanged] = useState(false);
 
-    // 내용 변경 사항 처리 함수
-    
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const updatedData = { userName, userEmail, userPhone, userAddress };
@@ -86,7 +83,7 @@ function ProfileModifyInfo() {
 
     return (
         <div className={styles.profileContainer}>
-            <h3>프로필수정</h3>
+            <h3 className={styles.title}>프로필수정</h3>
             {/* 로딩 중일 때 */}
             {loading && <p>Loading...</p>}
 
