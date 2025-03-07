@@ -22,9 +22,14 @@ import PaymentSuccess from './routes/reservation/PaymentSuccess';
 import PaymentFail from './routes/reservation/PaymentFail';
 
 // 고객 지원 관련 페이지
-import Announcement from './routes/support/Announcement';
-import Event from './routes/support/Event';
-import Inquiry from './routes/support/Inquiry';
+/* 공지 페이지 */
+import Announcement from './routes/support/announcement/Announcement';
+import AnnouncementDetail from './routes/support/announcement/AnnouncementDetail';
+/* 이벤트 페이지 */
+import Event from './routes/support/event/Event';
+import EventDetail from './routes/support/event/EventDetail';
+/* 문의 페이지 */
+import Inquiry from './routes/support/inquiry/Inquiry';
 
 // 인증 관련 페이지
 import Login from './routes/authorization/Login';
@@ -98,8 +103,14 @@ function App() {
 
           {/* 고객 지원 관련 페이지 */}
           <Route path='/support'>
-            <Route path='announcement' element={<Announcement />} />
-            <Route path='event' element={<Event />} />
+            {/* 공지 */}
+            <Route path='anonuncement' element={<Announcement />} /> {/* 공지전체목록 */}
+            <Route path='announcementDetail/:id' element={<AnnouncementDetail />} /> {/* 공지상세보기 */}
+            {/* 이벤트 */}
+            <Route path='event' element={<Event />} /> {/* 이벤트전체목록 */}
+            <Route path='eventDetail/:id' element={<EventDetail />} /> {/* 이벤트상세보가 */}
+
+            {/* 문의*/}
             <Route path='inquiry' element={<Inquiry />} />
           </Route>
 
