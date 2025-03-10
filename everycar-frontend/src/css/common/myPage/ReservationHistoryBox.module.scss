@@ -1,6 +1,7 @@
 @use '../../common/commonVariables.scss' as cv;
 
 .reservationHistoryBox {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -9,8 +10,13 @@
     padding: cv.vw-font(12px, 20px) cv.vw-font(22px, 30px);
     gap: cv.vw-font(15px, 20px);
     margin-bottom: clamp(10px, 1vw, 15px);  // 반응형 margin-bottom 설정
+    border: 1px solid #f3f3f3;
+    transition: 0.1s ease-in-out;
 }
 
+.reservationHistoryBox:hover{
+    background: #F9FEF5;
+}
 // 렌트 상태
 .rentalState {
     display: inline-block; // 글자 크기만큼만 차지

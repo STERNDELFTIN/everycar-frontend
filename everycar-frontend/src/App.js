@@ -45,6 +45,7 @@ import MyReservationHistory from './routes/myPage/reservation/MyReservationHisto
 // import MyReservationHistoryDetail from './routes/myPage/reservation/MyReservationHistoryDetail';
 /* 결제 및 정산 페이지 */
 import MyPayment from './routes/myPage/payment/MyPayment';
+import MyReservationHistoryDetail from './routes/myPage/reservation/MyReservationHistoryDetail';
 
 let PageStyle = styled.div`
   width: 72%;
@@ -129,7 +130,7 @@ function App() {
 
             {/* 내 예약 내역 */}
             <Route path='history' element={<MyReservationHistory />} />
-            {/* <Route path='history/detail' element={<MyReservationHistoryDetail />} /> */}
+            <Route path='history/detail/:reservationId' element={<MyReservationHistoryDetail />} />
 
             {/* 결제 및 정산 */}
             <Route path='pay' element={<MyPayment />} />

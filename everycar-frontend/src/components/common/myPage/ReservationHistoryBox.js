@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { useNavigate } from "react-router-dom";
 import styles from '../../../css/common/myPage/ReservationHistoryBox.module.scss';
 import { vwFont } from '../../../utils';
 
@@ -204,23 +204,16 @@ function getRentalState(state, payment, reservationType,reservationId, startDate
 }
 
 function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, startDate, startTime, endDate, endTime, rentPos, returnPos, reservationType, reservationId }) {
-    console.log("ReservationHistoryBox Props:", {
-        reservationStatus,
-        carImage,
-        carName,
-        startDate,
-        startTime,
-        endDate,
-        endTime,
-        rentPos,
-        returnPos,
-        payment,
-        reservationType,
-        reservationId
-    });
+        const navigate = useNavigate();
+        // 상세 페이지 이동 함수
+        const handleViewDetails = () => {
+            // navigate(`/myPage/history/detail`);
+            navigate(`/myPage/history/detail/${reservationId}`);
+        };
 
+        
     return (
-        <div className={styles.reservationHistoryBox}>
+        <div className={styles.reservationHistoryBox} onClick={handleViewDetails}>
             <div className={styles.rentalStateBox}>
                 <p className={`${styles.rentalState} ${reservationStatus === '이용중' ? styles.usingStatus : ""}`}>
                     {reservationStatus}

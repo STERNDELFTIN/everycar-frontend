@@ -1,0 +1,57 @@
+@use '../../../common/commonVariables.scss' as cv;
+@use '../../myPage/commonStyle.scss' as v;
+//전체 박스
+.reservationHistoryBox {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: cv.vw-font(12px, 20px) cv.vw-font(22px, 30px);
+    gap: cv.vw-font(15px, 20px);
+    margin-bottom: clamp(10px, 1vw, 15px);  // 반응형 margin-bottom 설정
+    border: 1px solid #f3f3f3;
+    transition: 0.1s ease-in-out;
+}
+
+//대여 자동차 이미지
+.reservationCarInfo{
+    display: flex;
+    gap: cv.vw-font(10px, 15px);
+    img {
+        max-width: 200px;
+        min-width: 200px;
+        width: auto;
+        height: auto;
+    }
+}
+
+//대여 자동차 스펙
+.rentalInfo{
+    width: 100%;
+}
+
+.carTitle{
+    display: flex;
+}
+.carName{
+    display: grid;
+    font-size: cv.vw-font(8px, 24px);
+    font-weight: 700;
+    margin-right: 10px;
+}
+.grade{
+    display: grid;
+    padding: clamp(4px, -1.958333vw, 20px) clamp(12px, 1.4583333333vw, 28px);
+    margin-bottom: cv.vw-font(10px, 15px);
+    font-size: cv.vw-font(7px, 14px);
+    background: cv.$gradient-color;
+    align-items: center;
+    border-radius: 50px;
+    background: cv.$gradient-color;
+}
+
+// 대여시간
+.rentTime {
+
+}
