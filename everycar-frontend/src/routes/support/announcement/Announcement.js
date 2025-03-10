@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "../../../css/routes/support/announcement/Announcement.css";
 
-const announcements = [
-  { id: 1, title: "서비스 점검 안내", date: "2025-03-10", category: "공지" },
-  { id: 2, title: "새로운 기능 업데이트", date: "2025-03-08", category: "업데이트" },
-  { id: 3, title: "이벤트 공지", date: "2025-03-05", category: "이벤트" },
-  { id: 4, title: "시스템 유지보수 일정", date: "2025-03-02", category: "공지" },
-];
-
 function Announcement() {
+
+  const [announcements, setAnnouncements] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/posts")
+      .then((response) => {
+        console.log("Fetched posts:", response.data); // 서버에서 받은 데이터 출력
+        setAnnouncements(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching posts:", error);
+      });
+  }, []);
+
   return (
     <div className="notice-container">
       <h2 className="notice-title">공지사항</h2>
@@ -27,7 +36,7 @@ function Announcement() {
                 {announcement.title}
               </div>
               <div>
-                <p className="notice-meta">{announcement.date}</p>
+                <p className="notice-meta">{announcement.createdAt}</p>
               </div>
             </li>
           </Link>
