@@ -10,7 +10,7 @@
   .notice-title {
     font-size: 50px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: #333;
     text-align: left;
   }
@@ -57,19 +57,33 @@
   /* 페이지네이션 */
   .pagination {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 40px;
   }
   
   .page-button {
-    padding: 10px 15px;
-    background: #eee;
+    padding: 8px 12px;
     border: none;
-    border-radius: 5px;
+    background-color: #fff;
+    color: #3A3D50;
     cursor: pointer;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid #3A3D50;
+    transition: background 0.1s;
+  }
+  
+  .page-button.active {
+    background-color: #3A3D50;
+    color: #AFFF4F;
+    font-weight: bold;
   }
   
   .page-button:hover {
-    background: #ddd;
+    background: #AFFF4F;
+    color: #3A3D50;
+    border: 1px solid #AFFF4F;
   }
+  
   
