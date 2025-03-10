@@ -46,9 +46,6 @@ function getRentalState(state, payment, reservationType,reservationId, startDate
             // startDate와 startTime을 합쳐서 올바른 날짜 형식으로 생성
             const reservationStartDate = new Date(`${startDate} ${startTime}`);
             const reservationReturnDate = new Date(`${endDate} ${endTime}`);
-            console.log("현재 시간:", currentDate);
-            console.log("예약 시작 시간:", reservationStartDate);
-            console.log("예약 종료 시간:", reservationReturnDate);
             
             // 현재 시간이 예약 시작 시간과 종료 시간 사이에 있을 때만 true를 반환
             return currentDate >= reservationStartDate && currentDate <= reservationReturnDate;
@@ -56,7 +53,7 @@ function getRentalState(state, payment, reservationType,reservationId, startDate
 
         const handleStartReservation = () => {
             console.log("reservationId 이용시작", reservationId);
-            fetch(`http://localhost:8080/api/fast/reservations/${reservationId}/start`, {
+            fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/start`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -89,7 +86,7 @@ function getRentalState(state, payment, reservationType,reservationId, startDate
             if (isConfirmed) {
                 console.log("reservationId 예약취소", reservationId);
             
-                fetch(`http://localhost:8080/api/fast/reservations/${reservationId}/cancel`, {
+                fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/cancel`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
@@ -129,7 +126,7 @@ function getRentalState(state, payment, reservationType,reservationId, startDate
             // 확인을 클릭했을 경우, 이용 완료 요청 처리
             console.log("이용 완료 요청:", reservationId);
             
-            fetch(`http://localhost:8080/api/fast/reservations/${reservationId}/complete`, {
+            fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/complete`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -197,6 +194,7 @@ function getRentalState(state, payment, reservationType,reservationId, startDate
         case '이용완료': // 취소됨
             return (
                 <>
+                    <button className={styles.button_active} onClick={handleViewDetails}>리뷰 작성하기</button>
                     <button onClick={handleViewDetails}>예약 상세보기</button>
                 </>
             );

@@ -108,38 +108,78 @@ function QuickReservationHistory() {
 
 // 단기예약
 function ShortReservationHistory() {
-    const shortReservations = dummyData.short_reservations.map((res) => {
-        const car = dummyData.cars.find((c) => c.car_id === res.car_id);
-        const state = dummyData.rental_states.find((s) => s.state_id === res.rental_state);
+    const [shortReservations, setShortReservations] = useState([]);
+    
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        // API로부터 단기 예약 데이터를 가져옴
+        fetch('http://localhost:8080/api/short/reservations', {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                const updatedReservations = data.map((res) => {
+                    // carName과 carImage를 설정 (예시로 carId가 주어짐)
+                    const car = { model_id: res.modelName, image_url: "https://example.com/sonata.png" };
+                    const state = { state_name: res.rentalState === 0 ? '결제대기' : '이용중' };
 
-        return {
-            ...res,
-            carName: car.model_id,
-            carImage: "https://example.com/sonata.png",
-            reservationStatus: state.state_name,
+                    return {
+                        ...res,
+                        carName: car.model_id,
+                        carImage: car.image_url,
+                        reservationStatus: getRentalStateText(res.rentalState),
+                    };
+                });
+                setShortReservations(updatedReservations);
+            })
+            .catch(error => {
+                console.error("예약 데이터를 불러오는 데 실패했습니다.", error);
+            });
+    }, []); // 빈 배열은 컴포넌트가 처음 렌더링 될 때만 실행되도록 함
+
+    const getRentalStateText = (state) => {
+        const stateMapping = {
+            0: "결제대기",
+            1: "결제완료",
+            2: "이용중",
+            3: "예약취소",
+            4: "이용완료",
         };
-    });
-
+        return stateMapping[state] || "알 수 없음";
+    };
+    
     return (
         <div>
             <h3>단기 예약</h3>
-            {shortReservations.map((reservation) => (
-                <ReservationHistoryBox
-                    key={reservation.reservation_id}
-                    reservationStatus={reservation.reservationStatus}
-                    carImage={reservation.carImage}
-                    carName={reservation.carName}
-                    startDate={reservation.rental_datetime.split(" ")[0]}
-                    startTime={reservation.rental_datetime.split(" ")[1]}
-                    endDate={reservation.return_datetime.split(" ")[0]}
-                    endTime={reservation.return_datetime.split(" ")[1]}
-                    rentPos={reservation.rental_locator}
-                    returnPos={reservation.return_locator}
-                />
-            ))}
+            {shortReservations.length > 0 ? (
+                shortReservations.map((reservation) => (
+                    <ReservationHistoryBox
+                        key={reservation.reservationSId}
+                        reservationStatus={reservation.reservationStatus}
+                        carImage="/images/car-model/product-image-01.png"
+                        carName={reservation.carName}
+                        payment={reservation.payment}
+                        startDate={reservation.reservation_s_start_date.split(" ")[0]}
+                        startTime={reservation.reservation_s_start_date.split(" ")[1]}
+                        endDate={reservation.reservation_s_end_date.split(" ")[0]}
+                        endTime={reservation.reservation_s_end_date.split(" ")[1]}
+                        rentPos={reservation.rentalLocationName}
+                        returnPos={reservation.rentalLocationName}
+                        reservationType="short"
+                        reservationId={reservation.reservationSId}
+                    />
+                ))
+            ) : (
+                <p>예약 정보가 없습니다.</p>
+            )}
         </div>
     );
 }
+
 
 // 이용약관
 function TermsOfUse() {
