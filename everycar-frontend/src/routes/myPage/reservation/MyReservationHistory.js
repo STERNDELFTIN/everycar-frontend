@@ -17,7 +17,7 @@ function MyReservationHistory() {
             <div className={styles.bottomContent}>
                 <ListContainer />
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: vwFont(18, 30) }}>
-                    <h2>내예약내역</h2>
+                    <h2>내 예약 내역</h2>
                     <QuickReservationHistory />
                     <ShortReservationHistory />
                     <TermsOfUse />
@@ -88,12 +88,15 @@ function QuickReservationHistory() {
                         reservationStatus={reservation.reservationStatus}
                         carImage="/images/car-model/product-image-01.png"
                         carName={reservation.carName}
+                        payment={reservation.payment}
                         startDate={reservation.rental_datetime?.split(" ")[0] || ""}
                         startTime={reservation.rental_datetime?.split(" ")[1] || ""}
                         endDate={reservation.return_datetime?.split(" ")[0] || ""}
                         endTime={reservation.return_datetime?.split(" ")[1] || ""}
                         rentPos={reservation.rentalLocationName || "미정"}
                         returnPos={reservation.returnLocationName || "미정"}
+                        reservationType="fast"
+                        reservationId={reservation.reservationId}
                     />
                 ))
             ) : (
