@@ -15,27 +15,33 @@ function getRentalState(state) {
     };
 
     switch (state) {
-        case '예약중': // 예약 중
+        case '결제대기': // 예약 중
             return (
                 <>
-                    <button onClick={handleViewDetails}>예약 상세보기</button>
+                    <button onClick={handleViewDetails}>결제하기</button>
                     <button onClick={handleCancelReservation}>예약 취소</button>
                 </>
             );
-        case '이용중': // 이용 중
+        case '결제완료': // 이용 중
             return (
                 <>
                     <button onClick={handleViewDetails}>예약 상세보기</button>
                 </>
             );
-        case '이용완료': // 이용 완료
+        case '이용중': // 이용 완료
+            return (
+                <>
+                    <button onClick={handleViewDetails}>이용 완료</button>
+                    <button onClick={handleCancelReservation}>예약 상세보기</button>
+                </>
+            );
+        case '예약취소': // 취소됨
             return (
                 <>
                     <button onClick={handleViewDetails}>예약 상세보기</button>
-                    <button onClick={handleCancelReservation}>예약 취소</button>
                 </>
             );
-        case '취소됨': // 취소됨
+        case '이용완료': // 취소됨
             return (
                 <>
                     <button onClick={handleViewDetails}>예약 상세보기</button>
@@ -47,11 +53,22 @@ function getRentalState(state) {
 }
 
 function ReservationHistoryBox({ reservationStatus, carImage, carName, startDate, startTime, endDate, endTime, rentPos, returnPos }) {
+    console.log("ReservationHistoryBox Props:", {
+        reservationStatus,
+        carImage,
+        carName,
+        startDate,
+        startTime,
+        endDate,
+        endTime,
+        rentPos,
+        returnPos,
+    });
 
     return (
         <div className={styles.reservationHistoryBox}>
             <div className={styles.rentalStateBox}>
-                <p className={`${styles.rentalState} ${reservationStatus==='이용중' ? styles.usingStatus : ""}`}>
+                <p className={`${styles.rentalState} ${reservationStatus === '이용중' ? styles.usingStatus : ""}`}>
                     {reservationStatus}
                 </p>
             </div>

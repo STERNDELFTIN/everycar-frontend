@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import styles from '../../../css/routes/myPage/reservation/MyReservationHistory.module.scss';
 import { vwFont } from '../../../utils';
 
@@ -27,35 +29,76 @@ function MyReservationHistory() {
 
 // 빠른 예약 내역
 function QuickReservationHistory() {
-    const quickReservations = dummyData.fast_reservations.map((res) => {
-        const car = dummyData.cars.find((c) => c.car_id === res.car_id);
-        const state = dummyData.rental_states.find((s) => s.state_id === res.rental_state);
+    const [quickReservations, setQuickReservations] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-        return {
-            ...res,
-            carName: car.model_id,
-            carImage: "https://example.com/ev6.png",
-            reservationStatus: state.state_name,
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        fetch("http://localhost:8080/api/fast/reservations", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Fetched Quick Reservations:", data);
+
+                // API에서 받은 데이터를 변환
+                const formattedReservations = data.map((res) => ({
+                    ...res,
+                    carName: res.modelName || "알 수 없음",
+                    carImage: "https://example.com/ev6.png",
+                    reservationStatus: getRentalStateText(res.rentalState),
+                }));
+
+                setQuickReservations(formattedReservations);
+            })
+            .catch(error => console.error("API 호출 오류:", error))
+            .finally(() => setLoading(false));
+    }, []);
+
+    const getRentalStateText = (state) => {
+        const stateMapping = {
+            0: "결제대기",
+            1: "결제완료",
+            2: "이용중",
+            3: "예약취소",
+            4: "이용완료",
         };
-    });
+        return stateMapping[state] || "알 수 없음";
+    };
 
     return (
         <div>
             <h3>빠른 예약</h3>
-            {quickReservations.map((reservation) => (
-                <ReservationHistoryBox
-                    key={reservation.reservation_id}
-                    reservationStatus={reservation.reservationStatus}
-                    carImage={reservation.carImage}
-                    carName={reservation.carName}
-                    startDate={reservation.rental_datetime.split(" ")[0]}
-                    startTime={reservation.rental_datetime.split(" ")[1]}
-                    endDate={reservation.return_datetime.split(" ")[0]}
-                    endTime={reservation.return_datetime.split(" ")[1]}
-                    rentPos={reservation.rental_locator}
-                    returnPos={reservation.return_locator}
-                />
-            ))}
+            {loading ? (
+                <p>로딩 중...</p>
+            ) : quickReservations.length > 0 ? (
+                quickReservations.map((reservation) => (
+                    <ReservationHistoryBox
+                        key={reservation.reservationId}
+                        reservationStatus={reservation.reservationStatus}
+                        carImage="/images/car-model/product-image-01.png"
+                        carName={reservation.carName}
+                        startDate={reservation.rental_datetime?.split(" ")[0] || ""}
+                        startTime={reservation.rental_datetime?.split(" ")[1] || ""}
+                        endDate={reservation.return_datetime?.split(" ")[0] || ""}
+                        endTime={reservation.return_datetime?.split(" ")[1] || ""}
+                        rentPos={reservation.rentalLocationName || "미정"}
+                        returnPos={reservation.returnLocationName || "미정"}
+                    />
+                ))
+            ) : (
+                <p>예약 내역이 없습니다.</p>
+            )}
         </div>
     );
 }
