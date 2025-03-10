@@ -8,6 +8,7 @@
     background-color: #FFFFFF;
     padding: cv.vw-font(12px, 20px) cv.vw-font(22px, 30px);
     gap: cv.vw-font(15px, 20px);
+    margin-bottom: clamp(10px, 1vw, 15px);  // 반응형 margin-bottom 설정
 }
 
 // 렌트 상태
