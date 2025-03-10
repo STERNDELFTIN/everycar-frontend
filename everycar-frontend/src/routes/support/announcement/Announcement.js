@@ -12,7 +12,15 @@ function Announcement() {
       .get("http://localhost:8080/api/posts")
       .then((response) => {
         console.log("Fetched posts:", response.data); // 서버에서 받은 데이터 출력
-        setAnnouncements(response.data);
+        
+        // 날짜 변환 (UTC → YYYY-MM-DD)
+        const formattedData = response.data.map(post => {
+          const utcDate = new Date(post.createdAt);
+          const formattedDate = utcDate.toLocaleDateString("ko-KR"); // YYYY-MM-DD 형식
+          return { ...post, createdAt: formattedDate };
+        });
+
+        setAnnouncements(formattedData);
       })
       .catch((error) => {
         console.error("Error fetching posts:", error);
