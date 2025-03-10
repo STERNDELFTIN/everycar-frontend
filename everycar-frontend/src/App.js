@@ -104,7 +104,7 @@ function App() {
           {/* 고객 지원 관련 페이지 */}
           <Route path='/support'>
             {/* 공지 */}
-            <Route path='anonuncement' element={<Announcement />} /> {/* 공지전체목록 */}
+            <Route path='announcement' element={<Announcement />} /> {/* 공지전체목록 */}
             <Route path='announcementDetail/:id' element={<AnnouncementDetail />} /> {/* 공지상세보기 */}
             {/* 이벤트 */}
             <Route path='event' element={<Event />} /> {/* 이벤트전체목록 */}

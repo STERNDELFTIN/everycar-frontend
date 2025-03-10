@@ -3,7 +3,7 @@ function Inquiry() {
 
     return (
       <>
-  
+  test
       </>
     );
   };
