@@ -30,6 +30,9 @@ import Event from './routes/support/event/Event';
 import EventDetail from './routes/support/event/EventDetail';
 /* 문의 페이지 */
 import Inquiry from './routes/support/inquiry/Inquiry';
+import InquiryDetail from './routes/support/inquiry/InquiryDetail';
+import InquiryCreate from './routes/support/inquiry/InquiryCreate';
+import InquiryModify from './routes/support/inquiry/InquiryModify';
 
 // 인증 관련 페이지
 import Login from './routes/authorization/Login';
@@ -108,10 +111,12 @@ function App() {
             <Route path='announcementDetail/:id' element={<AnnouncementDetail />} /> {/* 공지상세보기 */}
             {/* 이벤트 */}
             <Route path='event' element={<Event />} /> {/* 이벤트전체목록 */}
-            <Route path='eventDetail/:id' element={<EventDetail />} /> {/* 이벤트상세보가 */}
-
+            <Route path='eventDetail/:id' element={<EventDetail />} /> {/* 이벤트상세보기 */}
             {/* 문의*/}
             <Route path='inquiry' element={<Inquiry />} />
+            <Route path='inquiryDetail/:id' element={<InquiryDetail />} />
+            <Route path='inquiryCreate' element={<InquiryCreate />} />
+            <Route path='inquiryModify' element={<InquiryModify />} />
           </Route>
 
           {/* 인증 관련 페이지 */}

@@ -1,0 +1,100 @@
+.inquiry-detail-container {
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    text-align: left;
+    /* Added for left alignment */
+}
+
+.inquiry-detail-title {
+    padding: 4px 10px;
+    background-color: #AFFF4F;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.inquiry-content,
+.inquiry-answer {
+    padding: 60px 50px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid #ddd;
+}
+
+.inquiry-question,
+.inquiry-answer-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.inquiry-meta {
+    font-size: 14px;
+    color: gray;
+}
+
+.no-answer {
+    color: red;
+    font-weight: bold;
+}
+
+.inquiry-buttons {
+    display: flex;
+    justify-content: space-between;
+    /* 왼쪽 & 오른쪽 정렬 */
+    align-items: center;
+    margin-top: 20px;
+}
+
+.left-buttons {
+    flex: 1;
+}
+
+.right-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* 목록으로 돌아가기 버튼 */
+.back-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* 수정 & 삭제 버튼 */
+.edit-button,
+.delete-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
