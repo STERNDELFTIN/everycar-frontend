@@ -82,7 +82,7 @@ function Announcement() {
             </Link>
           ))
         ) : (
-          <p>공지사항이 없습니다.</p>
+          <p className="no-list">공지사항이 없습니다.</p>
         )}
       </ul>
 

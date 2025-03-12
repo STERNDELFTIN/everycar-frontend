@@ -116,7 +116,7 @@ function App() {
             <Route path='inquiry' element={<Inquiry />} />
             <Route path='inquiryDetail/:id' element={<InquiryDetail />} />
             <Route path='inquiryCreate' element={<InquiryCreate />} />
-            <Route path='inquiryModify' element={<InquiryModify />} />
+            <Route path='inquiryModify/:id' element={<InquiryModify />} />
           </Route>
 
           {/* 인증 관련 페이지 */}

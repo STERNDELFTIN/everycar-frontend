@@ -23,6 +23,11 @@ function InquiryDetail() {
     }, [id]);
 
     const handleDelete = () => {
+        if (inquiry.inquiries_a) {
+            alert("답변이 등록되어 삭제가 불가합니다.");
+            return;
+        }
+
         if (window.confirm("정말 삭제하시겠습니까?")) {
             axios
                 .delete(`http://localhost:8080/api/inquiry/${id}`)
@@ -36,6 +41,14 @@ function InquiryDetail() {
         }
     };
 
+    const handleEdit = () => {
+        if (inquiry.inquiries_a) {
+            alert("답변이 등록되어 수정이 불가합니다.");
+            return;
+        }
+        navigate(`/support/inquiryModify/${id}`);
+    };
+
     if (!inquiry) {
         return <p>로딩 중...</p>;
     }
@@ -45,15 +58,18 @@ function InquiryDetail() {
             <h2 className="inquiry-detail-title">문의사항 상세</h2>
 
             <div className="inquiry-content">
-                <h3>질문</h3>
+                <h3 className="inquiry-question-title">질문</h3>
+                <p className="inquiry-meta">작성일 : {inquiry.inquiries_q_created_at}</p>
                 <p className="inquiry-question">{inquiry.inquiries_q}</p>
-                <p className="inquiry-meta">작성일: {inquiry.inquiries_q_created_at}</p>
             </div>
 
             <div className="inquiry-answer">
-                <h3>답변</h3>
+                <h3 className="inquiry-answer-title">답변</h3>
                 {inquiry.inquiries_a ? (
-                    <p className="inquiry-answer-text">{inquiry.inquiries_a}</p>
+                    <div>
+                        <p className="inquiry-meta">답변 등록일 : {inquiry.inquiries_a_created_at}</p>
+                        <p className="inquiry-answer-text">{inquiry.inquiries_a}</p>
+                    </div>
                 ) : (
                     <p className="no-answer">답변이 아직 없습니다.</p>
                 )}
@@ -67,10 +83,7 @@ function InquiryDetail() {
                     </button>
                 </div>
                 <div className="right-buttons">
-                    <button
-                        className="edit-button"
-                        onClick={() => navigate(`/support/inquiryModify/${id}`)}
-                    >
+                    <button className="edit-button" onClick={handleEdit}>
                         수정
                     </button>
                     <button className="delete-button" onClick={handleDelete}>

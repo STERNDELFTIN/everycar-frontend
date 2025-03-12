@@ -60,7 +60,7 @@
     padding: 8px 16px;
     border: 1px solid transparent;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
 }
 
 .back-link:hover {

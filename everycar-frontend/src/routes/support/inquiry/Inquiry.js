@@ -83,26 +83,24 @@ function Inquiry() {
               <li className="inquiry-item">
                 <div>
                   <span className="inquiry-item-num">{inquiry.inquiries_num}</span>
-                  {inquiry.inquiries_q} {/* 문의 내용 */}
+                  <span className="inquiry-text">{inquiry.inquiries_q}</span> {/* 문의 내용 */}
                   {/* 답변여부 확인 */}
                   {inquiry.inquiries_a ? (
                     <span className="inquiry-item-tag">답변완료</span>
                   ) : null}
                 </div>
-                <div>
                   <p className="inquiry-meta">{inquiry.inquiriesQCreatedAt}</p> {/* 생성일자 */}
-                </div>
               </li>
             </Link>
           ))
         ) : (
-          <p>문의사항이 없습니다.</p>
+          <p className="no-list">문의사항이 없습니다.</p>
         )}
       </ul>
 
       {/* 문의사항 작성하기 버튼 */}
       <div className="inquiry-button-container">
-        <Link to="/support/createInquiry" className="create-inquiry-button">
+        <Link to="/support/inquiryCreate" className="create-inquiry-button">
           문의사항 작성하기
         </Link>
       </div>
