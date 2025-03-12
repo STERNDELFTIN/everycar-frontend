@@ -1,49 +1,67 @@
 .sEvent-detail-container {
-    min-width: 1000px;
-    height: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    border: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between
-  }
-  
-  .sEvent-detail-title {
-    font-size: 40px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: left;
-  }
-  
-  .sEvent-detail-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-  
-  .sEvent-detail-date,
-  .sEvent-detail-description {
-    font-size: 16px;
-    color: #444;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  .sEvent-detail-description {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.7;
-  }
-  
-  .sEvent-detail-created-at {
-    font-size: 16px;
-    color: #777;
-    margin-top: 20px; /* 다른 내용과 구분되게 하기 위한 여백 */
-  }
-  
+  min-width: 1000px;
+  height: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between
+}
+
+.sEvent-detail-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.sEvent-detail-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.sEvent-detail-date,
+.sEvent-detail-description {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.sEvent-detail-description {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+}
+
+.sEvent-detail-created-at {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* 목록으로 돌아가기 버튼 스타일 */
+.sEvent-back-button {
+  font-size: 16px;
+  font-weight: 500;
+  color: #3A3D50;
+  background-color: #AFFF4F;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: background-color 0.1s ease;
+}
+
+.sEvent-back-button:hover {
+  background-color: #3A3D50;
+  color: #AFFF4F;
+}

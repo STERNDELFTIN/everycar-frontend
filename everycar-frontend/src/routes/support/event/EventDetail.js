@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // useNavigate로 변경
 import "../../../css/routes/support/event/sEventDetail.css"; // 상세 페이지 CSS
 
 // 더미 데이터
@@ -15,6 +15,7 @@ const dummyEventDetails = Array.from({ length: 25 }, (_, i) => ({
 function EventDetail() {
   const { id } = useParams(); // URL 파라미터에서 이벤트 ID 가져오기
   const [event, setEvent] = useState(null);
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
     const eventDetail = dummyEventDetails.find((event) => event.id === parseInt(id));
@@ -25,17 +26,25 @@ function EventDetail() {
     return <div>로딩 중...</div>;
   }
 
+  // 목록 페이지로 돌아가는 함수
+  const goToEventList = () => {
+    navigate("/support/event"); // history.push 대신 navigate 사용
+  };
+
   return (
     <div className="sEvent-detail-container">
       <div className="sEvent-detail-info">
-      <h2 className="sEvent-detail-title">{event.title}</h2>
+        <h2 className="sEvent-detail-title">{event.title}</h2>
         <p className="sEvent-detail-date">
           {event.startDate} ~ {event.endDate}
         </p>
         <p className="sEvent-detail-description">{event.description}</p>
       </div>
       <div>
-      <p className="sEvent-detail-created-at">작성일: {event.createdAt}</p>
+        <p className="sEvent-detail-created-at">작성일: {event.createdAt}</p>
+        <button className="sEvent-back-button" onClick={goToEventList}>
+          목록으로 돌아가기
+        </button>
       </div>
     </div>
   );
