@@ -1,4 +1,4 @@
-.notice-container {
+.sEvent-container {
   min-width: 1000px;
   max-width: 100%;
   margin: 30px auto;
@@ -8,7 +8,7 @@
   border: 1px solid #eee;
 }
 
-.notice-title {
+.sEvent-title {
   font-size: 50px;
   font-weight: bold;
   margin-bottom: 30px;
@@ -16,13 +16,13 @@
   text-align: left;
 }
 
-.notice-list {
+.sEvent-list {
   list-style: none;
   padding: 0;
   border-top: 1px solid #eee;
 }
 
-.notice-item {
+.sEvent-item {
   display: flex;
   justify-content: space-between;
   padding: 30px 15px;
@@ -30,11 +30,11 @@
   transition: background 0.3s;
 }
 
-.notice-item:hover {
+.sEvent-item:hover {
   background: #f9f9f9;
 }
 
-.notice-item-span {
+.sEvent-item-tag {
   padding: 2px 10px;
   background-color: #AFFF4F;
   border-radius: 20px;
@@ -42,20 +42,20 @@
   font-size: 15px;
 }
 
-.notice-link {
+.sEvent-link {
   font-size: 18px;
   font-weight: 600;
   color: #333;
   text-decoration: none;
 }
 
-.notice-meta {
+.sEvent-meta {
   font-size: 14px;
   color: #666;
   margin-top: 5px;
 }
 
-.no-list {
+.no-events {
   font-size: 20px;
   font-weight: 400;
   color: #333;
