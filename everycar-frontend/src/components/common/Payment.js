@@ -11,7 +11,7 @@ const LabelStyle = styled.label`
     gap: 6px;
 `;
 
-const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
+const Payment = ({ payAmount, onPaymentSuccess, agree, car, return_location }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { startDate, startTime, endDate, endTime } = useSelector((state) => state.rent);
@@ -33,6 +33,13 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
         handleReservation(`BANK_${Date.now()}`); // 예시로 무통장입금을 바로 처리
     };
 
+    // Redux에서 userInfo 가져오기
+    const userInfo = useSelector(state => state.user.userInfo);
+
+    // 유저 user_num 가져오기
+    const userNum = userInfo.userNum;
+
+    // console.log("return_location:", return_location);
     /** 결제 성공 후 예약 요청 실행 */
     const handleReservation = async (orderId) => {
         if (!orderId) {
@@ -43,16 +50,21 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
         const reservationData = {
             car_id: car?.car_id, // 순환 참조 방지
             rental_datetime: `${startDate} ${startTime}:00`,
-            return_location: 10,
+            return_location: return_location,
             return_datetime: `${endDate} ${endTime}:00`,
-            user_num: 2,
-            order_id: orderId
+            payment: payAmount,
+            user_num: userNum
+            // order_id: orderId
         };
 
         try {
+            const token = localStorage.getItem("token"); // JWT 토큰 가져오기
             const response = await fetch("http://localhost:8080/api/quick-rent/reservations", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { 
+                    'Authorization': `Bearer ${token}`,
+                    "Content-Type": "application/json" 
+                },
                 body: JSON.stringify(reservationData)
             });
 
@@ -72,13 +84,14 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, totalPrice }) => {
     /** Redux 저장 시 순환 참조 제거 */
     const handleReservationSuccess = (reservationData) => {
         const safeReservationData = JSON.parse(JSON.stringify(reservationData)); // 순환 참조 제거
-        dispatch(saveReservation({ userNum: 2, reservationData: safeReservationData }));
+        dispatch(saveReservation({ userNum: userNum, reservationData: safeReservationData }));
     };
 
     return (
         <div>
             <button onClick={handlePayment} style={{ cursor: 'pointer', width: '100%', textAlign: 'center', borderRadius: '10px', backgroundColor: '#AFFF4F', marginTop: vwFont(20, 30), paddingTop: vwFont(8, 15), paddingBottom: vwFont(8, 15) }}>
-                총 {totalPrice}원 결제하기
+                {/* 총 {totalPrice}원 예약하기 */}
+                빠른예약하기
             </button>
         </div>
     );
