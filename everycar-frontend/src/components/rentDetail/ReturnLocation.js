@@ -25,14 +25,16 @@ function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
 
     // location change handler
     const handleLocationChange = () => {
+        const returnOptionValue = selectedReturnOption === "대여한 곳에서 반납하기" ? 0 : 1;
         if (onLocationChange) {
-            onLocationChange(selectedCityOption, selectedRegionOption, selectedParkingOption);
+            onLocationChange(selectedCityOption, selectedRegionOption, selectedParkingOption, returnOptionValue);
         }
     };
 
     useEffect(() => {
         handleLocationChange();
-    }, [selectedCityOption, selectedRegionOption, selectedParkingOption]);
+    }, [selectedCityOption, selectedRegionOption, selectedParkingOption, selectedReturnOption]);
+
 
     return (
         <div className={styles.returnLocation}>

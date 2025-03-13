@@ -11,13 +11,15 @@ const LabelStyle = styled.label`
     gap: 6px;
 `;
 
-const Payment = ({ payAmount, onPaymentSuccess, agree, car, return_location }) => {
+const Payment = ({ payAmount, onPaymentSuccess, agree, car, return_location, selectedCity, selectedRegion}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { startDate, startTime, endDate, endTime } = useSelector((state) => state.rent);
 
     const [depositorName, setDepositorName] = useState("");
 
+    // console.log("selectedCity:", selectedCity);
+    // console.log("selectedRegion:", selectedRegion);
     useEffect(() => {
         // 여기서는 결제 방법을 설정하지 않으므로, 추가적인 useEffect를 제거합니다.
     }, []);
@@ -53,9 +55,20 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, return_location }) =
             return_location: return_location,
             return_datetime: `${endDate} ${endTime}:00`,
             payment: payAmount,
-            user_num: userNum
+            user_num: userNum,
             // order_id: orderId
         };
+
+        const postReservationData = {
+            car_id: car?.car_id, // 순환 참조 방지
+            rental_datetime: `${startDate} ${startTime}:00`,
+            return_location: return_location,
+            return_datetime: `${endDate} ${endTime}:00`,
+            payment: payAmount,
+            user_num: userNum,
+            selectedCity: selectedCity,
+            selectedRegion: selectedRegion
+        }
 
         try {
             const token = localStorage.getItem("token"); // JWT 토큰 가져오기
@@ -65,7 +78,7 @@ const Payment = ({ payAmount, onPaymentSuccess, agree, car, return_location }) =
                     'Authorization': `Bearer ${token}`,
                     "Content-Type": "application/json" 
                 },
-                body: JSON.stringify(reservationData)
+                body: JSON.stringify(postReservationData)
             });
 
             if (!response.ok) throw new Error("예약 실패!");

@@ -35,12 +35,10 @@ function RentReservation() {
     const [selectedCity, setSelectedCity] = useState("");
     const [selectedRegion, setSelectedRegion] = useState("");
     const [selectedParking, setSelectedParking] = useState("");
+    const [returnOption, setReturnOption] = useState(0);  // 🚀 반납 옵션 상태 추가 (0: 대여한 곳, 1: 다른 곳)
 
     const { startDate, startTime, endDate, endTime } = useSelector((state) => state.rent);
-
-    // useCar 훅을 사용하여 차량 정보와 총 가격을 가져옴
-    const { car, totalPrice} = useCar(carId);
-    console.log("totalPrice:", totalPrice);
+    const { car, totalPrice } = useCar(carId);
 
     useEffect(() => {
         const fetchCarData = async () => {
@@ -58,6 +56,10 @@ function RentReservation() {
                 const data = await response.json();
                 setCarData(data.carDto);
                 setParkingList(data.parkingList);
+
+                // 🚀 기본값: 대여한 곳에서 반납
+                setSelectedParking(data.carDto.parking.parking_id);
+                setReturnOption(0);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -71,10 +73,14 @@ function RentReservation() {
         setAgree(e.target.checked);
     };
 
-    const handleLocationChange = (city, region, parking) => {
+    const handleLocationChange = (city, region, parking, option) => {
         setSelectedCity(city);
         setSelectedRegion(region);
-        setSelectedParking(parking);
+        setReturnOption(option); // 🚀 반납 옵션 설정 (0 또는 1)
+        setSelectedParking(option === 0 ? carData.parking.parking_id : parking);
+        
+        console.log("carData.parking.parking_id", carData?.parking?.parking_id);
+        console.log("parking", parking);
     };
 
     if (loading) return <p>로딩 중...</p>;
@@ -95,13 +101,15 @@ function RentReservation() {
                         car={carData}
                         latitude={carData.parking.parking_latitude}
                         longitude={carData.parking.parking_longtitude}
+                        parkingName={carData.parking.parking_name}
+                        parkingAddress={carData.parking.parking_address}
                         SubTitleH3={SubTitleH3}
                     />
                     <ReturnLocation
                         title="반납장소"
                         SubTitleH3={SubTitleH3}
                         parkingList={parkingList}
-                        onLocationChange={handleLocationChange} // prop으로 전달
+                        onLocationChange={handleLocationChange} 
                     />
                     <TermsOfUse title="이용약관" SubTitleH3={SubTitleH3} />
                     <div>
@@ -116,33 +124,15 @@ function RentReservation() {
                         agree={agree}
                         car={carData}
                         totalPrice={totalPrice}
-                        return_location={selectedParking} // 추가된 값
+                        return_location={returnOption === 0 ? carData.parking.parking_id : selectedParking}
+                        selectedCity={selectedCity}
+                        selectedRegion={selectedRegion}
                     />
-                </div>
-
-                <div className={styles.right}>
-                    <SubTitleH3>대여차량</SubTitleH3>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <img
-                            src={carData.img || '/images/car-model/product-image-01.png'}
-                            alt={carData.model.model_name}
-                            style={{ width: vwFont(200, 400) }}
-                        />
-                    </div>
-                    <div className={styles.carTitle} style={{ marginTop: vwFont(8, 18) }}>
-                        <h3 style={{ fontSize: vwFont(13, 30) }}>{carData.model.model_name}</h3>
-                        <div className={styles.carGrade}>{carData.car_grade}</div>
-                    </div>
-
-                    <div style={{ borderBottom: '1px solid #D9D9D9', marginTop: vwFont(10, 20), marginBottom: vwFont(10, 20) }}></div>
-
-                    <CarInfo title="제원정보" car={carData} SubTitleH3={SubTitleH3} isHide={true} styleType="rentReservationStyle" />
-                    <div style={{ marginBottom: vwFont(10, 20) }}></div>
-                    <CarOption title="차량옵션" car={carData} SubTitleH3={SubTitleH3} />
                 </div>
             </div>
         </div>
     );
 }
+
 
 export default RentReservation;
