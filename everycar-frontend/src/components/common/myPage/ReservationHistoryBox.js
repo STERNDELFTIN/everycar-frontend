@@ -165,18 +165,18 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
                 {reservationStatus === "결제완료" && (
                     <>
                         <button className={styles.button_active} onClick={handleStartReservation}>이용 시작</button>
-                        <button onClick={() => navigate(`/myPage/history/detail/${reservationId}`)}>예약 상세보기</button>
+                        <button onClick={() => navigate(`/myPage/history/detail/${reservationType}/${reservationId}`)}>예약 상세보기</button>
                     </>
                 )}
                 {reservationStatus === "이용중" && (
                     <>
                         <button className={styles.button_active} onClick={handleCompleteReservation}>이용 완료</button>
-                        <button onClick={() => navigate(`/myPage/history/detail/${reservationId}`)}>예약 상세보기</button>
+                        <button onClick={() => navigate(`/myPage/history/detail/${reservationType}/${reservationId}`)}>예약 상세보기</button>
                     </>
                 )}
                 {(reservationStatus === "예약취소" || reservationStatus === "이용완료") && (
                     <>
-                        <button onClick={() => navigate(`/myPage/history/detail/${reservationId}`)}>예약 상세보기</button>
+                        <button onClick={() => navigate(`/myPage/history/detail/${reservationType}/${reservationId}`)}>예약 상세보기</button>
                     </>
                 )}
             </div>

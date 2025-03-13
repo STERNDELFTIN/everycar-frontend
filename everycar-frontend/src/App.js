@@ -130,7 +130,7 @@ function App() {
 
             {/* 내 예약 내역 */}
             <Route path='history' element={<MyReservationHistory />} />
-            <Route path='history/detail/:reservationId' element={<MyReservationHistoryDetail />} />
+            <Route path='history/detail/:reservationType/:reservationId' element={<MyReservationHistoryDetail />} />
 
             {/* 결제 및 정산 */}
             <Route path='pay' element={<MyPayment />} />

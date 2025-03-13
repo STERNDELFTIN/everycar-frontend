@@ -122,6 +122,8 @@ function ShortReservationHistory() {
         })
             .then(response => response.json())
             .then(data => {
+                console.log("Fetched Short Reservations:", data);
+
                 const updatedReservations = data.map((res) => {
                     // carName과 carImage를 설정 (예시로 carId가 주어짐)
                     const car = { model_id: res.modelName, image_url: "https://example.com/sonata.png" };
