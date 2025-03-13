@@ -36,7 +36,7 @@ const initialState = {
     endDate: null,
     startTime: null,
     endTime: null,
-    reservationType: "speed",
+    reservationType: "quick",
     region: null,
     city: null,
     rentalDate: null,
@@ -98,8 +98,8 @@ const rentSlice = createSlice({
 
         // rentalDate & returnDate 업데이트
         updateRentalReturnDates: (state) => {
-            state.rentalDate = convertToISOString(state.startDate, state.startTime);
-            state.returnDate = convertToISOString(state.endDate, state.endTime);
+            state.rentalDate = `${state.startDate}T${state.startTime}`;
+            state.returnDate = `${state.endDate}T${state.endTime}`;
             saveState(state); // 상태 저장
         }
     }
