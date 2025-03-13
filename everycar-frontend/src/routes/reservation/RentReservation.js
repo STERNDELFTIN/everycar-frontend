@@ -74,13 +74,18 @@ function RentReservation() {
                     throw new Error("데이터를 불러오는 데 실패했습니다.");
                 }
                 const data = await response.json();
+                console.log("API 응답 데이터:", data);
+
                 setCarData(data.carDto);
                 setParkingList(data.parkingList);
 
                 // 🚀 기본값: 대여한 곳에서 반납
-                setSelectedParking(data.carDto.parking.parking_id);
+                if (data.carDto?.parking) {
+                    setSelectedParking(data.carDto.parking.parking_id);
+                }
                 setReturnOption(0);
             } catch (err) {
+                console.error("API 요청 에러:", err);
                 setError(err.message);
             } finally {
                 setLoading(false);
@@ -119,10 +124,6 @@ function RentReservation() {
                     <RentLocation
                         title="대여장소"
                         car={carData}
-                        latitude={carData.parking.parking_latitude}
-                        longitude={carData.parking.parking_longtitude}
-                        parkingName={carData.parking.parking_name}
-                        parkingAddress={carData.parking.parking_address}
                         SubTitleH3={SubTitleH3}
                     />
                     <ReturnLocation
