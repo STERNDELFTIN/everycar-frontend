@@ -25,6 +25,7 @@ let SubTitleH3 = styled.h3`
 function RentReservation() {
     const { id } = useParams();
     const carId = Number(id);
+    const reservationType = useSelector((state) => state.rent.reservationType);
     const [carData, setCarData] = useState(null);
     const [parkingList, setParkingList] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -44,12 +45,31 @@ function RentReservation() {
         const fetchCarData = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await fetch(`http://localhost:8080/api/quick-rent/reservations?rental_datetime=${startDate}T${startTime}:00&return_datetime=${endDate}T${endTime}:00&car_id=${carId}`, {
+                let apiUrl, queryParams;
+
+                if (reservationType === "quick") {
+                    apiUrl = `http://localhost:8080/api/quick-rent/reservations`;
+                    queryParams = new URLSearchParams({
+                        rental_datetime: `${startDate}T${startTime}:00`,
+                        return_datetime: `${endDate}T${endTime}:00`,
+                        car_id: carId
+                    }).toString();
+                } else {
+                    apiUrl = `http://localhost:8080/api/short-rent/reservations`;
+                    queryParams = new URLSearchParams({
+                        reservation_s_start_date: `${startDate}T${startTime}:00`,
+                        reservation_s_end_date: `${endDate}T${endTime}:00`,
+                        car_id: carId
+                    }).toString();
+                }
+
+                const response = await fetch(`${apiUrl}?${queryParams}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     }
                 });
+
                 if (!response.ok) {
                     throw new Error("데이터를 불러오는 데 실패했습니다.");
                 }
@@ -78,7 +98,7 @@ function RentReservation() {
         setSelectedRegion(region);
         setReturnOption(option); // 🚀 반납 옵션 설정 (0 또는 1)
         setSelectedParking(option === 0 ? carData.parking.parking_id : parking);
-        
+
         console.log("carData.parking.parking_id", carData?.parking?.parking_id);
         console.log("parking", parking);
     };
@@ -109,7 +129,7 @@ function RentReservation() {
                         title="반납장소"
                         SubTitleH3={SubTitleH3}
                         parkingList={parkingList}
-                        onLocationChange={handleLocationChange} 
+                        onLocationChange={handleLocationChange}
                     />
                     <TermsOfUse title="이용약관" SubTitleH3={SubTitleH3} />
                     <div>

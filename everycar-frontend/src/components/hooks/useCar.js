@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 const useCar = (carId) => {
   const { startDate, startTime, endDate, endTime, rentalDate, returnDate } = useSelector((state) => state.rent);
+  const reservationType = useSelector((state) => state.rent.reservationType);
 
   const [car, setCar] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -17,14 +18,24 @@ const useCar = (carId) => {
       }
 
       try {
-        const queryParams = new URLSearchParams({
-          rental_datetime: rentalDate,
-          return_datetime: returnDate,
-        }).toString();
+        let queryParams = new URLSearchParams();
+
+        if (reservationType === "quick") {
+          queryParams.append("rental_datetime", `${startDate}T${startTime}:00`);
+          queryParams.append("return_datetime", `${endDate}T${endTime}:00`);
+        } else {
+          queryParams.append("reservation_s_start_date", `${startDate}T${startTime}:00`);
+          queryParams.append("reservation_s_end_date", `${endDate}T${endTime}:00`);
+        }
 
         const token = localStorage.getItem("token"); // JWT 토큰 가져오기
 
-        const res = await fetch(`http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`, {
+        // 예약 타입에 따라 다른 API 엔드포인트 사용
+        const apiUrl = reservationType === "quick"
+          ? `http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`
+          : `http://localhost:8080/api/short-rent/cars/${carId}?${queryParams}`;
+
+        const res = await fetch(apiUrl, {
           method: "GET",
           headers: {
             'Content-Type': 'application/json',
@@ -53,7 +64,7 @@ const useCar = (carId) => {
     };
 
     fetchCarInfo();
-  }, [carId]);
+  }, [carId, reservationType]);
 
   return { car, totalPrice, loading, error };
 };
