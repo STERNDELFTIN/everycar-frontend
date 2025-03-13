@@ -16,7 +16,13 @@ function ReservationDetailBox() {
     useEffect(() => {
         const fetchReservationData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/fast/reservations/${reservationId}`);
+                const token = localStorage.getItem("token"); // JWT 토큰 가져오기
+                const response = await axios.get(`http://localhost:8080/api/fast/reservations/${reservationId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                });
                 setReservationData(response.data); // API 응답 데이터로 상태 업데이트
             } catch (error) {
                 console.error("API 호출 실패:", error);

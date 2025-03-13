@@ -72,6 +72,14 @@ function ListContainer() {
         }
     ];
 
+        // URL 변경을 감지하여 selectedList 업데이트
+        useEffect(() => {
+            let currentIndex = menuList.findIndex(item => location.pathname.startsWith(item.path));
+            if (currentIndex !== -1) {
+                setSelectedList(currentIndex);
+            }
+        }, [location.pathname]);
+
     return (
         <div className={styles.listContainer}>
             <ul className={styles.myPageList}>
