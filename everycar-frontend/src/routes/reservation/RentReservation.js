@@ -150,6 +150,26 @@ function RentReservation() {
                         selectedRegion={selectedRegion}
                     />
                 </div>
+                <div className={styles.right}>
+                    <SubTitleH3>대여차량</SubTitleH3>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <img
+                            src={carData.img || '/images/car-model/product-image-01.png'}
+                            alt={carData.model.model_name}
+                            style={{ width: vwFont(200, 400) }}
+                        />
+                    </div>
+                    <div className={styles.carTitle} style={{ marginTop: vwFont(8, 18) }}>
+                        <h3 style={{ fontSize: vwFont(13, 30) }}>{carData.model.model_name}</h3>
+                        <div className={styles.carGrade}>{carData.car_grade}</div>
+                    </div>
+
+                    <div style={{ borderBottom: '1px solid #D9D9D9', marginTop: vwFont(10, 20), marginBottom: vwFont(10, 20) }}></div>
+
+                    <CarInfo title="제원정보" car={carData} SubTitleH3={SubTitleH3} isHide={true} styleType="rentReservationStyle" />
+                    <div style={{ marginBottom: vwFont(10, 20) }}></div>
+                    <CarOption title="차량옵션" car={carData} SubTitleH3={SubTitleH3} />
+                </div>
             </div>
         </div>
     );
