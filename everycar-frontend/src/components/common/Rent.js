@@ -53,7 +53,7 @@ function Rent({ page }) {
             return;
         }
 
-        if (reservationType === "short" && rentalDays <= 14) {
+        if (reservationType === "short" && rentalDays < 13) {
             alert("렌트 기간을 올바르게 선택해주세요.");
             return;
         }
