@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import styles from '../../css/rentDetail/ReturnLocation.module.scss';
 import { vwFont } from '../../utils';
 
-const ReturnPosTitle = styled.h4`font-size: ${vwFont(11, 20)}; margin-top: ${vwFont(10, 15)}; font-weight: 400; `;
+const ReturnPosTitle = styled.h4`
+  font-size: ${vwFont(11, 20)};
+  margin-top: ${vwFont(10, 15)};
+  font-weight: 400;
+`;
 
-function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
+function ReturnLocation({ title, SubTitleH3, parkingList = [], onLocationChange }) {
     const returnOptions = ["대여한 곳에서 반납하기", "대여장소와 다른 곳에서 반납하기"];
 
     const [selectedReturnOption, setSelectedReturnOption] = useState(returnOptions[0]);
@@ -13,17 +17,17 @@ function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
     const [selectedRegionOption, setSelectedRegionOption] = useState("");
     const [selectedParkingOption, setSelectedParkingOption] = useState("");
 
-    // parkingList에서 중복된 province 제거하고 유니크한 도 / 시 목록 생성
+    // 중복된 도 / 시 제거하여 리스트 생성
     const uniqueProvinces = [...new Set(parkingList.map(parking => parking.parking_province))];
 
-    // 선택된 도/시에 해당하는 지역(district) 목록을 추출하는 함수
+    // 선택된 도/시에 해당하는 지역(district) 목록 필터링
     const filteredDistricts = parkingList.filter(parking => parking.parking_province === selectedCityOption);
     const uniqueDistricts = [...new Set(filteredDistricts.map(parking => parking.parking_district))];
 
-    // 지역 선택 시, 해당 지역에 맞는 주차장 목록을 필터링
+    // 지역 선택 시, 해당 지역에 맞는 주차장 목록 필터링
     const filteredParkingList = filteredDistricts.filter(parking => parking.parking_district === selectedRegionOption);
 
-    // location change handler
+    // 선택된 값이 변경될 때 onLocationChange 호출
     const handleLocationChange = () => {
         const returnOptionValue = selectedReturnOption === "대여한 곳에서 반납하기" ? 0 : 1;
         if (onLocationChange) {
@@ -32,15 +36,19 @@ function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
     };
 
     useEffect(() => {
+        // parkingList가 배열인지 확인 후 처리
+        if (!Array.isArray(parkingList)) {
+            console.error("parkingList가 유효한 배열이 아닙니다:", parkingList);
+            return <p>반납 가능한 주차장 정보를 불러오는 중...</p>;
+        }
         handleLocationChange();
     }, [selectedCityOption, selectedRegionOption, selectedParkingOption, selectedReturnOption]);
-
 
     return (
         <div className={styles.returnLocation}>
             <SubTitleH3>{title}</SubTitleH3>
             <div className={styles.optionsContainer}>
-                {returnOptions.map((option, i) => (
+                {returnOptions.map((option) => (
                     <label key={option} className={styles.optionBox}>
                         <input
                             className={styles.optionRadioBox}
@@ -50,7 +58,7 @@ function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
                             onChange={(e) => setSelectedReturnOption(e.target.value)}
                         />
                         <p style={selectedReturnOption === option ? { color: '#000000' } : { color: '#8F9191' }}>
-                            {returnOptions[i]}
+                            {option}
                         </p>
                     </label>
                 ))}
@@ -67,9 +75,13 @@ function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
                                 onChange={(e) => setSelectedCityOption(e.target.value)}
                             >
                                 <option value="" disabled>도 / 시를 선택하세요</option>
-                                {uniqueProvinces.map((province, index) => (
-                                    <option key={index} value={province}>{province}</option>
-                                ))}
+                                {uniqueProvinces.length > 0 ? (
+                                    uniqueProvinces.map((province, index) => (
+                                        <option key={index} value={province}>{province}</option>
+                                    ))
+                                ) : (
+                                    <option value="" disabled>주차장 정보 없음</option>
+                                )}
                             </select>
                         </div>
                         <div className={`${styles.region} ${styles.returnPosition}`}>
@@ -80,9 +92,13 @@ function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
                                 disabled={!selectedCityOption}
                             >
                                 <option value="" disabled>지역을 선택하세요</option>
-                                {uniqueDistricts.map((district, index) => (
-                                    <option key={index} value={district}>{district}</option>
-                                ))}
+                                {uniqueDistricts.length > 0 ? (
+                                    uniqueDistricts.map((district, index) => (
+                                        <option key={index} value={district}>{district}</option>
+                                    ))
+                                ) : (
+                                    <option value="" disabled>주차장 정보 없음</option>
+                                )}
                             </select>
                         </div>
                     </div>
@@ -95,11 +111,15 @@ function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
                             disabled={!selectedRegionOption}
                         >
                             <option value="" disabled>주차장을 선택하세요</option>
-                            {filteredParkingList.map((parking, index) => (
-                                <option key={index} value={parking.parking_id}>
-                                    {parking.parking_name} ({parking.parking_address})
-                                </option>
-                            ))}
+                            {filteredParkingList.length > 0 ? (
+                                filteredParkingList.map((parking, index) => (
+                                    <option key={index} value={parking.parking_id}>
+                                        {parking.parking_name} ({parking.parking_address})
+                                    </option>
+                                ))
+                            ) : (
+                                <option value="" disabled>주차장 정보 없음</option>
+                            )}
                         </select>
                     </div>
                 </div>
@@ -107,7 +127,5 @@ function ReturnLocation({ title, SubTitleH3, parkingList, onLocationChange }) {
         </div>
     );
 }
-
-
 
 export default ReturnLocation;

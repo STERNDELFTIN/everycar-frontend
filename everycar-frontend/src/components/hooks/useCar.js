@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const useCar = (carId) => {
-  const { startDate, startTime, endDate, endTime, rentalDate, returnDate } = useSelector((state) => state.rent);
+  const { startDate, startTime, endDate, endTime } = useSelector((state) => state.rent);
   const reservationType = useSelector((state) => state.rent.reservationType);
 
   const [car, setCar] = useState(null);
@@ -20,12 +20,16 @@ const useCar = (carId) => {
       try {
         let queryParams = new URLSearchParams();
 
+        // 날짜 값이 없으면 기본값 설정
+        const rentalDatetime = startDate ? `${startDate}T${startTime || "10:00"}:00` : "2025-01-01T10:00:00";
+        const returnDatetime = endDate ? `${endDate}T${endTime || "10:00"}:00` : "2025-01-02T10:00:00";
+
         if (reservationType === "quick") {
-          queryParams.append("rental_datetime", `${startDate}T${startTime}:00`);
-          queryParams.append("return_datetime", `${endDate}T${endTime}:00`);
+          queryParams.append("rental_datetime", rentalDatetime);
+          queryParams.append("return_datetime", returnDatetime);
         } else {
-          queryParams.append("reservation_s_start_date", `${startDate}T${startTime}:00`);
-          queryParams.append("reservation_s_end_date", `${endDate}T${endTime}:00`);
+          queryParams.append("reservation_s_start_date", rentalDatetime);
+          queryParams.append("reservation_s_end_date", returnDatetime);
         }
 
         const token = localStorage.getItem("token"); // JWT 토큰 가져오기
@@ -35,28 +39,32 @@ const useCar = (carId) => {
           ? `http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`
           : `http://localhost:8080/api/short-rent/cars/${carId}?${queryParams}`;
 
+        console.log("API 호출 URL:", apiUrl); // 디버깅용
+
         const res = await fetch(apiUrl, {
           method: "GET",
           headers: {
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
         });
 
         if (!res.ok) {
-          throw new Error(`Failed to fetch car info. Status: ${res.status}`);
+          const errorData = await res.json();
+          throw new Error(errorData.error || `Failed to fetch car info. Status: ${res.status}`);
         }
 
         const data = await res.json();
-        console.log("API 응답 데이터:", data);
+        console.log("API 응답 데이터:", data); // 디버깅용
 
         if (!data || !data.car) {
-          throw new Error("데이터가 없습니다.");
+          throw new Error("🚨 데이터가 없습니다. (해당 차량을 찾을 수 없음)");
         }
 
         setCar(data.car || null);
-        setTotalPrice(data.totalPrice || 0); // totalPrice 저장
+        setTotalPrice(data.totalPrice || 0);
       } catch (error) {
-        console.error("API 요청 실패:", error);
+        console.error("API 요청 실패:", error.message);
         setError(error.message);
       } finally {
         setLoading(false);
@@ -64,7 +72,7 @@ const useCar = (carId) => {
     };
 
     fetchCarInfo();
-  }, [carId, reservationType]);
+  }, [carId, reservationType, startDate, startTime, endDate, endTime]);
 
   return { car, totalPrice, loading, error };
 };
