@@ -7,14 +7,16 @@ import useAvailableCars from '../../hooks/useAvaliableCars'; // 커스텀 훅 �
 function List() {
   const navigate = useNavigate();
 
-  const { region, city, rentalDate, returnDate } = useSelector((state) => state.rent);
+  // Redux에서 region(도/시), city(구), rentalDate, returnDate, reservationType 가져오기
+  const { region, city, rentalDate, returnDate, reservationType } = useSelector((state) => state.rent);
 
   // API에서 차량 목록 불러오기
   const { cars, loading, error } = useAvailableCars(
-    "서울특별시", // region
-    "중구", // city
+    region, // Redux에서 가져온 region
+    city, // Redux에서 가져온 city
     rentalDate,
-    returnDate
+    returnDate,
+    reservationType // 예약 유형 전달
   );
 
   if (loading) return <p>차량 정보를 불러오는 중...</p>;

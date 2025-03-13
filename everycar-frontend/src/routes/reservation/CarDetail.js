@@ -35,8 +35,8 @@ function CarDetail() {
     if (error) return <p>오류 발생: {error}</p>;
     if (!carData) return <p>해당 차량을 찾을 수 없습니다.</p>;
 
-    const latitude = 37.497942;
-    const longitude = 127.027621;
+    // const latitude = 37.497942;
+    // const longitude = 127.027621;
 
     return (
         <div className={styles.carDetail}>
@@ -49,7 +49,7 @@ function CarDetail() {
                     <RentTime title="대여시간" SubTitleH3={SubTitleH3} />
                     <CarInfo title="제원정보" car={carData} SubTitleH3={SubTitleH3} />
                     <CarOption title="차량옵션" car={carData} SubTitleH3={SubTitleH3} />
-                    <RentLocation title="대여장소" car={carData} latitude={latitude} longitude={longitude} SubTitleH3={SubTitleH3} />
+                    <RentLocation title="대여장소" car={carData} SubTitleH3={SubTitleH3} />
                     <RentCondition title="대여조건" SubTitleH3={SubTitleH3} />
                     <ContractInfo title="계약정보" SubTitleH3={SubTitleH3} />
                 </div>
