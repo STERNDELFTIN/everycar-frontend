@@ -22,10 +22,12 @@ const useCar = (carId) => {
           return_datetime: returnDate,
         }).toString();
 
+        const token = localStorage.getItem("token"); // JWT 토큰 가져오기
+
         const res = await fetch(`http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`, {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         });
 

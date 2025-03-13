@@ -5,42 +5,27 @@ import { vwFont } from '../../utils';
 import useEligibilityCheck from '../hooks/useEligibilityCheck';
 
 // Redux
-import { useDispatch } from 'react-redux';
-import { loginUser, logoutUser } from '../../redux/userSlice';
-
-// 더미 유저 데이터 가져오기
-import dummyUsers from '../../dummyData/dummyUser';
+import { useSelector } from 'react-redux';
 
 // 우측 예약정보
 function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+
+    // Redux에서 userInfo 가져오기
+    const userInfo = useSelector(state => state.user.userInfo);
+    
+    // 유저의 권한(role) 확인
+    const hasVerifiedRole = userInfo.roles?.some(role => role.name === 'ROLE_VERIFIED');
 
     // 자격여부 및 에러메시지
     const { isEligible, errorMessage } = useEligibilityCheck();
 
-    // 자격 충족 시 예약 페이지로 넘어가기
+    // 예약 버튼 클릭 핸들러
     const reservationHandler = () => {
-        if (isEligible && car && car.car_id) {
+        if (isEligible && hasVerifiedRole && car && car.car_id) {
             navigate(`/reservation/rentReservation/${car.car_id}`);
         }
-    }
-
-    // 유저 테스트
-    const [selectedUser, setSelectedUser] = useState(dummyUsers[0]);
-
-   useEffect (() => { // 선택된 랜덤 유저
-    const randomUser = dummyUsers[Math.floor(Math.random() * dummyUsers.length)];
-    setSelectedUser(randomUser);
-
-    if (randomUser.isLoggedIn) {
-        dispatch(loginUser({ birthDate: randomUser.birthDate, licenseIssuedDate: randomUser.licenseIssuedDate }));
-    } else {
-        dispatch(logoutUser());
-    }
-
-    console.log(randomUser);
-    }, [dispatch]);
+    };
 
     return (
         <div className={`${styles.reservationInfoContainer} ${styles.container}`}>
@@ -61,20 +46,18 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
                     </div>
                     <div className={styles.buttonsContainer}>
                         <button className={styles.counselButton}>상담신청</button>
-                        {
+                        {hasVerifiedRole ? (
                             isEligible ? (
-                                <button
-                                    className={styles.reservationButton}
-                                    onClick={reservationHandler}
-                                >
+                                <button className={styles.reservationButton} onClick={reservationHandler}>
                                     예약하기
                                 </button>
                             ) : (
-                                <p style={{ color: 'red', }}>{errorMessage}</p>
+                                <p style={{ color: 'red' }}>{errorMessage}</p>
                             )
-                        }
+                        ) : (
+                            <p style={{ color: 'red' }}>면허를 등록한 사용자만 예약이 가능합니다.</p>
+                        )}
                     </div>
-
                 </div>
             </div>
         </div>

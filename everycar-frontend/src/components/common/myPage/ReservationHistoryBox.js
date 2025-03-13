@@ -51,6 +51,7 @@ function getRentalState(state, payment, reservationType,reservationId, startDate
             return currentDate >= reservationStartDate && currentDate <= reservationReturnDate;
         };
 
+        //이용 시작 핸들러
         const handleStartReservation = () => {
             console.log("reservationId 이용시작", reservationId);
             fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/start`, {
@@ -117,8 +118,8 @@ function getRentalState(state, payment, reservationType,reservationId, startDate
             }
         };
 
-    // 이용 완료 요청 핸들러
-    const handleCompleteReservation = () => {
+        // 이용 완료 요청 핸들러
+        const handleCompleteReservation = () => {
         // 확인 대화상자 띄우기
         const isConfirmed = window.confirm('정말 이용을 완료하시겠습니까?');
         
