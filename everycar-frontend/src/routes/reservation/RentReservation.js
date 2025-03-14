@@ -126,12 +126,16 @@ function RentReservation() {
                         car={carData}
                         SubTitleH3={SubTitleH3}
                     />
-                    <ReturnLocation
-                        title="반납장소"
-                        SubTitleH3={SubTitleH3}
-                        parkingList={parkingList}
-                        onLocationChange={handleLocationChange}
-                    />
+                    {
+                        (reservationType === "quick") &&
+                        <ReturnLocation
+                            title="반납장소"
+                            SubTitleH3={SubTitleH3}
+                            parkingList={parkingList}
+                            onLocationChange={handleLocationChange}
+                        />
+                    }
+
                     <TermsOfUse title="이용약관" SubTitleH3={SubTitleH3} />
                     <div>
                         <label style={{ display: 'flex', gap: '10px', marginLeft: '9px' }}>
