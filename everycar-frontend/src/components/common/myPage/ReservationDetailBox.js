@@ -107,7 +107,7 @@ function ReservationDetailBox() {
                 <div className={styles.returnLocation}>
                     <h3>반납 장소</h3>
                     <div>
-                        <div>{reservationData.returnLocationName || "알 수 없음"}</div>
+                        <div>{ (reservationType === "fast") ? reservationData.returnLocationName || "알 수 없음" : reservationData.rentalLocationName || "알 수 없음" }</div>
                     </div>
                 </div>
             </div>

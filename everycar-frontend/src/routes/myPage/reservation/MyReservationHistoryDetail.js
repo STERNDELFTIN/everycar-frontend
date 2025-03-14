@@ -39,4 +39,4 @@ function ReservationDetail({ reservationId }) {
         </div>
     )
 }
-export default MyReservationHistoryDetail;  
+export default MyReservationHistoryDetail;
