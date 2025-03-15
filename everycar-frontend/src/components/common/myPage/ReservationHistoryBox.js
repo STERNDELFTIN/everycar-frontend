@@ -5,13 +5,23 @@ import { vwFont } from "../../../utils";
 
 function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, startDate, startTime, endDate, endTime, rentPos, returnPos, reservationType, reservationId }) {
     const navigate = useNavigate();
+    
+    const handleDetailReservation = () => {
+        navigate(`/myPage/history/detail/${reservationType}/${reservationId}`);
+    };
 
     const handlePayments = async () => {
         console.log("reservationId", reservationId);
         try {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                alert("로그인이 필요합니다");
+                return;
+            }
+
             const response = await fetch("http://localhost:8080/api/paypal/pay", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
                 body: JSON.stringify({
                     payment: payment / 1445,
                     reservationId,
@@ -130,7 +140,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
     };
 
     return (
-        <div className={styles.reservationHistoryBox}>
+        <div className={styles.reservationHistoryBox} onClick={handleDetailReservation}>
             <div className={styles.rentalStateBox}>
                 <p className={`${styles.rentalState} ${reservationStatus === "이용중" ? styles.usingStatus : ""}`}>
                     {reservationStatus}
@@ -158,25 +168,25 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
             <div className={styles.buttonContainer}>
                 {reservationStatus === "결제대기" && (
                     <>
-                        <button className={styles.button_active} onClick={handlePayments}>결제하기</button>
-                        <button onClick={handleCancelReservation}>예약 취소</button>
+                        <button className={styles.button_active} onClick={(e) => {e.stopPropagation(); handlePayments();}}>결제하기</button>
+                        <button onClick={(e) => {e.stopPropagation(); handleCancelReservation();}}>예약 취소</button>
                     </>
                 )}
                 {reservationStatus === "결제완료" && (
                     <>
-                        <button className={styles.button_active} onClick={handleStartReservation}>이용 시작</button>
-                        <button onClick={() => navigate(`/myPage/history/detail/${reservationType}/${reservationId}`)}>예약 상세보기</button>
+                        <button className={styles.button_active} onClick={(e) => {e.stopPropagation(); handleStartReservation();}}>이용 시작</button>
+                        <button onClick={(e) => {e.stopPropagation(); handleDetailReservation();}}>예약 상세보기</button>
                     </>
                 )}
                 {reservationStatus === "이용중" && (
                     <>
-                        <button className={styles.button_active} onClick={handleCompleteReservation}>이용 완료</button>
-                        <button onClick={() => navigate(`/myPage/history/detail/${reservationType}/${reservationId}`)}>예약 상세보기</button>
+                        <button className={styles.button_active} onClick={(e) => {e.stopPropagation(); handleCompleteReservation();}}>이용 완료</button>
+                        <button onClick={(e) => {e.stopPropagation(); handleDetailReservation();}}>예약 상세보기</button>
                     </>
                 )}
                 {(reservationStatus === "예약취소" || reservationStatus === "이용완료") && (
                     <>
-                        <button onClick={() => navigate(`/myPage/history/detail/${reservationType}/${reservationId}`)}>예약 상세보기</button>
+                        <button onClick={(e) => {e.stopPropagation(); handleDetailReservation();}}>예약 상세보기</button>
                     </>
                 )}
             </div>
