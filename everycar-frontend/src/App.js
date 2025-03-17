@@ -51,6 +51,8 @@ import WaitingReservationPayment from './routes/myPage/reservation/WaitingReserv
 import MyPayment from './routes/myPage/payment/MyPayment';
 /* 문의사항 */
 import MyInquiries from './routes/myPage/inquiries/MyInquiries';
+/* 리뷰 작성 */
+import MyReview from './routes/myPage/myReview/myReview';
 
 let PageStyle = styled.div`
   width: 72%;
@@ -143,6 +145,9 @@ function App() {
             {/* 결제 및 정산 */}
             {/* <Route path='pay' element={<MyPayment />} /> */}
             <Route path='inquiries' element={<MyInquiries />} />
+
+            {/* 리뷰 작성 페이지 */}
+            <Route path='review' element={<MyReview />} />
           </Route>
 
         </Routes>
