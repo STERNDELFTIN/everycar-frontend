@@ -85,7 +85,7 @@ function AnnouncementDetail() {
           dangerouslySetInnerHTML={{ __html: announcement.content }}
         />
       </div>
-      <div className="back-button">
+      <div className="back-button-announcement">
         <Link to="/support/announcement" className="back-link">
           목록으로 돌아가기
         </Link>

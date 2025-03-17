@@ -68,7 +68,7 @@
 }
 
 /* 목록으로 돌아가기 버튼 */
-.back-button {
+.back-button-inquiry {
     font-size: 16px;
     font-weight: 500;
     color: #3A3D50;
@@ -80,14 +80,14 @@
     transition: background-color 0.1s ease;
 }
 
-.back-button:hover {
+.back-button-inquiry:hover {
     background-color: #3A3D50;
     color: #AFFF4F;
 }
 
 /* 수정 & 삭제 버튼 */
-.edit-button,
-.delete-button {
+.edit-button-inquiry,
+.delete-button-inquiry {
     background-color: #007bff;
     color: white;
     padding: 8px 16px;
@@ -96,14 +96,14 @@
     border-radius: 4px;
 }
 
-.edit-button:hover {
+.edit-button-inquiry:hover {
     background-color: #0056b3;
 }
 
-.delete-button {
+.delete-button-inquiry {
     background-color: #dc3545;
 }
 
-.delete-button:hover {
+.delete-button-inquiry:hover {
     background-color: #c82333;
 }

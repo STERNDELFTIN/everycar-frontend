@@ -78,15 +78,15 @@ function InquiryDetail() {
             {/* 버튼 영역 */}
             <div className="inquiry-buttons">
                 <div className="left-buttons">
-                    <button className="back-button" onClick={() => navigate("/support/inquiry")}>
+                    <button className="back-button-inquiry" onClick={() => navigate("/support/inquiry")}>
                         목록으로 돌아가기
                     </button>
                 </div>
                 <div className="right-buttons">
-                    <button className="edit-button" onClick={handleEdit}>
+                    <button className="edit-button-inquiry" onClick={handleEdit}>
                         수정
                     </button>
-                    <button className="delete-button" onClick={handleDelete}>
+                    <button className="delete-button-inquiry" onClick={handleDelete}>
                         삭제
                     </button>
                 </div>
