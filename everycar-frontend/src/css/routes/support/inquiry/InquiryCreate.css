@@ -1,0 +1,83 @@
+/* 문의 작성 페이지 컨테이너 */
+.inquiry-create-container {
+    min-width: 1000px;
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    text-align: left;
+}
+
+/* 제목 */
+.inquiry-create-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* 폼 스타일 */
+.inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 라벨 */
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* 텍스트 입력 필드 */
+.form-group textarea {
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 100%;
+    min-height: 400px;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+/* 버튼 컨테이너 */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* 버튼 기본 스타일 */
+.form-buttons button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* 취소 버튼 */
+.cancel-button {
+    background: #ccc;
+    color: #333;
+}
+
+.cancel-button:hover {
+    background: #b3b3b3;
+}
+
+/* 등록 버튼 */
+.submit-button {
+    background: #007bff;
+    color: #fff;
+}
+
+.submit-button:hover {
+    background: #0056b3;
+}
