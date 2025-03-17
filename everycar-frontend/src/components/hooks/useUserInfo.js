@@ -9,7 +9,7 @@ const useUserInfo = () => {
 
     // 유저 정보 가져오기
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('accessToken');
 
         if (!token) {
             console.error('로그인이 필요합니다.');
@@ -39,7 +39,7 @@ const useUserInfo = () => {
 
     // 유저 프로필 업데이트 함수
     const updateUserInfo = async (updatedData) => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('accessToken');
 
         try {
             const response = await fetch('http://localhost:8080/api/user/mypage', {

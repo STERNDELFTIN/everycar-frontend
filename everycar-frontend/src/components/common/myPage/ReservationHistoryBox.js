@@ -10,36 +10,8 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         navigate(`/myPage/history/detail/${reservationType}/${reservationId}`);
     };
 
-    const handlePayments = async () => {
-        console.log("reservationId", reservationId);
-        try {
-            const token = localStorage.getItem("token");
-            if (!token) {
-                alert("로그인이 필요합니다");
-                return;
-            }
-
-            const response = await fetch("http://localhost:8080/api/paypal/pay", {
-                method: "POST",
-                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    payment: payment / 1445,
-                    reservationId,
-                    reservationType,
-                }),
-            });
-
-            const data = await response.json();
-            console.log("결제 요청 성공:", data);
-
-            if (data.redirectUrl) {
-                window.location.href = data.redirectUrl;
-            } else {
-                console.error("Redirect URL이 없습니다.");
-            }
-        } catch (error) {
-            console.error("결제 요청 실패:", error);
-        }
+    const handlePayments = () => {
+        navigate(`/myPage/history/payment/${reservationType}/${reservationId}`);
     };
 
     const handleCancelReservation = async () => {
@@ -50,7 +22,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         }
         console.log("예약 취소 요청:", reservationId);
 
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("accessToken");
         if (!token) {
             alert("로그인이 필요합니다.");
             return;
@@ -114,7 +86,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
 
         console.log("이용 완료 요청:", reservationId);
 
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("accessToken");
         if (!token) {
             alert("로그인이 필요합니다.");
             return;

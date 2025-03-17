@@ -24,13 +24,13 @@ const useLogin = () => {
             }
     
             const data = await response.json();
-            localStorage.setItem('token', data.token); // 2️⃣ 토큰 저장
+            localStorage.setItem('accessToken', data.accessToken); // 2️⃣ 토큰 저장
     
-            console.log("✅ JWT 토큰 저장 완료:", data.token);
+            console.log("✅ JWT 토큰 저장 완료:", data.accessToken);
     
             // 3️⃣ 토큰이 저장된 후, 0.1초 딜레이 후 유저 정보 요청
             setTimeout(async () => {
-                const token = localStorage.getItem('token'); // ✅ 저장된 토큰 가져오기
+                const token = localStorage.getItem('accessToken'); // ✅ 저장된 토큰 가져오기
     
                 console.log("🔍 저장된 JWT 토큰:", token);
     

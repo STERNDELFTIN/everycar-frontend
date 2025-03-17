@@ -32,7 +32,7 @@ const useCar = (carId) => {
           queryParams.append("reservation_s_end_date", returnDatetime);
         }
 
-        const token = localStorage.getItem("token"); // JWT 토큰 가져오기
+        const token = localStorage.getItem("accessToken"); // JWT 토큰 가져오기
 
         // 예약 타입에 따라 다른 API 엔드포인트 사용
         const apiUrl = reservationType === "quick"

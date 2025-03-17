@@ -37,7 +37,7 @@ const LicenseModify = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('accessToken');
         const formData = new FormData();
         formData.append('licenseNum', newLicenseNum);
         formData.append('licenseDate', newLicenseDate);

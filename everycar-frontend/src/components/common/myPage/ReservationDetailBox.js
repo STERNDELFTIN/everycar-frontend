@@ -10,7 +10,7 @@ function ReservationDetailBox() {
     useEffect(() => {
         const fetchReservationData = async () => {
             try {
-                const token = localStorage.getItem("token");
+                const token = localStorage.getItem("accessToken");
                 const apiUrl = reservationType === "fast"
                     ? `http://localhost:8080/api/fast/reservations/${reservationId}`
                     : `http://localhost:8080/api/short/reservations/${reservationId}`;

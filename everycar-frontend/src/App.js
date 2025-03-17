@@ -42,10 +42,10 @@ import ProfileModify from './routes/myPage/info/ProfileModify';
 import LicenseModify from './routes/myPage/info/LicenseModify';
 /* 내 예약 내역 페이지 */
 import MyReservationHistory from './routes/myPage/reservation/MyReservationHistory';
-// import MyReservationHistoryDetail from './routes/myPage/reservation/MyReservationHistoryDetail';
+import MyReservationHistoryDetail from './routes/myPage/reservation/MyReservationHistoryDetail';
+import WaitingReservationPayment from './routes/myPage/reservation/WaitingReservationPayment';
 /* 결제 및 정산 페이지 */
 import MyPayment from './routes/myPage/payment/MyPayment';
-import MyReservationHistoryDetail from './routes/myPage/reservation/MyReservationHistoryDetail';
 
 let PageStyle = styled.div`
   width: 72%;
@@ -61,7 +61,7 @@ function App() {
 
   useEffect(() => {
     // 앱 시작 시 자동 로그인
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
     if (token) {
       fetch('http://localhost:8080/api/user/mypage', {
         method: 'GET',
@@ -131,6 +131,7 @@ function App() {
             {/* 내 예약 내역 */}
             <Route path='history' element={<MyReservationHistory />} />
             <Route path='history/detail/:reservationType/:reservationId' element={<MyReservationHistoryDetail />} />
+            <Route path='history/payment/:reservationType/:reservationId' element={<WaitingReservationPayment />} />
 
             {/* 결제 및 정산 */}
             <Route path='pay' element={<MyPayment />} />

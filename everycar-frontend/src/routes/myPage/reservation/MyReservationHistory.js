@@ -33,7 +33,7 @@ function QuickReservationHistory() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("accessToken");
 
         fetch("http://localhost:8080/api/fast/reservations", {
             method: "GET",
@@ -111,7 +111,7 @@ function ShortReservationHistory() {
     const [shortReservations, setShortReservations] = useState([]);
     
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("accessToken");
         // API로부터 단기 예약 데이터를 가져옴
         fetch('http://localhost:8080/api/short/reservations', {
             method: "GET",

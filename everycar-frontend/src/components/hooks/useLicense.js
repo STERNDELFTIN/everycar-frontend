@@ -6,7 +6,7 @@ const useLicense = () => {
     const dispatch = useDispatch();
 
     const licenseInfo = useSelector((state) => state.user.licenseInfo);
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

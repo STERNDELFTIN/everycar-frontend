@@ -52,7 +52,7 @@ const getStoredLicenseInfo = () => {
 
 // 초기 상태
 const initialState = {
-  isLoggedIn: !!localStorage.getItem('token'), // 로그인 여부 (토큰이 있으면 로그인된 상태로 초기화)
+  isLoggedIn: !!localStorage.getItem('accessToken'), // 로그인 여부 (토큰이 있으면 로그인된 상태로 초기화)
   userInfo: getStoredUserInfo(), // 유저 정보
   licenseInfo: getStoredLicenseInfo(), // 면허 정보
 };
@@ -89,7 +89,7 @@ const userSlice = createSlice({
       };
 
       // 로그아웃 시 localStorage에서 삭제
-      localStorage.removeItem('token');
+      localStorage.removeItem('accessToken');
       localStorage.removeItem('userInfo');
       localStorage.removeItem('licenseInfo');
     },

@@ -86,7 +86,7 @@ const Payment = ({ payAmount, agree, car, return_location, selectedCity, selecte
         console.log("API 요청 URL:", apiUrl);
 
         try {
-            const token = localStorage.getItem("token"); // JWT 토큰 가져오기
+            const token = localStorage.getItem("accessToken"); // JWT 토큰 가져오기
             const response = await fetch(apiUrl, {
                 method: "POST",
                 headers: { 

@@ -7,11 +7,11 @@ import '../../css/common/Header.css';
 const MenuLinkStyle = styled(Link)`color: black; text-decoration: none; `;
 
 function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token')); // 초기 로그인 상태
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('accessToken')); // 초기 로그인 상태
 
   useEffect(() => {
     const checkToken = () => {
-      setIsLoggedIn(!!localStorage.getItem('token')); // 토큰 존재 여부 확인하여 로그인 상태 설정
+      setIsLoggedIn(!!localStorage.getItem('accessToken')); // 토큰 존재 여부 확인하여 로그인 상태 설정
     };
 
     // Custom Event 리스너 추가
@@ -25,7 +25,7 @@ function Header() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');  // 로그아웃 시 토큰 삭제
+    localStorage.removeItem('accessToken');  // 로그아웃 시 토큰 삭제
     setIsLoggedIn(false); // 상태 업데이트
     window.dispatchEvent(new Event('loginStateChange')); // 상태 변경 이벤트 트리거
   };
