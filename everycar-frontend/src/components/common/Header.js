@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import '../../css/common/Header.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 // Link 태그 스타일 컴포넌트
 const MenuLinkStyle = styled(Link)`color: black; text-decoration: none; `;
 
 function Header() {
+  const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('accessToken')); // 초기 로그인 상태
 
   useEffect(() => {
@@ -24,11 +28,19 @@ function Header() {
     };
   }, []);
 
+  // 로그아웃 핸들러
   const handleLogout = () => {
     localStorage.removeItem('accessToken');  // 로그아웃 시 토큰 삭제
     setIsLoggedIn(false); // 상태 업데이트
     window.dispatchEvent(new Event('loginStateChange')); // 상태 변경 이벤트 트리거
   };
+
+  // 드롭다운 메뉴
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  
+  useEffect(() => {
+    setIsMenuVisible(false); // 페이지 이동 시에 드롭다운 닫기
+  }, [location]);
 
   return (
     <div className="header">
@@ -50,13 +62,15 @@ function Header() {
           </div>
 
           <div className='right-menu'>
-            { isLoggedIn ? (
-              <>
-                {/* 로그인한 경우 */}
-                <MenuLinkStyle to='/myPage/info'>내 정보</MenuLinkStyle>
-                <MenuLinkStyle to='/myPage/history'>예약 내역</MenuLinkStyle>
-                <MenuLinkStyle to='/' onClick={handleLogout} className='login'>로그아웃</MenuLinkStyle>
-              </>
+            {isLoggedIn ? (
+              <div className='drop-down-menu-container'>
+                <button className="menu-button" onClick={() => setIsMenuVisible(prev => !prev)}><FontAwesomeIcon icon={faBars} /></button>
+                <ul className={isMenuVisible ? "drop-down-menu show-menu" : "drop-down-menu fold-menu"}>
+                  <li><MenuLinkStyle to='/myPage/info'>내 정보</MenuLinkStyle></li>
+                  <li><MenuLinkStyle to='/myPage/history'>예약 내역</MenuLinkStyle></li>
+                  <li><MenuLinkStyle to='/' onClick={handleLogout}>로그아웃</MenuLinkStyle></li>
+                </ul>
+              </div>
             ) : (
               <>
                 {/* 로그인하지 않은 경우 */}
