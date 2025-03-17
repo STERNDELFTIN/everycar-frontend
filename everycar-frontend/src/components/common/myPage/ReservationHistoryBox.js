@@ -55,7 +55,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
     const handleStartReservation = async () => {
         console.log("이용 시작 요청:", reservationId);
 
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("accessToken");
         if (!token) {
             alert("로그인이 필요합니다.");
             return;
