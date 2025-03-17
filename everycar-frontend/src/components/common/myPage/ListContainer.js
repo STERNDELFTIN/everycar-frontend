@@ -55,8 +55,8 @@ function ListContainer() {
         },
         {
             id: 2,
-            name: '결제 및 정산',
-            path: "/myPage/pay",
+            name: '내 문의사항',
+            path: "/myPage/inquiries",
             icon: (
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_474_908)">

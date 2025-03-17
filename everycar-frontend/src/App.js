@@ -46,6 +46,8 @@ import MyReservationHistoryDetail from './routes/myPage/reservation/MyReservatio
 import WaitingReservationPayment from './routes/myPage/reservation/WaitingReservationPayment';
 /* 결제 및 정산 페이지 */
 import MyPayment from './routes/myPage/payment/MyPayment';
+/* 문의사항 */
+import MyInquiries from './routes/myPage/inquiries/MyInquiries';
 
 let PageStyle = styled.div`
   width: 72%;
@@ -134,7 +136,8 @@ function App() {
             <Route path='history/payment/:reservationType/:reservationId' element={<WaitingReservationPayment />} />
 
             {/* 결제 및 정산 */}
-            <Route path='pay' element={<MyPayment />} />
+            {/* <Route path='pay' element={<MyPayment />} /> */}
+            <Route path='inquiries' element={<MyInquiries />} />
           </Route>
 
         </Routes>

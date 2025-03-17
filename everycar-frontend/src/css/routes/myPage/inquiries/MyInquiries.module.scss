@@ -1,0 +1,76 @@
+@use '../../../common/commonVariables.scss' as cv;
+@use '../../myPage/commonStyle.scss' as v;
+
+.MyInquiries {
+    text-align: left;
+}
+h2 {
+    font-size: cv.$title-font-size;
+}
+h3 {
+    font-size: cv.$sub-title-font-size;
+    margin-bottom: cv.vw-font(12px, 23px);
+}
+
+th{
+    text-align: left;
+}
+// 하단 콘텐츠
+.bottomContent {
+    display: flex;
+    margin-bottom: 50px;
+}
+.inquiriesInfo{
+    color: #999999;
+    font-size: clamp(8px, 0.9375vw, 15px);
+}
+.inquiries{
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px 20px;
+}
+
+.inquiriesTable thead tr th{
+    text-align: left;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.pagination .pageItem{
+    background-color: aqua;
+    padding: 5px 10px;
+    margin: 5px 5px;
+    cursor: pointer;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #C4FF53;
+    border-radius: 4px;
+}
+
+.pagination button:disabled {
+    cursor: not-allowed;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .bottomContent {
+        flex-direction: column;
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}
