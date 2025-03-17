@@ -20,9 +20,6 @@ const useReservation  = (reservationType, reservationId = null) => {
                 }
 
                 let url = `http://localhost:8080/api/${reservationType}/reservations`;
-                if (reservationId) {
-                    url += `/${reservationId}`;
-                }
 
                 const response = await fetch(url, {
                     method: "GET",
@@ -32,7 +29,11 @@ const useReservation  = (reservationType, reservationId = null) => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
                 const data = await response.json();
-                setReservationData(data || {});
+                console.log("API 응답 데이터:", data);
+
+                // 특정 reservationId와 일치하는 예약을 찾음
+                const selectedReservation = data.find(res => res.reservationId == reservationId) || null;
+                setReservationData(selectedReservation);
             } catch (error) {
                 console.error("예약 정보 가져오기 실패: ",  error);
                 setError(error.message);

@@ -5,6 +5,8 @@ function WaitingReservationPayment() {
     const { reservationType, reservationId } = useParams();
     const { reservationData, loading, error } = useReservation(reservationType, reservationId);
 
+    console.log("예약 데이터 확인:", reservationData);
+
     // PayPal 결제 요청
     const handlePaypalPayment = async () => {
         console.log("reservationId", reservationId);
@@ -20,6 +22,12 @@ function WaitingReservationPayment() {
                 return;
             }
 
+            console.log("PayPal 결제 요청 데이터:", {
+                payment: reservationData.payment, // 결제 금액
+                reservationId : parseInt(reservationId, 10),
+                reservationType
+            });
+
             const response = await fetch("http://localhost:8080/api/paypal/pay", {
                 method: "POST",
                 headers: {
@@ -27,7 +35,7 @@ function WaitingReservationPayment() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    payment: reservationData.paymentAmount,
+                    payment: reservationData.payment,
                     reservationId,
                     reservationType
                 })
@@ -59,7 +67,7 @@ function WaitingReservationPayment() {
                 <div>
                     <p>예약 ID: {reservationData.reservationId}</p>
                     <p>차량명: {reservationData.modelName}</p>
-                    <p>결제 금액: {reservationData.paymentAmount}원</p>
+                    <p>결제 금액: {reservationData.payment}원</p>
                     <button onClick={handlePaypalPayment} style={{ padding: "10px", backgroundColor: "#0066ff", color: "white" }}>
                         페이팔로 결제하기
                     </button>
