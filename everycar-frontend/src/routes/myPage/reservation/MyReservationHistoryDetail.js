@@ -11,7 +11,7 @@ function MyReservationHistoryDetail() {
 
     return (
         <div className={styles.myReservationHistory}>
-            <TopContent currentLocation='내예약내역' />
+            <TopContent firstLocation='내예약내역' secondLocation='상세내역' />
 
             <div className={styles.bottomContent}>
                 <ListContainer />

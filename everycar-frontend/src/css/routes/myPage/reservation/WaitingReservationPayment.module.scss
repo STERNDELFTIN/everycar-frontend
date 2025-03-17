@@ -1,0 +1,52 @@
+@use '../../../common/commonVariables.scss' as cv;
+@use '../../myPage/commonStyle.scss' as v;
+
+h2 {
+    font-size: cv.$title-font-size;
+}
+h3 {
+    font-size: cv.$sub-title-font-size;
+    margin-bottom: cv.vw-font(12px, 23px);
+}
+p, th, td {
+    font-size: cv.vw-font(10px, 18px);
+    font-weight: 400;
+}
+
+.bottomContent {
+    display: flex;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+// 예약정보 테이블
+.reservationTable {
+    @include v.white-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+// 결제 버튼
+.payBtnContainer {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+.paypalPayBtn {
+    @include v.button-style;
+    margin: 10px 0px;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1200px) {
+    
+}
+@media (max-width: 768px) { /* 태블릿 */
+    .bottomContent {
+        flex-direction: column;
+    }
+}
+@media (max-width: 480px) { /* 모바일 */
+
+}

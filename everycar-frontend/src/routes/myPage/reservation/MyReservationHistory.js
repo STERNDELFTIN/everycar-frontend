@@ -12,7 +12,7 @@ import dummyData from '../../../dummyData/dummyData';
 function MyReservationHistory() {
     return (
         <div className={styles.myReservationHistory}>
-            <TopContent currentLocation='내예약내역' />
+            <TopContent firstLocation='내예약내역' />
 
             <div className={styles.bottomContent}>
                 <ListContainer />
