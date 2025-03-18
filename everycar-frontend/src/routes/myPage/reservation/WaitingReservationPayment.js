@@ -18,20 +18,22 @@ function WaitingReservationPayment() {
             alert("로딩 중...");
             return;
         }
-
+   
         try {
             const token = localStorage.getItem("accessToken");
             if (!token) {
                 alert("로그인이 필요합니다.");
                 return;
             }
-
+   
+            const paymentInUSD = reservationData.payment / 1440; // 1원 = 1440달러 환산
+   
             console.log("PayPal 결제 요청 데이터:", {
-                payment: reservationData.payment, // 결제 금액
+                payment: paymentInUSD, // 환산된 결제 금액
                 reservationId: parseInt(reservationId, 10),
                 reservationType
             });
-
+   
             const response = await fetch("http://localhost:8080/api/paypal/pay", {
                 method: "POST",
                 headers: {
@@ -39,15 +41,15 @@ function WaitingReservationPayment() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    payment: reservationData.payment,
+                    payment: paymentInUSD,
                     reservationId,
                     reservationType
                 })
             });
-
+   
             const data = await response.json();
             console.log("결제 요청 성공:", data);
-
+   
             if (data.redirectUrl) {
                 window.location.href = data.redirectUrl;
             } else {
@@ -59,6 +61,7 @@ function WaitingReservationPayment() {
             alert("결제 요청 실패: " + error.message);
         }
     };
+   
 
     return (
         <div className={styles.waitingReservationPayment}>
@@ -74,7 +77,7 @@ function WaitingReservationPayment() {
                         <p style={{ color: "red" }}>{error}</p>
                     ) : (
                         <div className={styles.reservationTable}>
-                            <h3>예약상세정보</h3>
+                            <h3>예약 상세 정보</h3>
                             <table>
                                 <tbody>
                                     <tr>
@@ -109,14 +112,24 @@ function WaitingReservationPayment() {
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <div className={styles.payBtnContainer}>
-                                <button
-                                    onClick={handlePaypalPayment}
-                                    className={styles.paypalPayBtn}
-                                >
-                                    <b>{reservationData.payment}</b>원 결제
-                                </button>
+                            <div className={styles.paymentCont}>
+                                <h3>결제 정보</h3>
+                                <div className={styles.paymentInfo}>
+                                    <span>총 결제 금액</span>
+                                    <span className={styles.payment}>{reservationData.payment} KRW</span>
+                                </div>
+                                <div className={styles.paymentInfo}>
+                                    <span>달러 환산</span>
+                                    <span>{(reservationData.payment / 1440).toFixed(2)} USD</span>
+                                </div>
+                                <div className={styles.payBtnContainer}>
+                                    <button
+                                        onClick={handlePaypalPayment}
+                                        className={styles.paypalPayBtn}
+                                    >
+                                        <b>{(reservationData.payment / 1440).toFixed(2)}</b>USD 페이팔로 결제하기
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     )}

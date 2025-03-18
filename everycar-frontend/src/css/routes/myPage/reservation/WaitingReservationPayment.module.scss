@@ -25,6 +25,12 @@ p, th, td {
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    h3{
+        font-weight: bold;
+        color: #333;
+        font-size: cv.vw-font(14px, 18px);
+    }
 }
 
 // 결제 버튼
@@ -34,8 +40,34 @@ p, th, td {
     width: 100%;
 }
 .paypalPayBtn {
-    @include v.button-style;
+    background-color: #C4FF53;
+    padding: cv.vw-font(10px , 15px);
+    font-size: cv.vw-font(10px, 14px);
+    border-radius: 5px;
     margin: 10px 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.paymentCont{
+    margin: cv.vw-font(20px, 30px) 0;
+    h3{
+        font-weight: bold;
+        color: #333;
+        font-size: cv.vw-font(14px, 18px);
+    }
+
+    .paymentInfo{
+        margin: cv.vw-font(10px, 20px) 0;
+        font-size: cv.vw-font(12px, 14px);
+        display: flex;
+        justify-content: space-between;
+        color: #a0a0a0;
+    
+        h3{
+            color: #333;
+        }
+    }
 }
 
 /* 미디어 쿼리 */
