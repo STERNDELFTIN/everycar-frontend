@@ -21,6 +21,8 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지
   const [successMessage, setSuccessMessage] = useState(""); // 아이디 사용 가능 메시지
   const [passwordError, setPasswordError] = useState(""); // 비밀번호 일치 오류 메시지
+  const [userIdError, setUserIdError] = useState(""); // 아이디 유효성 오류 메시지
+  const [passwordStrengthError, setPasswordStrengthError] = useState(""); // 비밀번호 유효성 오류 메시지
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,6 +42,24 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+    // 아이디 유효성 검사
+    useEffect(() => {
+        const idPattern = /^[A-Za-z0-9]{6,20}$/;
+        if (!idPattern.test(formData.userId)) {
+        } else {
+          setUserIdError("");
+        }
+      }, [formData.userId]);
+
+        // 비밀번호 유효성 검사
+  useEffect(() => {
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,12}$/;
+    if (!passwordPattern.test(formData.userPassword)) {
+    } else {
+      setPasswordStrengthError("");
+    }
+  }, [formData.userPassword]);
+  
   // 비밀번호 일치 여부 확인
   useEffect(() => {
     if (formData.userPassword !== formData.userPasswordConfirm) {
@@ -96,25 +116,60 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // 아이디 중복 확인
+  
+    const idRegex = /^[a-zA-Z0-9]{6,20}$/; // 아이디 유효성 검사 정규식
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/; // 비밀번호 유효성 검사 정규식
+  
+    // 아이디 유효성 검사
+    if (!idRegex.test(formData.userId)) {
+      alert("아이디는 6~20자의 영문 또는 숫자로만 입력해야 합니다.");
+      return;
+    }
+  
+    // 비밀번호 유효성 검사
+    if (!passwordRegex.test(formData.userPassword)) {
+      alert("비밀번호는 8~12자의 영문, 숫자, 특수문자를 포함해야 합니다.");
+      return;
+    }
+  
+    // 비밀번호 확인 일치 여부
+    if (formData.userPassword !== formData.userPasswordConfirm) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+  
+    // 아이디 중복 확인 여부
     if (!isUserIdAvailable) {
       alert("이미 사용 중인 아이디입니다. 다른 아이디를 선택해주세요.");
-      return; // 중복된 아이디일 경우 회원가입을 진행하지 않음
+      return;
     }
-
-    // userAddress와 userAddressDetail을 합쳐서 보내기
+  
+    // 모든 필드가 채워졌는지 확인
+    if (
+      !formData.userName ||
+      !formData.userEmail ||
+      !formData.userPhone ||
+      !formData.userBirth ||
+      !formData.userAddress ||
+      !formData.userAddressDetail
+    ) {
+      alert("모든 정보를 입력해주세요.");
+      return;
+    }
+  
+    // 주소 합치기
     const fullAddress = formData.userAddress + " " + formData.userAddressDetail;
-
+  
     try {
       const response = await fetch("http://localhost:8080/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          userAddress: fullAddress, // 결합된 주소를 전송
+          userAddress: fullAddress, // 합쳐진 주소 전송
         }),
       });
+  
       if (response.ok) {
         alert("회원가입 성공! 로그인 페이지로 이동합니다.");
         navigate("/auth/login");
@@ -123,9 +178,10 @@ const Register = () => {
       }
     } catch (error) {
       console.error("회원가입 오류:", error);
+      alert("서버 오류가 발생했습니다. 나중에 다시 시도해주세요.");
     }
   };
-
+  
   // 카카오 우편번호 서비스 호출을 위한 함수
   const openPostcode = () => {
     new window.daum.Postcode({
@@ -144,16 +200,17 @@ const Register = () => {
       <div className={style.inputCont}>
         <h2>정보 입력</h2>
         <form onSubmit={handleSubmit}>
-          <label className={style.textAreaId}>
+        <label className={style.textAreaId}>
             <span className={style.inputName}>아이디</span>
             <input
               type="text"
               name="userId"
-              placeholder="아이디"
               value={formData.userId}
               onChange={handleChange}
               required
+              placeholder="6~20자 영문, 숫자"
             />
+            {userIdError && <p className={style.errorMessage}>{userIdError}</p>}
             {!isUserIdAvailable && <p className={style.errorMessage}>{errorMessage}</p>}
             {isUserIdAvailable && successMessage && <p className={style.successMessage}>{successMessage}</p>}
             <button className={style.inputBtn} type="button" onClick={checkUserIdAvailability}>중복검사</button>
@@ -164,12 +221,13 @@ const Register = () => {
             <input
               type="password"
               name="userPassword"
-              placeholder="비밀번호"
+              placeholder="8~12자 영문, 숫자, 특수문자"
               onChange={handleChange}
               required
             />
-            <br />
+            {passwordStrengthError && <p className={style.errorMessage}>{passwordStrengthError}</p>}
           </label>
+
 
           <label className={style.textArea}>
             <span className={style.inputName}>비밀번호 확인</span>
@@ -213,7 +271,7 @@ const Register = () => {
             <input
               type="text"
               name="userPhone"
-              placeholder="전화번호"
+              placeholder="-를 제외한 숫자만 입력"
               onChange={handleChange}
               required
             />
@@ -270,6 +328,7 @@ const Register = () => {
               value={formData.userAddress}
               onChange={handleChange}
               required
+                readOnly
             />
             <button className={style.inputBtn} type="button" onClick={openPostcode}>
               우편번호 검색
