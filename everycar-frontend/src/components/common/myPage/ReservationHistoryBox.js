@@ -158,22 +158,22 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
                 )}
                 {(reservationStatus === "예약취소" || reservationStatus === "이용완료") && (
                     <>
-                        <button onClick={(e) => { 
-                            e.stopPropagation(); // 이벤트 전파 막기
-                            navigate('/myPage/review', {
-                                state: {
-                                    carName,
-                                    payment,
-                                    startDate,
-                                    startTime,
-                                    endDate,
-                                    endTime,
-                                    rentPos,
-                                    reservationType,
-                                    reservationId
-                                }
-                            });
-                        }}>리뷰 작성</button>
+                <button onClick={(e) => { 
+                    e.stopPropagation(); // 이벤트 전파 막기
+                    navigate('/myPage/review', {
+                        state: {
+                            carName,
+                            payment,
+                            startDate,
+                            startTime,
+                            endDate,
+                            endTime,
+                            rentPos,
+                            reservationType,
+                            reservationId
+                        }
+                    });
+                }}>리뷰 작성</button>
                         <button onClick={(e) => {e.stopPropagation(); handleDetailReservation();}}>예약 상세보기</button>
                     </>
                 )}

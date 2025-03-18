@@ -186,21 +186,35 @@ const PaymentSuccess = () => {
             </tbody>
           </table>
 
-                {/* 🔹 버튼 추가 */}
-      <div className={style.btn} style={{ marginTop: "20px", display: "flex", gap: "10px", justifyContent: "flex-end" }}>
-
-<button
-  onClick={() => navigate("/myPage/history")}
-  className={style.returnPayment}
->
-  결제하기
-</button>
-</div>
+          {/* 🔹 버튼 추가 */}
+          <div
+            className={style.btn}
+            style={{
+              marginTop: "20px",
+              display: "flex",
+              gap: "10px",
+              justifyContent: "flex-end",
+            }}
+          >
+            <button
+            onClick={() =>
+                navigate(
+                `/myPage/history/payment/${reservationType}/${
+                    reservationType === "quick"
+                    ? userReservation.reservation_id
+                    : userReservation.reservation_s_id
+                }`
+                )
+            }
+            className={style.returnPayment}
+            >
+            결제하기
+            </button>
+          </div>
         </div>
       ) : (
         <p>예약 정보를 찾을 수 없습니다.</p>
       )}
-
     </div>
   );
 };
