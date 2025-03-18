@@ -1,0 +1,198 @@
+@use '../../common/commonVariables.scss' as cv;
+
+.registerCont{
+    height: 100vh;
+
+    .inputCont{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        width: 100%;
+        max-width: 500px;
+        padding: 2rem;
+
+        h2{
+            margin-bottom: cv.vw-font(20px, 25px);
+        }
+        label{
+            width: 100%;
+            margin-bottom: cv.vw-font(20px, 25px);
+        }
+        .textArea{
+            display: flex;
+            width: 100%;
+            display: flex;
+            height: cv.vw-font(40px, 45px);
+            border-bottom: 1px solid #242424;
+            
+            input{
+                width: 80%;
+                height: cv.vw-font(40px, 45px);
+                background: none;
+                border: none;
+                outline: none;
+                font-size: cv.vw-font(14px, 18px);
+            }
+        }
+        p{
+            text-align: left;
+            width: 20%;
+            line-height: cv.vw-font(40px, 45px);;
+        }
+        .radioBox {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .radioLabel {
+            width: 100%;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        
+            &:hover {
+                background-color: #f0f0f0;
+            }
+        }
+        
+        .radioInput {
+            display: none;
+        }
+        
+        .radioInput:checked + .radioLabel {
+            border: 1px solid #8ED800;
+            background-color: #e0ffa6;
+            color: #468000;
+        }
+        
+        .submitBtn{
+            padding-top: cv.vw-font(10px, 10px);
+            padding-bottom: cv.vw-font(10px, 10px);
+            width: 100%;
+            background-color: #C4FF53;
+            border-radius: 5px;
+            color: #468000;
+        }
+
+        .activeBtn {
+            padding-top: cv.vw-font(10px, 10px);
+            padding-bottom: cv.vw-font(10px, 10px);
+            width: 100%;
+            background-color: #C4FF53;
+            border-radius: 5px;
+            color: #468000;
+          }
+          
+          .disabledBtn {
+            background-color: #ccc; /* 비활성화된 상태에서의 배경색 */
+            color: #999; /* 비활성화된 상태에서의 텍스트 색상 */
+            cursor: not-allowed; /* 클릭할 수 없다는 표시 */
+          }
+          
+          .submitBtn:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+          }
+    }
+
+
+}
+
+* {box-sizing:border-box}
+ul {
+  list-style:none;
+}
+
+/* 단계별 상태 스타일 */
+.step-box {
+  padding:0 10px 10px 10px;
+  border:1px solid #ddd;
+  background:#fff
+}
+.step-state {
+  padding:10px 0 15px;
+  margin-top:15px;
+  background:#f7f7f7
+}
+.step-state ul:after {
+  content:'';
+  display:block;
+  clear:both
+}
+.step-state ul li {
+  float:left;
+  position:relative;
+  width:20%; /* 5개 진행바를 5등분 */
+  padding-top:50px; /* 진행바 영역 확보 */
+  font-size:15px;
+  font-weight:bold;
+  text-align:center;
+  line-height:12px;
+  color:#666
+}
+.step-state ul li:first-child {
+  font-size:13px
+}
+/* 도전중, 달성 텍스트 영역 */
+.step-state ul li p:after {
+  position:absolute; /* absolute 기준은 li 영역 */
+  width:41px;
+  height:24px;
+  margin-right:-20px;
+  background:url(http://cfile5.uf.tistory.com/image/241D463E58AFAEAB1642F3) no-repeat 0 0;
+  background-size:auto 24px;
+  background-position:-58px 0;
+  top:0;
+  right:0;
+  color:#fff;
+  font-size:11px;
+  line-height:16px;
+  letter-spacing:-.5px;
+}
+.step-state ul li:first-child p {
+  padding-top:6px
+}
+.step-state ul li span {
+  display:block;
+  margin-top:2px;
+  font-weight:normal;
+  color:#898989;
+  font-size:12px
+}
+/* 회색 진행바 생성 */
+.step-state ul li:before {
+  position:absolute;
+  top:35px;
+  left:0;
+  right:0;
+  height:3px;
+  background:#ddd;
+  content:''
+}
+/* 첫 번째 진행바 반만 생성*/
+.step-state ul li:nth-child(1):before {
+  left:50%
+}
+/* 마지막 진행바 반만 생성*/
+.step-state ul li:nth-child(5):before {
+  right:50%
+}
+/* 화살표 상태 아이콘 */
+.step-state ul li:after {
+  position:absolute;
+  top:27px;
+  left:50%;
+  width:20px;
+  height:20px;
+  margin-left:-10px;
+  background:url(http://cfile5.uf.tistory.com/image/241D463E58AFAEAB1642F3) no-repeat 0 0;
+  background-size:auto 24px;
+  background-position:0 0;
+  content:''
+}

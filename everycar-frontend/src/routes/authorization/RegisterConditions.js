@@ -7,7 +7,7 @@ function RegisterConditions() {
   const [isPrivacyChecked, setIsPrivacyChecked] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const navigate = useNavigate();
-  
+
   const handleTermsChange = () => {
     setIsTermsChecked(!isTermsChecked);
   };
@@ -38,10 +38,13 @@ function RegisterConditions() {
 
   return (
     <div className={style.cont}>
-      <h2>회원가입 약관 동의</h2>
+      <h2>회원가입 약관</h2>
+      <p>에브리카를 찾아주셔서 감사합니다.<br></br>
+      다음 약관을 꼼꼼하게 읽고 두 가지 약관에 모두 동의하셔야 회원가입을 진행할 수 있습니다.
+      </p>
       <div className={style.detail}>
         <div className={style.conditions}>
-          <h3>이용 약관</h3>
+          <h3>이용 약관 (필수)</h3>
           <div className={style.detailConditions}>
             제 1조<br></br> (목적) 본 약관은 "에브리카" 서비스(이하
             "서비스")에서 제공하는 웹사이트 및 모바일 애플리케이션을 이용하는
@@ -103,7 +106,7 @@ function RegisterConditions() {
           </div>
         </div>
         <div className={style.conditions}>
-          <h3>개인정보 이용 동의서</h3>
+          <h3>개인정보 이용 동의서 (필수)</h3>
           <div className={style.detailConditions}>
             제 1조 (개인정보 수집 항목) "에브리카"는 회원가입을 위한 서비스
             제공, 계약 이행 등을 위해 아래와 같은 개인정보를 수집합니다: 필수

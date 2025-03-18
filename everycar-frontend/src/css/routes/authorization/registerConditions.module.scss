@@ -5,6 +5,12 @@
   margin-top: cv.vw-font(20px, 40px);
   margin-bottom: cv.vw-font(20px, 40px);
   h2{
+    font-size: cv.vw-font(18px, 24px);
+    margin-bottom: cv.vw-font(5px, 10px);
+  }
+  p{
+    color: #666;
+    font-size: cv.vw-font(12px, 14px);
     margin-bottom: cv.vw-font(20px, 40px);
   }
   .detail {
@@ -19,6 +25,7 @@
     margin-bottom: cv.vw-font(20px, 40px);
     .detailConditions {
       padding: 10px 20px;
+      margin-bottom: cv.vw-font(10px, 20px);
       height: cv.vw-font(100px, 500px);
       overflow-y: scroll;
       background-color: #f3f3f3;
