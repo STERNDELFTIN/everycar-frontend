@@ -1,0 +1,63 @@
+@use "../../common/commonVariables.scss" as cv;
+
+.cont {
+  text-align: left;
+  margin-top: cv.vw-font(20px, 40px);
+  margin-bottom: cv.vw-font(20px, 40px);
+  h2{
+    margin-bottom: cv.vw-font(20px, 40px);
+  }
+  .detail {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    border: 1px solid #f3f3f3;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .conditions {
+    margin-bottom: cv.vw-font(20px, 40px);
+    .detailConditions {
+      padding: 10px 20px;
+      height: cv.vw-font(100px, 500px);
+      overflow-y: scroll;
+      background-color: #f3f3f3;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #666;
+      line-height: 1.5rem;
+    }
+    .agree {
+      text-align: right;
+
+      input {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .next {
+    width: 100%;
+    height: cv.vw-font(30px, 50px);
+    text-align: center;
+    background-color: #666;
+    border-radius: 5px;
+  }
+  .next:disabled {
+    /* 비활성화 버튼 스타일 */
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .next:not(:disabled) {
+    /* 활성화 버튼 스타일 */
+    background-color: #C4FF53;
+    cursor: pointer;
+  }
+
+  .next:disabled:hover {
+    /* 비활성화 상태에서 마우스 오버 시 스타일 */
+    background-color: #ccc;
+  }
+
+}

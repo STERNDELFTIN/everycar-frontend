@@ -37,7 +37,7 @@ import InquiryModify from './routes/support/inquiry/InquiryModify';
 // 인증 관련 페이지
 import Login from './routes/authorization/Login';
 import Register from './routes/authorization/Register';
-
+import RegisterConditions from './routes/authorization/RegisterConditions';
 // 마이페이지
 /* 내 정보 관리 페이지 */
 import MyInfoManagement from './routes/myPage/info/MyInfoManagement';
@@ -128,6 +128,7 @@ function App() {
           {/* 인증 관련 페이지 */}
           <Route path='/auth'>
             <Route path='login' element={<Login />} />
+            <Route path='registerConditions' element={<RegisterConditions />} />
             <Route path='register' element={<Register />} />
           </Route>
 
