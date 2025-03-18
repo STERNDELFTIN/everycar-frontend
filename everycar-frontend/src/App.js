@@ -52,7 +52,7 @@ import MyPayment from './routes/myPage/payment/MyPayment';
 /* 문의사항 */
 import MyInquiries from './routes/myPage/inquiries/MyInquiries';
 /* 리뷰 작성 */
-import MyReview from './routes/myPage/myReview/myReview';
+import MyReview from './routes/myPage/myReview/MyReview';
 
 let PageStyle = styled.div`
   width: 72%;

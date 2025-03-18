@@ -1,0 +1,138 @@
+@use "../../../common/commonVariables.scss" as cv;
+@use "../../myPage/commonStyle.scss" as v;
+
+.reviewContn {
+  text-align: left;
+  margin-top: cv.vw-font(22px, 35px);
+  margin-bottom: cv.vw-font(22px, 35px);
+  padding: 24px 30px;
+  border-radius: 5px;
+  background-color: #fff;
+  .bottomContent {
+    display: flex;
+    text-align: left;
+  }
+
+  .reviewTitle h2 {
+    font-size: cv.$title-font-size;
+    margin-bottom: cv.vw-font(13px, 22px);
+    text-align: left;
+  }
+  .reviewTitle > p {
+    font-size: cv.$sub-title-font-size;
+    margin-bottom: cv.vw-font(7px, 10px);
+    text-align: left;
+    color: #999;
+  }
+}
+
+.answer {
+  margin-top: cv.vw-font(50px, 35px);
+  .bottomContent {
+    display: flex;
+    text-align: left;
+  }
+  h2 {
+    font-size: cv.$title-font-size;
+    margin-bottom: cv.vw-font(13px, 22px);
+    text-align: left;
+    padding-bottom: cv.vw-font(22px, 35px);
+  }
+  .answerTitle > p {
+    font-size: cv.$sub-title-font-size;
+    margin-bottom: cv.vw-font(7px, 10px);
+    text-align: left;
+    color: #999;
+  }
+
+  .reviewRating {
+    margin-bottom: cv.vw-font(30px, 35px);
+    p {
+      font-size: cv.vw-font(15px, 25px);
+    }
+    .radioBox {
+      display: flex;
+      align-items: center;
+      margin-top: clamp(10px, 0.78125vw, 15px);
+      justify-content: space-evenly;
+      color: #999;
+    }
+
+    label {
+      font-size: cv.vw-font(15px, 25px);
+      color: #999;
+    }
+
+    textarea {
+      width: 100%;
+      height: cv.vw-font(20px, 80px);
+      padding: cv.vw-font(10px, 20px);
+      margin-top: cv.vw-font(10px, 15px);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: none;
+      font-size: cv.vw-font(15px, 25px);
+    }
+    /* 선택된 라디오 버튼만 색상 변경 */
+    input[type="radio"]:checked + span {
+      color: #000;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      margin-right: cv.vw-font(10px, 15px);
+      .star {
+        width: cv.vw-font(20px, 30px);
+        height: cv.vw-font(20px, 30px);
+        margin-right: cv.vw-font(5px, 10px);
+      }
+      .star:last-child {
+        margin-right: 0;
+      }
+    }
+    .rating > p {
+      font-size: cv.vw-font(15px, 25px);
+      color: #999;
+    }
+  }
+
+  .buttonBox {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: cv.vw-font(30px, 35px);
+    display: flex;
+    button {
+      border: 1px solid #ccc;
+      text-align: center;
+      display: block;
+      width: 49%;
+      height: cv.vw-font(40px, 60px);
+      border-radius: 5px;
+      background-color: #fff;
+      color: #2f2f2f;
+      font-size: cv.vw-font(15px, 25px);
+      cursor: pointer;
+      transition: background-color 0.3s;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+    .submit {
+        background-color: #fff;
+        border: 1px solid #8ed800;
+        color: #468000;
+      &:disabled {
+        background-color: #ccc; /* 비활성화 상태: 회색 */
+        border: 1px solid #ccc;
+        cursor: not-allowed;
+        color: #666; /* 비활성화된 텍스트 색 */
+      }
+      &:hover:enabled {
+        background-color: #fff;
+        border: 1px solid #8ed800;
+        color: #468000;
+      }
+    }
+  }
+}
