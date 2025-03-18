@@ -53,5 +53,32 @@
 
 // 대여시간
 .rentTime {
+    .rentTimeCont{
+        padding: cv.vw-font(10px, 0px);
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        text-align: center;
+        font-size: cv.vw-font(10px, 18px);
+    }
+}
 
+// 지도
+.Location{
+    margin-bottom: cv.vw-font(20px, 0px);
+    .address{
+
+        div{
+            width: 100%;
+            display: flex;
+        }
+        .addressTitle{
+            display: block;
+            width: 15%;
+            margin-right: 10px;
+            color: #666;
+        }
+        .addressDetail{
+            width: 85%;
+        }
+    }
 }

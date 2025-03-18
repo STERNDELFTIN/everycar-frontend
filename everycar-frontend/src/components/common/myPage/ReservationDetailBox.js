@@ -1,10 +1,9 @@
-/* global kakao */ // 여기에 추가하면 리액트가 kakao 객체를 인식합니다.
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../../../css/routes/myPage/reservation/MyReservationDetail.module.scss";
 import axios from "axios";
-import Script from "react-load-script";
+import KakaoMap from "../KakaoMap"; // KakaoMap이 있는 경로로 수정
 
 const ReservationDetailBox = () => {
   const { reservationType, reservationId } = useParams();
@@ -49,6 +48,8 @@ const ReservationDetailBox = () => {
     return <div>로딩 중...</div>;
   }
 
+  console.log("reservationData", reservationData);
+
   // 예약 유형에 따라 다른 시간 필드를 사용
   const startDate =
     reservationType === "fast"
@@ -60,23 +61,10 @@ const ReservationDetailBox = () => {
       ? reservationData.return_datetime || "N/A"
       : reservationData.reservation_s_end_date || "N/A";
 
-  const handleScriptLoad = () => {
-    kakao.maps.load(() => {
-      const container = document.getElementById("myMap");
-      const options = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 3,
-      };
-      const map = new kakao.maps.Map(container, options);
-    });
-  };
+
 
   return (
     <div>
-      <Script
-        url="http://dapi.kakao.com/v2/maps/sdk.js?appkey=1fc1193a647e2229d02c81559ac53d9e&libraries=services,drawing&autoload=false"
-        onLoad={handleScriptLoad}
-      />
       <div className={styles.reservationHistoryBox}>
         <h3>예약 차량 정보</h3>
         <div className={styles.reservationCarInfo}>
@@ -120,19 +108,42 @@ const ReservationDetailBox = () => {
         <div className={styles.rentTime}>
           <h3>이용 시간</h3>
           <div>
-            <div>
+            <div className={styles.rentTimeCont}>
               {startDate} ~ {endDate}
             </div>
           </div>
         </div>
-        <div className={styles.rentalLocation}>
+        <div className={styles.Location}>
           <h3>대여 장소</h3>
-            <div id="myMap" style={{ width: "100%", height: "400px" }}></div>
-
+          <KakaoMap latitude={reservationData.rentalLocationLatitude} longitude={reservationData.rentalLocationLongitude} />
+          <div className={styles.address}>
+            <div>
+              <span className={styles.addressTitle}>주차장</span>
+              <span className={styles.addressDetail}>{reservationData.rentalLocationName || "알 수 없음"}</span>
+            </div>
+            <div>
+              <span className={styles.addressTitle}>상세주소</span>
+              <span className={styles.addressDetail}>{reservationData.rentalAddress || "알 수 없음"}</span>
+            </div>
+          </div>
         </div>
-        <div className={styles.returnLocation}>
+        <div className={styles.Location}>
           <h3>반납 장소</h3>
-          {/* <div id="myMap" style={{ width: "100%", height: "400px" }}></div> */}
+          <KakaoMap latitude={reservationData.returnLocationLatitude} longitude={reservationData.returnLocationLongitude} />
+          <div className={styles.address}>
+            <div>
+              <span className={styles.addressTitle}>주차장</span>
+              <span className={styles.addressDetail}>                   {(reservationType === "fast") ? reservationData.returnLocationName || "알 수 없음" : reservationData.rentalLocationName || "알 수 없음"}
+              </span>
+            </div>
+            
+            <div>
+              <span className={styles.addressTitle}>상세주소</span>
+              <span className={styles.addressDetail}>
+              {(reservationType === "fast") ? reservationData.returnAddress || "알 수 없음" : reservationData.rentalAddress || "알 수 없음"}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
