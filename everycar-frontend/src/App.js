@@ -52,7 +52,7 @@ import MyPayment from './routes/myPage/payment/MyPayment';
 /* 문의사항 */
 import MyInquiries from './routes/myPage/inquiries/MyInquiries';
 /* 리뷰 작성 */
-import MyReview from './routes/myPage/myReview/MyReview';
+import MypageReview from './routes/myPage/myReview/MypageReview';
 // import MyReview from './routes/myPage/myReview/MyReview';
 
 let PageStyle = styled.div`
@@ -149,7 +149,7 @@ function App() {
             <Route path='inquiries' element={<MyInquiries />} />
 
             {/* 리뷰 작성 페이지 */}
-            <Route path='review' element={<MyReview />} />
+            <Route path='review' element={<MypageReview />} />
           </Route>
 
         </Routes>

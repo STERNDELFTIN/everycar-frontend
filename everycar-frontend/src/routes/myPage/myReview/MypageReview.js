@@ -5,7 +5,7 @@ import useUserInfo from "../../../components/hooks/useUserInfo";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom"; // useNavigate import
 
-function MyReview() {
+function MypageReview() {
   const { loading, userInfo } = useUserInfo();
   const location = useLocation();
   const navigate = useNavigate(); // useNavigate 훅 사용
@@ -260,4 +260,4 @@ function MyReview() {
     </div>
   );
 }
-export default MyReview;
+export default MypageReview;
