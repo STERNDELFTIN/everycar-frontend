@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";  // useNavigate 추가
 import styles from "../../../css/routes/myPage/inquiries/MyInquiries.module.scss";
 import { vwFont } from "../../../utils";
 import TopContent from "../../../components/common/myPage/TopContent";
@@ -13,6 +14,8 @@ function MyInquiries() {
 
     const itemsPerPage = 10;
     const pageGroupSize = 5; // 페이지 그룹 사이즈 (예: 1, 2, 3, 4, 5)
+    const navigate = useNavigate();  // navigate 훅 추가
+
     useEffect(() => {
         const fetchInquiries = async () => {
             const token = localStorage.getItem("accessToken");
@@ -67,6 +70,11 @@ function MyInquiries() {
         return pageNumbers;
     };
 
+    // 문의사항 클릭 시 상세 페이지로 이동
+    const handleInquiryClick = (inquiriesNum) => {
+        navigate(`/support/inquiryDetail/${inquiriesNum}`);
+    };
+
     return (
         <div className={styles.MyInquiries}>
             <TopContent firstLocation="내 예약 내역" />
@@ -75,7 +83,11 @@ function MyInquiries() {
                 <ListContainer />
                 <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: vwFont(18, 30) }}>
                     <h2>내 문의사항</h2>
-                    <p className={styles.inquiriesInfo}>"내 문의사항" 페이지에는 사용자가 남긴 모든 문의사항을 확인할 수 있습니다. 답변은 영업일 기준 09:00~18:00에 순차적으로 처리되며, <br></br>긴급한 장애 관련 문의는 전화로 접수해 주시기 바랍니다. 또한, 욕설이나 서비스와 상관없는 내용의 문의는 관리자에 의해 비공개 처리될 수 있습니다.</p>
+                    <p className={styles.inquiriesInfo}>
+                        "내 문의사항" 페이지에는 사용자가 남긴 모든 문의사항을 확인할 수 있습니다. 답변은 영업일 기준 09:00~18:00에 순차적으로 처리되며,
+                        <br />
+                        긴급한 장애 관련 문의는 전화로 접수해 주시기 바랍니다. 또한, 욕설이나 서비스와 상관없는 내용의 문의는 관리자에 의해 비공개 처리될 수 있습니다.
+                    </p>
                     {loading ? (
                         <p>로딩 중...</p>
                     ) : error ? (
@@ -98,16 +110,15 @@ function MyInquiries() {
 
                                 <tbody>
                                     {inquiries.map((inquiry, index) => (
-                                        <tr key={inquiry.inquiriesNum}>
-                                            <td className={styles.inquiriesNum}>{index + 1}</td>  {/* 번호 추가 */}
-                                            <td>{inquiry.inquiriesQ}</td>
+                                        <tr className={styles.list} key={inquiry.inquiriesNum} onClick={() => handleInquiryClick(inquiry.inquiriesNum)}>
+                                            <td className={styles.inquiriesNum}>{index + 1}</td> {/* 번호 추가 */}
+                                            <td className={styles.inquiriesQ}>{inquiry.inquiriesQ}</td>
                                             <td>
-                                                {inquiry.inquiriesStatus === 1 ? "답변완료" : "미답변"}  {/* 조건에 따른 텍스트 표시 */}
+                                                {inquiry.inquiriesStatus === 1 ? "답변완료" : "미답변"} {/* 조건에 따른 텍스트 표시 */}
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
-                                                                
                             </table>
 
                             <div className={styles.pagination}>
@@ -119,7 +130,7 @@ function MyInquiries() {
                                     <button
                                         key={pageNumber}
                                         onClick={() => handlePageChange(pageNumber)}
-                                        className={page === pageNumber ? styles.active : ''}
+                                        className={page === pageNumber ? styles.active : ""}
                                     >
                                         {pageNumber}
                                     </button>

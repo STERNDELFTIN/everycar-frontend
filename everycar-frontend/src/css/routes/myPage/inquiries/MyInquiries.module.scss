@@ -28,10 +28,17 @@ th{
     background-color: white;
     border-radius: 5px;
     padding: 15px 20px;
+    tr{
+        cursor: pointer;
+    }
+    tr:hover{
+        background-color: #f3f3f3;
+    }
 }
 
 .inquiriesTable thead tr th{
     text-align: left;
+
 }
 .pagination{
     display: flex;
