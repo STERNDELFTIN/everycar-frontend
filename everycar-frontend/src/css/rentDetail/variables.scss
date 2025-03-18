@@ -9,8 +9,8 @@ $content-margin: cv.vw-font(10px, 33px);
 @mixin white-round-box {
     padding: cv.vw-font(15px, 52px);
     border-radius: 10px;
-    box-shadow: $shadow;
     background-color: #FFFFFF;
+    border: 1px solid #f3f3f3;
 }
 @mixin grey-round-box {
     padding: cv.vw-font(6px, 15px) cv.vw-font(10px, 19px);

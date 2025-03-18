@@ -25,6 +25,7 @@ p, th, td {
 // 유저 프로필
 .profile {
     @include v.white-box;
+    border: 1px solid #f0f0f0;
 }
 
 table {
@@ -59,6 +60,7 @@ table {
 // 면허 정보 등록
 .licenseInfoContainer {
     @include v.white-box;
+    border: 1px solid #f0f0f0;
 }
 .licenseInfoContent {
     display: flex;

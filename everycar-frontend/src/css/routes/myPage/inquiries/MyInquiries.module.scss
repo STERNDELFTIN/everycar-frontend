@@ -2,7 +2,7 @@
 @use '../../myPage/commonStyle.scss' as v;
 
 .MyInquiries {
-    text-align: left;
+    text-align: left; 
 }
 h2 {
     font-size: cv.$title-font-size;
@@ -28,6 +28,7 @@ th{
     background-color: white;
     border-radius: 5px;
     padding: 15px 20px;
+    border: 1px solid #f0f0f0;
     tr{
         cursor: pointer;
     }
