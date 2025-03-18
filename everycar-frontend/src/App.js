@@ -56,7 +56,7 @@ import MyReview from './routes/myPage/myReview/MyReview';
 // import MyReview from './routes/myPage/myReview/MyReview';
 
 let PageStyle = styled.div`
-  width: 72%;
+  width: 66%;
   min-height: 100vh;  /* 최소 높이를 화면 전체로 설정 */
 
   @media (max-width: 480px) {

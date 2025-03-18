@@ -5,7 +5,7 @@
     justify-content: space-between;
 }
 .plan-box {
-    box-shadow: 0px 4px 4.2px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f3f3f3;
 }
 .plan-box:hover {
     background-color: #F9FEF5;
