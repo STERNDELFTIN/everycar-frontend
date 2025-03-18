@@ -1,15 +1,16 @@
 @use '../../common/commonVariables.scss' as cv;
 
 .registerCont{
+    position: relative;
+    display: block;
     height: 100vh;
-
     .inputCont{
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         position: absolute;
         width: 100%;
-        max-width: 500px;
+        max-width: 600px;
         padding: 2rem;
 
         h2{
@@ -70,6 +71,7 @@
         .inputName{
             text-align: left;
             width: 20%;
+            font-size: cv.vw-font(10px, 15px);
             line-height: cv.vw-font(40px, 45px);;
         }
         .radioBox {

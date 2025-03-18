@@ -6,6 +6,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     userId: "",
     userPassword: "",
+    userPasswordConfirm: "", // 비밀번호 확인 필드 추가
     userName: "",
     userEmail: "",
     userPhone: "",
@@ -19,6 +20,7 @@ const Register = () => {
   const [isUserIdAvailable, setIsUserIdAvailable] = useState(false); // 아이디 중복 여부
   const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지
   const [successMessage, setSuccessMessage] = useState(""); // 아이디 사용 가능 메시지
+  const [passwordError, setPasswordError] = useState(""); // 비밀번호 일치 오류 메시지
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,6 +39,15 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  // 비밀번호 일치 여부 확인
+  useEffect(() => {
+    if (formData.userPassword !== formData.userPasswordConfirm) {
+      setPasswordError("비밀번호가 일치하지 않습니다.");
+    } else {
+      setPasswordError("");
+    }
+  }, [formData.userPassword, formData.userPasswordConfirm]);
 
   // 아이디 중복 확인 함수
   const checkUserIdAvailability = async () => {
@@ -69,16 +80,19 @@ const Register = () => {
     const isValid =
       formData.userId &&
       formData.userPassword &&
+      formData.userPasswordConfirm &&
       formData.userName &&
       formData.userEmail &&
       formData.userPhone &&
       formData.userGender &&
       formData.userBirth &&
       formData.userAddress &&
-      formData.userAddressDetail; // 상세주소도 포함
+      formData.userAddressDetail && 
+      passwordError === "" &&  // 비밀번호가 일치하는 경우만 활성화
+      isUserIdAvailable; // 아이디 중복 확인이 통과되었을 때만 활성화
 
-    setIsFormValid(isValid && isUserIdAvailable); // 아이디 중복 확인이 통과되었을 때만 활성화
-  }, [formData, isUserIdAvailable]); // formData나 isUserIdAvailable이 변경될 때마다 유효성 검사
+    setIsFormValid(isValid); // 아이디 중복 확인과 비밀번호 일치를 모두 만족할 때만 활성화
+  }, [formData, isUserIdAvailable, passwordError]); // formData, isUserIdAvailable, passwordError가 변경될 때마다 유효성 검사
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -145,7 +159,6 @@ const Register = () => {
             <button className={style.inputBtn} type="button" onClick={checkUserIdAvailability}>중복검사</button>
           </label>
          
-
           <label className={style.textArea}>
             <span className={style.inputName}>비밀번호</span>
             <input
@@ -159,7 +172,20 @@ const Register = () => {
           </label>
 
           <label className={style.textArea}>
-          <span className={style.inputName}>이름</span>
+            <span className={style.inputName}>비밀번호 확인</span>
+            <input
+              type="password"
+              name="userPasswordConfirm"
+              placeholder="비밀번호 확인"
+              onChange={handleChange}
+              required
+            />
+            {passwordError && <p className={style.errorMessage}>{passwordError}</p>} {/* 비밀번호 불일치 시 에러 메시지 */}
+            <br />
+          </label>
+
+          <label className={style.textArea}>
+            <span className={style.inputName}>이름</span>
             <input
               type="text"
               name="userName"
@@ -171,7 +197,7 @@ const Register = () => {
           </label>
 
           <label className={style.textArea}>
-          <span className={style.inputName}>이메일</span>
+            <span className={style.inputName}>이메일</span>
             <input
               type="email"
               name="userEmail"
@@ -183,7 +209,7 @@ const Register = () => {
           </label>
 
           <label className={style.textArea}>
-          <span className={style.inputName}>전화번호</span>
+            <span className={style.inputName}>전화번호</span>
             <input
               type="text"
               name="userPhone"
@@ -195,7 +221,7 @@ const Register = () => {
           </label>
 
           <label className={style.textArea}>
-          <span className={style.inputName}>생년월일</span>
+            <span className={style.inputName}>생년월일</span>
             <input
               type="date"
               name="userBirth"
@@ -236,7 +262,7 @@ const Register = () => {
           </label>
 
           <label className={style.textArea}>
-          <span className={style.inputName}>주소</span>
+            <span className={style.inputName}>주소</span>
             <input
               type="text"
               name="userAddress"
@@ -252,7 +278,7 @@ const Register = () => {
           </label>
 
           <label className={style.textArea}>
-          <span className={style.inputName}>상세주소</span>
+            <span className={style.inputName}>상세주소</span>
             <input
               type="text"
               name="userAddressDetail"
