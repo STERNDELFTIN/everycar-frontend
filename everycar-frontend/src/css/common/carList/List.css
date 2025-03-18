@@ -28,7 +28,7 @@
     border-radius: 10px;
     border: 1px solid transparent;
     padding: 20px 28px 25px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #f0f0f0;
 }
 .card:hover{
     background-color: #F9FEF5;
