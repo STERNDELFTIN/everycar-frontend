@@ -53,6 +53,7 @@ import MyPayment from './routes/myPage/payment/MyPayment';
 import MyInquiries from './routes/myPage/inquiries/MyInquiries';
 /* 리뷰 작성 */
 import MyReview from './routes/myPage/myReview/MyReview';
+// import MyReview from './routes/myPage/myReview/MyReview';
 
 let PageStyle = styled.div`
   width: 72%;
