@@ -7,6 +7,7 @@ import TopContent from '../../../components/common/myPage/TopContent';
 import ListContainer from '../../../components/common/myPage/ListContainer';
 import ReservationHistoryBox from '../../../components/common/myPage/ReservationHistoryBox';
 
+import CarNameMapper from "../../../components/common/CarNameMapper";
 import dummyData from '../../../dummyData/dummyData';
 
 function MyReservationHistory() {
@@ -86,7 +87,7 @@ function QuickReservationHistory() {
                     <ReservationHistoryBox
                         key={reservation.reservationId}
                         reservationStatus={reservation.reservationStatus}
-                        carImage="/images/car-model/product-image-01.png"
+                        carImage={`/images/main/car/${CarNameMapper(reservation.carName)}.png`}
                         carName={reservation.carName}
                         payment={reservation.payment}
                         startDate={reservation.rental_datetime?.split(" ")[0] || ""}
@@ -162,7 +163,7 @@ function ShortReservationHistory() {
                     <ReservationHistoryBox
                         key={reservation.reservationSId}
                         reservationStatus={reservation.reservationStatus}
-                        carImage="/images/car-model/product-image-01.png"
+                        carImage={`/images/main/car/${CarNameMapper(reservation.carName)}.png`}
                         carName={reservation.carName}
                         payment={reservation.payment}
                         startDate={reservation.reservation_s_start_date.split(" ")[0]}

@@ -68,7 +68,7 @@ const ReservationDetailBox = () => {
       <div className={styles.reservationHistoryBox}>
         <h3>예약 차량 정보</h3>
         <div className={styles.reservationCarInfo}>
-          <img src="/images/car-model/product-image-01.png" alt="차량 이미지" />
+        <img src={`/images/main/car/${reservationData.modelName}.png`} alt="차량 이미지" />
           <div className={styles.rentalInfo}>
             <div className={styles.carTitle}>
               <p className={styles.carName}>

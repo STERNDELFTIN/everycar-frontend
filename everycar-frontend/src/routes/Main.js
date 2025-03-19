@@ -18,7 +18,7 @@ function Main() {
             <Content />
             <Shortcut />
             <Plan title="에브리카 렌트 플랜" TitleStyle={TitleStyle} />
-            <Car title="국내 인기 차량" TitleStyle={TitleStyle} />
+            {/* <Car title="국내 인기 차량" TitleStyle={TitleStyle} /> */}
         </div>
     );
 }
