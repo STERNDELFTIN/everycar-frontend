@@ -12,11 +12,8 @@ function Event() {
     const [startIndex, setStartIndex] = useState(0);
 
     const eventBoxes = [
-        <EventBox key={0} img="이벤트 이미지 1" />,
-        <EventBox key={1} img="이벤트 이미지 2" />,
-        <EventBox key={2} img="이벤트 이미지 3" />,
-        <EventBox key={3} img="이벤트 이미지 4" />,
-        <EventBox key={4} img="이벤트 이미지 5" />
+        <EventBox key={0} img="/images/main/promotion/main-promotion1.png" />,
+        <EventBox key={1} img="/images/main/promotion/main-promotion2.png" />
     ];
 
     // 좌측/우측 버튼 클릭 시
@@ -48,7 +45,7 @@ function Event() {
 function EventBox({ img }) {
     return (
         <EventBoxStyle>
-            <p>{img}</p>
+            <img src={img} alt="이벤트 이미지" style={{ width: '100%', height: '100%', borderRadius: '20px', border: '1px solid #f3f3f3' }} />
         </EventBoxStyle>
     );
 }
