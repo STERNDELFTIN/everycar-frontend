@@ -8,7 +8,7 @@ import Plan from '../components/main/Plan.js';
 import Car from '../components/main/Car.js';
 import Popup from '../components/popup/PosAndPeriodPopup.js';
 
-const TitleStyle = styled.h3`font-size: clamp(15px, 2.3vw, 50px); text-align: left; margin-bottom: 2.5vh; `;
+const TitleStyle = styled.h3`font-size: clamp(15px, 2.3vw, 32px); text-align: left; margin-bottom: 2.5vh; `;
 
 function Main() {
 

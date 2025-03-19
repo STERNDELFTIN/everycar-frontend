@@ -26,7 +26,7 @@ function Plan({ title, TitleStyle }) {
                 <PlanLinkBox
                     to='/callService'
                     title='단기예약'
-                    content='원하는 날짜, 원하는 장소에서 택배처럼 받는 맞춤 렌트'
+                    content='최소 14일에서 최대 120일까지 대여 가능한 렌트 서비스'
                     ico='/images/main/plan/call_service.png'
                     icoSize='4vw'
                 />           

@@ -1,5 +1,5 @@
 /* 공통 부분 */
-.service-shortcut, .plan, .domestic-popular-car, .event { margin-bottom: 3.5vw; width: 100%; }
+.service-shortcut, .plan, .domestic-popular-car, .event { margin-bottom: 1.5vw; width: 100%; }
 
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
