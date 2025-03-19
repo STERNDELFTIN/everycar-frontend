@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 
 import useCar from "../../components/hooks/useCar";
 
+import CarNameMapper from "../../components/common/CarNameMapper";
 // 부제목 스타일
 let SubTitleH3 = styled.h3`
     margin-bottom: ${vwFont(10, 19)};
@@ -158,7 +159,7 @@ function RentReservation() {
                     <SubTitleH3>대여차량</SubTitleH3>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <img
-                            src={carData.img || '/images/car-model/product-image-01.png'}
+                            src={carData.img || `/images/main/car/${CarNameMapper(car.model.model_name)}.png`}
                             alt={carData.model.model_name}
                             style={{ width: vwFont(200, 400) }}
                         />
