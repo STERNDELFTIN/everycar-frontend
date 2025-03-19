@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../../../css/common/carList/List.css';
 import useAvailableCars from '../../hooks/useAvaliableCars'; // 커스텀 훅 불러오기
-
+import CarNameMapper from '../CarNameMapper';
 function List() {
   const navigate = useNavigate();
 
@@ -23,6 +23,7 @@ function List() {
   if (error) return <p>오류 발생: {error}</p>;
   if (!cars.length) return <p>이용 가능한 차량이 없습니다.</p>;
 
+
   return (
     <div className="List">
       <div className="right">
@@ -33,7 +34,7 @@ function List() {
               key={car.car_id}
               name={car.model.model_name}
               release={`${car.car_year}년식`}
-              image={car.image || '/images/car-model/product-image-01.png'}
+              image={car.image ? `/images/main/car/${CarNameMapper(car.model.model_name)}` : `/images/main/car/${CarNameMapper(car.model.model_name)}.png`}
               size={car.model.model_category}
               group={`${car.model.model_seate_num}인승`}
               gas={car.car_fuel}
@@ -75,7 +76,6 @@ function CarCard({ name, release, image, size, group, gas, settings, price, onCl
         </div>
       </div>
       <div className="card-price">
-        <span className="card-price-sm1">월</span>
         <span className="card-price-sm2">{price}</span>
       </div>
     </div>

@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import styles from '../../css/rentDetail/ReservationInfo.module.scss';
 import { vwFont } from '../../utils';
 import useEligibilityCheck from '../hooks/useEligibilityCheck';
+import CarNameMapper from '../common/CarNameMapper';
 
 // Redux
 import { useSelector } from 'react-redux';
 
 // 우측 예약정보
-function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
+function ReservationInfo({ title, car, SubTitleH3, totalPrice, model_name}) {
     const navigate = useNavigate();
 
     // Redux에서 userInfo 가져오기
@@ -32,7 +33,7 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
     return (
         <div className={`${styles.reservationInfoContainer} ${styles.container}`}>
             <div className={styles.carImage}>
-                <img src={car.img || "/images/car-model/product-image-01.png"} alt={car.model.model_name} style={{ height: vwFont(100, 200), width: 'auto' }} />
+                <img src={car.img || `/images/main/car/${CarNameMapper(car.model.model_name)}.png`} alt={car.model.model_name} style={{ height: vwFont(100, 200), width: 'auto' }} />
             </div>
 
             <div className={styles.carContent}>

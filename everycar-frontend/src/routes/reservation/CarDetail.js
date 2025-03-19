@@ -55,7 +55,7 @@ function CarDetail() {
                 </div>
 
                 <div className={styles.right}>
-                    <ReservationInfo title={carData.model.model_name} car={carData} SubTitleH3={SubTitleH3} totalPrice={totalPrice} />
+                    <ReservationInfo title={carData.model.model_name} car={carData} SubTitleH3={SubTitleH3} totalPrice={totalPrice} model_name={carData.model.model_name} />
                 </div>
             </div>
         </div>
