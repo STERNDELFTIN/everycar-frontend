@@ -6,9 +6,7 @@ function RentLocation({ title, car, SubTitleH3 }) {
     return (
         <div className={`${styles.rentLocationContainer} ${styles.container}`}>
             <SubTitleH3>{title}</SubTitleH3>
-            <div id="map" className={styles.map} style={{ width:'100%', height:'auto', aspectRatio:'16/7' }}>
-                <KakaoMap latitude={car.parking.parking_latitude} longitude={car.parking.parking_longitude} />
-            </div>
+                <KakaoMap latitude={car.parking.parking_latitude} longitude={car.parking.parking_longtitude} />
             <div className={`${styles.rentPos} ${styles.greyTitle}`}>
                 <p>대여장소</p>
                 <p>{car.parking.parking_name}</p>

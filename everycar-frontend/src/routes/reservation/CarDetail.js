@@ -38,6 +38,7 @@ function CarDetail() {
     // const latitude = 37.497942;
     // const longitude = 127.027621;
 
+    console.log(carData);
     return (
         <div className={styles.carDetail}>
             <div className={styles.mainTitle}>
