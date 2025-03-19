@@ -9,9 +9,18 @@
 }
 
 .contentBox {
-    width: 100vw;
+    width: 100vw; /* 부모 div의 너비를 화면 전체로 설정 */
     background-color: #D9D9D9;
-    aspect-ratio: 10 / 2;
+    aspect-ratio: 10 / 2; /* 부모 div의 비율을 설정 */
+    display: flex;
+    justify-content: center; /* 이미지를 가운데 정렬 */
+    align-items: center; /* 이미지를 세로로 가운데 정렬 */
+}
+
+.contentBox > img {
+    width: 100%;  /* 부모 div의 너비에 맞춰서 이미지 크기 확장 */
+    height: 100%; /* 부모 div의 높이에 맞춰서 이미지 크기 확장 */
+    object-fit: cover; /* 이미지가 잘리지 않게 비율 유지하면서 꽉 차도록 설정 */
 }
 
 .title { font-size: clamp(10px, 1.2vw, 35px); color: #8F9191; }

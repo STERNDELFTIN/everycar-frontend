@@ -62,8 +62,11 @@ function Rent({ page }) {
     };
 
     return (
-        <div className={styles.contentContainer}>
-            <div className={styles.contentBox}></div>
+        <>
+                <div className={styles.contentContainer}>
+        <div className={styles.contentBox}>
+            <img src="/images/main/promotion/shortPlan.png" alt="short plan" />
+        </div>
 
             <div className={styles.rentContainer}>
                 <div className={styles.rentPos}>
@@ -111,6 +114,8 @@ function Rent({ page }) {
                 </div>
             </div>
         </div>
+        </>
+        
     );
 }
 
