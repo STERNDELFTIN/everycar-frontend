@@ -32,7 +32,7 @@ const CarNameMapper = (carName) => {
       "토레스": "torrez",
       "액티언": "actyon",
       "쏘나타": "sonata",
-      "그랜저": "grandeur",
+      "그랜저": "granger",
       "팰리세이드": "palisade",
       "싼타페": "santa fe",
       "투싼": "tucson",
