@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import useUserInfo from '../../../components/hooks/useUserInfo';
 import "../../../css/routes/support/inquiry/InquiryModify.css";
 
@@ -19,10 +18,10 @@ function InquiryModify() {
 
     // 기존 데이터 불러오기
     useEffect(() => {
-        axios
-            .get(`http://localhost:8080/api/inquiry/${id}`)
-            .then((response) => {
-                setFormData({ inquiries_q: response.data.inquiries_q });
+        fetch(`http://localhost:8080/api/inquiry/${id}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setFormData({ inquiries_q: data.inquiries_q });
             })
             .catch((error) => {
                 console.error("Error fetching inquiry data:", error);
@@ -41,23 +40,36 @@ function InquiryModify() {
     // 문의 수정 요청
     const handleSubmit = (e) => {
         e.preventDefault();
-    
+
         if (!formData.inquiries_q.trim()) {
             alert("질문 내용을 입력해주세요.");
             return;
         }
-    
-        axios
-            .post(`http://localhost:8080/api/inquiry/${id}`, formData) // PUT → POST 변경
-            .then(() => {
-                alert("문의가 수정되었습니다.");
-                navigate(`/support/inquiryDetail/${id}`); // 수정 후 해당 상세 페이지로 이동
+
+        const token = localStorage.getItem("accessToken"); // 토큰을 로컬스토리지에서 가져옴
+
+        // POST 방식으로 수정 요청 보내기
+        fetch(`http://localhost:8080/api/inquiry/${id}`, {
+            method: "POST", // POST 방식으로 수정
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`, // Authorization 헤더 추가
+            },
+            body: JSON.stringify(formData), // formData를 JSON으로 변환하여 보내기
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert("문의가 수정되었습니다.");
+                    navigate(`/support/inquiryDetail/${id}`); // 수정 후 해당 상세 페이지로 이동
+                } else {
+                    return Promise.reject("문의 수정 실패");
+                }
             })
             .catch((error) => {
-                console.error("Error updating inquiry:", error.response ? error.response.data : error);
+                console.error("Error updating inquiry:", error);
             });
     };
-    
+
     return (
         <div className="inquiry-modify-container">
             <h2 className="inquiry-modify-title">문의 수정하기</h2>

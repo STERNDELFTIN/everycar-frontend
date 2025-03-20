@@ -58,7 +58,6 @@ function InquiryCreate() {
             userNum: userInfo.user_num,  // user_num으로 직접 접근
         };
 
-        console.log(requestData);
         // fetch로 POST 요청 보내기
         fetch("http://localhost:8080/api/inquiry", {
             method: "POST",

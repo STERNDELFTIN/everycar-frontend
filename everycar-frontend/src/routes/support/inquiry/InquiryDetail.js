@@ -21,7 +21,6 @@ function InquiryDetail() {
     fetch(`http://localhost:8080/api/inquiry/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("문의 상세 데이터:", data);
         setInquiry(data);
       })
       .catch((error) => {
