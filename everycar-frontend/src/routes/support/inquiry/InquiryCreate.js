@@ -11,7 +11,7 @@ function InquiryCreate() {
 
     // 유저 정보 가져오기
     const { loading, userInfo } = useUserInfo();
-    
+
     // 입력값 변경 핸들러
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,9 +35,9 @@ function InquiryCreate() {
         // userNum을 formData에 추가
         const requestData = {
             ...formData,
-            userNum: userInfo.userNum,  // userInfo에서 userNum을 가져와서 추가
+            userNum: userInfo.user_num,  // user_num으로 직접 접근
         };
-
+        
         console.log(requestData);
         // fetch로 POST 요청 보내기
         fetch("http://localhost:8080/api/inquiry", {
@@ -67,7 +67,7 @@ function InquiryCreate() {
             <h2 className="inquiry-create-title">문의 작성하기</h2>
 
             <form onSubmit={handleSubmit} className="inquiry-form">
-                <input type="hidden" value={userInfo.userNum}></input>
+                <input type="hidden" value={userInfo.user_num}></input>
                 <div className="form-group">
                     <label htmlFor="inquiries_q">문의 내용</label>
                     <textarea
