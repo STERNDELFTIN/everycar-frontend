@@ -62,6 +62,11 @@ function Inquiry() {
         console.error("Error fetching inquiry:", error);
       });
   };
+  
+  useEffect(() => {
+    // 페이지가 로드될 때마다 스크롤을 맨 위로 이동
+    window.scrollTo(0, 0);
+}, []);
 
   // 초기 데이터 불러오기
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useUserInfo from '../../../components/hooks/useUserInfo';
 import "../../../css/routes/support/inquiry/InquiryCreate.css";
@@ -11,6 +11,19 @@ function InquiryCreate() {
 
     // 유저 정보 가져오기
     const { loading, userInfo } = useUserInfo();
+
+    useEffect(() => {
+        if (!loading && (!userInfo || userInfo.user_num === 0 || userInfo.user_num === undefined)) {
+            // 로그인하지 않은 상태이거나 user_num이 0이거나 undefined인 경우
+            alert("로그인 후 이용해주세요.");
+            navigate("/auth/login"); // 로그인 페이지로 이동
+        }
+    }, [loading, userInfo, navigate]);
+
+    useEffect(() => {
+        // 페이지가 로드될 때마다 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     // 입력값 변경 핸들러
     const handleChange = (e) => {
@@ -25,6 +38,13 @@ function InquiryCreate() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // user_num이 0이거나 undefined인 경우 글을 작성할 수 없도록 막기
+        if (!userInfo || userInfo.user_num === 0 || userInfo.user_num === undefined) {
+            alert("로그인 후 글을 작성할 수 있습니다.");
+            navigate("/auth/login"); // 로그인 페이지로 이동
+            return;
+        }
+
         if (!formData.inquiries_q.trim()) {
             alert("질문 내용을 입력해주세요.");
             return;
@@ -37,7 +57,7 @@ function InquiryCreate() {
             ...formData,
             userNum: userInfo.user_num,  // user_num으로 직접 접근
         };
-        
+
         console.log(requestData);
         // fetch로 POST 요청 보내기
         fetch("http://localhost:8080/api/inquiry", {
@@ -61,6 +81,15 @@ function InquiryCreate() {
             });
     };
 
+    // 로그인 여부 확인 (로딩 중일 경우 표시)
+    if (loading) {
+        return <div>로딩 중...</div>; // 로딩 중일 때 표시
+    }
+
+    // 로그인된 사용자만 폼을 볼 수 있도록 처리
+    if (!userInfo || userInfo.user_num === 0 || userInfo.user_num === undefined) {
+        return <div>로그인 후 이용해주세요.</div>; // 로그인되지 않으면 접근 차단
+    }
 
     return (
         <div className="inquiry-create-container">

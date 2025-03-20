@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import useUserInfo from '../../../components/hooks/useUserInfo';
 import "../../../css/routes/support/inquiry/InquiryModify.css";
 
 function InquiryModify() {
@@ -9,6 +10,12 @@ function InquiryModify() {
     const [formData, setFormData] = useState({
         inquiries_q: "", // 질문 내용
     });
+    const { loading, userInfo } = useUserInfo();
+
+    useEffect(() => {
+        // 페이지가 로드될 때마다 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     // 기존 데이터 불러오기
     useEffect(() => {
