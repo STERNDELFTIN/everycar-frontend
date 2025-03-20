@@ -94,39 +94,85 @@ function Profile() {
 // 면허 정보
 function LicenseInfo() {
     const navigate = useNavigate();
+    const [licenseInfo, setLicenseInfo] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // 유저 정보 가져오기
-    const { loading, userInfo } = useUserInfo();
-    // 면허 정보 가져오기
-    const { licenseInfo } = useLicense();
+    useEffect(() => {
+        const fetchLicenseInfo = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/api/license/myLicense', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
 
-    if (loading) return <p>Loading...</p>
-    if (!userInfo || !licenseInfo || !licenseInfo.licenseNum) return <p>유저 정보가 없거나 등록된 면허 정보가 없습니다.</p>
+                if (!response.ok) {
+                    throw new Error('면허 정보를 불러오는 데 실패했습니다.');
+                }
+
+                const data = await response.json();
+                setLicenseInfo(data);
+            } catch (error) {
+                console.error('Error fetching license info:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchLicenseInfo();
+    }, []);
 
     const movePageHandler = () => {
         navigate('/myPage/info/license');
+    };
+
+    if (loading) return <p>Loading...</p>;
+
+    if (!licenseInfo || !licenseInfo.licenseNum) {
+        return (
+            <div className={styles.noLicenseContainer}>
+                <p>등록된 면허 정보가 없습니다.</p>
+                <p>면허 정보를 등록하지 않으면 서비스를 이용할 수 없습니다.</p>
+                <button
+                    className={styles.registerButton}
+                    onClick={movePageHandler}
+                >
+                    면허 정보 등록하기
+                </button>
+            </div>
+        );
     }
 
     return (
         <div className={styles.licenseInfoContainer}>
             <h4 className={styles.title}>면허 정보 등록</h4>
             <div className={styles.licenseInfoContent}>
-
                 <div className={styles.license}>
-                    <div className={styles.licenseDetail} style={{ display: 'flex', gap: vwFont(23, 40) }}>
-                        <div><img src={licenseInfo.licensePhoto} style={{ width: '100px', height: '129px', borderRadius: '10px', aspectRatio: '3.5/4.5', }}></img></div>
+                    <div className={styles.licenseDetail} style={{ display: 'flex', gap: '20px' }}>
+                    <div
+    style={{
+        width: '100px',
+        height: '120px',
+        borderRadius: '10px',
+        aspectRatio: '3.5/4.5',
+        background: '#C4FF53',
+        backgroundImage: `url('/images/icons/image.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+    }}
+></div>
 
                         <div className={styles.licenseDetailInfo}>
                             <h5 className={styles.subTitle}>자동차운전면허증</h5>
                             <p>{licenseInfo.licenseNum}</p>
-                            <p>{userInfo.userName}</p>
-                            {/* <p>123456-1******</p> */}
                             <p>적성검사 : {licenseInfo.licenseDate}</p>
                             <p>기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;간 : {licenseInfo.licenseEndDate}</p>
                         </div>
                     </div>
 
-                    <p style={{ width: '100%', textAlign: 'center', fontWeight: '800', }}>에브리카</p>
+                    <p style={{ width: '100%', textAlign: 'center', fontWeight: '800' }}>에브리카</p>
                 </div>
 
                 <div className={styles.info}>
@@ -139,24 +185,26 @@ function LicenseInfo() {
                         </div>
                         <div className={styles.infoDetail}>
                             <p>{licenseInfo.licenseNum}</p>
-                            <p>{licenseInfo.licenseDatee}</p>
+                            <p>{licenseInfo.licenseDate}</p>
                             <p>{licenseInfo.licenseEndDate}</p>
                         </div>
                     </div>
                 </div>
 
                 <div className={styles.infoChange}>
-                    <button
+                    {/* <button
                         className={styles.infoChangeButton}
                         onClick={movePageHandler}
                     >
                         정보수정
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>
     );
 }
+
+
 
 // 이용약관
 function TermsOfUse() {

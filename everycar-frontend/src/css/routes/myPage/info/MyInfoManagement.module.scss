@@ -111,6 +111,26 @@ table {
     }
 }
 
+.noLicenseContainer{
+    padding: 30px 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #f3f3f3;
+
+    p{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    button{
+        width: 100%;
+        background-color: #C4FF53;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+    }
+}
+
 // 이용약관
 .termsOfUse {
     margin: cv.vw-font(10px, 20px) cv.vw-font(8px, 15px);
