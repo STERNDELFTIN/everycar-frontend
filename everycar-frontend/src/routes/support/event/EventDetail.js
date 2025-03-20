@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // useNavigate로 변경
+import { useParams, useNavigate } from "react-router-dom";
 import "../../../css/routes/support/event/sEventDetail.css"; // 상세 페이지 CSS
 
 // 더미 데이터
@@ -18,9 +18,15 @@ function EventDetail() {
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
+    // 더미 데이터에서 이벤트 찾아서 상태에 저장
     const eventDetail = dummyEventDetails.find((event) => event.id === parseInt(id));
     setEvent(eventDetail);
   }, [id]);
+
+  useEffect(() => {
+    // 페이지가 로드될 때마다 스크롤을 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!event) {
     return <div>로딩 중...</div>;
