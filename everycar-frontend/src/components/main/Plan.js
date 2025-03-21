@@ -17,14 +17,14 @@ function Plan({ title, TitleStyle }) {
             <TitleStyle>{ title }</TitleStyle>
             <div className='plan-container'>
                 <PlanLinkBox
-                    to='/speedReservation'
+                    to='/reservation/quickReservation'
                     title='빠른예약'
                     content='내 옆에서 구하는 가장 가깝고 빠른 렌트 서비스'
                     ico='/images/main/plan/reservation.png'
                     icoSize='5vw' 
                 />
                 <PlanLinkBox
-                    to='/callService'
+                    to='/reservation/shortRent'
                     title='단기예약'
                     content='최소 14일에서 최대 120일까지 대여 가능한 렌트 서비스'
                     ico='/images/main/plan/call_service.png'
