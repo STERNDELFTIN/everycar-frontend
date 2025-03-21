@@ -38,8 +38,8 @@ const LicenseModify = () => {
             };
         
             const token = localStorage.getItem('accessToken');
-            console.log(licenseData);
-            console.log(token); // 토큰 값 확인
+            // console.log(licenseData);
+            // console.log(token); // 토큰 값 확인
         
             try {
                 const response = await fetch('http://localhost:8080/api/license/register', {

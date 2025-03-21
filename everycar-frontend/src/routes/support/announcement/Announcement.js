@@ -24,7 +24,7 @@ function Announcement() {
       .then((response) => {
         const data = response.data;
 
-        console.log("Fetched posts:", data); // 서버 응답 확인
+        // console.log("Fetched posts:", data); // 서버 응답 확인
 
         // 날짜 변환 (ISO → YYYY-MM-DD)
         const formattedData = data.items.map((post) => {

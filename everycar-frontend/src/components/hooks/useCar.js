@@ -39,7 +39,7 @@ const useCar = (carId) => {
           ? `http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`
           : `http://localhost:8080/api/short-rent/cars/${carId}?${queryParams}`;
 
-        console.log("API 호출 URL:", apiUrl); // 디버깅용
+        // console.log("API 호출 URL:", apiUrl); // 디버깅용
 
         const res = await fetch(apiUrl, {
           method: "GET",
@@ -55,7 +55,7 @@ const useCar = (carId) => {
         }
 
         const data = await res.json();
-        console.log("API 응답 데이터:", data); // 디버깅용
+        // console.log("API 응답 데이터:", data); // 디버깅용
 
         if (!data || !data.car) {
           throw new Error("🚨 데이터가 없습니다. (해당 차량을 찾을 수 없음)");

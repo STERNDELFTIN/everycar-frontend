@@ -16,7 +16,7 @@ function Car({ title, TitleStyle }) {
         // 비동기로 JSON 데이터 가져오기
         axios.get('json/cars.json')
         .then(result => {
-            console.log(result.data);
+            // console.log(result.data);
             setCars(result.data.popular_cars);
         })
         .catch(error => {

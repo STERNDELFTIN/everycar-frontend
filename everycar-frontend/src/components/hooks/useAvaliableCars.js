@@ -25,14 +25,14 @@ const useAvailableCars = (province, district, rentalDatetime, returnDatetime, re
           ? `http://localhost:8080/api/quick-rent/cars?province=${province}&district=${district}&${queryParams}`
           : `http://localhost:8080/api/short-rent/cars?province=${province}&district=${district}&${queryParams}`;
 
-        console.log("차량 목록 API 호출 URL:", apiUrl); // 디버깅용
+        // console.log("차량 목록 API 호출 URL:", apiUrl); // 디버깅용
 
         const res = await fetch(apiUrl);
 
         if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
 
         const data = await res.json();
-        console.log("API 응답 데이터:", data);
+        // console.log("API 응답 데이터:", data);
 
         setCars(data.cars || []);
       } catch (error) {

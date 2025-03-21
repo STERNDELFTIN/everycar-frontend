@@ -10,7 +10,7 @@ const useRentLocation = () => {
   useEffect(() => {
     axios.get('/json/rent_position.json')
       .then(result => {
-        console.log("렌트 위치 데이터 불러오기 성공:", result.data);
+        // console.log("렌트 위치 데이터 불러오기 성공:", result.data);
         setLocations(result.data);
       })
       .catch(error => {

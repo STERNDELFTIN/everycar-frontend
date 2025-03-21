@@ -29,7 +29,7 @@ const useReservation  = (reservationType, reservationId = null) => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
                 const data = await response.json();
-                console.log("API 응답 데이터:", data);
+                // console.log("API 응답 데이터:", data);
 
                 // 특정 reservationId와 일치하는 예약을 찾음
                 const selectedReservation = data.find(res => 

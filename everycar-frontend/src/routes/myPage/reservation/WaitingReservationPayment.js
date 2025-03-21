@@ -9,11 +9,11 @@ function WaitingReservationPayment() {
     const { reservationType, reservationId } = useParams();
     const { reservationData, loading, error } = useReservation(reservationType, reservationId);
 
-    console.log("예약 데이터 확인:", reservationData);
+    // console.log("예약 데이터 확인:", reservationData);
 
     // PayPal 결제 요청
     const handlePaypalPayment = async () => {
-        console.log("reservationId", reservationId);
+        // console.log("reservationId", reservationId);
         if (!reservationData) {
             alert("로딩 중...");
             return;
@@ -61,7 +61,7 @@ function WaitingReservationPayment() {
             });
 
             const data = await response.json();
-            console.log("결제 요청 성공:", data);
+            // console.log("결제 요청 성공:", data);
 
             if (data.redirectUrl) {
                 window.location.href = data.redirectUrl;

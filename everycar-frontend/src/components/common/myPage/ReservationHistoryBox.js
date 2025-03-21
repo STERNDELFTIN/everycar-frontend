@@ -20,10 +20,10 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
     const handleCancelReservation = async () => {
         const isConfirmed = window.confirm("정말 예약을 취소하시겠습니까?");
         if (!isConfirmed) {
-            console.log("예약 취소가 취소되었습니다."); 
+            // console.log("예약 취소가 취소되었습니다."); 
             return; // "아니오" 선택 시 바로 종료 (navigate 실행 X)
         }
-        console.log("예약 취소 요청:", reservationId);
+        // console.log("예약 취소 요청:", reservationId);
 
         const token = localStorage.getItem("accessToken");
         if (!token) {
@@ -41,7 +41,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
             });
 
             const responseText = await response.text();
-            console.log("서버 응답:", responseText);
+            // console.log("서버 응답:", responseText);
 
             if (!response.ok) {
                 throw new Error(`예약 취소 실패: ${response.status} - ${responseText}`);
@@ -57,7 +57,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
 
     // 이용시작 핸들러
     const handleStartReservation = async () => {
-        console.log("이용 시작 요청:", reservationId);
+        // console.log("이용 시작 요청:", reservationId);
 
         const token = localStorage.getItem("accessToken");
         if (!token) {
@@ -89,7 +89,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         const isConfirmed = window.confirm("정말 이용을 완료하시겠습니까?");
         if (!isConfirmed) return;
 
-        console.log("이용 완료 요청:", reservationId);
+        // console.log("이용 완료 요청:", reservationId);
 
         const token = localStorage.getItem("accessToken");
         if (!token) {

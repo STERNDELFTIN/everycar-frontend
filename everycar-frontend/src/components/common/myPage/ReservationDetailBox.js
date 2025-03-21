@@ -48,7 +48,7 @@ const ReservationDetailBox = () => {
     return <div>로딩 중...</div>;
   }
 
-  console.log("reservationData", reservationData);
+  // console.log("reservationData", reservationData);
 
   // 예약 유형에 따라 다른 시간 필드를 사용
   const startDate =

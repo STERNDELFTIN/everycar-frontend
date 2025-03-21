@@ -28,7 +28,7 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice, model_name}) {
         }
     };
 
-    console.log("totalPrice"    , totalPrice);
+    // console.log("totalPrice"    , totalPrice);
 
     return (
         <div className={`${styles.reservationInfoContainer} ${styles.container}`}>

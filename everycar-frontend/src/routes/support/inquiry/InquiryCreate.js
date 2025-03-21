@@ -39,7 +39,7 @@ function InquiryCreate() {
             userNum: userInfo.userNum,  // userInfo에서 userNum을 가져와서 추가
         };
 
-        console.log(requestData);
+        // console.log(requestData);
         // fetch로 POST 요청 보내기
         fetch("http://localhost:8080/api/inquiry", {
             method: "POST",

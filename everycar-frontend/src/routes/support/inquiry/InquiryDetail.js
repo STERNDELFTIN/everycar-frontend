@@ -14,7 +14,7 @@ function InquiryDetail() {
         axios
             .get(`http://localhost:8080/api/inquiry/${id}`)
             .then((response) => {
-                console.log("문의 상세 데이터:", response.data);
+                // console.log("문의 상세 데이터:", response.data);
                 setInquiry(response.data);
             })
             .catch((error) => {

@@ -82,8 +82,8 @@ const Payment = ({ payAmount, agree, car, return_location, selectedCity, selecte
             apiUrl = "http://localhost:8080/api/short-rent/reservations";
         }
 
-        console.log("예약 요청 데이터:", reservationData);
-        console.log("API 요청 URL:", apiUrl);
+        // console.log("예약 요청 데이터:", reservationData);
+        // console.log("API 요청 URL:", apiUrl);
 
         try {
             const token = localStorage.getItem("accessToken"); // JWT 토큰 가져오기
@@ -103,7 +103,7 @@ const Payment = ({ payAmount, agree, car, return_location, selectedCity, selecte
             }
 
             const result = await response.json();
-            console.log("예약 성공:", result);
+            // console.log("예약 성공:", result);
 
             handleReservationSuccess(result);
             navigate("/reservation/paymentSuccess");

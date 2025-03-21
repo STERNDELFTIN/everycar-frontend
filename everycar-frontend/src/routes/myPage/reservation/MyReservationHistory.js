@@ -50,7 +50,7 @@ function QuickReservationHistory() {
                 return response.json();
             })
             .then(data => {
-                console.log("Fetched Quick Reservations:", data);
+                // console.log("Fetched Quick Reservations:", data);
 
                 // API에서 받은 데이터를 변환
                 const formattedReservations = data.map((res) => ({
@@ -123,7 +123,7 @@ function ShortReservationHistory() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log("Fetched Short Reservations:", data);
+                // console.log("Fetched Short Reservations:", data);
 
                 const updatedReservations = data.map((res) => {
                     // carName과 carImage를 설정 (예시로 carId가 주어짐)
