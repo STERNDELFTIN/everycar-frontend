@@ -1,0 +1,20 @@
+@use '../../common/commonVariables.scss' as cv;
+@use '../../routes/myPage/commonStyle.scss' as v;
+
+h2 {
+    font-size: cv.$title-font-size;
+}
+h3 {
+    font-size: cv.$sub-title-font-size;
+}
+.reservationInfo {
+    @include v.white-box;
+    
+    p, strong {
+        font-size: cv.vw-font(7px, 16px);
+        color: rgb(79, 79, 79);
+    }
+    button {
+        font-size: cv.vw-font(7px, 16px);
+    }
+}

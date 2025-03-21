@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { vwFont } from "../../utils";
-import styles from "../../css/routes/PaymentSuccess.module.scss";
+import styles from "../../css/routes/reservation/PaymentSuccess.module.scss";
 
 const PaymentSuccess = () => {
     const reservations = useSelector((state) => state.reservation.reservations);
@@ -46,7 +46,7 @@ const PaymentSuccess = () => {
                     <h3>예약정보</h3>
                     {
                         (reservationType === 'short') ? (
-                            <p><strong>예약 번호:</strong> {userReservation.reservation_s_id || "정보 없음"}</p>
+                            <p><strong>예약 번호:</strong> {userReservation.reservation_id || "정보 없음"}</p>
                         ) : (
                             <p><strong>예약 번호:</strong> {userReservation.reservation_id || "정보 없음"}</p>
                         )
@@ -58,8 +58,8 @@ const PaymentSuccess = () => {
                             ? userReservation.rental_datetime
                                 ? new Date(userReservation.rental_datetime).toLocaleString()
                                 : "정보 없음"
-                            : userReservation.reservation_s_start_date
-                                ? new Date(userReservation.reservation_s_start_date).toLocaleString()
+                            : userReservation.rental_location
+                                ? new Date(userReservation.rental_location).toLocaleString()
                                 : "정보 없음"}
                     </p>
 
@@ -82,9 +82,10 @@ const PaymentSuccess = () => {
                         // 단기 대여 (short-rent)
                         <>
                             <p><strong>차량 모델:</strong> {userReservation.carDto?.model?.model_name || "정보 없음"}</p>
-                            <p><strong>대여 장소 (지점 ID):</strong> {userReservation.rental_station_start || "정보 없음"}</p>
-                            <p><strong>대여 날짜:</strong> {userReservation.reservation_s_start_date || "정보 없음"}</p>
-                            <p><strong>반납 날짜:</strong> {userReservation.reservation_s_end_date || "정보 없음"}</p>
+                            <p><strong>대여 장소 (지점 ID):</strong> {userReservation.rental_location || "정보 없음"}</p>
+                            <p><strong>반납 장소:</strong> {userReservation.return_location || "정보 없음"}</p>
+                            <p><strong>대여 날짜:</strong> {userReservation.rental_datetime || "정보 없음"}</p>
+                            <p><strong>반납 날짜:</strong> {userReservation.return_datetime || "정보 없음"}</p>
                         </>
                     )}
                 </div>
