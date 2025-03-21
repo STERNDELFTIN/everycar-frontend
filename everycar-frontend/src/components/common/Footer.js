@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import '../../css/common/Footer.css';
 
-{/* Link 태그 스타일 컴포넌트 */}
 const FooterLinkStyle = styled(Link)`color: white; text-decoration: none; font-size: 18px; `;
 
 function Footer() {

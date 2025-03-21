@@ -45,10 +45,10 @@ const initialState = {
 };
 
 // ISO 8601 형식 변환 함수
-const convertToISOString = (date, time) => {
-    if (!date || !time) return null;
-    return new Date(`${date} ${time}`).toISOString().split(".")[0];
-};
+// const convertToISOString = (date, time) => {
+//     if (!date || !time) return null;
+//     return new Date(`${date} ${time}`).toISOString().split(".")[0];
+// };
 
 const rentSlice = createSlice({
     name: "rent",

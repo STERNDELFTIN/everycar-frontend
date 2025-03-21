@@ -27,7 +27,7 @@ function CustomCalendar({ onDateChange, startDate, endDate }){
                     formatMonthYear={formatYearMonth}  // 연도와 월은 한국어로
                     // 캘린더의 타일 클래스 이름 설정
                     tileClassName={({date, view}) => {
-                        if (view == 'month') {
+                        if (view === 'month') {
                             // 시작일
                             if (startDate && date.toDateString() === startDate.toDateString()) {
                                 return 'start-date';

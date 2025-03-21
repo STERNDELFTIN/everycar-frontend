@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../../css/routes/myPage/info/ProfileModify.module.scss';
-import { vwFont } from '../../../utils';
 
 import TopContent from '../../../components/common/myPage/TopContent';
 import ListContainer from '../../../components/common/myPage/ListContainer';
@@ -44,10 +43,10 @@ function ProfileModifyInfo() {
     }, [userInfo]);
 
     // 변경 사항 처리 함수
-    const handleNameChange = (e) => {
-        setUserName(e.target.value);
-        setIsNameChanged(true);
-    };
+    // const handleNameChange = (e) => {
+    //     setUserName(e.target.value);
+    //     setIsNameChanged(true);
+    // };
     const handleEmailChange = (e) => {
         setUserEmail(e.target.value);
         setIsEmailChanged(true);
@@ -64,7 +63,7 @@ function ProfileModifyInfo() {
     };
 
     // 내용 변경 여부
-    const [isNameChanged, setIsNameChanged] = useState(false);
+    // const [isNameChanged, setIsNameChanged] = useState(false);
     const [isEmailChanged, setIsEmailChanged] = useState(false);
     const [isPhoneChanged, setIsPhoneChanged] = useState(false);
     const [isAddressChanged, setIsAddressChanged] = useState(false);

@@ -8,7 +8,6 @@ import ListContainer from '../../../components/common/myPage/ListContainer';
 import ReservationHistoryBox from '../../../components/common/myPage/ReservationHistoryBox';
 
 import CarNameMapper from "../../../components/common/CarNameMapper";
-import dummyData from '../../../dummyData/dummyData';
 
 function MyReservationHistory() {
     return (

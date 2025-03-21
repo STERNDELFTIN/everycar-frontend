@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setRegion, setCity, setPosPopup } from '../../redux/rentSlice';
 import useRentLocation from '../hooks/useRentLocation';

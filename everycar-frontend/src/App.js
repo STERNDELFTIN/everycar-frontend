@@ -48,7 +48,7 @@ import MyReservationHistory from './routes/myPage/reservation/MyReservationHisto
 import MyReservationHistoryDetail from './routes/myPage/reservation/MyReservationHistoryDetail';
 import WaitingReservationPayment from './routes/myPage/reservation/WaitingReservationPayment';
 /* 결제 및 정산 페이지 */
-import MyPayment from './routes/myPage/payment/MyPayment';
+// import MyPayment from './routes/myPage/payment/MyPayment';
 /* 문의사항 */
 import MyInquiries from './routes/myPage/inquiries/MyInquiries';
 /* 리뷰 작성 */

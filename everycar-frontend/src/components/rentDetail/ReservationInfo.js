@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import styles from '../../css/rentDetail/ReservationInfo.module.scss';
 import { vwFont } from '../../utils';
 import useEligibilityCheck from '../hooks/useEligibilityCheck';
@@ -9,7 +8,7 @@ import CarNameMapper from '../common/CarNameMapper';
 import { useSelector } from 'react-redux';
 
 // 우측 예약정보
-function ReservationInfo({ title, car, SubTitleH3, totalPrice, model_name}) {
+function ReservationInfo({ title, car, SubTitleH3, totalPrice}) {
     const navigate = useNavigate();
 
     // Redux에서 userInfo 가져오기

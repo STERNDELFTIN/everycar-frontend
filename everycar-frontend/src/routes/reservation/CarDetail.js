@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import styled from "styled-components";
 import styles from '../../css/routes/CarDetail.module.scss';
 import { vwFont } from '../../utils';

@@ -1,13 +1,13 @@
 // Category.js
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setStartDate, setStartTime, setEndDate, setEndTime, setPeriodPopup, setPosPopup } from '../../../redux/rentSlice';
+import { setPeriodPopup, setPosPopup } from '../../../redux/rentSlice';
 import Popup from '../../popup/PosAndPeriodPopup';
 import '../../../css/common/carList/Category.css';
 
 function Category({ setSearchQuery, setPriceRange, setSelectedGrades }) {
   const dispatch = useDispatch();
-  const { region, city, startDate, endDate, rentalDate, returnDate } = useSelector((state) => state.rent); // 빌린날짜, 반납날짜
+  const { region, city, startDate } = useSelector((state) => state.rent); // 빌린날짜, 반납날짜
 
   // 렌트일정 다시 선택
   const { posPopup, periodPopup } = useSelector((state) => state.rent);

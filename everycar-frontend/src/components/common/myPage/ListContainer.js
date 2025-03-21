@@ -15,7 +15,7 @@ function ListContainer() {
     // URL 변경을 감지하여 selectedList 업데이트
     useEffect(() => {
         const currentIndex = menuList.findIndex(item => item.path === location.pathname);
-        if (currentIndex != -1) setSelectedList(currentIndex);
+        if (currentIndex === -1) setSelectedList(currentIndex);
     }, [location.pathname]);
 
     const menuList = [

@@ -10,7 +10,7 @@ function InquiryCreate() {
     });
 
     // 유저 정보 가져오기
-    const { loading, userInfo } = useUserInfo();
+    const { userInfo } = useUserInfo();
     
 
     // 입력값 변경 핸들러

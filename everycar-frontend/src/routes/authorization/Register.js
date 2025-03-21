@@ -296,7 +296,7 @@ const Register = () => {
                 id="female"
                 name="userGender"
                 value={1}
-                checked={formData.userGender == 1}
+                checked={formData.userGender === 1}
                 onChange={handleChange}
                 className={style.radioInput}
               />
@@ -309,7 +309,7 @@ const Register = () => {
                 id="male"
                 name="userGender"
                 value={2}
-                checked={formData.userGender == 2}
+                checked={formData.userGender === 2}
                 onChange={handleChange}
                 className={style.radioInput}
               />

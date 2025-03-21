@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { useReducer } from 'react';
 import rentReducer from './redux/rentSlice';
 import userReducer from './redux/userSlice';
 import reservationReducer from './redux/reservationSlice';

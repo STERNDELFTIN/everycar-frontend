@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setRegion } from "../../redux/rentSlice.js";
+// import { setRegion } from "../../redux/rentSlice.js";
 
 const useRentLocation = () => {
   const dispatch = useDispatch();

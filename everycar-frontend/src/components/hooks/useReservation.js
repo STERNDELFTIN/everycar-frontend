@@ -33,7 +33,7 @@ const useReservation  = (reservationType, reservationId = null) => {
 
                 // 특정 reservationId와 일치하는 예약을 찾음
                 const selectedReservation = data.find(res => 
-                    reservationType === "short" ? res.reservationSId == reservationId : res.reservationId == reservationId
+                    reservationType === "short" ? res.reservationSId === reservationId : res.reservationId === reservationId
                 ) || null;
                 setReservationData(selectedReservation);
             } catch (error) {

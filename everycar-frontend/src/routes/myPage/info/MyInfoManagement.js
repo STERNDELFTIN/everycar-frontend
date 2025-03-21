@@ -6,7 +6,7 @@ import { vwFont } from "../../../utils";
 import TopContent from "../../../components/common/myPage/TopContent";
 import ListContainer from "../../../components/common/myPage/ListContainer";
 import useUserInfo from "../../../components/hooks/useUserInfo";
-import useLicense from "../../../components/hooks/useLicense";
+// import useLicense from "../../../components/hooks/useLicense";
 
 function MyInfoManagement() {
   return (

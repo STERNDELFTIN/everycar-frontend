@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+// import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setLicenseInfo } from '../../../redux/userSlice';
+// import { useDispatch } from 'react-redux';
+// import { setLicenseInfo } from '../../../redux/userSlice';
 import styles from '../../../css/routes/myPage/info/LicenseModify.module.scss';
-import { vwFont } from '../../../utils';
+// import { vwFont } from '../../../utils';
 
-import TopContent from '../../../components/common/myPage/TopContent';
-import ListContainer from '../../../components/common/myPage/ListContainer';
+// import TopContent from '../../../components/common/myPage/TopContent';
+// import ListContainer from '../../../components/common/myPage/ListContainer';
 import useUserInfo from '../../../components/hooks/useUserInfo';
-import useLicense from '../../../components/hooks/useLicense';
+// import useLicense from '../../../components/hooks/useLicense';
 
 const LicenseModify = () => {
-    const location = useLocation();
+    // const location = useLocation();
     const navigate = useNavigate();
     const [licenseNum, setLicenseNum] = useState('');
     const [licenseDate, setLicenseDate] = useState('');
@@ -20,7 +20,7 @@ const LicenseModify = () => {
     const [message, setMessage] = useState('');
 
         // 유저 정보 가져오기
-        const { loading, userInfo } = useUserInfo();
+        const { userInfo } = useUserInfo();
 
         const handleSubmit = async (e) => {
             e.preventDefault();

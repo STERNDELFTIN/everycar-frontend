@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { saveReservation } from "../../redux/reservationSlice";
 import { vwFont } from "../../utils";
-import styled from "styled-components";
-
-const LabelStyle = styled.label`
-    display: flex; 
-    text-align: center; 
-    gap: 6px;
-`;
 
 const Payment = ({ payAmount, agree, car, return_location, selectedCity, selectedRegion }) => {
     const navigate = useNavigate();

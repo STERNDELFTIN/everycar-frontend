@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';  // reservationId를 URL에서 추출
 import { vwFont } from '../../../utils';
 import TopContent from '../../../components/common/myPage/TopContent';
