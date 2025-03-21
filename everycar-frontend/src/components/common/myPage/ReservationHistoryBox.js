@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../../css/common/myPage/ReservationHistoryBox.module.scss";
 import { vwFont } from "../../../utils";
+import useCurrentDateTime from "../../hooks/useCurrentDateTime";
 
 function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, startDate, startTime, endDate, endTime, rentPos, returnPos, reservationType, reservationId }) {
     const navigate = useNavigate();
     
+    // 페이지, 이동 핸들러
     const handleDetailReservation = () => {
         navigate(`/myPage/history/detail/${reservationType}/${reservationId}`);
     };
@@ -14,6 +16,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         navigate(`/myPage/history/payment/${reservationType}/${reservationId}`);
     };
 
+    // 예약취소 핸들러
     const handleCancelReservation = async () => {
         const isConfirmed = window.confirm("정말 예약을 취소하시겠습니까?");
         if (!isConfirmed) {
@@ -52,6 +55,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         }
     };
 
+    // 이용시작 핸들러
     const handleStartReservation = async () => {
         console.log("이용 시작 요청:", reservationId);
 
@@ -80,6 +84,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         }
     };
 
+    // 이용완료 핸들러
     const handleCompleteReservation = async () => {
         const isConfirmed = window.confirm("정말 이용을 완료하시겠습니까?");
         if (!isConfirmed) return;
@@ -110,6 +115,44 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
             alert("이용 완료를 실패했습니다.");
         }
     };
+
+    // 대여시간이 경과하면 자동으로 '이용중' -> '이용완료'로 변경
+    const { currentDate, currentTime } = useCurrentDateTime();
+    const currentDateTime = currentDate + " " + currentTime;
+    const returnDateTime = endDate + " " + endTime;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const token = localStorage.getItem("accessToken");
+            if (!token) {
+                alert("로그인이 필요합니다.");
+                return;
+            }
+    
+            try {
+                const response = await fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/complete`, {
+                    method: "PUT",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                });
+    
+                if (!response.ok) throw new Error("이용 완료 요청이 실패했습니다.");
+    
+                alert("이용 완료되었습니다.");
+                window.location.reload();
+            } catch (error) {
+                console.error("이용 완료 실패:", error);
+                alert("이용 완료를 실패했습니다.");
+            }
+        };
+
+        // 반납시간 경과
+        if (currentDateTime > returnDateTime) {
+            fetchData();
+        }
+    }, []);
 
     return (
         <div className={styles.reservationHistoryBox} onClick={handleDetailReservation}>
