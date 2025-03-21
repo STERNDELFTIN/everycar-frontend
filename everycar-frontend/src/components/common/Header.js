@@ -27,6 +27,7 @@ function Header() {
     localStorage.removeItem('accessToken');
     setIsLoggedIn(false);
     window.dispatchEvent(new Event('loginStateChange'));
+    localStorage.clear();
   };
 
   return (
