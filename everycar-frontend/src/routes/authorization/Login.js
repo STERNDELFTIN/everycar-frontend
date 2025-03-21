@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import useLogin from "../../components/hooks/useLogin";
 import styles from "../../css/routes/authorization/login.module.scss";
 
 const Login = () => {
-  const navigate = useNavigate();
   const { login, errorMessage } = useLogin(); // 커스텀 훅 사용
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -13,18 +11,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(userId, userPassword); // 로그인 실행
-    handleBackPage(); // 로그인 후 뒤로가기 방지 실행
-  };
-
-  // 로그인 이후 뒤로가기 삭제
-  const handleBackPage = () => {
-    // 메인페이지로 이동 및 뒤로가기 기록 삭제
-    navigate("/", { replace: true });
-
-    // 현재 상태 유지
-    setTimeout(() => {
-      window.history.pushState(null, "", window.location.href);
-    }, 100);
   };
 
   return (
