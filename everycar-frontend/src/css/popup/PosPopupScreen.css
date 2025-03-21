@@ -1,25 +1,43 @@
 /* 렌트위치 팝업창 */
 .pos-popup-container {
-    display: flex;
     position: fixed;
-    width: 40%; height: 50%;
+    width: 30%;
+    height: 72%;
+    max-height: 500px; /* 최대 높이 제한 */
     background-color: #FFFFFF;
     border-radius: 20px;
     text-align: center;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px 15px;
     z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 자식 요소가 넘지 않도록 설정 */
+}
+
+.top-title-container {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    text-align: left;
+    margin: clamp(10px, 1.5vh, 18px) clamp(12px, 1.5vw, 20px);
+}
+
+.region-list {
+    display: flex;
+    width: 100%; /* 부모 요소가 넘지 않도록 100% 설정 */
+    height: 100%; /* 부모 크기에 맞게 높이 설정 */
+    overflow: hidden; /* 부모 요소를 넘지 않도록 설정 */
 }
 .region-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: clamp(15px, 13vw, 100px);
-    background-color: #ffffff;
-    padding: 12px 20px;
-    overflow-y: scroll;
-    flex: 1;
+    flex: 1; /* 부모 크기에 맞춰 자동 조절 */
+    background-color: #F3F3F3;
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+    max-height: 100%; /* 부모 요소를 넘지 않도록 설정 */
 }
 .region-container > div {
     border-radius: 5px;
@@ -29,25 +47,24 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: clamp(15px, 13vw, 100px);
+    flex: 1; /* 부모 크기에 맞춰 자동 조절 */
     background-color: #ffffff;
-    padding: 10px;
-    overflow-y: scroll;
-    padding: 12px 20px;
-    flex: 1;
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+    max-height: 100%; /* 부모 요소를 넘지 않도록 설정 */
 }
 
 .pos-popup-container button {
     border: none;
-    width: 15%;
+    width: 13%;
     border-radius: 7px;
     margin-left: 3%;
-    padding: 2px 7px;
-    font-size: clamp(13px, 1.2vw , 28px);
+    padding: 2px 4px;
+    font-size: clamp(13px, 1.1vw , 18px);
     background-color: #DEFF54;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 500;
+    text-align: center;
 }
 
 /* 스크롤바 */
@@ -56,26 +73,24 @@
 }
 
 .pos-popup-container ::-webkit-scrollbar-track { /* 스크롤바 트랙 (배경) */
-    background: #eaeaea;
+    background: #ffffff;
     border-radius: 10px;
 }
 
 .pos-popup-container ::-webkit-scrollbar-thumb { /* 스크롤바 막대기 (thumb) */
-    background-color: #c3c3c3;
+    background-color: #ffffff;
     border-radius: 10px;
-    border: 2px solid #f1f1f1;
+    border: 2px solid #ffffff;
     height: 100px;
 }
 
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
-    .pos-popup-container {
-        width: 60%;
-    }
+
 }
 @media (max-width: 768px) { /* 태블릿 */
     .pos-popup-container {
-        width: 80%;
+        width: 50%;
     }
 }
 @media (max-width: 480px) { /* 모바일 */
