@@ -18,38 +18,51 @@ function WaitingReservationPayment() {
             alert("로딩 중...");
             return;
         }
-   
+
         try {
             const token = localStorage.getItem("accessToken");
             if (!token) {
                 alert("로그인이 필요합니다.");
                 return;
             }
-   
+
             const paymentInUSD = reservationData.payment / 1440; // 1원 = 1440달러 환산
-   
-            console.log("PayPal 결제 요청 데이터:", {
-                payment: paymentInUSD, // 환산된 결제 금액
-                reservationId: parseInt(reservationId, 10),
-                reservationType
-            });
-   
+
+            let requestData = {};
+
+            if (reservationType === "short") {
+                requestData = {
+                    payment: paymentInUSD,
+                    reservationId: reservationData.reservationSId || reservationId, // 예약 ID가 없으면 일반 예약 ID 사용
+                    reservationType,
+                    startDate: reservationData.reservation_s_start_date,
+                    endDate: reservationData.reservation_s_end_date,
+                    rentalLocation: reservationData.rentalLocationName
+                };
+            } else {
+                requestData = {
+                    payment: paymentInUSD,
+                    reservationId: reservationData.reservationId,
+                    reservationType,
+                    startDate: reservationData.rental_datetime,
+                    endDate: reservationData.return_datetime,
+                    rentalLocation: reservationData.rentalLocationName,
+                    returnLocation: reservationData.returnLocationName
+                };
+            }
+
             const response = await fetch("http://localhost:8080/api/paypal/pay", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    payment: paymentInUSD,
-                    reservationId,
-                    reservationType
-                })
+                body: JSON.stringify(requestData)
             });
-   
+
             const data = await response.json();
             console.log("결제 요청 성공:", data);
-   
+
             if (data.redirectUrl) {
                 window.location.href = data.redirectUrl;
             } else {
@@ -61,7 +74,7 @@ function WaitingReservationPayment() {
             alert("결제 요청 실패: " + error.message);
         }
     };
-   
+
 
     return (
         <div className={styles.waitingReservationPayment}>
@@ -82,7 +95,13 @@ function WaitingReservationPayment() {
                                 <tbody>
                                     <tr>
                                         <th>예약 ID</th>
-                                        <td>{reservationData.reservationId}</td>
+                                        {
+                                            (reservationType === "short") ? (
+                                                <td>{reservationData.reservationSId}</td>
+                                            ) : (
+                                                <td>{reservationData.reservationId}</td>
+                                            )
+                                        }
                                     </tr>
                                     <tr>
                                         <th>차량명</th>
@@ -94,7 +113,13 @@ function WaitingReservationPayment() {
                                     </tr>
                                     <tr>
                                         <th>대여날짜</th>
-                                        <td>{reservationData.rental_datetime}</td>
+                                        {
+                                            (reservationType === "short") ? (
+                                                <td>{reservationData.reservation_s_start_date}</td>
+                                            ) : (
+                                                <td>{reservationData.rental_datetime}</td>
+                                            )
+                                        }
                                     </tr>
                                     <tr>
                                         <th>반납위치</th>
@@ -108,7 +133,13 @@ function WaitingReservationPayment() {
                                     </tr>
                                     <tr>
                                         <th>반납날짜</th>
-                                        <td>{reservationData.return_datetime}</td>
+                                        {
+                                            (reservationType === "short") ? (
+                                                <td>{reservationData.reservation_s_end_date}</td>
+                                            ) : (
+                                                <td>{reservationData.return_datetime}</td>
+                                            )
+                                        }
                                     </tr>
                                 </tbody>
                             </table>

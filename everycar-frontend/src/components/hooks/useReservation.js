@@ -32,7 +32,9 @@ const useReservation  = (reservationType, reservationId = null) => {
                 console.log("API 응답 데이터:", data);
 
                 // 특정 reservationId와 일치하는 예약을 찾음
-                const selectedReservation = data.find(res => res.reservationId == reservationId) || null;
+                const selectedReservation = data.find(res => 
+                    reservationType === "short" ? res.reservationSId == reservationId : res.reservationId == reservationId
+                ) || null;
                 setReservationData(selectedReservation);
             } catch (error) {
                 console.error("예약 정보 가져오기 실패: ",  error);
