@@ -1,16 +1,45 @@
 // Category.js
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setStartDate, setStartTime, setEndDate, setEndTime } from '../../../redux/rentSlice';
+import { setStartDate, setStartTime, setEndDate, setEndTime, setPeriodPopup, setPosPopup } from '../../../redux/rentSlice';
+import Popup from '../../popup/PosAndPeriodPopup';
 import '../../../css/common/carList/Category.css';
 
 function Category() {
   const dispatch = useDispatch();
   const { region, city, startDate, rentalDate, returnDate } = useSelector((state) => state.rent); // 빌린날짜, 반납날짜
 
+  // 렌트일정 다시 선택
+  const { posPopup, periodPopup } = useSelector((state) => state.rent);
+  // 첫 렌더링 감지
+  const isFirstRender = useRef(true);
+  // 이전 상태 값 저장
+  const prevPosPopup = useRef(posPopup);
+  const prevPeriodPopup = useRef(periodPopup);
+  // 팝업창 상태가 변경된 이후 새로고침 감지
+  useEffect(() => {
+    // 첫 렌더링이면 실행 X
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    // 팝업이 열렸다가 닫힌 경우에만 새로고침 실행
+    if ((prevPosPopup.current === true && posPopup === false) ||
+      (prevPeriodPopup.current === true && periodPopup === false)) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    }
+
+    // 현재 상태를 prev 값으로 저장
+    prevPosPopup.current = posPopup;
+    prevPeriodPopup.current = periodPopup;
+  }, [posPopup, periodPopup]);
+
   // 슬라이더 값 상태 관리
   const [value, setValue] = useState(500000); // 기본값은 500,000으로 설정
-  
+
   // 슬라이더 값이 변경될 때 호출되는 함수
   const handleSliderChange = (event) => {
     setValue(event.target.value); // 슬라이더 값 업데이트
@@ -24,6 +53,9 @@ function Category() {
   return (
     <div className="Category">
 
+      {/* 팝업창 렌더링 */}
+      {<Popup />}
+
       {/* 카테고리 분류 박스 */}
       <div className="left">
 
@@ -31,7 +63,10 @@ function Category() {
         <div className="side-box1">
           <div className="side-box-title">
             <div className="side-box side-title">렌트 일정</div>
-            <div><button type="button" className="reset-btn">다시 선택</button></div>
+            <div style={{ display: 'flex', gap: '5px', }}>
+              <button type="button" className="reset-btn" onClick={() => dispatch(setPosPopup(!posPopup))}>지역 선택</button>
+              <button type="button" className="reset-btn" onClick={() => dispatch(setPeriodPopup(!periodPopup))}>기간 선택</button>
+            </div>
           </div>
 
           <div className="side-box1-content">
