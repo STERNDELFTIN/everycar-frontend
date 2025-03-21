@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import '../../../css/common/carList/List.css';
 import useAvailableCars from '../../hooks/useAvaliableCars'; // 커스텀 훅 불러오기
 import CarNameMapper from '../CarNameMapper';
-function List() {
+
+function List({ searchQuery, priceRange, selectedGrades }) {
   const navigate = useNavigate();
 
   // Redux에서 region(도/시), city(구), rentalDate, returnDate, reservationType 가져오기
@@ -23,13 +24,21 @@ function List() {
   if (error) return <p>오류 발생: {error}</p>;
   if (!cars.length) return <p>이용 가능한 차량이 없습니다.</p>;
 
+  // 차량 필터링
+  const filteredCars = cars.filter(({ car, totalPrice }) => {
+    return (
+      (!searchQuery || car.model.model_name.includes(searchQuery)) && // 모델명 검색
+      (totalPrice <= priceRange) && // 금액 필터링
+      (selectedGrades.length === 0 || selectedGrades.includes(car.model.model_category)) // 차량 등급 필터링
+    );
+  });
 
   return (
     <div className="List">
       <div className="right">
-        <div className="right-header">총 {cars.length}대</div>
+        <div className="right-header">총 {filteredCars.length}대</div>
         <div className="card-grid">
-          {cars.map(({ car, totalPrice }) => (
+          {filteredCars.map(({ car, totalPrice }) => (
             <CarCard
               key={car.car_id}
               name={car.model.model_name}
@@ -51,7 +60,7 @@ function List() {
 
 function CarCard({ name, release, image, size, group, gas, settings, price, onClick }) {
   return (
-    <div className="card" onClick={onClick} style={{cursor: 'pointer'}}>
+    <div className="card" onClick={onClick} style={{ cursor: 'pointer' }}>
       <div className="card-title">
         <span className="card-name">{name}</span>
         <span className="card-release">{release}</span>

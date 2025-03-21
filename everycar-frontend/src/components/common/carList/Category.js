@@ -5,9 +5,9 @@ import { setStartDate, setStartTime, setEndDate, setEndTime, setPeriodPopup, set
 import Popup from '../../popup/PosAndPeriodPopup';
 import '../../../css/common/carList/Category.css';
 
-function Category() {
+function Category({ setSearchQuery, setPriceRange, setSelectedGrades }) {
   const dispatch = useDispatch();
-  const { region, city, startDate, rentalDate, returnDate } = useSelector((state) => state.rent); // 빌린날짜, 반납날짜
+  const { region, city, startDate, endDate, rentalDate, returnDate } = useSelector((state) => state.rent); // 빌린날짜, 반납날짜
 
   // 렌트일정 다시 선택
   const { posPopup, periodPopup } = useSelector((state) => state.rent);
@@ -37,13 +37,37 @@ function Category() {
     prevPeriodPopup.current = periodPopup;
   }, [posPopup, periodPopup]);
 
-  // 슬라이더 값 상태 관리
-  const [value, setValue] = useState(500000); // 기본값은 500,000으로 설정
+  // 차량 모델 검색
+  const [search, setSearch] = useState("");
+  // 가격 슬라이더 값 상태 관리
+  const [price, setPrice] = useState(500000); // 기본값은 500,000으로 설정
+  // 선택한 차량 등급
+  const [grades, setGrades] = useState([]);
 
-  // 슬라이더 값이 변경될 때 호출되는 함수
-  const handleSliderChange = (event) => {
-    setValue(event.target.value); // 슬라이더 값 업데이트
+  // 검색어 변경 함수
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+    setSearchQuery(e.target.value);
   };
+  // 가격 슬라이더 함수
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value); // 슬라이더 값 업데이트
+    setPriceRange(e.target.value); // 슬라이더 가격 범위
+  };
+  // 차량 등급 체크박스 변경 함수
+  const handleGradeChange = (e) => {
+    const { value, checked } = e.target;
+    let updatedGrades = [...grades];
+
+    if (checked) {
+      updatedGrades.push(value);
+    } else {
+      updatedGrades = updatedGrades.filter((grade) => grade !== value);
+    }
+
+    setGrades(updatedGrades);
+    setSelectedGrades(updatedGrades);
+  }
 
   // 숫자에 콤마 추가하기
   const formatNumber = (value) => {
@@ -94,7 +118,7 @@ function Category() {
             <div className="side-box2-small-content">
               <label htmlFor="searchBox" className="side-box side-title-small">자동차 모델 검색</label>
               <div className="side-box2-small-content-smallBox">
-                <input type="text" id="searchBox" className="search-box" placeholder="자동차 모델명 입력하기" />
+                <input type="text" id="searchBox" className="search-box" placeholder="자동차 모델명 입력하기" value={search} onChange={handleSearchChange} />
                 <button type="button" className="search-btn">검색</button>
               </div>
             </div>
@@ -103,49 +127,27 @@ function Category() {
             <div className="side-box2-small-content">
               <label htmlFor="priceRange" className="side-box side-title-small">
                 금액
-                <span className="price-range">0 원 ~ {formatNumber(value)} 원</span>
+                <span className="price-range">0 원 ~ {formatNumber(price)} 원</span>
               </label>
               <div className="side-box2-small-content-smallBox">
                 <input type="range" id="priceRange" className="range-bar"
-                  min="0" max="1000000" step="100000"
-                  value={value}
-                  onChange={handleSliderChange} />
+                  min="0" max="5000000" step="100000"
+                  value={price}
+                  onChange={handlePriceChange} />
               </div>
             </div>
 
             {/* 차량 등급(종류) 선택 */}
             <div className="side-box2-small-content content-last">
               <div className="side-box side-title-small">등급</div>
-
-              <div className="side-box2-small-content-smallBox size-check-box">
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="size-1" id="size1" />
-                  <label className="form-check-label" htmlFor="size1">경차</label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="size-2" id="size2" />
-                  <label className="form-check-label" htmlFor="size2">소형</label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="size-3" id="size3" />
-                  <label className="form-check-label" htmlFor="size3">준중형</label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="size-4" id="size4" />
-                  <label className="form-check-label" htmlFor="size4">중형</label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="size-5" id="size5" />
-                  <label className="form-check-label" htmlFor="size5">대형</label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="size-6" id="size6" />
-                  <label className="form-check-label" htmlFor="size6">SUV / RV</label>
-                </div>
-                <div className="form-check checkbox-last">
-                  <input className="form-check-input" type="checkbox" value="size-7" id="size7" />
-                  <label className="form-check-label" htmlFor="size7">기타</label>
-                </div>
+              <div className="size-check-box">
+                {["소형", "RV", "중형SUV", "소형SUV", "중형", "준대형", "대형", "대형SUV", "경차", "존중형"].map((grade, index) => (
+                  <div key={index} className="form-check">
+                    <input className="form-check-input" type="checkbox"
+                      value={grade} id={`size-${index}`} onChange={handleGradeChange} />
+                    <label className="form-check-label" htmlFor={`size-${index}`}>{grade}</label>
+                  </div>
+                ))}
               </div>
             </div>
 
