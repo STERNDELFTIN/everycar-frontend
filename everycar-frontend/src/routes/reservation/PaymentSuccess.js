@@ -11,6 +11,38 @@ const PaymentSuccess = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
+    // 예약완료 페이지 이후에 뒤로가기 삭제
+    useEffect(() => {
+        // 히스토리 조작을 지속적으로 실행하여 뒤로가기 차단
+        const blockBackNavigation = () => {
+            window.history.pushState(null, "", window.location.href);
+        };
+
+        // setInterval을 사용해 지속적으로 pushState() 실행
+        const interval = setInterval(blockBackNavigation, 100);
+
+        // 뒤로가기 버튼을 눌러도 현재 페이지로 다시 이동
+        const preventBack = () => {
+            blockBackNavigation();
+            navigate("/reservation/paymentSuccess", { replace: true });
+        };
+
+        // popstate 이벤트 감지 → 사용자가 뒤로가기를 누르면 다시 현재 페이지로 이동
+        window.addEventListener("popstate", preventBack);
+
+        // 사용자가 페이지를 떠나려 할 때 경고 메시지 표시 (F5 및 브라우저 닫기 방지)
+        window.onbeforeunload = (event) => {
+            event.preventDefault();
+            return (event.returnValue = "이 페이지를 떠나시겠습니까?");
+        };
+
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener("popstate", preventBack);
+            window.onbeforeunload = null;
+        };
+    }, [navigate]);
+
     useEffect(() => {
         console.log("Redux에서 불러온 예약 목록:", reservations);
 

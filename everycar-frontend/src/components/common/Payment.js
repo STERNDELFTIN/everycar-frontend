@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { saveReservation } from "../../redux/reservationSlice";
@@ -89,9 +89,9 @@ const Payment = ({ payAmount, agree, car, return_location, selectedCity, selecte
             const token = localStorage.getItem("accessToken"); // JWT 토큰 가져오기
             const response = await fetch(apiUrl, {
                 method: "POST",
-                headers: { 
+                headers: {
                     'Authorization': `Bearer ${token}`,
-                    "Content-Type": "application/json" 
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(reservationData)
             });
