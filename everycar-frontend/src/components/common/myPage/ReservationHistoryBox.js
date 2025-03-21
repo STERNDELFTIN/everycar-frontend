@@ -48,7 +48,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
             }
 
             alert("예약이 취소되었습니다.");
-            navigate("/myPage/history");
+            window.location.reload();
         } catch (error) {
             console.error("예약 취소 실패:", error.message);
             alert(`예약 취소 중 오류 발생: ${error.message}`);
