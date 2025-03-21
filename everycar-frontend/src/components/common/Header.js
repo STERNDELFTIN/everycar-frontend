@@ -32,6 +32,7 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem('accessToken');  // 로그아웃 시 토큰 삭제
     setIsLoggedIn(false); // 상태 업데이트
+    localStorage.clear();
     window.dispatchEvent(new Event('loginStateChange')); // 상태 변경 이벤트 트리거
   };
 
