@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { vwFont } from "../../utils";
-import styles from "../../css/routes/reservation/PaymentSuccess.module.scss";
+import styles from "../../css/routes/PaymentSuccess.module.scss";
 
 const PaymentSuccess = () => {
     const reservations = useSelector((state) => state.reservation.reservations);
