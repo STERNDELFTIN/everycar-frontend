@@ -1,7 +1,7 @@
 
  // 시간 리스트
  function TimeList() {
-    const interval = 30; // 30분 단위
+    const interval = 60; // 1시간 단위
     const times = [];
     const currentTime = new Date();
     currentTime.setHours(0, 0, 0, 0); // 00:00
