@@ -18,7 +18,7 @@ const CarNameMapper = (carName) => {
       "k5": "k5",
       "k8": "k8",
       "k9": "k9",
-      "셀토스": "seltos",
+      "셀토스": "selltos",
       "니로": "niro",
       "스포티지": "spotige",
       "쏘렌토": "sorentto",
