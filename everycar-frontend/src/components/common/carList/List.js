@@ -32,7 +32,6 @@ function List({ searchQuery, priceRange, selectedGrades }) {
       (selectedGrades.length === 0 || selectedGrades.includes(car.model.model_category)) // 차량 등급 필터링
     );
   });
-
   return (
     <div className="List">
       <div className="right">
@@ -43,6 +42,7 @@ function List({ searchQuery, priceRange, selectedGrades }) {
               key={car.car_id}
               name={car.model.model_name}
               release={`${car.car_year}년식`}
+              grade={car.car_grade}
               image={car.image ? `/images/main/car/${CarNameMapper(car.model.model_name)}` : `/images/main/car/${CarNameMapper(car.model.model_name)}.png`}
               size={car.model.model_category}
               group={`${car.model.model_seate_num}인승`}
@@ -58,12 +58,17 @@ function List({ searchQuery, priceRange, selectedGrades }) {
   );
 }
 
-function CarCard({ name, release, image, size, group, gas, settings, price, onClick }) {
+function CarCard({ name, release, grade, image, size, group, gas, settings, price, onClick }) {
   return (
     <div className="card" onClick={onClick} style={{ cursor: 'pointer' }}>
       <div className="card-title">
-        <span className="card-name">{name}</span>
-        <span className="card-release">{release}</span>
+        <div className="cardLeft">
+          <span className="card-name">{name}</span>
+          <span className="card-release">{release}</span>
+        </div>
+        <div className={`cardRight ${grade}`}>
+          <span>{grade}</span>
+        </div>
       </div>
       <img src={image} alt={name} className="car-image" />
       <div className="card-icons">
