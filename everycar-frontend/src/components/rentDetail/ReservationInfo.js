@@ -46,11 +46,16 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
                         <p style={{ fontSize: vwFont(10, 18), fontWeight: '600', marginBottom: vwFont(10, 15) }}>결제정보</p>
                         <div className={styles.priceInfo}>
                             <p style={{ marginLeft: '10px' }}>총대여료</p>
-                            <p style={{ fontSize: vwFont(12, 24), fontWeight: '600' }}>{totalPrice}원</p>
+                            <p style={{ fontSize: vwFont(12, 24), fontWeight: '600' }}>
+                                {Number(totalPrice).toLocaleString()}원
+                            </p>
+
                         </div>
                     </div>
                     <div className={styles.buttonsContainer}>
-                        <button className={styles.counselButton}>상담신청</button>
+                    <button className={styles.counselButton} onClick={() => navigate('/support/inquiry')}>
+    상담신청
+</button>
                         {accessToken ? (
                             hasVerifiedRole ? (
                                 isEligible ? (

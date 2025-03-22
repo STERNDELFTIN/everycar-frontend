@@ -8,10 +8,9 @@ import ListContainer from "../../../components/common/myPage/ListContainer";
 function WaitingReservationPayment() {
     const { reservationType, reservationId } = useParams();
     const { reservationData, loading, error } = useReservation(reservationType, reservationId);
-
-    // console.log("예약 데이터 확인:", reservationData);
-
+    console.log("예약 데이터 확인:", reservationData);
     // PayPal 결제 요청
+
     const handlePaypalPayment = async () => {
         // console.log("reservationId", reservationId);
         if (!reservationData) {

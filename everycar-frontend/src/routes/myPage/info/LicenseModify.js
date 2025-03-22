@@ -30,8 +30,12 @@ const LicenseModify = () => {
                 return;
             }
         
+            // 면허 번호에서 하이픈을 제거하여 서버에 보낼 값 준비
+            const formattedLicenseNum = licenseNum.replace(/-/g, '');
+
+            console.log(formattedLicenseNum);
             const licenseData = {
-                licenseNum,
+                licenseNum: formattedLicenseNum,  // 하이픈 제거된 값
                 licenseDate,
                 licenseEndDate,
                 userNum: userInfo.userNum,
@@ -61,11 +65,44 @@ const LicenseModify = () => {
                 setMessage(error.message);
             }
         };
+      
+        const handleLicenseDateChange = (e) => {
+            const selectedDate = e.target.value;
+            setLicenseDate(selectedDate); // 발급일 업데이트
         
+            const selectedDateObj = new Date(selectedDate);
+            if (!isNaN(selectedDateObj)) {
+                const endDate = new Date(selectedDateObj);
+                endDate.setFullYear(endDate.getFullYear() + 10); // 10년 추가
+                setLicenseEndDate(endDate.toISOString().split("T")[0]); // YYYY-MM-DD 형식 변환
+            }
+        };
+
+        const handleLicenseNumChange = (e) => {
+            let inputValue = e.target.value.replace(/\D/g, '');  // 숫자만 허용
+
+            // 최대 12자리까지만 입력받도록 제한
+            if (inputValue.length > 12) {
+                inputValue = inputValue.slice(0, 12);  // 12자리가 넘어가면 자르기
+            }
+        
+            // 각 자리마다 하이픈을 넣어주는 로직
+            if (inputValue.length <= 2) {
+                inputValue = inputValue.replace(/(\d{2})(\d{0,2})/, '$1-$2');  // AA-
+            } else if (inputValue.length <= 4) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{0,6})/, '$1-$2-$3');  // AA-BB-
+            } else if (inputValue.length <= 10) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{6})(\d{0,2})/, '$1-$2-$3-$4');  // AA-BB-CCCCCC-
+            } else if (inputValue.length <= 12) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{6})(\d{2})/, '$1-$2-$3-$4');  // AA-BB-CCCCCC-DD
+            }
+        
+            setLicenseNum(inputValue);  // 포맷팅된 값을 상태에 저장
+        };
         
 
     return (
-        <div className={styles.licenseModify}>
+        <div className={styles.licenseModifyContainer}>
             <h4 className={styles.title}>면허 정보 등록</h4>
             <form onSubmit={handleSubmit}>
                 <table>
@@ -79,8 +116,9 @@ const LicenseModify = () => {
                             <td>
                                 <input
                                     type="text"
+                                    className={styles.textInput}
                                     value={licenseNum}
-                                    onChange={(e) => setLicenseNum(e.target.value)}
+                                    onChange={handleLicenseNumChange}  // 숫자만 유효성 검사
                                     placeholder="면허 번호 입력"
                                     required
                                 />
@@ -89,23 +127,25 @@ const LicenseModify = () => {
                         <tr>
                             <th>발급일</th>
                             <td>
-                                <input
-                                    type="date"
-                                    value={licenseDate}
-                                    onChange={(e) => setLicenseDate(e.target.value)}
-                                    required
-                                />
+                            <input
+                                type="date"
+                                className={styles.dateInput1}
+                                value={licenseDate}
+                                onChange={handleLicenseDateChange} // 발급일 변경 시 처리
+                                required
+                            />
                             </td>
                         </tr>
                         <tr>
                             <th>만료일</th>
                             <td>
-                                <input
-                                    type="date"
-                                    value={licenseEndDate}
-                                    onChange={(e) => setLicenseEndDate(e.target.value)}
-                                    required
-                                />
+                            <input
+                                type="date"
+                                className={styles.dateInput2}
+                                value={licenseEndDate}
+                                readOnly
+                                required
+                            />
                             </td>
                         </tr>
                     </tbody>

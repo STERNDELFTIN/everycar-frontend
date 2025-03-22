@@ -9,9 +9,9 @@
 }
 @mixin button-style() {
     border: 1px solid cv.$grey-color;
-    border-radius: 8px;
+    border-radius: 5px;
     background-color: #FFFFFF;
-    padding: cv.vw-font(7px, 10px) cv.vw-font(18px, 20px);
+    padding: cv.vw-font(5px, 8px) cv.vw-font(12px, 15px);
     font-size: cv.$sub-title-font-size;
     text-align: center;
     vertical-align: middle;

@@ -23,9 +23,11 @@ p, th, td, input {
 .saveButtonContainer {
     display: flex;
     justify-content: right;
-
+    margin-top: 10px;
     .saveButton {
         @include v.button-style;
+        background-color: #f6f8fa;
+        border: 1px solid #d1d9e0;
     }
 }
 
@@ -41,11 +43,25 @@ p, th, td, input {
 // 프로필 수정 컨테이너
 .licenseModifyContainer {
     @include v.white-box;
-
+    margin-top: cv.vw-font(30px, 40px);
+    border: 1px solid #f3f3f3;
     h4 {
         font-size: cv.$title-font-size;
         text-align: left;
     }
+    .textInput{
+        border: none;
+        outline: none;
+    }
+    .dateInput1, .dateInput2{
+        width: 50%;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #333;
+    }
+    .dateInput2{
+    }
+
 }
 
 /* 미디어 쿼리 */
