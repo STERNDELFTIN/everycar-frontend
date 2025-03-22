@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useReservation  = (reservationType, reservationId = null) => {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const [reservationData, setReservationData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -29,11 +30,11 @@ const useReservation  = (reservationType, reservationId = null) => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
                 const data = await response.json();
-                // console.log("API 응답 데이터:", data);
+                console.log("API 응답 데이터:", data);
 
                 // 특정 reservationId와 일치하는 예약을 찾음
                 const selectedReservation = data.find(res => 
-                    reservationType === "short" ? res.reservationSId === reservationId : res.reservationId === reservationId
+                    reservationType === "short" ? res.reservationSId == reservationId : res.reservationId == reservationId
                 ) || null;
                 setReservationData(selectedReservation);
             } catch (error) {
