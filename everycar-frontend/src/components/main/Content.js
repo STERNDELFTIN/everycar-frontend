@@ -12,11 +12,12 @@ function Content() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+
     // Redux에서 상태 가져오기
     const { region, city, startDate, endDate, startTime, endTime, posPopup, periodPopup } = useSelector((state) => state.rent);
-
+    console.log(startTime);
     // 버튼 비활성화 조건 설정 (빠른예약: 1 <= day <= 14)
-    const isButtonDisabled = !startDate || !endDate || differenceInDays(endDate, startDate) < 1 || differenceInDays(endDate, startDate) > 14;
+    const isButtonDisabled = !city || !startDate || !endDate || !startTime || !endTime || differenceInDays(endDate, startDate) < 1 || differenceInDays(endDate, startDate) > 14;
     // 버튼 클릭 시 조건 확인 후 이동
     const moveSpeedReservationHandler = () => {
         if (isButtonDisabled) {

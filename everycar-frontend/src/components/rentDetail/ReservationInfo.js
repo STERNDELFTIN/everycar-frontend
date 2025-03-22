@@ -12,7 +12,7 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
 
     // Redux에서 userInfo 가져오기
     const userInfo = useSelector(state => state.user.userInfo);
-    
+
     // accessToken 확인
     const accessToken = localStorage.accessToken;
     // 유저의 권한(role) 확인
@@ -31,10 +31,10 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
     return (
         <div className={`${styles.reservationInfoContainer} ${styles.container}`}>
             <div className={styles.carImage}>
-                <img 
-                    src={car.img || `/images/main/car/${CarNameMapper(car.model.model_name)}.png`} 
-                    alt={car.model.model_name} 
-                    style={{ height: vwFont(100, 200), width: 'auto' }} 
+                <img
+                    src={car.img || `/images/main/car/${CarNameMapper(car.model.model_name)}.png`}
+                    alt={car.model.model_name}
+                    style={{ height: vwFont(100, 200), width: 'auto' }}
                 />
             </div>
 
@@ -53,9 +53,9 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
                         </div>
                     </div>
                     <div className={styles.buttonsContainer}>
-                    <button className={styles.counselButton} onClick={() => navigate('/support/inquiry')}>
-    상담신청
-</button>
+                        <button className={styles.counselButton} onClick={() => navigate('/support/inquiry')}>+
+                            상담신청
+                        </button>
                         {accessToken ? (
                             hasVerifiedRole ? (
                                 isEligible ? (

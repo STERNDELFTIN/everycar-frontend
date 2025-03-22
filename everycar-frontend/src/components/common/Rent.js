@@ -14,14 +14,13 @@ function Rent({ page }) {
 
     // Redux에서 상태 가져오기
     const { region, city, startDate, endDate, startTime, endTime, posPopup, periodPopup, reservationType } = useSelector((state) => state.rent);
-
     const rentalDays = startDate && endDate ? differenceInDays(new Date(endDate), new Date(startDate)) : 0;
     // 버튼 스타일 업데이트 함수
     const updateButtonStyle = () => {
         if (buttonRef.current) {
-            if (!startDate || !endDate || rentalDays < 1 ||
+            if (!city || !startDate || !endDate || !startTime || !endTime || rentalDays < 1 ||
                 (reservationType === "quick" && rentalDays >= 14) ||
-                (reservationType === "short" && rentalDays < 13)) {
+                (reservationType === "short" && rentalDays < 13)){
 
                 // 비활성화 스타일 적용
                 buttonRef.current.style.backgroundColor = "#F3F3F3";
@@ -39,7 +38,7 @@ function Rent({ page }) {
     // 렌트 기간이 변경될 때마다 버튼 스타일 업데이트
     useEffect(() => {
         updateButtonStyle();
-    }, [startDate, endDate, reservationType]);
+    }, [startDate, endDate, reservationType, startTime, endTime]);
 
     // 버튼 클릭 시 페이지 이동
     const movePageHandler = () => {
