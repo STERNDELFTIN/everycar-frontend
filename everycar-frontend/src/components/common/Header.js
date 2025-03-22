@@ -61,7 +61,7 @@ function Header() {
             ) : (
               <>
                 <MenuLinkStyle to='/auth/login' className='login'>로그인</MenuLinkStyle>
-                <MenuLinkStyle to='/auth/register' className='register'>회원가입</MenuLinkStyle>
+                <MenuLinkStyle to='/auth/registerConditions' className='register'>회원가입</MenuLinkStyle>
               </>
             )}
           </div>
