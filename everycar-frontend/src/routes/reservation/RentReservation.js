@@ -46,6 +46,7 @@ function RentReservation() {
         const fetchCarData = async () => {
             try {
                 const token = localStorage.getItem("accessToken");
+                
                 let apiUrl, queryParams;
 
                 if (reservationType === "quick") {

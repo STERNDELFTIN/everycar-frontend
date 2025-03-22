@@ -33,7 +33,6 @@ const useCar = (carId) => {
         }
 
         const token = localStorage.getItem("accessToken"); // JWT 토큰 가져오기
-
         // 예약 타입에 따라 다른 API 엔드포인트 사용
         const apiUrl = reservationType === "quick"
           ? `http://localhost:8080/api/quick-rent/cars/${carId}?${queryParams}`
@@ -44,7 +43,7 @@ const useCar = (carId) => {
         const res = await fetch(apiUrl, {
           method: "GET",
           headers: {
-            'Authorization': `Bearer ${token}`,
+            // 'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
         });

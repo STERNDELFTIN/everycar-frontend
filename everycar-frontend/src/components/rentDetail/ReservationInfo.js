@@ -7,15 +7,16 @@ import CarNameMapper from '../common/CarNameMapper';
 // Redux
 import { useSelector } from 'react-redux';
 
-// 우측 예약정보
-function ReservationInfo({ title, car, SubTitleH3, totalPrice}) {
+function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
     const navigate = useNavigate();
 
     // Redux에서 userInfo 가져오기
     const userInfo = useSelector(state => state.user.userInfo);
     
+    // accessToken 확인
+    const accessToken = localStorage.accessToken;
     // 유저의 권한(role) 확인
-    const hasVerifiedRole = userInfo.roles?.some(role => role.name === 'ROLE_VERIFIED');
+    const hasVerifiedRole = userInfo?.roles?.some(role => role.name === 'ROLE_VERIFIED');
 
     // 자격여부 및 에러메시지
     const { isEligible, errorMessage } = useEligibilityCheck();
@@ -27,12 +28,14 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice}) {
         }
     };
 
-    // console.log("totalPrice"    , totalPrice);
-
     return (
         <div className={`${styles.reservationInfoContainer} ${styles.container}`}>
             <div className={styles.carImage}>
-                <img src={car.img || `/images/main/car/${CarNameMapper(car.model.model_name)}.png`} alt={car.model.model_name} style={{ height: vwFont(100, 200), width: 'auto' }} />
+                <img 
+                    src={car.img || `/images/main/car/${CarNameMapper(car.model.model_name)}.png`} 
+                    alt={car.model.model_name} 
+                    style={{ height: vwFont(100, 200), width: 'auto' }} 
+                />
             </div>
 
             <div className={styles.carContent}>
@@ -48,16 +51,20 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice}) {
                     </div>
                     <div className={styles.buttonsContainer}>
                         <button className={styles.counselButton}>상담신청</button>
-                        {hasVerifiedRole ? (
-                            isEligible ? (
-                                <button className={styles.reservationButton} onClick={reservationHandler}>
-                                    예약하기
-                                </button>
+                        {accessToken ? (
+                            hasVerifiedRole ? (
+                                isEligible ? (
+                                    <button className={styles.reservationButton} onClick={reservationHandler}>
+                                        예약하기
+                                    </button>
+                                ) : (
+                                    <p style={{ color: 'red' }}>{errorMessage}</p>
+                                )
                             ) : (
-                                <p style={{ color: 'red' }}>{errorMessage}</p>
+                                <p style={{ color: 'red' }}>면허를 등록한 사용자만 예약이 가능합니다.</p>
                             )
                         ) : (
-                            <p style={{ color: 'red' }}>면허를 등록한 사용자만 예약이 가능합니다.</p>
+                            <p style={{ color: 'red' }}>로그인이 필요합니다.</p>
                         )}
                     </div>
                 </div>
