@@ -1,140 +1,195 @@
-@use '../../common/commonVariables.scss' as cv;
+.registerCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-.registerCont{
-    position: relative;
+.inputCont {
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.textAreaId,
+.textArea {
     display: block;
-    height: 100vh;
-    .inputCont{
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        position: absolute;
+    margin-bottom: 20px;
+
+    .inputArea {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.inputName {
+    text-align: left;
+    display: block;
+    width: 14%;
+    font-size: 14px;
+    color: #666;
+}
+
+.inputText {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+        width: 80%;
+    }
+}
+
+.radioBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+.radioLabel {
+    width: 100%;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+.radioInput {
+    display: none;
+}
+
+
+.radioInput:checked+.radioLabel {
+    border: 1px solid #8ED800;
+    background-color: #e0ffa6;
+    color: #468000;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="radio"],
+input[type="button"] {
+    padding: 8px;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #424242;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.radioBox {
+    display: flex;
+    align-items: center;
+}
+
+
+button {
+    width: 20%;
+    padding: 11px 8px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.submitBtn {
+    display: block;
+    width: 100%;
+}
+
+.inputBtn {
+    background-color: #C4FF53;
+    font-size: 14px;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.errorMessage,
+.successMessage {
+    font-size: 14px;
+    color: #f44336;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.successMessage {
+    color: #4caf50;
+}
+
+input[readonly] {
+    background-color: #f9f9f9;
+}
+
+input[type="text"] {
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .inputCont {
         width: 100%;
-        max-width: 700px;
-        padding: 2rem;
-
-        h2{
-            margin-bottom: cv.vw-font(20px, 25px);
-        }
-        label{
-            width: 100%;
-            margin-bottom: cv.vw-font(20px, 25px);
-        }
-        .textArea{
-            display: flex;
-            width: 100%;
-            display: flex;
-            height: cv.vw-font(40px, 45px);
-            border-bottom: 1px solid #242424;
-            
-            input{
-                width: 60%;
-                height: cv.vw-font(40px, 45px);
-                background: none;
-                border: none;
-                outline: none;
-                font-size: cv.vw-font(14px, 18px);
-            }
-            .inputBtn{
-                width: 20%;
-                font-size: cv.vw-font(12px, 18px);
-            }
-
-        }
-        .textAreaId{
-            display: flex;
-            width: 100%;
-            display: flex;
-            height: cv.vw-font(40px, 45px);
-            border-bottom: 1px solid #242424;
-
-            input{
-                width: 30%;
-                height: cv.vw-font(40px, 45px);
-                background: none;
-                border: none;
-                outline: none;
-                font-size: cv.vw-font(14px, 18px);
-            }
-
-            .inputBtn{
-                width: 20%;
-                font-size: cv.vw-font(12px, 18px);
-            }
-            p{
-                width: 30%;
-                line-height: cv.vw-font(40px, 45px);
-                font-size: cv.vw-font(12px, 14px);
-            }
-        }
-
-
-        .inputName{
-            text-align: left;
-            width: 20%;
-            font-size: cv.vw-font(10px, 15px);
-            line-height: cv.vw-font(40px, 45px);;
-        }
-        .radioBox {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .radioLabel {
-            width: 100%;
-            display: inline-block;
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        
-            &:hover {
-                background-color: #f0f0f0;
-            }
-        }
-        
-        .radioInput {
-            display: none;
-        }
-        
-        .radioInput:checked + .radioLabel {
-            border: 1px solid #8ED800;
-            background-color: #e0ffa6;
-            color: #468000;
-        }
-        
-        .submitBtn{
-            padding-top: cv.vw-font(10px, 10px);
-            padding-bottom: cv.vw-font(10px, 10px);
-            width: 100%;
-            background-color: #C4FF53;
-            border-radius: 5px;
-            color: #468000;
-        }
-
-        .activeBtn {
-            padding-top: cv.vw-font(10px, 10px);
-            padding-bottom: cv.vw-font(10px, 10px);
-            width: 100%;
-            background-color: #C4FF53;
-            border-radius: 5px;
-            color: #468000;
-          }
-          
-          .disabledBtn {
-            background-color: #ccc; /* 비활성화된 상태에서의 배경색 */
-            color: #999; /* 비활성화된 상태에서의 텍스트 색상 */
-            cursor: not-allowed; /* 클릭할 수 없다는 표시 */
-          }
-          
-          .submitBtn:disabled {
-            cursor: not-allowed;
-            opacity: 0.6;
-          }
+        padding: 15px;
     }
 
+    h2 {
+        font-size: 20px;
+    }
 
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="date"] {
+        font-size: 14px;
+    }
+
+    button,
+    .inputBtn {
+        font-size: 14px;
+    }
+
+    .submitBtn {
+        font-size: 14px;
+    }
 }

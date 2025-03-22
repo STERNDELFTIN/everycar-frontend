@@ -6,33 +6,34 @@ const Register = () => {
   const [formData, setFormData] = useState({
     userId: "",
     userPassword: "",
-    userPasswordConfirm: "", // 비밀번호 확인 필드 추가
+    userPasswordConfirm: "",
     userName: "",
     userEmail: "",
     userPhone: "",
-    userGender: 1, // 기본값: 여성
+    userGender: 1,
     userBirth: "",
     userAddress: "",
-    userAddressDetail: "", // 상세주소 추가
+    userAddressDetail: "",
   });
 
-  const [isFormValid, setIsFormValid] = useState(false); // 버튼 활성화 여부
-  const [isUserIdAvailable, setIsUserIdAvailable] = useState(false); // 아이디 중복 여부
-  const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지
-  const [successMessage, setSuccessMessage] = useState(""); // 아이디 사용 가능 메시지
-  const [passwordError, setPasswordError] = useState(""); // 비밀번호 일치 오류 메시지
-  const [userIdError, setUserIdError] = useState(""); // 아이디 유효성 오류 메시지
-  const [passwordStrengthError, setPasswordStrengthError] = useState(""); // 비밀번호 유효성 오류 메시지
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [isUserIdAvailable, setIsUserIdAvailable] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [userIdError, setUserIdError] = useState("");
+  const [passwordStrengthError, setPasswordStrengthError] = useState("");
+  const [nameError, setNameError] = useState(""); // 이름 오류 메시지
+  const [phoneError, setPhoneError] = useState(""); // 전화번호 오류 메시지
+  const [birthError, setBirthError] = useState(""); // 생년월일 오류 메시지
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 카카오 우편번호 API 스크립트 로드
     const script = document.createElement("script");
     script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
     script.async = true;
     script.onload = () => {
-      // 스크립트 로드 완료 후 daum.Postcode 사용 가능
-      window.daum = window.daum || {};  // daum이 정의되지 않은 경우 방어
+      window.daum = window.daum || {};
     };
     document.body.appendChild(script);
   }, []);
@@ -42,24 +43,26 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-    // 아이디 유효성 검사
-    useEffect(() => {
-        const idPattern = /^[A-Za-z0-9]{6,20}$/;
-        if (!idPattern.test(formData.userId)) {
-        } else {
-          setUserIdError("");
-        }
-      }, [formData.userId]);
+  // 아이디 유효성 검사
+  useEffect(() => {
+    const idPattern = /^[A-Za-z0-9]{6,20}$/;
+    if (!idPattern.test(formData.userId)) {
+      setUserIdError("아이디는 6~20자의 영문 또는 숫자로만 입력해야 합니다.");
+    } else {
+      setUserIdError("");
+    }
+  }, [formData.userId]);
 
-        // 비밀번호 유효성 검사
+  // 비밀번호 유효성 검사
   useEffect(() => {
     const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,12}$/;
     if (!passwordPattern.test(formData.userPassword)) {
+      setPasswordStrengthError("비밀번호는 8~12자의 영문, 숫자, 특수문자를 포함해야 합니다.");
     } else {
       setPasswordStrengthError("");
     }
   }, [formData.userPassword]);
-  
+
   // 비밀번호 일치 여부 확인
   useEffect(() => {
     if (formData.userPassword !== formData.userPasswordConfirm) {
@@ -68,6 +71,40 @@ const Register = () => {
       setPasswordError("");
     }
   }, [formData.userPassword, formData.userPasswordConfirm]);
+
+  // 이름 유효성 검사 (특수문자, 숫자 금지)
+  useEffect(() => {
+    const namePattern = /^[가-힣a-zA-Z]+$/; // 한글, 영문만 허용
+    if (!namePattern.test(formData.userName)) {
+      setNameError("이름에는 특수문자나 숫자가 포함될 수 없습니다.");
+    } else {
+      setNameError("");
+    }
+  }, [formData.userName]);
+
+  // 전화번호 유효성 검사 (숫자만 입력 가능)
+  useEffect(() => {
+    const phonePattern = /^[0-9]*$/; // 숫자만 허용
+    if (!phonePattern.test(formData.userPhone)) {
+      setPhoneError("전화번호는 숫자만 입력 가능합니다.");
+    } else {
+      setPhoneError("");
+    }
+  }, [formData.userPhone]);
+
+  // 생년월일 유효성 검사 (26세 이상)
+  useEffect(() => {
+    const birthDate = new Date(formData.userBirth);
+    const currentDate = new Date();
+    const age = currentDate.getFullYear() - birthDate.getFullYear();
+    const monthDiff = currentDate.getMonth() - birthDate.getMonth();
+    const dayDiff = currentDate.getDate() - birthDate.getDate();
+    if (age < 26 || (age === 26 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) {
+      setBirthError("만 26세 이상만 가입 가능합니다.");
+    } else {
+      setBirthError("");
+    }
+  }, [formData.userBirth]);
 
   // 아이디 중복 확인 함수
   const checkUserIdAvailability = async () => {
@@ -79,24 +116,23 @@ const Register = () => {
         if (data.isDuplicate) {
           setIsUserIdAvailable(false);
           setErrorMessage("이미 사용 중인 아이디입니다.");
-          setSuccessMessage(""); // 중복된 경우 사용 가능 메시지를 지운다
+          setSuccessMessage("");
         } else {
           setIsUserIdAvailable(true);
-          setErrorMessage(""); // 중복되지 않으면 에러 메시지 지운다
-          setSuccessMessage("사용 가능한 아이디입니다."); // 사용 가능한 아이디 메시지 추가
+          setErrorMessage("");
+          setSuccessMessage("사용 가능한 아이디입니다.");
         }
       } catch (error) {
         console.error("아이디 중복 확인 오류:", error);
       }
     } else {
-      setIsUserIdAvailable(false); // 아이디가 비어 있으면 중복 체크 안 함
+      setIsUserIdAvailable(false);
       setErrorMessage("");
-      setSuccessMessage(""); // 아이디가 비어있으면 사용 가능 메시지 지운다
+      setSuccessMessage("");
     }
   };
 
   useEffect(() => {
-    // 모든 필드가 비어있지 않은지 확인
     const isValid =
       formData.userId &&
       formData.userPassword &&
@@ -107,69 +143,36 @@ const Register = () => {
       formData.userGender &&
       formData.userBirth &&
       formData.userAddress &&
-      formData.userAddressDetail && 
-      passwordError === "" &&  // 비밀번호가 일치하는 경우만 활성화
-      isUserIdAvailable; // 아이디 중복 확인이 통과되었을 때만 활성화
+      formData.userAddressDetail &&
+      passwordError === "" &&
+      isUserIdAvailable &&
+      nameError === "" &&
+      phoneError === "" &&
+      birthError === "";
 
-    setIsFormValid(isValid); // 아이디 중복 확인과 비밀번호 일치를 모두 만족할 때만 활성화
-  }, [formData, isUserIdAvailable, passwordError]); // formData, isUserIdAvailable, passwordError가 변경될 때마다 유효성 검사
+    setIsFormValid(isValid);
+  }, [formData, isUserIdAvailable, passwordError, nameError, phoneError, birthError]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    const idRegex = /^[a-zA-Z0-9]{6,20}$/; // 아이디 유효성 검사 정규식
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/; // 비밀번호 유효성 검사 정규식
-  
-    // 아이디 유효성 검사
-    if (!idRegex.test(formData.userId)) {
-      alert("아이디는 6~20자의 영문 또는 숫자로만 입력해야 합니다.");
+
+    if (userIdError || passwordStrengthError || nameError || phoneError || birthError) {
+      alert("유효성 검사 오류가 있습니다. 확인 후 다시 시도해주세요.");
       return;
     }
-  
-    // 비밀번호 유효성 검사
-    if (!passwordRegex.test(formData.userPassword)) {
-      alert("비밀번호는 8~12자의 영문, 숫자, 특수문자를 포함해야 합니다.");
-      return;
-    }
-  
-    // 비밀번호 확인 일치 여부
-    if (formData.userPassword !== formData.userPasswordConfirm) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-  
-    // 아이디 중복 확인 여부
-    if (!isUserIdAvailable) {
-      alert("이미 사용 중인 아이디입니다. 다른 아이디를 선택해주세요.");
-      return;
-    }
-  
-    // 모든 필드가 채워졌는지 확인
-    if (
-      !formData.userName ||
-      !formData.userEmail ||
-      !formData.userPhone ||
-      !formData.userBirth ||
-      !formData.userAddress ||
-      !formData.userAddressDetail
-    ) {
-      alert("모든 정보를 입력해주세요.");
-      return;
-    }
-  
-    // 주소 합치기
+
     const fullAddress = formData.userAddress + " " + formData.userAddressDetail;
-  
+
     try {
       const response = await fetch("http://localhost:8080/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          userAddress: fullAddress, // 합쳐진 주소 전송
+          userAddress: fullAddress,
         }),
       });
-  
+
       if (response.ok) {
         alert("회원가입 성공! 로그인 페이지로 이동합니다.");
         navigate("/auth/login");
@@ -181,15 +184,13 @@ const Register = () => {
       alert("서버 오류가 발생했습니다. 나중에 다시 시도해주세요.");
     }
   };
-  
-  // 카카오 우편번호 서비스 호출을 위한 함수
+
   const openPostcode = () => {
     new window.daum.Postcode({
       oncomplete: function (data) {
-        // 우편번호와 주소가 완성된 후 처리
         setFormData({
           ...formData,
-          userAddress: data.roadAddress, // 도로명 주소
+          userAddress: data.roadAddress,
         });
       },
     }).open();
@@ -200,93 +201,98 @@ const Register = () => {
       <div className={style.inputCont}>
         <h2>정보 입력</h2>
         <form onSubmit={handleSubmit}>
-        <label className={style.textAreaId}>
-            <span className={style.inputName}>아이디</span>
-            <input
-              type="text"
-              name="userId"
-              value={formData.userId}
-              onChange={handleChange}
-              required
-              placeholder="6~20자 영문, 숫자"
-            />
+          <label className={style.textAreaId}>
+            <div className={style.inputArea}>
+              <span className={style.inputName}>아이디</span>
+              <div className={style.inputText}>
+                <input
+                  type="text"
+                  name="userId"
+                  value={formData.userId}
+                  onChange={handleChange}
+                  required
+                  placeholder="6~20자 영문, 숫자"
+                />
+                <button className={style.inputBtn} type="button" onClick={checkUserIdAvailability}>중복검사</button>
+              </div>
+            </div>
             {userIdError && <p className={style.errorMessage}>{userIdError}</p>}
             {!isUserIdAvailable && <p className={style.errorMessage}>{errorMessage}</p>}
             {isUserIdAvailable && successMessage && <p className={style.successMessage}>{successMessage}</p>}
-            <button className={style.inputBtn} type="button" onClick={checkUserIdAvailability}>중복검사</button>
           </label>
-         
+
           <label className={style.textArea}>
-            <span className={style.inputName}>비밀번호</span>
-            <input
-              type="password"
-              name="userPassword"
-              placeholder="8~12자 영문, 숫자, 특수문자"
-              onChange={handleChange}
-              required
-            />
+            <div className={style.inputArea}>
+              <span className={style.inputName}>비밀번호</span>
+              <input
+                type="password"
+                className={style.inputText}
+                name="userPassword"
+                placeholder="8~12자 영문, 숫자, 특수문자"
+                onChange={handleChange}
+                required
+              />
+            </div>
             {passwordStrengthError && <p className={style.errorMessage}>{passwordStrengthError}</p>}
           </label>
 
-
           <label className={style.textArea}>
-            <span className={style.inputName}>비밀번호 확인</span>
-            <input
-              type="password"
-              name="userPasswordConfirm"
-              placeholder="비밀번호 확인"
-              onChange={handleChange}
-              required
-            />
-            {passwordError && <p className={style.errorMessage}>{passwordError}</p>} {/* 비밀번호 불일치 시 에러 메시지 */}
-            <br />
+            <div className={style.inputArea}>
+              <span className={style.inputName}>비밀번호 확인</span>
+              <input
+                type="password"
+                name="userPasswordConfirm"
+                className={style.inputText}
+                placeholder="비밀번호 확인"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            {passwordError && <p className={style.errorMessage}>{passwordError}</p>}
           </label>
 
           <label className={style.textArea}>
-            <span className={style.inputName}>이름</span>
-            <input
-              type="text"
-              name="userName"
-              placeholder="이름"
-              onChange={handleChange}
-              required
-            />
-            <br />
+            <div className={style.inputArea}>
+              <span className={style.inputName}>이름</span>
+              <input
+                type="text"
+                className={style.inputText}
+                name="userName"
+                placeholder="이름"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            {nameError && <p className={style.errorMessage}>{nameError}</p>}
           </label>
 
           <label className={style.textArea}>
-            <span className={style.inputName}>이메일</span>
-            <input
-              type="email"
-              name="userEmail"
-              placeholder="이메일"
-              onChange={handleChange}
-              required
-            />
-            <br />
+            <div className={style.inputArea}>
+              <span className={style.inputName}>전화번호</span>
+              <input
+                type="text"
+                className={style.inputText}
+                name="userPhone"
+                placeholder="-를 제외한 숫자만 입력"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            {phoneError && <p className={style.errorMessage}>{phoneError}</p>}
           </label>
 
           <label className={style.textArea}>
-            <span className={style.inputName}>전화번호</span>
-            <input
-              type="text"
-              name="userPhone"
-              placeholder="-를 제외한 숫자만 입력"
-              onChange={handleChange}
-              required
-            />
-            <br />
-          </label>
-
-          <label className={style.textArea}>
-            <span className={style.inputName}>생년월일</span>
-            <input
-              type="date"
-              name="userBirth"
-              onChange={handleChange}
-              required
-            />
-            <br />
+            <div className={style.inputArea}>
+              <span className={style.inputName}>생년월일</span>
+              <input
+                type="date"
+                className={style.inputText}
+                name="userBirth"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            {birthError && <p className={style.errorMessage}>{birthError}</p>}
           </label>
 
           <label>
@@ -296,7 +302,7 @@ const Register = () => {
                 id="female"
                 name="userGender"
                 value={1}
-                checked={formData.userGender === 1}
+                checked={formData.userGender == 1}
                 onChange={handleChange}
                 className={style.radioInput}
               />
@@ -309,7 +315,7 @@ const Register = () => {
                 id="male"
                 name="userGender"
                 value={2}
-                checked={formData.userGender === 2}
+                checked={formData.userGender == 2}
                 onChange={handleChange}
                 className={style.radioInput}
               />
@@ -320,39 +326,44 @@ const Register = () => {
           </label>
 
           <label className={style.textArea}>
-            <span className={style.inputName}>주소</span>
-            <input
-              type="text"
-              name="userAddress"
-              placeholder="주소"
-              value={formData.userAddress}
-              onChange={handleChange}
-              required
-                readOnly
-            />
-            <button className={style.inputBtn} type="button" onClick={openPostcode}>
-              우편번호 검색
-            </button>
-            <br />
+            <div className={style.inputArea}>
+              <span className={style.inputName}>주소</span>
+              <div className={style.inputText}>
+                <input
+                  type="text"
+                  name="userAddress"
+                  placeholder="주소"
+                  value={formData.userAddress}
+                  onChange={handleChange}
+                  required
+                  readOnly
+                />
+                <button className={style.inputBtn} type="button" onClick={openPostcode}>
+                  주소검색
+                </button>
+              </div>
+            </div>
           </label>
 
           <label className={style.textArea}>
-            <span className={style.inputName}>상세주소</span>
-            <input
-              type="text"
-              name="userAddressDetail"
-              placeholder="상세주소"
-              value={formData.userAddressDetail}
-              onChange={handleChange}
-              required
-            />
-            <br />
+            <div className={style.inputArea}>
+              <span className={style.inputName}>상세주소</span>
+              <input
+                type="text"
+                className={style.inputText}
+                name="userAddressDetail"
+                placeholder="상세주소"
+                value={formData.userAddressDetail}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </label>
 
           <button
             type="submit"
             className={`${style.submitBtn} ${isFormValid ? style.activeBtn : style.disabledBtn}`}
-            disabled={!isFormValid} // 버튼이 비활성화되도록 설정
+            disabled={!isFormValid}
           >
             가입완료
           </button>
