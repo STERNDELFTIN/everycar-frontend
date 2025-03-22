@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "../../../css/routes/support/inquiry/Inquiry.css";
 
 function Inquiry() {
@@ -19,15 +18,13 @@ function Inquiry() {
 
   // 문의사항 목록 가져오기
   const fetchInquiries = (page = 1) => {
-    axios
-      .get(`http://localhost:8080/api/inquiry?page=${page}&size=${pageInfo.size}`)
-      .then((response) => {
-        const data = response.data;
-
+    fetch(`http://localhost:8080/api/inquiry?page=${page}&size=${pageInfo.size}`)
+      .then((response) => response.json()) // 응답을 JSON으로 파싱
+      .then((data) => {
         const formattedData = data.items.map((inquiry) => {
           // 날짜 필드가 inquiries_q_created_at이라면
           const utcDate = new Date(inquiry.inquiries_q_created_at);
-        
+
           let formattedDate = "Invalid Date";
           if (!isNaN(utcDate.getTime())) {
             formattedDate = utcDate.toLocaleString("ko-KR", {
@@ -39,10 +36,10 @@ function Inquiry() {
               hour12: false, // 24시간 형식
             });
           }
-        
+
           return { ...inquiry, inquiriesQCreatedAt: formattedDate };
         });
-        
+
         setInquiries(formattedData);
 
         // 페이지네이션 정보 업데이트
@@ -62,6 +59,11 @@ function Inquiry() {
         console.error("Error fetching inquiry:", error);
       });
   };
+
+  useEffect(() => {
+    // 페이지가 로드될 때마다 스크롤을 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
 
   // 초기 데이터 불러오기
   useEffect(() => {
@@ -89,7 +91,7 @@ function Inquiry() {
                     <span className="inquiry-item-tag">답변완료</span>
                   ) : null}
                 </div>
-                  <p className="inquiry-meta">{inquiry.inquiriesQCreatedAt}</p> {/* 생성일자 */}
+                <p className="inquiry-meta">{inquiry.inquiriesQCreatedAt}</p> {/* 생성일자 */}
               </li>
             </Link>
           ))

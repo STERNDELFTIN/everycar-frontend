@@ -48,6 +48,8 @@ function Event() {
       page,
       prev: page > 1,
       next: page < pageInfo.totalPages,
+      start: Math.max(1, page - Math.floor(pageInfo.pageGroupSize / 2)),
+      end: Math.min(pageInfo.totalPages, page + Math.floor(pageInfo.pageGroupSize / 2)),
     }));
   };
 
@@ -55,6 +57,17 @@ function Event() {
   useEffect(() => {
     fetchEvents(1);
   }, []);
+
+  useEffect(() => {
+    // 페이지가 로드될 때마다 스크롤을 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
+
+  // 화살표 버튼 클릭 시 페이지 변경
+  const handleArrowClick = (direction) => {
+    const newPage = direction === "prev" ? pageInfo.page - 1 : pageInfo.page + 1;
+    fetchEvents(newPage);
+  };
 
   return (
     <div className="sEvent-container">
@@ -90,7 +103,7 @@ function Event() {
         {pageInfo.prev && (
           <button
             className="page-button"
-            onClick={() => fetchEvents(pageInfo.page - 1)}
+            onClick={() => handleArrowClick("prev")}
           >
             &lt;
           </button>
@@ -114,7 +127,7 @@ function Event() {
         {pageInfo.next && (
           <button
             className="page-button"
-            onClick={() => fetchEvents(pageInfo.page + 1)}
+            onClick={() => handleArrowClick("next")}
           >
             &gt;
           </button>

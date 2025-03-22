@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 import "../../../css/routes/support/announcement/AnnouncementDetail.css";
 
 function AnnouncementDetail() {
@@ -9,20 +8,25 @@ function AnnouncementDetail() {
   const baseURL = "http://localhost:8080"; // 백엔드 URL
 
   useEffect(() => {
-    // 공지사항 데이터 가져오기
-    axios
-      .get(`${baseURL}/api/posts/${id}`)
-      .then((response) => {
-        let content = response.data.content;
+    // 페이지가 로드될 때마다 스크롤을 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    // 공지사항 데이터 가져오기 (fetch로 변경)
+    fetch(`${baseURL}/api/posts/${id}`)
+      .then((response) => response.json()) // JSON 파싱
+      .then((data) => {
+        let content = data.content;
 
         // content 내 이미지 경로를 절대 경로로 변환
         content = content.replace(/src="\/images/g, `src="${baseURL}/images`);
 
         // 날짜 변환 (ISO 8601 → 한국 날짜 YYYY-MM-DD 형식)
-        const utcDate = new Date(response.data.createdAt);
+        const utcDate = new Date(data.createdAt);
         const koreaDate = utcDate.toLocaleDateString("ko-KR");
 
-        setAnnouncement({ ...response.data, content, createdAt: koreaDate });
+        setAnnouncement({ ...data, content, createdAt: koreaDate });
       })
       .catch((error) => {
         console.error("Error fetching post:", error);
