@@ -32,8 +32,7 @@ const LicenseModify = () => {
         
             // 면허 번호에서 하이픈을 제거하여 서버에 보낼 값 준비
             const formattedLicenseNum = licenseNum.replace(/-/g, '');
-
-            console.log(formattedLicenseNum);
+        
             const licenseData = {
                 licenseNum: formattedLicenseNum,  // 하이픈 제거된 값
                 licenseDate,
@@ -60,11 +59,20 @@ const LicenseModify = () => {
                 }
         
                 setMessage('면허 정보가 성공적으로 등록되었습니다.');
-                setTimeout(() => navigate('/myPage/info'), 2000); // 여기서 경로 변경
+                
+                // 면허 등록 후 알림 띄우기
+                alert("면허 입력이 완료되었습니다. 재 로그인을 시도해 주세요.");
+        
+                // 확인 버튼을 누르면 로그아웃 처리 및 로그인 페이지로 이동
+                localStorage.removeItem('accessToken');
+                navigate('/auth/login'); // 로그인 페이지로 이동
+                window.location.reload(); // 새로고침
+        
             } catch (error) {
                 setMessage(error.message);
             }
         };
+        
       
         const handleLicenseDateChange = (e) => {
             const selectedDate = e.target.value;
