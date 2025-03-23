@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import '../../css/main/Plan.css';
 
@@ -8,6 +10,9 @@ import '../../css/main/Plan.css';
 const PlanLinkStyle = styled(Link).attrs(props=>({ to:props.to, /* Link속성 유지 */ }))`width: 50%; height: auto; border-radius: 10px; padding: 25px 30px; text-align: left; background-color: #FFFFFF; color: #2F2F2F; cursor: pointer; `;
 
 function Plan({ title, TitleStyle }) {
+        useEffect(() => {
+            AOS.init();
+        }, [])
     return(
         <nav className='plan'>
             {/* <Routes>
@@ -15,7 +20,7 @@ function Plan({ title, TitleStyle }) {
             </Routes> */}
             
             <TitleStyle>{ title }</TitleStyle>
-            <div className='plan-container'>
+            <div className='plan-container' data-aos="fade-up" data-aos-duration="1200">
                 <PlanLinkBox
                     to='/reservation/quickReservation'
                     title='빠른예약'

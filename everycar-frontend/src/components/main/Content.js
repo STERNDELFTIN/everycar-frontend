@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { differenceInDays, format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPosPopup, setPeriodPopup } from '../../redux/rentSlice.js';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import '../../css/main/Content.css';
 import Event from './Event.js';
@@ -28,9 +30,13 @@ function Content() {
         navigate('/reservation/quickReservation');
     }
 
+    useEffect(() => {
+        AOS.init();
+      },[])
+
     return (
         <div className='content-container'>
-            <div className='content-box'>
+            <div className='content-box' data-aos="fade-up" data-aos-duration="800">
                 <Event />
             </div>
 

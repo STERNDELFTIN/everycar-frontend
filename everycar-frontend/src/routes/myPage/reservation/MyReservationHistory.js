@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from '../../../css/routes/myPage/reservation/MyReservationHistory.module.scss';
 import { vwFont } from '../../../utils';
@@ -10,6 +11,14 @@ import ReservationHistoryBox from '../../../components/common/myPage/Reservation
 import CarNameMapper from "../../../components/common/CarNameMapper";
 
 function MyReservationHistory() {
+    const navigate = useNavigate(); // navigate 추가
+    const token = localStorage.getItem("accessToken");
+    useEffect(() => {
+        if (!token) {
+            // accessToken이 없으면 로그인 페이지로 이동
+            navigate("/auth/login");
+        }
+    }, [token, navigate]);
     return (
         <div className={styles.myReservationHistory}>
             <TopContent firstLocation='내예약내역' />
