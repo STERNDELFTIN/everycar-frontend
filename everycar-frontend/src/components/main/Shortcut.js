@@ -33,7 +33,7 @@ function Shortcut() {
                     title='상담하기'
                 />
                 <ShortcutBox
-                    to='/'
+                    to='/support/Estimate'
                     ico={faFileSignature}
                     title='견적확인'
                 />

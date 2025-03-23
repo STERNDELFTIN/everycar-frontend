@@ -54,7 +54,8 @@ import MyInquiries from './routes/myPage/inquiries/MyInquiries';
 /* 리뷰 작성 */
 import MypageReview from './routes/myPage/myReview/MypageReview';
 // import MyReview from './routes/myPage/myReview/MyReview';
-
+/*  */
+import Estimate from './routes/support/Estimate';
 let PageStyle = styled.div`
   width: 66%;
   min-height: 100vh;  /* 최소 높이를 화면 전체로 설정 */
@@ -123,6 +124,8 @@ function App() {
             <Route path='inquiryDetail/:id' element={<InquiryDetail />} />
             <Route path='inquiryCreate' element={<InquiryCreate />} />
             <Route path='inquiryModify/:id' element={<InquiryModify />} />
+            {/* 견적확인 */}
+            <Route path='estimate' element={<Estimate />} />
           </Route>
 
           {/* 인증 관련 페이지 */}
