@@ -94,6 +94,22 @@
     background: linear-gradient(to left, #AFFF4F, #E6FF59);
 }
 
+.optionCont{
+    width: 80%;
+    margin: 0 auto;
+    .cont{
+        margin-bottom: 50px;
+
+        h2{
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        p{
+            margin-top: 10px;
+            color: #333;
+        }
+    }
+}
 /* 미디어 쿼리 */
 @media (max-width: 1200px) {
     /* Content */

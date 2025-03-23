@@ -13,10 +13,12 @@ function QuickReservation() {
         dispatch(setReservationType("quick"));
     }, [dispatch]);
 
+        // reservationType을 "fast"로 전달하여 Rent 컴포넌트에 전달
+        const reservationType = "fast";
     return (
         <div>
             <Popup />
-            <Rent page='/reservation/quickReservation/list'/>
+            <Rent page='/reservation/quickReservation/list' reservationType={reservationType}/>
         </div>
     );
 }
