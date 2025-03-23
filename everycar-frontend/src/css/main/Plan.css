@@ -3,6 +3,7 @@
     display: flex;
     gap: 1.3vw;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 .plan-box {
     border: 1px solid #f3f3f3;

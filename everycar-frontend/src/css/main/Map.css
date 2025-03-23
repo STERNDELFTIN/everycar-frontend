@@ -1,0 +1,91 @@
+.mapCont {
+  margin-bottom: 50px;
+}
+
+.mapCont h2 {
+  text-align: left;
+  font-size: clamp(15px, 2.3vw, 32px);
+}
+
+.mapCont>p {
+  text-align: left;
+  color: #666;
+  line-height: 20px;
+}
+
+.mapCont .content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mapCont .content .leftConent {
+  width: 100%;
+  text-align: center;
+}
+
+.mapCont .content .leftConent .region-total {
+  margin-bottom: 70px;
+}
+
+.mapCont .content .leftConent p {
+  font-size: clamp(12px, 1.3vw, 24px);
+  margin-bottom: 20px;
+}
+
+.mapCont .content .leftConent .subTitle {
+  text-align: center;
+  width: 100%;
+  padding: 10px ;
+  font-size: clamp(12px, 1.3vw, 24px);
+  color: #333;
+  border-radius: 50px;
+}
+
+.mapCont .content .leftConent .title1{
+  background: rgb(196, 255, 83);
+  background: linear-gradient(32deg, rgba(196, 255, 83, 1) 0%, rgba(237, 255, 83, 1) 100%);
+}
+
+.mapCont .content .leftConent .subAnswer {
+  font-weight: 700;
+  font-size: clamp(42px, 1.3vw, 24px);
+}
+
+.map {
+  width: clamp(900px, 2.3vw, 600px);
+}
+
+.map path {
+  cursor: pointer;
+  border: 1px solid red;
+  fill: #ccc;
+}
+
+#busan {
+  border: 1px solid red;
+}
+
+.mapCont path:hover {
+  outline: none;
+  fill: #C4FF53;
+}
+
+.rank1 {
+  fill: #FAE0E0;
+}
+
+.rank2 {
+  fill: #F8D3D4;
+}
+
+.rank3 {
+  fill: #F19B9A;
+}
+
+.rank4 {
+  fill: #EC5A5A;
+}
+
+.rank5 {
+  fill: #E13632;
+}
