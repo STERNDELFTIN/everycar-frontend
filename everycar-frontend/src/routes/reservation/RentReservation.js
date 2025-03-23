@@ -117,7 +117,7 @@ function RentReservation() {
     return (
         <div className={styles.carDetail}>
             <div className={styles.mainTitle}>
-                <h2>예약 및 결제</h2>
+                <h2>주문서</h2>
             </div>
 
             <div className={styles.carDetailContainer}>

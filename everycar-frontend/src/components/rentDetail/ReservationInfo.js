@@ -53,7 +53,7 @@ function ReservationInfo({ title, car, SubTitleH3, totalPrice }) {
                         </div>
                     </div>
                     <div className={styles.buttonsContainer}>
-                        <button className={styles.counselButton} onClick={() => navigate('/support/inquiry')}>+
+                        <button className={styles.counselButton} onClick={() => navigate('/support/inquiry')}>
                             상담신청
                         </button>
                         {accessToken ? (
