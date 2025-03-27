@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUserInfo } from '../../redux/userSlice';
 
 const useUserInfo = () => {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const dispatch = useDispatch();
     const { isLoggedIn, userInfo } = useSelector((state) => state.user);
     const [loading, setLoading] = useState(true);
@@ -18,7 +20,7 @@ const useUserInfo = () => {
         }
 
         if (!userInfo || Object.keys(userInfo).length === 0) {
-            fetch('http://localhost:8080/api/user/mypage', {
+            fetch(`${API_BASE_URL}/api/user/mypage`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -42,7 +44,7 @@ const useUserInfo = () => {
         const token = localStorage.getItem('accessToken');
 
         try {
-            const response = await fetch('http://localhost:8080/api/user/mypage', {
+            const response = await fetch(`${API_BASE_URL}/api/user/mypage`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,

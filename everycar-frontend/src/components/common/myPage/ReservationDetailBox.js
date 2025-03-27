@@ -6,6 +6,8 @@ import axios from "axios";
 import KakaoMap from "../KakaoMap"; // KakaoMap이 있는 경로로 수정
 
 const ReservationDetailBox = () => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const { reservationType, reservationId } = useParams();
   const [reservationData, setReservationData] = useState(null);
 
@@ -15,8 +17,8 @@ const ReservationDetailBox = () => {
         const token = localStorage.getItem("accessToken");
         const apiUrl =
           reservationType === "fast"
-            ? `http://localhost:8080/api/fast/reservations/${reservationId}`
-            : `http://localhost:8080/api/short/reservations/${reservationId}`;
+            ? `${API_BASE_URL}/api/fast/reservations/${reservationId}`
+            : `${API_BASE_URL}/api/short/reservations/${reservationId}`;
 
         const response = await axios.get(apiUrl, {
           headers: {

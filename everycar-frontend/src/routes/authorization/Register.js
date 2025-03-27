@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import style from "../../css/routes/authorization/Register.module.scss";
 
 const Register = () => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const [formData, setFormData] = useState({
     userId: "",
     userPassword: "",
@@ -83,7 +85,7 @@ const Register = () => {
     const { userId } = formData;
     if (userId.length > 0) {
       try {
-        const response = await fetch(`http://localhost:8080/api/auth/check-user-id?userId=${userId}`);
+        const response = await fetch(`${API_BASE_URL}/api/auth/check-user-id?userId=${userId}`);
         const data = await response.json();
         if (data.isDuplicate) {
           setIsUserIdAvailable(false);
@@ -196,7 +198,7 @@ const Register = () => {
     const fullAddress = formData.userAddress + " " + formData.userAddressDetail;
 
     try {
-      const response = await fetch("http://localhost:8080/api/auth/signup", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

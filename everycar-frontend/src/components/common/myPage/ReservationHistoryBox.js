@@ -5,6 +5,8 @@ import { vwFont } from "../../../utils";
 import useCurrentDateTime from "../../hooks/useCurrentDateTime";
 
 function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, startDate, startTime, endDate, endTime, rentPos, returnPos, reservationType, reservationId }) {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const navigate = useNavigate();
     
     // 페이지, 이동 핸들러
@@ -32,7 +34,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/cancel`, {
+            const response = await fetch(`${API_BASE_URL}/api/${reservationType}/reservations/${reservationId}/cancel`, {
                 method: "PUT",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -66,7 +68,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/start`, {
+            const response = await fetch(`${API_BASE_URL}/api/${reservationType}/reservations/${reservationId}/start`, {
                 method: "PUT",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -98,7 +100,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/complete`, {
+            const response = await fetch(`${API_BASE_URL}/api/${reservationType}/reservations/${reservationId}/complete`, {
                 method: "PUT",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -130,7 +132,7 @@ function ReservationHistoryBox({ reservationStatus, carImage, carName, payment, 
             }
     
             try {
-                const response = await fetch(`http://localhost:8080/api/${reservationType}/reservations/${reservationId}/complete`, {
+                const response = await fetch(`${API_BASE_URL}/api/${reservationType}/reservations/${reservationId}/complete`, {
                     method: "PUT",
                     headers: {
                         "Authorization": `Bearer ${token}`,

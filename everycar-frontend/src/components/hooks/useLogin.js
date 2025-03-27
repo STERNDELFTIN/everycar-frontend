@@ -4,6 +4,8 @@ import { setUserInfo } from '../../redux/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const useLogin = () => {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
@@ -13,7 +15,7 @@ const useLogin = () => {
             const loginData = { userId, userPassword };
 
             // 1️⃣ 로그인 요청 (JWT 토큰 받기)
-            const response = await fetch('http://localhost:8080/api/auth/login', {
+            const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginData),
@@ -34,7 +36,7 @@ const useLogin = () => {
 
                 // console.log("🔍 저장된 JWT 토큰:", token);
 
-                const userResponse = await fetch('http://localhost:8080/api/user/mypage', {
+                const userResponse = await fetch(`${API_BASE_URL}/api/user/mypage`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`, // ✅ 저장된 토큰으로 요청

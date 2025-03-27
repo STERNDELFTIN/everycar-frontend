@@ -7,6 +7,8 @@ import { vwFont } from "../../utils";
 const loadingGif = "/Loading.gif"; // public 폴더에 있는 로딩 GIF
 
 const Payment = ({ payAmount, agree, car, return_location, selectedCity, selectedRegion }) => {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { startDate, startTime, endDate, endTime, reservationType } = useSelector((state) => state.rent);
@@ -67,7 +69,7 @@ const Payment = ({ payAmount, agree, car, return_location, selectedCity, selecte
                 payment: payAmount,
                 user_num: userNum
             };
-            apiUrl = "http://localhost:8080/api/quick-rent/reservations";
+            apiUrl = `${API_BASE_URL}/api/quick-rent/reservations`;
         } else {
             reservationData = {
                 car_id: car.car_id,
@@ -81,7 +83,7 @@ const Payment = ({ payAmount, agree, car, return_location, selectedCity, selecte
             if (selectedCity) reservationData.selectedCity = selectedCity;
             if (selectedRegion) reservationData.selectedRegion = selectedRegion;
 
-            apiUrl = "http://localhost:8080/api/short-rent/reservations";
+            apiUrl = `${API_BASE_URL}/api/short-rent/reservations`;
         }
 
         // console.log("예약 요청 데이터:", reservationData);

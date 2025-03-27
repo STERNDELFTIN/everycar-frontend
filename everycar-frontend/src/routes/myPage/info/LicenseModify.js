@@ -12,6 +12,8 @@ import useUserInfo from '../../../components/hooks/useUserInfo';
 // import useLicense from '../../../components/hooks/useLicense';
 
 const LicenseModify = () => {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     // const location = useLocation();
     const navigate = useNavigate();
     const [licenseNum, setLicenseNum] = useState('');
@@ -45,7 +47,7 @@ const LicenseModify = () => {
             // console.log(token); // 토큰 값 확인
         
             try {
-                const response = await fetch('http://localhost:8080/api/license/register', {
+                const response = await fetch(`${API_BASE_URL}/api/license/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

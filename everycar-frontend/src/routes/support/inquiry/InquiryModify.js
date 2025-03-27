@@ -4,6 +4,8 @@ import useUserInfo from '../../../components/hooks/useUserInfo';
 import "../../../css/routes/support/inquiry/InquiryModify.css";
 
 function InquiryModify() {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const { id } = useParams();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -18,7 +20,7 @@ function InquiryModify() {
 
     // 기존 데이터 불러오기
     useEffect(() => {
-        fetch(`http://localhost:8080/api/inquiry/${id}`)
+        fetch(`${API_BASE_URL}/api/inquiry/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 setFormData({ inquiries_q: data.inquiries_q });
@@ -49,7 +51,7 @@ function InquiryModify() {
         const token = localStorage.getItem("accessToken"); // 토큰을 로컬스토리지에서 가져옴
 
         // POST 방식으로 수정 요청 보내기
-        fetch(`http://localhost:8080/api/inquiry/${id}`, {
+        fetch(`${API_BASE_URL}/api/inquiry/${id}`, {
             method: "POST", // POST 방식으로 수정
             headers: {
                 "Content-Type": "application/json",

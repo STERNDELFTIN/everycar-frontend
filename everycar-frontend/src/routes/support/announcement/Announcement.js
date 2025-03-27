@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "../../../css/routes/support/announcement/Announcement.css";
 
 function Announcement() {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const [announcements, setAnnouncements] = useState([]);
   const [pageInfo, setPageInfo] = useState({
     page: 1, // 현재 페이지
@@ -18,7 +20,7 @@ function Announcement() {
 
   // 🔹 공지사항 목록 가져오기 (fetch로 변경)
   const fetchAnnouncements = (page = 1) => {
-    fetch(`http://localhost:8080/api/posts?page=${page}&size=${pageInfo.size}`, {
+    fetch(`${API_BASE_URL}/api/posts?page=${page}&size=${pageInfo.size}`, {
       method: 'GET', // 기본적으로 GET 요청
     })
       .then((response) => response.json()) // JSON 형태로 응답 파싱

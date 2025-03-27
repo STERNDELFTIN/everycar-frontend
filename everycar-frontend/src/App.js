@@ -66,13 +66,14 @@ let PageStyle = styled.div`
 `;
 
 function App() {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const dispatch = useDispatch();
 
   useEffect(() => {
     // 앱 시작 시 자동 로그인
     const token = localStorage.getItem('accessToken');
     if (token) {
-      fetch('http://localhost:8080/api/user/mypage', {
+      fetch(`${API_BASE_URL}/api/user/mypage`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,

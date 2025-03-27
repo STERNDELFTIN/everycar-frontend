@@ -4,6 +4,8 @@ import useUserInfo from "../../../components/hooks/useUserInfo";
 import "../../../css/routes/support/inquiry/InquiryDetail.css";
 
 function InquiryDetail() {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const { id } = useParams();
   const navigate = useNavigate();
   const [inquiry, setInquiry] = useState(null);
@@ -18,7 +20,7 @@ function InquiryDetail() {
     if (!id) return;
 
     // 게시글 상세 정보를 fetch로 가져옵니다.
-    fetch(`http://localhost:8080/api/inquiry/${id}`)
+    fetch(`${API_BASE_URL}/api/inquiry/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setInquiry(data);
@@ -35,7 +37,7 @@ function InquiryDetail() {
     }
 
     if (window.confirm("정말 삭제하시겠습니까?")) {
-      fetch(`http://localhost:8080/api/inquiry/${id}`, {
+      fetch(`${API_BASE_URL}/api/inquiry/${id}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('accessToken')}`,

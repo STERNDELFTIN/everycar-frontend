@@ -6,6 +6,8 @@ import TopContent from "../../../components/common/myPage/TopContent";
 import ListContainer from "../../../components/common/myPage/ListContainer";
 
 function WaitingReservationPayment() {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const { reservationType, reservationId } = useParams();
     const { reservationData, loading, error } = useReservation(reservationType, reservationId);
     console.log("예약 데이터 확인:", reservationData);
@@ -50,7 +52,7 @@ function WaitingReservationPayment() {
                 };
             }
 
-            const response = await fetch("http://localhost:8080/api/paypal/pay", {
+            const response = await fetch(`${API_BASE_URL}/api/paypal/pay`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,

@@ -6,6 +6,8 @@ import TopContent from "../../../components/common/myPage/TopContent";
 import ListContainer from "../../../components/common/myPage/ListContainer";
 
 function MyInquiries() {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const [inquiries, setInquiries] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -26,7 +28,7 @@ function MyInquiries() {
             }
 
             try {
-                const response = await fetch(`http://localhost:8080/api/inquiries?page=${page}&size=${itemsPerPage}`, {
+                const response = await fetch(`${API_BASE_URL}/api/inquiries?page=${page}&size=${itemsPerPage}`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`,

@@ -100,6 +100,8 @@ function Profile() {
 
 // 면허 정보
 function LicenseInfo() {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const navigate = useNavigate();
   const [licenseInfo, setLicenseInfo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -108,7 +110,7 @@ function LicenseInfo() {
     const fetchLicenseInfo = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/license/myLicense",
+          `${API_BASE_URL}/api/license/myLicense`,
           {
             method: "GET",
             headers: {
@@ -221,13 +223,15 @@ function LicenseInfo() {
 
 // 회원 탈퇴 버튼 컴포넌트
 function DeleteAccountButton() {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const navigate = useNavigate();
 
   const handleDeleteUser = async () => {
     if (!window.confirm("정말로 탈퇴하시겠습니까?")) return;
 
     try {
-      const response = await fetch("http://localhost:8080/api/user/mypage", {
+      const response = await fetch(`${API_BASE_URL}/api/user/mypage`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

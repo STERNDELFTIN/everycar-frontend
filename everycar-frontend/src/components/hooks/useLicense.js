@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setLicenseInfo } from "../../redux/userSlice";
 
 const useLicense = () => {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const dispatch = useDispatch();
 
     const licenseInfo = useSelector((state) => state.user.licenseInfo);
@@ -16,7 +18,7 @@ const useLicense = () => {
             return;
         }
 
-        fetch('http://localhost:8080/api/license/myLicense', {
+        fetch(`${API_BASE_URL}/api/license/myLicense`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

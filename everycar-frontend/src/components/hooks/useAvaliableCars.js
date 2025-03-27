@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
 const useAvailableCars = (province, district, rentalDatetime, returnDatetime, reservationType) => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,8 +24,8 @@ const useAvailableCars = (province, district, rentalDatetime, returnDatetime, re
 
         // 예약 유형에 따라 다른 API 엔드포인트 사용
         const apiUrl = reservationType === "quick"
-          ? `http://localhost:8080/api/quick-rent/cars?province=${province}&district=${district}&${queryParams}`
-          : `http://localhost:8080/api/short-rent/cars?province=${province}&district=${district}&${queryParams}`;
+          ? `${API_BASE_URL}/api/quick-rent/cars?province=${province}&district=${district}&${queryParams}`
+          : `${API_BASE_URL}/api/short-rent/cars?province=${province}&district=${district}&${queryParams}`;
 
         // console.log("차량 목록 API 호출 URL:", apiUrl); // 디버깅용
 

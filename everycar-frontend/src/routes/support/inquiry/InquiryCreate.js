@@ -4,6 +4,8 @@ import useUserInfo from '../../../components/hooks/useUserInfo';
 import "../../../css/routes/support/inquiry/InquiryCreate.css";
 
 function InquiryCreate() {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         inquiries_q: "", // 질문 내용
@@ -59,7 +61,7 @@ function InquiryCreate() {
         };
 
         // fetch로 POST 요청 보내기
-        fetch("http://localhost:8080/api/inquiry", {
+        fetch(`${API_BASE_URL}/api/inquiry`, {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${token}`,

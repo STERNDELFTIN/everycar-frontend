@@ -38,13 +38,15 @@ function MyReservationHistory() {
 
 // 빠른 예약 내역
 function QuickReservationHistory() {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const [quickReservations, setQuickReservations] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const token = localStorage.getItem("accessToken");
 
-        fetch("http://localhost:8080/api/fast/reservations", {
+        fetch(`${API_BASE_URL}/api/fast/reservations`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -117,12 +119,14 @@ function QuickReservationHistory() {
 
 // 단기예약
 function ShortReservationHistory() {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const [shortReservations, setShortReservations] = useState([]);
     
     useEffect(() => {
         const token = localStorage.getItem("accessToken");
         // API로부터 단기 예약 데이터를 가져옴
-        fetch('http://localhost:8080/api/short/reservations', {
+        fetch(`${API_BASE_URL}/api/short/reservations`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

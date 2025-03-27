@@ -24,6 +24,8 @@ let SubTitleH3 = styled.h3`
 `;
 
 function RentReservation() {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const { id } = useParams();
     const carId = Number(id);
     const reservationType = useSelector((state) => state.rent.reservationType);
@@ -50,14 +52,14 @@ function RentReservation() {
                 let apiUrl, queryParams;
 
                 if (reservationType === "quick") {
-                    apiUrl = `http://localhost:8080/api/quick-rent/reservations`;
+                    apiUrl = `${API_BASE_URL}/api/quick-rent/reservations`;
                     queryParams = new URLSearchParams({
                         rental_datetime: `${startDate}T${startTime}:00`,
                         return_datetime: `${endDate}T${endTime}:00`,
                         car_id: carId
                     }).toString();
                 } else {
-                    apiUrl = `http://localhost:8080/api/short-rent/reservations`;
+                    apiUrl = `${API_BASE_URL}/api/short-rent/reservations`;
                     queryParams = new URLSearchParams({
                         reservation_s_start_date: `${startDate}T${startTime}:00`,
                         reservation_s_end_date: `${endDate}T${endTime}:00`,
